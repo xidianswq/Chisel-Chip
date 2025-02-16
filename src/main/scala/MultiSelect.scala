@@ -1,6 +1,5 @@
 import chisel3._
 import Chisel3.experimental._
-//OK!
 
 class MultiSelect extends Module{
     val io=IO(new Bundle{
