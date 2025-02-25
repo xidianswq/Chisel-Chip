@@ -2,15 +2,15 @@
     "version": "1.4.0",
     "project": {
         "name": "chisel-chip-build-build",
-        "directory": "C:\\Users\\SWQ2003\\Desktop\\Chisel-Chip\\project\\project",
-        "workspaceDir": "C:\\Users\\SWQ2003\\Desktop\\Chisel-Chip\\project\\project",
+        "directory": "C:\\Users\\SWQ2003\\Desktop\\CPU-code\\Chisel-Chip\\project\\project",
+        "workspaceDir": "C:\\Users\\SWQ2003\\Desktop\\CPU-code\\Chisel-Chip\\project\\project",
         "sources": [
-            "C:\\Users\\SWQ2003\\Desktop\\Chisel-Chip\\project\\project\\src\\main\\scala",
-            "C:\\Users\\SWQ2003\\Desktop\\Chisel-Chip\\project\\project\\src\\main\\scala-2.12",
-            "C:\\Users\\SWQ2003\\Desktop\\Chisel-Chip\\project\\project\\src\\main\\scala-2",
-            "C:\\Users\\SWQ2003\\Desktop\\Chisel-Chip\\project\\project\\src\\main\\java",
-            "C:\\Users\\SWQ2003\\Desktop\\Chisel-Chip\\project\\project\\src\\main\\scala-sbt-1.0",
-            "C:\\Users\\SWQ2003\\Desktop\\Chisel-Chip\\project\\project\\target\\scala-2.12\\sbt-1.0\\src_managed\\main"
+            "C:\\Users\\SWQ2003\\Desktop\\CPU-code\\Chisel-Chip\\project\\project\\src\\main\\scala",
+            "C:\\Users\\SWQ2003\\Desktop\\CPU-code\\Chisel-Chip\\project\\project\\src\\main\\scala-2.12",
+            "C:\\Users\\SWQ2003\\Desktop\\CPU-code\\Chisel-Chip\\project\\project\\src\\main\\scala-2",
+            "C:\\Users\\SWQ2003\\Desktop\\CPU-code\\Chisel-Chip\\project\\project\\src\\main\\java",
+            "C:\\Users\\SWQ2003\\Desktop\\CPU-code\\Chisel-Chip\\project\\project\\src\\main\\scala-sbt-1.0",
+            "C:\\Users\\SWQ2003\\Desktop\\CPU-code\\Chisel-Chip\\project\\project\\target\\scala-2.12\\sbt-1.0\\src_managed\\main"
         ],
         "dependencies": [
             
@@ -104,11 +104,11 @@
             "C:\\Users\\SWQ2003\\AppData\\Local\\Coursier\\Cache\\v1\\https\\maven.aliyun.com\\repository\\central\\org\\reactivestreams\\reactive-streams\\1.0.3\\reactive-streams-1.0.3.jar",
             "C:\\Users\\SWQ2003\\AppData\\Local\\Coursier\\Cache\\v1\\https\\maven.aliyun.com\\repository\\central\\com\\typesafe\\config\\1.4.2\\config-1.4.2.jar"
         ],
-        "out": "C:\\Users\\SWQ2003\\Desktop\\Chisel-Chip\\project\\project\\.bloop\\chisel-chip-build-build",
-        "classesDir": "C:\\Users\\SWQ2003\\Desktop\\Chisel-Chip\\project\\project\\.bloop\\chisel-chip-build-build\\scala-2.12\\sbt-1.0\\classes",
+        "out": "C:\\Users\\SWQ2003\\Desktop\\CPU-code\\Chisel-Chip\\project\\project\\.bloop\\chisel-chip-build-build",
+        "classesDir": "C:\\Users\\SWQ2003\\Desktop\\CPU-code\\Chisel-Chip\\project\\project\\.bloop\\chisel-chip-build-build\\scala-2.12\\sbt-1.0\\classes",
         "resources": [
-            "C:\\Users\\SWQ2003\\Desktop\\Chisel-Chip\\project\\project\\src\\main\\resources",
-            "C:\\Users\\SWQ2003\\Desktop\\Chisel-Chip\\project\\project\\target\\scala-2.12\\sbt-1.0\\resource_managed\\main"
+            "C:\\Users\\SWQ2003\\Desktop\\CPU-code\\Chisel-Chip\\project\\project\\src\\main\\resources",
+            "C:\\Users\\SWQ2003\\Desktop\\CPU-code\\Chisel-Chip\\project\\project\\target\\scala-2.12\\sbt-1.0\\resource_managed\\main"
         ],
         "scala": {
             "organization": "org.scala-lang",
@@ -216,7 +216,7 @@
             "config": {
                 "home": "D:\\software\\study\\java\\jdk1.8.0_301\\jre",
                 "options": [
-                    "-Duser.dir=C:\\Users\\SWQ2003\\Desktop\\Chisel-Chip\\project\\project"
+                    "-Duser.dir=C:\\Users\\SWQ2003\\Desktop\\CPU-code\\Chisel-Chip\\project\\project"
                 ]
             },
             "mainClass": [
@@ -225,11 +225,11 @@
             "runtimeConfig": {
                 "home": "D:\\software\\study\\java\\jdk1.8.0_301\\jre",
                 "options": [
-                    "-Duser.dir=C:\\Users\\SWQ2003\\Desktop\\Chisel-Chip\\project\\project"
+                    "-Duser.dir=C:\\Users\\SWQ2003\\Desktop\\CPU-code\\Chisel-Chip\\project\\project"
                 ]
             },
             "classpath": [
-                "C:\\Users\\SWQ2003\\Desktop\\Chisel-Chip\\project\\project\\.bloop\\chisel-chip-build-build\\scala-2.12\\sbt-1.0\\classes",
+                "C:\\Users\\SWQ2003\\Desktop\\CPU-code\\Chisel-Chip\\project\\project\\.bloop\\chisel-chip-build-build\\scala-2.12\\sbt-1.0\\classes",
                 "C:\\Users\\SWQ2003\\AppData\\Local\\Coursier\\Cache\\v1\\https\\maven.aliyun.com\\repository\\central\\ch\\epfl\\scala\\sbt-bloop_2.12_1.0\\2.0.8\\sbt-bloop_2.12_1.0-2.0.8.jar",
                 "C:\\Users\\SWQ2003\\AppData\\Local\\Coursier\\Cache\\v1\\https\\maven.aliyun.com\\repository\\central\\ch\\epfl\\scala\\bloop-config_2.12\\2.3.1\\bloop-config_2.12-2.3.1.jar",
                 "C:\\Users\\SWQ2003\\AppData\\Local\\Coursier\\Cache\\v1\\https\\maven.aliyun.com\\repository\\central\\com\\github\\plokhotnyuk\\jsoniter-scala\\jsoniter-scala-core_2.12\\2.13.5.2\\jsoniter-scala-core_2.12-2.13.5.2.jar",
