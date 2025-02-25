@@ -25,15 +25,15 @@ class Core extends Module{
     val inst = io.instmem.inst
 
     val br_target = Wire(UInt(WORD_LEN.W))
-    val br_flg    = Wire(Bool())
-    val jmp_flg   = (inst === JAL || inst === JALR)
+    val br_flag    = Wire(Bool())
+    val jmp_flag   = (inst === JAL || inst === JALR)
     val alu_out   = Wire(UInt(WORD_LEN.W))
 
     //program counter update
     val reg_pc_next_default = reg_pc + 4.U(WORD_LEN.W)
     val reg_pc_next = MuxCase(reg_pc_next_default, Seq(
-        br_flg  -> br_target,
-        jmp_flg -> alu_out,
+        br_flag  -> br_target,
+        jmp_flag -> alu_out,
         (inst === ECALL) -> reg_csr(0x305) // go to trap_vector
     ))
     reg_pc := reg_pc_next
@@ -139,7 +139,7 @@ class Core extends Module{
 
     //branch
     br_target := reg_pc + imm_b_sext
-    br_flg := MuxCase(false.B, Seq(
+    br_flag := MuxCase(false.B, Seq(
         (exe_fun === BR_BEQ)  ->  (op1_data === op2_data),
         (exe_fun === BR_BNE)  -> !(op1_data === op2_data),
         (exe_fun === BR_BLT)  ->  (op1_data.asSInt() < op2_data.asSInt()),
@@ -199,7 +199,7 @@ class Core extends Module{
     printf(p"imm_s: 0x${Hexadecimal(imm_s)}\n")
     printf("-------------EX------------\n")
     printf(p"alu_out: 0x${Hexadecimal(alu_out)}\n")
-    printf(p"branch_flg: $br_flg\n")
+    printf(p"branch_flg: $br_flag\n")
     printf(p"branch_target: 0x${Hexadecimal(br_target)}\n")
     printf("-------------MEM-----------\n")
     printf(p"datamem.wen: ${io.datamem.wen}\n")
