@@ -147,10 +147,18 @@ class Core extends Module{
         (exe_fun === BR_BLTU) ->  (op1_data < op2_data),
         (exe_fun === BR_BGEU) -> !(op1_data < op2_data)
     ))
-    
+
+
+
+    //**********    Memory Access (MEM) Stage   **********
+    io.datamem.addr  := alu_out
+    io.datamem.wen   := mem_wen.asBool()
+    io.datamem.wdata := rs2_data
+
     //CSR operation
-    //only special assign 0x342 to ecall
-    val csr_addr = Mux(csr_cmd === CSR_E, 0x342.U(CSR_ADDR_LEN.W), inst(31,20))
+    val csr_addr = MuxCase(inst(31,20), Seq(
+        (csr_cmd === CSR_E) -> 0x342.U(CSR_ADDR_LEN.W)
+    ))
     val csr_rdata = reg_csr(csr_addr)
     val csr_wdata = MuxCase(0.U(WORD_LEN.W), Seq(
         (csr_cmd === CSR_W) -> op1_data,
@@ -161,13 +169,6 @@ class Core extends Module{
     when(csr_cmd =/= CSR_NULL){
         reg_csr(csr_addr) := csr_wdata
     }
-
-
-    //**********    Memory Access (MEM) Stage   **********
-    io.datamem.addr  := alu_out
-    io.datamem.wen   := mem_wen.asBool()
-    io.datamem.wdata := rs2_data
-
 
 
     //**********     Write Back (WB) Stage      **********
