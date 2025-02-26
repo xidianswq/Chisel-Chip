@@ -60,24 +60,25 @@ object Consts {
     val OP2_IMJ  = 4.U(OP2_LEN.W)
     val OP2_IMU  = 5.U(OP2_LEN.W)
 
+    //memory write enable
     val MEN_LEN  = 1
     val MEN_NULL = 0.U(MEN_LEN.W)
     val MEN_EN   = 1.U(MEN_LEN.W)
 
+    //register write back enable
     val REN_LEN  = 1
     val REN_NULL = 0.U(REN_LEN.W)
     val REN_EN   = 1.U(REN_LEN.W)
 
+    //write back select
     val WB_SEL_LEN = 3
     val WB_NULL    = 0.U(WB_SEL_LEN.W)
-    val WB_ALU     = 0.U(WB_SEL_LEN.W)
+    val WB_ALU     = 0.U(WB_SEL_LEN.W)  //default
     val WB_MEM     = 1.U(WB_SEL_LEN.W)
     val WB_PC      = 2.U(WB_SEL_LEN.W)
     val WB_CSR     = 3.U(WB_SEL_LEN.W)
-    val WB_MEM_V   = 4.U(WB_SEL_LEN.W)
-    val WB_ALU_V   = 5.U(WB_SEL_LEN.W)
-    val WB_VL      = 6.U(WB_SEL_LEN.W)
 
+    //memory write select
     val MW_LEN  = 3
     val MW_NULL = 0.U(MW_LEN.W)
     val MW_W    = 1.U(MW_LEN.W)
@@ -86,11 +87,11 @@ object Consts {
     val MW_HU   = 4.U(MW_LEN.W)
     val MW_BU   = 5.U(MW_LEN.W)
 
+    //CSR operation
     val CSR_LEN  = 3
     val CSR_NULL = 0.U(CSR_LEN.W)
-    val CSR_W    = 1.U(CSR_LEN.W)
-    val CSR_S    = 2.U(CSR_LEN.W)
-    val CSR_C    = 3.U(CSR_LEN.W)
-    val CSR_E    = 4.U(CSR_LEN.W)
-    val CSR_V    = 5.U(CSR_LEN.W)
+    val CSR_W    = 1.U(CSR_LEN.W)   //write
+    val CSR_S    = 2.U(CSR_LEN.W)   //set
+    val CSR_C    = 3.U(CSR_LEN.W)   //clear
+    val CSR_E    = 4.U(CSR_LEN.W)   //ecall
 }
