@@ -5,6 +5,7 @@ import chisel3.util._
 
 class Top extends Module{
     val io = IO(new Bundle{
+        val globalpointer = Output(UInt(32.W))
         val exit = Output(Bool())
     })
 
@@ -13,5 +14,6 @@ class Top extends Module{
 
     core.io.instmem <> instmem.io.instmem
     core.io.datamem <> instmem.io.datamem
+    io.globalpointer := core.io.globalpointer
     io.exit := core.io.exit
 }

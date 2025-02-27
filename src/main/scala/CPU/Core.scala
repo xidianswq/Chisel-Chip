@@ -9,7 +9,7 @@ class Core extends Module{
     val io = IO(new Bundle{
         val instmem = Flipped(new InstMemPortIO())
         val datamem = Flipped(new DataMemPortIO())
-
+        val globalpointer = Output(UInt(WORD_LEN.W)) //x3
         val exit = Output(Bool())   //program end signal
     })
     
@@ -183,8 +183,11 @@ class Core extends Module{
     }
 
 
-
-    io.exit := (inst === EXIT_INST)
+    io.globalpointer := reg_x(3)
+    io.exit := MuxCase(false.asBool, Seq(
+        (inst === EXIT_INST) -> true.asBool,
+        (reg_pc === EXIT_PC) -> true.asBool
+    ))
 
     //print the information during the simulation
     printf("-----------------------START----------------------\n")
@@ -212,4 +215,7 @@ class Core extends Module{
     printf(p"rd_addr: $rd_addr\n")
     printf(p"rd_data: 0x${Hexadecimal(rd_data)}\n")
     printf("------------------------END-----------------------\n")
+    printf(p"exit: ${io.exit}\n")
+    printf(p"globalpointer: ${reg_x(3)}\n")
+    printf("\n\n\n")
 }

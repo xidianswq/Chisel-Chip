@@ -18,6 +18,7 @@ object Consts {
     val CSR_ADDR_LEN  = 12
     val START_ADDR    = 0.U(WORD_LEN.W)         //PC start address
     val EXIT_INST = 0x00602823.U(WORD_LEN.W)    //exit instruction
+    val EXIT_PC   = 0x00000044.U(WORD_LEN.W)    //exit PC
 
     //function in execute stage
     val EXE_FUN_LEN = 5
