@@ -66,3 +66,7 @@ class Mem extends Module {
         mem(io.datamem.addr + 3.U(WORD_LEN.W)) := io.datamem.wdata(31, 24)
     }
 }
+
+object MemOption extends App {
+    (new chisel3.stage.ChiselStage).emitVerilog(new Mem(), Array("--target-dir", "generated"))
+}

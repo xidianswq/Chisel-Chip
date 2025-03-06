@@ -3,6 +3,7 @@ package cpu
 import chisel3._
 import chisel3.util._
 
+
 class Top extends Module{
     val io = IO(new Bundle{
         val globalpointer = Output(UInt(32.W))
@@ -16,4 +17,8 @@ class Top extends Module{
     core.io.datamem <> instmem.io.datamem
     io.globalpointer := core.io.globalpointer
     io.exit := core.io.exit
+}
+
+object TopOption extends App {
+    (new chisel3.stage.ChiselStage).emitVerilog(new Top(), Array("--target-dir", "generated"))
 }

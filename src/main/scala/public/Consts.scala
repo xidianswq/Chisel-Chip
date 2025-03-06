@@ -8,16 +8,16 @@ object Consts {
 
     //Instruction Memory
     val IMEM_WIDTH = 32     //32bit
-    val IMEM_DEPTH = 16384  //16KB
+    val IMEM_DEPTH = 1024   //1KB
     val IMEM_HEX_PATH = "src/main/resources/test.hex"
 
     //Rigister
     val Reg_Num = 32
     val REG_ADDR_LEN = 5
-    val CSR_Num = 4096
+    val CSR_Num = 1024
     val CSR_ADDR_LEN  = 12
     val START_ADDR    = 0.U(WORD_LEN.W)         //PC start address
-    val EXIT_INST = 0x00602823.U(WORD_LEN.W)    //exit instruction
+    val EXIT_INST = 0x00000000.U(WORD_LEN.W)    //exit instruction
     val EXIT_PC   = 0x00000044.U(WORD_LEN.W)    //exit PC
 
     //function in execute stage

@@ -24,16 +24,16 @@ class Core extends Module{
     io.instmem.addr := reg_pc
     val inst = io.instmem.inst
 
+    val br_flag   = Wire(Bool())
     val br_target = Wire(UInt(WORD_LEN.W))
-    val br_flag    = Wire(Bool())
-    val jmp_flag   = (inst === JAL || inst === JALR)
+    val jump_flag  = Wire(Bool())
     val alu_out   = Wire(UInt(WORD_LEN.W))
 
     //program counter update
     val reg_pc_next_default = reg_pc + 4.U(WORD_LEN.W)
     val reg_pc_next = MuxCase(reg_pc_next_default, Seq(
         br_flag  -> br_target,
-        jmp_flag -> alu_out,
+        jump_flag -> alu_out,
         (inst === ECALL) -> reg_csr(0x305) // go to trap_vector
     ))
     reg_pc := reg_pc_next
@@ -44,6 +44,7 @@ class Core extends Module{
     val rs1_addr = inst(19, 15)
     val rs2_addr = inst(24, 20)
     val rd_addr  = inst(11, 7)
+    val csr_addr_default = inst(31,20)
     val rs1_data = Mux((rs1_addr =/= 0.U(WORD_LEN.W)), reg_x(rs1_addr), 0.U(WORD_LEN.W))
     val rs2_data = Mux((rs2_addr =/= 0.U(WORD_LEN.W)), reg_x(rs2_addr), 0.U(WORD_LEN.W))
     
@@ -148,7 +149,8 @@ class Core extends Module{
         (exe_fun === BR_BGEU) -> !(op1_data < op2_data)
     ))
 
-
+    //jump
+    jump_flag := (rd_sel === WB_PC)
 
     //**********    Memory Access (MEM) Stage   **********
     io.datamem.addr  := alu_out
@@ -156,7 +158,7 @@ class Core extends Module{
     io.datamem.wdata := rs2_data
 
     //CSR operation
-    val csr_addr = MuxCase(inst(31,20), Seq(
+    val csr_addr = MuxCase(csr_addr_default, Seq(
         (csr_cmd === CSR_E) -> 0x342.U(CSR_ADDR_LEN.W)
     ))
     val csr_rdata = reg_csr(csr_addr)
@@ -206,6 +208,7 @@ class Core extends Module{
     printf(p"alu_out: 0x${Hexadecimal(alu_out)}\n")
     printf(p"branch_flg: $br_flag\n")
     printf(p"branch_target: 0x${Hexadecimal(br_target)}\n")
+    printf(p"jump_flg: $jump_flag\n")
     printf("-------------MEM-----------\n")
     printf(p"datamem.wen: ${io.datamem.wen}\n")
     printf(p"datamem.wdata: 0x${Hexadecimal(io.datamem.wdata)}\n")
@@ -217,5 +220,9 @@ class Core extends Module{
     printf("------------------------END-----------------------\n")
     printf(p"exit: ${io.exit}\n")
     printf(p"globalpointer: ${reg_x(3)}\n")
-    printf("\n\n\n")
+    printf("\n")
+}
+
+object CoreOption extends App {
+    (new chisel3.stage.ChiselStage).emitVerilog(new Core(), Array("--target-dir", "generated"))
 }
