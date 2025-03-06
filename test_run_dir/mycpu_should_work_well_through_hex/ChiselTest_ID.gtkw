@@ -1,0 +1,38 @@
+[*]
+[*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
+[*] Thu Mar 06 02:37:57 2025
+[*]
+[dumpfile] "C:\Users\SWQ2003\Desktop\CPU-code\Chisel-Chip\test_run_dir\mycpu_should_work_well_through_hex\Top.vcd"
+[dumpfile_mtime] "Wed Mar 05 05:21:34 2025"
+[dumpfile_size] 74419
+[savefile] "C:\Users\SWQ2003\Desktop\CPU-code\Chisel-Chip\test_run_dir\mycpu_should_work_well_through_hex\ChiselTest_ID.gtkw"
+[timestart] 0
+[size] 1920 991
+[pos] -1 -1
+*-4.083827 91 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] Top.
+[treeopen] Top.core.
+[sst_width] 387
+[signals_width] 280
+[sst_expanded] 1
+[sst_vpaned_height] 283
+@28
+Top.instmem.clock
+Top.core.reset
+@22
+Top.core.io_instmem_inst[31:0]
+Top.core.rs1_addr[4:0]
+Top.core.rs2_addr[4:0]
+Top.core.rs1_data[31:0]
+Top.core.rs2_data[31:0]
+Top.core.imm_b_sext[31:0]
+Top.core.imm_i_sext[31:0]
+Top.core.imm_j_sext[31:0]
+Top.core.imm_s_sext[31:0]
+Top.core.imm_z_uext[31:0]
+Top.core.imm_u_shifted[31:0]
+Top.core.exe_fun[4:0]
+Top.core.op1_data[31:0]
+Top.core.op2_data[31:0]
+[pattern_trace] 1
+[pattern_trace] 0

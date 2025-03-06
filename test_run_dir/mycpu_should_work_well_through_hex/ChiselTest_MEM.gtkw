@@ -1,0 +1,35 @@
+[*]
+[*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
+[*] Thu Mar 06 03:41:58 2025
+[*]
+[dumpfile] "C:\Users\SWQ2003\Desktop\CPU-code\Chisel-Chip\test_run_dir\mycpu_should_work_well_through_hex\Top.vcd"
+[dumpfile_mtime] "Wed Mar 05 05:21:34 2025"
+[dumpfile_size] 74419
+[savefile] "C:\Users\SWQ2003\Desktop\CPU-code\Chisel-Chip\test_run_dir\mycpu_should_work_well_through_hex\ChiselTest_MEM.gtkw"
+[timestart] 0
+[size] 1920 991
+[pos] -1 -1
+*-4.083827 91 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] Top.
+[sst_width] 387
+[signals_width] 280
+[sst_expanded] 1
+[sst_vpaned_height] 283
+@28
+Top.instmem.clock
+Top.core.reset
+@22
+Top.core.reg_pc[31:0]
+Top.core.io_instmem_inst[31:0]
+@28
+Top.core.io_datamem_wen
+@22
+Top.core.io_datamem_addr[31:0]
+Top.core.io_datamem_wdata[31:0]
+@28
+Top.core.csr_cmd[2:0]
+@22
+Top.core.csr_wdata[31:0]
+Top.core.reg_csr[31:0]
+[pattern_trace] 1
+[pattern_trace] 0
