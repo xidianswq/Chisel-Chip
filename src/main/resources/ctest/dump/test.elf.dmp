@@ -1,0 +1,55 @@
+
+test:     file format elf32-littleriscv
+
+
+Disassembly of section .text:
+
+00000000 <main>:
+   0:	fe010113          	addi	sp,sp,-32
+   4:	00812e23          	sw	s0,28(sp)
+   8:	02010413          	addi	s0,sp,32
+   c:	00100793          	li	a5,1
+  10:	fef42623          	sw	a5,-20(s0)
+  14:	00200793          	li	a5,2
+  18:	fef42423          	sw	a5,-24(s0)
+  1c:	fec42703          	lw	a4,-20(s0)
+  20:	fe842783          	lw	a5,-24(s0)
+  24:	00f707b3          	add	a5,a4,a5
+  28:	fef42223          	sw	a5,-28(s0)
+  2c:	00000793          	li	a5,0
+  30:	00078513          	mv	a0,a5
+  34:	01c12403          	lw	s0,28(sp)
+  38:	02010113          	addi	sp,sp,32
+  3c:	00008067          	ret
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	3a434347          	fmsub.d	ft6,ft6,ft4,ft7,rmm
+   4:	2820                	fld	fs0,80(s0)
+   6:	33616367          	0x33616367
+   a:	3231                	jal	fffff916 <_end+0xffffe916>
+   c:	61373833          	0x61373833
+  10:	3162                	fld	ft2,56(sp)
+  12:	2029                	jal	1c <main+0x1c>
+  14:	3031                	jal	fffff820 <_end+0xffffe820>
+  16:	322e                	fld	ft4,232(sp)
+  18:	302e                	fld	ft0,232(sp)
+	...
+
+Disassembly of section .riscv.attributes:
+
+00000000 <.riscv.attributes>:
+   0:	1b41                	addi	s6,s6,-16
+   2:	0000                	unimp
+   4:	7200                	flw	fs0,32(a2)
+   6:	7369                	lui	t1,0xffffa
+   8:	01007663          	bgeu	zero,a6,14 <main+0x14>
+   c:	0011                	c.nop	4
+   e:	0000                	unimp
+  10:	1004                	addi	s1,sp,32
+  12:	7205                	lui	tp,0xfffe1
+  14:	3376                	fld	ft6,376(sp)
+  16:	6932                	flw	fs2,12(sp)
+  18:	7032                	flw	ft0,44(sp)
+  1a:	0030                	addi	a2,sp,8
