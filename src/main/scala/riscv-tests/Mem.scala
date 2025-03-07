@@ -1,4 +1,4 @@
-package ui
+package cpu_riscv_tests
 
 import chisel3._
 import chisel3.util._
@@ -42,7 +42,7 @@ class Mem extends Module {
     //Instruction Memory Size: 16KB(16384 * 8bits)
     val mem = Mem(IMEM_DEPTH, UInt(8.W))
 
-    loadMemoryFromFile(mem, "src/riscv-tests/hex/rv32-p-addi.hex")
+    loadMemoryFromFile(mem, "src/riscv-tests/hex/rv32mi-p-scall.hex")
 
 
     //connect the 4 address to get a 32-bit instruction

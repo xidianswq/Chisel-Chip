@@ -8,6 +8,7 @@ MI_INSTS=(csr scall)
 WORK_DIR=./src
 RESULT_DIR=$WORK_DIR/riscv-tests/results
 mkdir -p $RESULT_DIR
+rm $RESULT_DIR/*.txt
 
 function loop_test(){
     INSTS=${!1}

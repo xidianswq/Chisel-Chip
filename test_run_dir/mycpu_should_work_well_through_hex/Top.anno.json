@@ -1,7 +1,7 @@
 [
   {
     "class":"firrtl.stage.FirrtlFileAnnotation",
-    "file":"test_run_dir\\mycpu_should_work_well_through_hex\\Top.lo.fir"
+    "file":"test_run_dir/mycpu_should_work_well_through_hex/Top.lo.fir"
   },
   {
     "class":"firrtl.EmitCircuitAnnotation",
@@ -10,16 +10,12 @@
   {
     "class":"firrtl.annotations.LoadMemoryAnnotation",
     "target":"Top.Mem.mem",
-<<<<<<< HEAD
-    "fileName":"src/main/resources/test.hex",
-=======
-    "fileName":"src/riscv-tests/hex/rv32ui-p-sub.hex",
->>>>>>> 0e0fbed9c8492a00a20d7b21e35a1ebf202896e8
+    "fileName":"src/riscv-tests/hex/rv32mi-p-scall.hex",
     "hexOrBinary":"h",
     "originalMemoryNameOpt":"mem"
   },
   {
     "class":"firrtl.transforms.BlackBoxTargetDirAnno",
-    "targetDir":"test_run_dir\\mycpu_should_work_well_through_hex"
+    "targetDir":"test_run_dir/mycpu_should_work_well_through_hex"
   }
 ]

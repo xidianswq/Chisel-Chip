@@ -1,4 +1,4 @@
-package ui
+package cpu_riscv_tests
 
 import chisel3._
 import org.scalatest._
