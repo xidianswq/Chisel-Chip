@@ -10,7 +10,11 @@
   {
     "class":"firrtl.annotations.LoadMemoryAnnotation",
     "target":"Top.Mem.mem",
+<<<<<<< HEAD
     "fileName":"src/main/resources/test.hex",
+=======
+    "fileName":"src/riscv-tests/hex/rv32ui-p-sub.hex",
+>>>>>>> 0e0fbed9c8492a00a20d7b21e35a1ebf202896e8
     "hexOrBinary":"h",
     "originalMemoryNameOpt":"mem"
   },
