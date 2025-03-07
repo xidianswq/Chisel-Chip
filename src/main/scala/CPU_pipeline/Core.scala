@@ -222,7 +222,3 @@ class Core extends Module{
     printf(p"globalpointer: ${reg_x(3)}\n")
     printf("\n")
 }
-
-object CoreOption extends App {
-    (new chisel3.stage.ChiselStage).emitVerilog(new Core(), Array("--target-dir", "generated"))
-}

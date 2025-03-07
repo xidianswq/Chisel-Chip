@@ -401,9 +401,10 @@ module Core(
   wire [31:0] _rd_data_T_3 = _rd_data_T_2 ? reg_csr_csr_rdata_data : alu_out; // @[Mux.scala 98:16]
   wire [31:0] _rd_data_T_4 = jump_flag ? reg_pc_next_default : _rd_data_T_3; // @[Mux.scala 98:16]
   wire [31:0] rd_data = _rd_data_T ? io_datamem_rdata : _rd_data_T_4; // @[Mux.scala 98:16]
-  wire  _io_exit_T = io_instmem_inst == 32'h0; // @[Core.scala 190:15]
-  wire  _io_exit_T_1 = reg_pc == 32'h44; // @[Core.scala 191:17]
-  wire  _T_4 = ~reset; // @[Core.scala 195:11]
+  wire  _io_exit_T_1 = 32'hc0001073 == io_instmem_inst; // @[Core.scala 190:15]
+  wire  _io_exit_T_2 = io_instmem_inst == 32'h0; // @[Core.scala 191:15]
+  wire  _io_exit_T_3 = reg_pc == 32'h44; // @[Core.scala 192:17]
+  wire  _T_4 = ~reset; // @[Core.scala 196:11]
   assign reg_x_rs1_data_MPORT_addr = io_instmem_inst[19:15];
   assign reg_x_rs1_data_MPORT_data = reg_x[reg_x_rs1_data_MPORT_addr]; // @[Core.scala 17:20]
   assign reg_x_rs2_data_MPORT_addr = io_instmem_inst[24:20];
@@ -429,7 +430,7 @@ module Core(
   assign io_datamem_wen = _inst_type_T_1 ? 1'h0 : _inst_type_T_3; // @[Lookup.scala 33:37]
   assign io_datamem_wdata = _GEN_11 != 32'h0 ? reg_x_rs2_data_MPORT_data : 32'h0; // @[Core.scala 49:23]
   assign io_globalpointer = reg_x_io_globalpointer_MPORT_data; // @[Core.scala 188:22]
-  assign io_exit = _io_exit_T | _io_exit_T_1; // @[Mux.scala 98:16]
+  assign io_exit = _io_exit_T_1 | (_io_exit_T_2 | _io_exit_T_3); // @[Mux.scala 98:16]
   always @(posedge clock) begin
     if(reg_x_MPORT_1_en & reg_x_MPORT_1_mask) begin
       reg_x[reg_x_MPORT_1_addr] <= reg_x_MPORT_1_data; // @[Core.scala 17:20]
@@ -457,7 +458,7 @@ module Core(
       if (`PRINTF_COND) begin
     `endif
         if (~reset) begin
-          $fwrite(32'h80000002,"-----------------------START----------------------\n"); // @[Core.scala 195:11]
+          $fwrite(32'h80000002,"-----------------------START----------------------\n"); // @[Core.scala 196:11]
         end
     `ifdef PRINTF_COND
       end
@@ -468,7 +469,7 @@ module Core(
       if (`PRINTF_COND) begin
     `endif
         if (_T_4) begin
-          $fwrite(32'h80000002,"-------------IF------------\n"); // @[Core.scala 196:11]
+          $fwrite(32'h80000002,"-------------IF------------\n"); // @[Core.scala 197:11]
         end
     `ifdef PRINTF_COND
       end
@@ -479,7 +480,7 @@ module Core(
       if (`PRINTF_COND) begin
     `endif
         if (_T_4) begin
-          $fwrite(32'h80000002,"reg_pc: 0x%x\n",reg_pc); // @[Core.scala 197:11]
+          $fwrite(32'h80000002,"reg_pc: 0x%x\n",reg_pc); // @[Core.scala 198:11]
         end
     `ifdef PRINTF_COND
       end
@@ -490,7 +491,7 @@ module Core(
       if (`PRINTF_COND) begin
     `endif
         if (_T_4) begin
-          $fwrite(32'h80000002,"inst: 0x%x\n",io_instmem_inst); // @[Core.scala 198:11]
+          $fwrite(32'h80000002,"inst: 0x%x\n",io_instmem_inst); // @[Core.scala 199:11]
         end
     `ifdef PRINTF_COND
       end
@@ -501,18 +502,7 @@ module Core(
       if (`PRINTF_COND) begin
     `endif
         if (_T_4) begin
-          $fwrite(32'h80000002,"-------------ID------------\n"); // @[Core.scala 199:11]
-        end
-    `ifdef PRINTF_COND
-      end
-    `endif
-    `endif // SYNTHESIS
-    `ifndef SYNTHESIS
-    `ifdef PRINTF_COND
-      if (`PRINTF_COND) begin
-    `endif
-        if (_T_4) begin
-          $fwrite(32'h80000002,"rd_addr: %d\n",imm_s_lo); // @[Core.scala 200:11]
+          $fwrite(32'h80000002,"-------------ID------------\n"); // @[Core.scala 200:11]
         end
     `ifdef PRINTF_COND
       end
@@ -567,7 +557,7 @@ module Core(
       if (`PRINTF_COND) begin
     `endif
         if (_T_4) begin
-          $fwrite(32'h80000002,"imm_i: 0x%x\n",imm_i); // @[Core.scala 205:11]
+          $fwrite(32'h80000002,"-------------EX------------\n"); // @[Core.scala 205:11]
         end
     `ifdef PRINTF_COND
       end
@@ -578,7 +568,7 @@ module Core(
       if (`PRINTF_COND) begin
     `endif
         if (_T_4) begin
-          $fwrite(32'h80000002,"imm_s: 0x%x\n",imm_s); // @[Core.scala 206:11]
+          $fwrite(32'h80000002,"alu_out: 0x%x\n",alu_out); // @[Core.scala 206:11]
         end
     `ifdef PRINTF_COND
       end
@@ -589,7 +579,7 @@ module Core(
       if (`PRINTF_COND) begin
     `endif
         if (_T_4) begin
-          $fwrite(32'h80000002,"-------------EX------------\n"); // @[Core.scala 207:11]
+          $fwrite(32'h80000002,"branch_flg: %d\n",br_flag); // @[Core.scala 207:11]
         end
     `ifdef PRINTF_COND
       end
@@ -600,7 +590,7 @@ module Core(
       if (`PRINTF_COND) begin
     `endif
         if (_T_4) begin
-          $fwrite(32'h80000002,"alu_out: 0x%x\n",alu_out); // @[Core.scala 208:11]
+          $fwrite(32'h80000002,"branch_target: 0x%x\n",br_target); // @[Core.scala 208:11]
         end
     `ifdef PRINTF_COND
       end
@@ -611,7 +601,7 @@ module Core(
       if (`PRINTF_COND) begin
     `endif
         if (_T_4) begin
-          $fwrite(32'h80000002,"branch_flg: %d\n",br_flag); // @[Core.scala 209:11]
+          $fwrite(32'h80000002,"jump_flg: %d\n",jump_flag); // @[Core.scala 209:11]
         end
     `ifdef PRINTF_COND
       end
@@ -622,7 +612,7 @@ module Core(
       if (`PRINTF_COND) begin
     `endif
         if (_T_4) begin
-          $fwrite(32'h80000002,"branch_target: 0x%x\n",br_target); // @[Core.scala 210:11]
+          $fwrite(32'h80000002,"-------------MEM-----------\n"); // @[Core.scala 210:11]
         end
     `ifdef PRINTF_COND
       end
@@ -633,7 +623,7 @@ module Core(
       if (`PRINTF_COND) begin
     `endif
         if (_T_4) begin
-          $fwrite(32'h80000002,"jump_flg: %d\n",jump_flag); // @[Core.scala 211:11]
+          $fwrite(32'h80000002,"datamem.wen: %d\n",io_datamem_wen); // @[Core.scala 211:11]
         end
     `ifdef PRINTF_COND
       end
@@ -644,7 +634,7 @@ module Core(
       if (`PRINTF_COND) begin
     `endif
         if (_T_4) begin
-          $fwrite(32'h80000002,"-------------MEM-----------\n"); // @[Core.scala 212:11]
+          $fwrite(32'h80000002,"datamem.wdata: 0x%x\n",io_datamem_wdata); // @[Core.scala 212:11]
         end
     `ifdef PRINTF_COND
       end
@@ -655,7 +645,7 @@ module Core(
       if (`PRINTF_COND) begin
     `endif
         if (_T_4) begin
-          $fwrite(32'h80000002,"datamem.wen: %d\n",io_datamem_wen); // @[Core.scala 213:11]
+          $fwrite(32'h80000002,"csr_wdata: 0x%x\n",csr_wdata); // @[Core.scala 213:11]
         end
     `ifdef PRINTF_COND
       end
@@ -666,7 +656,7 @@ module Core(
       if (`PRINTF_COND) begin
     `endif
         if (_T_4) begin
-          $fwrite(32'h80000002,"datamem.wdata: 0x%x\n",io_datamem_wdata); // @[Core.scala 214:11]
+          $fwrite(32'h80000002,"-------------WB------------\n"); // @[Core.scala 214:11]
         end
     `ifdef PRINTF_COND
       end
@@ -677,7 +667,7 @@ module Core(
       if (`PRINTF_COND) begin
     `endif
         if (_T_4) begin
-          $fwrite(32'h80000002,"csr_wdata: 0x%x\n",csr_wdata); // @[Core.scala 215:11]
+          $fwrite(32'h80000002,"rd_wen: %d\n",inst_type_4); // @[Core.scala 215:11]
         end
     `ifdef PRINTF_COND
       end
@@ -688,7 +678,7 @@ module Core(
       if (`PRINTF_COND) begin
     `endif
         if (_T_4) begin
-          $fwrite(32'h80000002,"-------------WB------------\n"); // @[Core.scala 216:11]
+          $fwrite(32'h80000002,"rd_addr: %d\n",imm_s_lo); // @[Core.scala 216:11]
         end
     `ifdef PRINTF_COND
       end
@@ -699,7 +689,7 @@ module Core(
       if (`PRINTF_COND) begin
     `endif
         if (_T_4) begin
-          $fwrite(32'h80000002,"rd_wen: %d\n",inst_type_4); // @[Core.scala 217:11]
+          $fwrite(32'h80000002,"rd_data: 0x%x\n",rd_data); // @[Core.scala 217:11]
         end
     `ifdef PRINTF_COND
       end
@@ -710,7 +700,7 @@ module Core(
       if (`PRINTF_COND) begin
     `endif
         if (_T_4) begin
-          $fwrite(32'h80000002,"rd_addr: %d\n",imm_s_lo); // @[Core.scala 218:11]
+          $fwrite(32'h80000002,"------------------------END-----------------------\n"); // @[Core.scala 218:11]
         end
     `ifdef PRINTF_COND
       end
@@ -721,7 +711,7 @@ module Core(
       if (`PRINTF_COND) begin
     `endif
         if (_T_4) begin
-          $fwrite(32'h80000002,"rd_data: 0x%x\n",rd_data); // @[Core.scala 219:11]
+          $fwrite(32'h80000002,"exit: %d\n",io_exit); // @[Core.scala 219:11]
         end
     `ifdef PRINTF_COND
       end
@@ -732,7 +722,7 @@ module Core(
       if (`PRINTF_COND) begin
     `endif
         if (_T_4) begin
-          $fwrite(32'h80000002,"------------------------END-----------------------\n"); // @[Core.scala 220:11]
+          $fwrite(32'h80000002,"globalpointer: %d\n",reg_x_MPORT_2_data); // @[Core.scala 220:11]
         end
     `ifdef PRINTF_COND
       end
@@ -743,29 +733,7 @@ module Core(
       if (`PRINTF_COND) begin
     `endif
         if (_T_4) begin
-          $fwrite(32'h80000002,"exit: %d\n",io_exit); // @[Core.scala 221:11]
-        end
-    `ifdef PRINTF_COND
-      end
-    `endif
-    `endif // SYNTHESIS
-    `ifndef SYNTHESIS
-    `ifdef PRINTF_COND
-      if (`PRINTF_COND) begin
-    `endif
-        if (_T_4) begin
-          $fwrite(32'h80000002,"globalpointer: %d\n",reg_x_MPORT_2_data); // @[Core.scala 222:11]
-        end
-    `ifdef PRINTF_COND
-      end
-    `endif
-    `endif // SYNTHESIS
-    `ifndef SYNTHESIS
-    `ifdef PRINTF_COND
-      if (`PRINTF_COND) begin
-    `endif
-        if (_T_4) begin
-          $fwrite(32'h80000002,"\n"); // @[Core.scala 223:11]
+          $fwrite(32'h80000002,"\n"); // @[Core.scala 221:11]
         end
     `ifdef PRINTF_COND
       end
@@ -953,9 +921,6 @@ module Mem(
 `FIRRTL_BEFORE_INITIAL
 `endif
 initial begin
-  `ifdef LOAD_FROM_FILE
-      $readmemh("test.hex", mem); // 读取十六进制文件
-  `endif
   `ifdef RANDOMIZE
     `ifdef INIT_RANDOM
       `INIT_RANDOM
