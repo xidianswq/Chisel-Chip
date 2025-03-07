@@ -9,7 +9,7 @@ class RiscvTest extends FlatSpec with ChiselScalatestTester {
   it should "work well through hex" in {
     test(new Top) 
     { dut =>
-      dut.clock.setTimeout(0)
+      dut.clock.setTimeout(2000)
       while (!dut.io.exit.peek().litToBoolean){
         dut.clock.step(1)
       }
