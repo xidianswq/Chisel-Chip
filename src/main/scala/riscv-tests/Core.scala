@@ -1,4 +1,4 @@
-package cpu_pipeline
+package cpu_riscv_tests
 
 import chisel3._
 import chisel3.util._
@@ -187,7 +187,8 @@ class Core extends Module{
 
     io.globalpointer := reg_x(3)
     io.exit := MuxCase(false.asBool, Seq(
-        (inst === EXIT_INST) -> true.asBool,
+        //(inst === UNIMP) -> true.asBool,
+        //(inst === EXIT_INST) -> true.asBool,
         (reg_pc === EXIT_PC) -> true.asBool
     ))
 
@@ -221,8 +222,6 @@ class Core extends Module{
     printf(p"exit: ${io.exit}\n")
     printf(p"globalpointer: ${reg_x(3)}\n")
     printf("\n")
+    
 }
 
-object CoreOption extends App {
-    (new chisel3.stage.ChiselStage).emitVerilog(new Core(), Array("--target-dir", "generated"))
-}

@@ -1,10 +1,10 @@
-package cpu
+package cpu_riscv_tests
 
 import chisel3._
 import org.scalatest._
 import chiseltest._
 
-class CPUTest extends FlatSpec with ChiselScalatestTester {
+class RiscvTest extends FlatSpec with ChiselScalatestTester {
   behavior of "mycpu" 
   it should "work well through hex" in {
     test(new Top) { dut =>

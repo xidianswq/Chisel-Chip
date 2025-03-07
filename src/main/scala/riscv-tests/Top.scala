@@ -1,4 +1,4 @@
-package cpu
+package cpu_riscv_tests
 
 import chisel3._
 import chisel3.util._

@@ -224,6 +224,3 @@ class Core extends Module{
     printf("\n")
 }
 
-object CoreOption extends App {
-    (new chisel3.stage.ChiselStage).emitVerilog(new Core(), Array("--target-dir", "generated"))
-}

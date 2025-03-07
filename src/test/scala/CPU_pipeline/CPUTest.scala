@@ -1,4 +1,4 @@
-package cpu
+package cpu_pipeline
 
 import chisel3._
 import org.scalatest._
@@ -11,7 +11,7 @@ class CPUTest extends FlatSpec with ChiselScalatestTester {
       while (!dut.io.exit.peek().litToBoolean){
         dut.clock.step(1)
       }
-      //c.io.globalpointer.expect(1.U)
+      dut.io.globalpointer.expect(1.U)
     }
   }
 }
