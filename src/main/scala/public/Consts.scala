@@ -95,4 +95,5 @@ object Consts {
     val CSR_S    = 2.U(CSR_LEN.W)   //set
     val CSR_C    = 3.U(CSR_LEN.W)   //clear
     val CSR_E    = 4.U(CSR_LEN.W)   //ecall
+    
 }

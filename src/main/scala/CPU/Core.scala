@@ -187,6 +187,7 @@ class Core extends Module{
 
     io.globalpointer := reg_x(3)
     io.exit := MuxCase(false.asBool, Seq(
+        (inst === UNIMP) -> true.asBool,
         (inst === EXIT_INST) -> true.asBool,
         (reg_pc === EXIT_PC) -> true.asBool
     ))
