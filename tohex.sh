@@ -1,7 +1,7 @@
 #!/bin/bash
 
 FILES=./src/riscv-tests/isa/rv32*i-p-*
-SAVE_DIR=./src/riscv-tests/isa/hex
+SAVE_DIR=./src/riscv-tests/hex
 
 for f in $FILES
 do
