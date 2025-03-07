@@ -16,13 +16,13 @@ function loop_test(){
     ISA=$3
     DIRECTORY_NAME=$4   #directory name
     #change package name to $PACKAGE_NAME in CPUTests.scala
-    sed -e "s/{package}/$PACKAGE_NAME/" $WORK_DIR/test/riscv-tests/RiscvTests.scala > $WORK_DIR/test/scala/RiscvTests.scala
+    sed -e "s/{package}/$PACKAGE_NAME/" $WORK_DIR/test/scala/riscv-tests/RiscvTests_temp.scala > $WORK_DIR/test/scala/riscv-tests/RiscvTests.scala
     
     for INST in ${INSTS[@]}
     do
         echo $INST
         #change package name and HEX file name in Memory.scala
-        sed -e "s/{package}/$PACKAGE_NAME/" -e "s/{isa}/$ISA/" -e "s/{inst}/$INST/" $WORK_DIR/main/riscv-tests/Mem.scala > $WORK_DIR/main/scala/Mem.scala
+        sed -e "s/{package}/$PACKAGE_NAME/" -e "s/{isa}/$ISA/" -e "s/{inst}/$INST/" $WORK_DIR/main/scala/riscv-tests/Mem_temp.scala > $WORK_DIR/main/scala/riscv-tests/Mem.scala
         sbt "testOnly $PACKAGE_NAME.RiscvTest" > $RESULT_DIR/$INST.txt
     done
 }

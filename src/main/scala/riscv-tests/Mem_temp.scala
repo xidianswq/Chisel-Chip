@@ -42,7 +42,7 @@ class Mem extends Module {
     //Instruction Memory Size: 16KB(16384 * 8bits)
     val mem = Mem(IMEM_DEPTH, UInt(8.W))
 
-    loadMemoryFromFile(mem, "src/riscv-tests/isa/rv32{isa}-p-{inst}")
+    loadMemoryFromFile(mem, "../../../riscv-tests/hex/rv32{isa}-p-{inst}.hex")
 
 
     //connect the 4 address to get a 32-bit instruction
