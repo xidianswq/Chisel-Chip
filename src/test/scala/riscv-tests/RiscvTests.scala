@@ -5,8 +5,8 @@ import org.scalatest._
 import chiseltest._
 
 class RiscvTest extends FlatSpec with ChiselScalatestTester {
-  behavior of "mycpu" 
-  it should "work well through hex" in {
+  behavior of "cpu_riscv_tests" 
+  it should "work" in {
     test(new Top) 
     { dut =>
       dut.clock.setTimeout(2000)

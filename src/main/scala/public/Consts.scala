@@ -9,7 +9,7 @@ object Consts {
     //Instruction Memory
     val IMEM_WIDTH = 32     //32bit
     val IMEM_DEPTH = 16384  //16KB
-    val IMEM_HEX_PATH = "src/main/resources/ctest/hex/test.hex"
+    val IMEM_HEX_PATH = "src/main/resources/CPU/test.hex"
 
     //Rigister
     val Reg_Num = 32

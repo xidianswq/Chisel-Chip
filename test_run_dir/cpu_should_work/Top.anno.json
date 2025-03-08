@@ -1,7 +1,7 @@
 [
   {
     "class":"firrtl.stage.FirrtlFileAnnotation",
-    "file":"test_run_dir\\mycpu_should_work_well_through_hex\\Top.lo.fir"
+    "file":"test_run_dir\\cpu_should_work\\Top.lo.fir"
   },
   {
     "class":"firrtl.EmitCircuitAnnotation",
@@ -10,12 +10,12 @@
   {
     "class":"firrtl.annotations.LoadMemoryAnnotation",
     "target":"Top.Mem.mem",
-    "fileName":"src/main/resources/ctest/hex/test.hex",
+    "fileName":"src/main/resources/test.hex",
     "hexOrBinary":"h",
     "originalMemoryNameOpt":"mem"
   },
   {
     "class":"firrtl.transforms.BlackBoxTargetDirAnno",
-    "targetDir":"test_run_dir\\mycpu_should_work_well_through_hex"
+    "targetDir":"test_run_dir\\cpu_should_work"
   }
 ]

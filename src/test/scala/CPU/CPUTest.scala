@@ -5,8 +5,8 @@ import org.scalatest._
 import chiseltest._
 
 class CPUTest extends FlatSpec with ChiselScalatestTester {
-  behavior of "mycpu" 
-  it should "work well through hex" in {
+  behavior of "cpu" 
+  it should "work" in {
     test(new Top) { dut =>
       while (!dut.io.exit.peek().litToBoolean){
         dut.clock.step(1)

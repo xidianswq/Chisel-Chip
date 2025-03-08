@@ -134,6 +134,25 @@ tree										explain
   riscv64-unknown-elf-gcc -v
   ```
 
+- Compile .c file to .hex file
+
+  ```bash
+  # gcc: riscv64-unknown-elf-gcc -march=<ISA_type> -mabi=<ABI_type> -c [-o output_file.o] <source_file.c>
+  riscv64-unknown-elf-gcc -march=rv32i -mabi=ilp32 -c -o test.o test.c
+  # link: riscv64-unknown-elf-ld -b elf32-littleriscv <obj_file.o> -T <link_file.ld> [-o output_file]
+  riscv64-unknown-elf-ld -b elf32-littleriscv test.o -T link.ld -o test
+  # Convert Executable File to Bin File
+  riscv64-unknown-elf-objcopy -O binary test test.bin
+  ## Convert to Hex File
+  # -An  : Hidden Address Info
+  # -tx1 : Type is x1(1 byte hexadecimal)
+  # -w1  : Width is 1(1 byte per line)
+  # -v   : Omit Prohibited(using * instead)
+  od -An -tx1 -w1 -v test.bin >> ./hex/test.hex
+  # Create dump file
+  riscv64-unknown-elf-objdump -b elf32-littleriscv -D test > ./dump/test.elf.dmp
+  ```
+
 
 
 ---
@@ -158,26 +177,6 @@ tree										explain
   make rv32ui
   make rv32mi
   ```
-
-- Compile
-
-  ```bash
-  # gcc: riscv64-unknown-elf-gcc -march=<ISA_type> -mabi=<ABI_type> -c [-o output_file.o] <source_file.c>
-  riscv64-unknown-elf-gcc -march=rv32i -mabi=ilp32 -c -o -test.o test.c
-  # link: riscv64-unknown-elf-ld -b elf32-littleriscv <obj_file.o> -T <link_file.ld> [-o output_file]
-  riscv64-unknown-elf-ld -b elf32-littleriscv test.o -T link.ld -o test
-  # Convert Executable File to Bin File
-  riscv64-unknown-elf-objcopy -O binary test test.bin
-  ## Convert to Hex File
-  # -An  : Hidden Address Info
-  # -tx1 : Type is x1(1 byte hexadecimal)
-  # -w1  : Width is 1(1 byte per line)
-  # -v   : Omit Prohibited(using * instead)
-  od -An -tx1 -w1 -v test.bin >> ./hex/test.hex
-  # Create dump file
-  riscv64-unknown-elf-objdump -b elf32-littleriscv -D test > ./dump/test.elf.dmp
-  ```
-
 
 
 ---
