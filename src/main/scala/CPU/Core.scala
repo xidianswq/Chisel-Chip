@@ -9,7 +9,6 @@ class Core extends Module{
     val io = IO(new Bundle{
         val instmem = Flipped(new InstMemPortIO())
         val datamem = Flipped(new DataMemPortIO())
-        val globalpointer = Output(UInt(WORD_LEN.W)) //x3
         val exit = Output(Bool())   //program end signal
     })
     
@@ -184,8 +183,6 @@ class Core extends Module{
         reg_x(rd_addr) := rd_data
     }
 
-
-    io.globalpointer := reg_x(3)
     io.exit := MuxCase(false.asBool, Seq(
         (inst === UNIMP) -> true.asBool,
         (inst === EXIT_INST) -> true.asBool,

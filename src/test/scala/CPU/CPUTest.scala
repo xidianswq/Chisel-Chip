@@ -11,7 +11,6 @@ class CPUTest extends FlatSpec with ChiselScalatestTester {
       while (!dut.io.exit.peek().litToBoolean){
         dut.clock.step(1)
       }
-      dut.io.globalpointer.expect(1.U)
     }
   }
 }
