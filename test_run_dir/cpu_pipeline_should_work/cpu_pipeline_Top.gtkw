@@ -1,0 +1,55 @@
+[*]
+[*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
+[*] Thu Mar 13 09:51:34 2025
+[*]
+[dumpfile] "C:\Users\SWQ2003\Desktop\CPU-code\Chisel-Chip\test_run_dir\cpu_pipeline_should_work\test_run_dir\cpu_pipeline_should_work\Top.vcd"
+[savefile] "C:\Users\SWQ2003\Desktop\CPU-code\Chisel-Chip\test_run_dir\cpu_pipeline_should_work\cpu_pipeline_Top.gtkw"
+[timestart] 0
+[size] 1920 991
+[pos] -42 -42
+*-4.542032 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] Top.
+[sst_width] 239
+[signals_width] 270
+[sst_expanded] 1
+[sst_vpaned_height] 587
+@28
+Top.pc.clock
+Top.pc.reset
+@22
+Top.pc.reg_pc[31:0]
+Top.pc.io_out_inst[31:0]
+Top.id.rs1_addr[4:0]
+Top.id.rs1_data[31:0]
+Top.id.rs2_addr[4:0]
+Top.id.rs2_data[31:0]
+Top.id.io_out_op1_data[31:0]
+Top.id.io_out_op2_data[31:0]
+Top.pc.io_ex_in_alu_out[31:0]
+@28
+Top.pc.io_ex_in_jump_flag
+@22
+Top.pc.io_br_in_br_target[31:0]
+@28
+Top.pc.io_br_in_br_flag
+@22
+Top.mem.io_datamem_addr[31:0]
+Top.mem.io_datamem_rdata[31:0]
+@29
+Top.mem.io_datamem_wen
+@22
+Top.mem.io_datamem_wdata[31:0]
+@28
+Top.wb.io_out_rd_wen
+@22
+Top.wb.io_out_rd_addr[4:0]
+Top.wb.io_out_rd_data[31:0]
+Top.id.reg_x_5[31:0]
+Top.id.reg_x_6[31:0]
+Top.id.reg_x_28[31:0]
+Top.id.reg_x_29[31:0]
+Top.id.reg_x_7[31:0]
+@28
+Top.io_exit
+[pattern_trace] 1
+[pattern_trace] 0

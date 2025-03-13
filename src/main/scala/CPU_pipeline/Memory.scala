@@ -1,4 +1,4 @@
-package cpu
+package cpu_pipeline
 
 import chisel3._
 import chisel3.util._
@@ -11,7 +11,7 @@ name: InstMemPortIO(指令存储器接口)
 addr: Memory address,input
 inst: Instruction,output
 */
-class InstMemPortIO extends Bundle {
+class InstMem_IO extends Bundle {
     val addr = Input(UInt(WORD_LEN.W))
     val inst = Output(UInt(WORD_LEN.W))
 }
@@ -24,7 +24,7 @@ rdata: Read Data,output
 wen: Write enable,input
 wdata: Write Data,input
 */
-class DataMemPortIO extends Bundle {
+class DataMem_IO extends Bundle {
     val addr  = Input(UInt(WORD_LEN.W))
     val rdata = Output(UInt(WORD_LEN.W))
     val wen   = Input(Bool())
@@ -35,10 +35,10 @@ class DataMemPortIO extends Bundle {
 type: Hardware
 name: InstMem(指令存储器)
 */
-class Mem extends Module {
+class Memory extends Module {
     val io = IO(new Bundle {
-        val instmem = new InstMemPortIO()
-        val datamem = new DataMemPortIO()
+        val instmem = new InstMem_IO()
+        val datamem = new DataMem_IO()
     })
 
     //Instruction Memory Size: 16KB(16384 * 8bits)
@@ -68,4 +68,3 @@ class Mem extends Module {
         mem(io.datamem.addr + 3.U(WORD_LEN.W)) := io.datamem.wdata(31, 24)
     }
 }
-

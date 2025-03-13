@@ -14,7 +14,7 @@ class Core extends Module{
     })
     
     //32x32bit general purpose register and a WORD_LEN-bit program counter
-    val reg_x = Mem(Reg_Num, UInt(WORD_LEN.W))
+    val reg_x = Mem(REGX_Num, UInt(WORD_LEN.W))
     val reg_pc = RegInit(START_ADDR)
     val reg_csr = Mem(CSR_Num, UInt(WORD_LEN.W))
 

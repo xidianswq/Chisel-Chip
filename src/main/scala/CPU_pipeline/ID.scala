@@ -5,48 +5,88 @@ import chisel3.util._
 import public.Consts._
 import public.Instructions._
 
-class Core extends Module{
+/*
+type: IO Port
+name: ID_IO(译码器接口)
+op1_data: Operand 1 data,output
+op2_data: Operand 2 data,output
+rd_addr: Register destination address,output
+csr_addr_default: CSR address,default value,output
+
+exe_fun: Execution function,output
+op1_sel: Operand 1 select,output
+op2_sel: Operand 2 select,output
+mem_wen: Memory write enable,output
+rd_wen: Register write enable,output
+rd_sel: Register destination select,output
+csr_cmd: CSR command,output
+
+rs2_data: Register 2 data,output            (MEM stage,datamem rdata)
+imm_b_sext: Sign-extend B-type imm,output   (EX stage,BR br_target)
+*/
+class ID_IO extends Bundle{
+    val op1_data = Output(UInt(WORD_LEN.W))
+    val op2_data = Output(UInt(WORD_LEN.W))
+    val rd_addr = Output(UInt(REGX_ADDR_LEN.W))
+    val csr_addr_default = Output(UInt(WORD_LEN.W))
+
+    val exe_fun = Output(UInt(EXE_FUN_LEN.W))
+    val op1_sel = Output(UInt(OP1_LEN.W))
+    val op2_sel = Output(UInt(OP2_LEN.W))
+    val mem_wen = Output(UInt(MEN_LEN.W))
+    val rd_wen  = Output(UInt(REN_LEN.W))
+    val rd_sel  = Output(UInt(WB_LEN.W))
+    val csr_cmd = Output(UInt(CSR_LEN.W))
+
+    val rs2_data = Output(UInt(WORD_LEN.W))        
+    val imm_b_sext = Output(UInt(WORD_LEN.W))
+}
+
+/*
+type: Hardware
+name: ID Pipeline Register(译码器流水线寄存器)
+*/
+class ID_IO_REG extends Module{
     val io = IO(new Bundle{
-        val instmem = Flipped(new InstMem_IO())
-        val datamem = Flipped(new DataMem_IO())
-        val exit = Output(Bool())   //program end signal
+        val in  = Flipped(new ID_IO())
+        val out = new ID_IO()
     })
-    
-    //32x32bit general purpose register and a WORD_LEN-bit program counter
-    val reg_x = Mem(REGX_Num, UInt(WORD_LEN.W))
-    val reg_pc = RegInit(START_ADDR)
-    val reg_csr = Mem(CSR_Num, UInt(WORD_LEN.W))
 
+    val id_io_reg = RegInit(0.U.asTypeOf(new ID_IO()))
 
+    id_io_reg := io.in
+    io.out := id_io_reg
+}
 
-    //**********  Instruction Fetch (IF) Stage  **********
-    io.instmem.addr := reg_pc
-    val inst = io.instmem.inst
+/*
+type: Hardware
+name: Instruction Decoder(指令译码器)
+*/
+class ID extends Module{
+    val io = IO(new Bundle{
+        val if_in = Flipped(new PC_IO())
+        val wb_in = Flipped(new WB_IO())
+        val out = new ID_IO()
+    })
 
-    val br_flag   = Wire(Bool())
-    val br_target = Wire(UInt(WORD_LEN.W))
-    val jump_flag  = Wire(Bool())
-    val alu_out   = Wire(UInt(WORD_LEN.W))
+    //register file
+    val reg_x = RegInit(VecInit(Seq.fill(REGX_Num)(0.U(WORD_LEN.W))))
 
-    //program counter update
-    val reg_pc_next_default = reg_pc + 4.U(WORD_LEN.W)
-    val reg_pc_next = MuxCase(reg_pc_next_default, Seq(
-        br_flag  -> br_target,
-        jump_flag -> alu_out,
-        (inst === ECALL) -> reg_csr(0x305) // go to trap_vector
-    ))
-    reg_pc := reg_pc_next
+    //input wire connection
+    val inst = io.if_in.inst
+    val reg_pc = io.if_in.reg_pc
+    val wb_rd_wen = io.wb_in.rd_wen
+    val wb_rd_addr = io.wb_in.rd_addr
+    val wb_rd_data = io.wb_in.rd_data
 
-
-
-    //**********  Instruction Decode (ID) Stage **********
+    //decode logic
     val rs1_addr = inst(19, 15)
     val rs2_addr = inst(24, 20)
     val rd_addr  = inst(11, 7)
     val csr_addr_default = inst(31,20)
-    val rs1_data = Mux((rs1_addr =/= 0.U(WORD_LEN.W)), reg_x(rs1_addr), 0.U(WORD_LEN.W))
-    val rs2_data = Mux((rs2_addr =/= 0.U(WORD_LEN.W)), reg_x(rs2_addr), 0.U(WORD_LEN.W))
-    
+    val rs1_data = Mux((rs1_addr =/= 0.U(REGX_ADDR_LEN.W)), reg_x(rs1_addr), 0.U(WORD_LEN.W))
+    val rs2_data = Mux((rs2_addr =/= 0.U(REGX_ADDR_LEN.W)), reg_x(rs2_addr), 0.U(WORD_LEN.W))
+
     val imm_i    = inst(31, 20)                         //I-type imm
     val imm_i_sext = Cat(Fill(20, imm_i(11)), imm_i)    //sign-extend imm_i
     val imm_s    = Cat(inst(31, 25), inst(11, 7))       //S-type imm
@@ -111,7 +151,7 @@ class Core extends Module{
         (op1_sel === OP1_IMZ) -> imm_z_uext
     ))
 
-    val op2_data = MuxCase(0.U(WORD_LEN.W), Seq(    
+    val op2_data = MuxCase(0.U(WORD_LEN.W), Seq(
         (op2_sel === OP2_RS2) -> rs2_data,
         (op2_sel === OP2_IMI) -> imm_i_sext,
         (op2_sel === OP2_IMS) -> imm_s_sext,
@@ -119,102 +159,26 @@ class Core extends Module{
         (op2_sel === OP2_IMU) -> imm_u_shifted
     ))
 
-
-
-    //********** Instruction Execute (EX) Stage **********
-    alu_out := MuxCase(0.U(WORD_LEN.W), Seq(
-        (exe_fun === ALU_ADD)   -> (op1_data + op2_data),
-        (exe_fun === ALU_SUB)   -> (op1_data - op2_data),
-        (exe_fun === ALU_AND)   -> (op1_data & op2_data),
-        (exe_fun === ALU_OR)    -> (op1_data | op2_data),
-        (exe_fun === ALU_XOR)   -> (op1_data ^ op2_data),
-        (exe_fun === ALU_SLL)   -> (op1_data << op2_data(4, 0))(31, 0),
-        (exe_fun === ALU_SRL)   -> (op1_data >> op2_data(4, 0)).asUInt(),
-        (exe_fun === ALU_SRA)   -> (op1_data.asSInt() >> op2_data(4, 0)).asUInt(),
-        (exe_fun === ALU_SLT)   -> (op1_data.asSInt() < op2_data.asSInt()).asUInt(),
-        (exe_fun === ALU_SLTU)  -> (op1_data < op2_data).asUInt(),
-        (exe_fun === ALU_JALR)  -> ((op1_data + op2_data) & ~1.U(WORD_LEN.W)),
-        (exe_fun === ALU_COPY1) -> op1_data
-    ))
-
-    //branch
-    br_target := reg_pc + imm_b_sext
-    br_flag := MuxCase(false.B, Seq(
-        (exe_fun === BR_BEQ)  ->  (op1_data === op2_data),
-        (exe_fun === BR_BNE)  -> !(op1_data === op2_data),
-        (exe_fun === BR_BLT)  ->  (op1_data.asSInt() < op2_data.asSInt()),
-        (exe_fun === BR_BGE)  -> !(op1_data.asSInt() < op2_data.asSInt()),
-        (exe_fun === BR_BLTU) ->  (op1_data < op2_data),
-        (exe_fun === BR_BGEU) -> !(op1_data < op2_data)
-    ))
-
-    //jump
-    jump_flag := (rd_sel === WB_PC)
-
-    //**********    Memory Access (MEM) Stage   **********
-    io.datamem.addr  := alu_out
-    io.datamem.wen   := mem_wen.asBool()
-    io.datamem.wdata := rs2_data
-
-    //CSR operation
-    val csr_addr = MuxCase(csr_addr_default, Seq(
-        (csr_cmd === CSR_E) -> 0x342.U(CSR_ADDR_LEN.W)
-    ))
-    val csr_rdata = reg_csr(csr_addr)
-    val csr_wdata = MuxCase(0.U(WORD_LEN.W), Seq(
-        (csr_cmd === CSR_W) -> op1_data,
-        (csr_cmd === CSR_S) -> (csr_rdata | op1_data),
-        (csr_cmd === CSR_C) -> (csr_rdata & ~op1_data),
-        (csr_cmd === CSR_E) -> 11.U(WORD_LEN.W)
-    ))
-    when(csr_cmd =/= CSR_NULL){
-        reg_csr(csr_addr) := csr_wdata
+    //write back logic
+    when(wb_rd_wen === REN_EN && wb_rd_addr =/= 0.U(WORD_LEN.W)){
+        reg_x(wb_rd_addr) := wb_rd_data
     }
 
+    //output wire connection
+    io.out.op1_data := op1_data
+    io.out.op2_data := op2_data
+    io.out.rd_addr := rd_addr
+    io.out.csr_addr_default := csr_addr_default
+    
+    io.out.exe_fun := exe_fun
+    io.out.op1_sel := op1_sel
+    io.out.op2_sel := op2_sel
+    io.out.mem_wen := mem_wen
+    io.out.rd_wen := rd_wen
+    io.out.rd_sel := rd_sel
+    io.out.csr_cmd := csr_cmd
 
-    //**********     Write Back (WB) Stage      **********
-    val rd_data = MuxCase(alu_out, Seq(
-        (rd_sel === WB_MEM) -> io.datamem.rdata,
-        (rd_sel === WB_PC)  -> reg_pc_next_default,
-        (rd_sel === WB_CSR) -> csr_rdata
-    ))
-
-    when(rd_wen === REN_EN && rd_addr =/= 0.U(WORD_LEN.W)){
-        reg_x(rd_addr) := rd_data
-    }
-
-    io.exit := MuxCase(false.asBool, Seq(
-        (inst === UNIMP) -> true.asBool,
-        (inst === EXIT_INST) -> true.asBool,
-        (reg_pc === EXIT_PC) -> true.asBool
-    ))
-
-    //print the information during the simulation
-    printf("-----------------------START----------------------\n")
-    printf("-------------IF------------\n")
-    printf(p"reg_pc: 0x${Hexadecimal(reg_pc)}\n")
-    printf(p"inst: 0x${Hexadecimal(inst)}\n")
-    printf("-------------ID------------\n")
-    printf(p"rs1_addr: $rs1_addr\n")
-    printf(p"rs2_addr: $rs2_addr\n")
-    printf(p"op1_data: 0x${Hexadecimal(op1_data)}\n")
-    printf(p"op2_data: 0x${Hexadecimal(op2_data)}\n")
-    printf("-------------EX------------\n")
-    printf(p"alu_out: 0x${Hexadecimal(alu_out)}\n")
-    printf(p"branch_flg: $br_flag\n")
-    printf(p"branch_target: 0x${Hexadecimal(br_target)}\n")
-    printf(p"jump_flg: $jump_flag\n")
-    printf("-------------MEM-----------\n")
-    printf(p"datamem.wen: ${io.datamem.wen}\n")
-    printf(p"datamem.wdata: 0x${Hexadecimal(io.datamem.wdata)}\n")
-    printf(p"csr_wdata: 0x${Hexadecimal(csr_wdata)}\n")
-    printf("-------------WB------------\n")
-    printf(p"rd_wen: $rd_wen\n")
-    printf(p"rd_addr: $rd_addr\n")
-    printf(p"rd_data: 0x${Hexadecimal(rd_data)}\n")
-    printf("------------------------END-----------------------\n")
-    printf(p"exit: ${io.exit}\n")
-    printf(p"globalpointer: ${reg_x(3)}\n")
-    printf("\n")
+    io.out.rs2_data := rs2_data
+    io.out.imm_b_sext := imm_b_sext
+    
 }
-

@@ -8,13 +8,13 @@ object Consts {
 
     //Instruction Memory
     val IMEM_WIDTH = 32     //32bit
-    val IMEM_DEPTH = 16384  //16KB
+    val IMEM_DEPTH = 1024  //1KB
     val IMEM_HEX_PATH = "src/main/resources/CPU/test.hex"
 
     //Rigister
-    val Reg_Num = 32
-    val REG_ADDR_LEN = 5
-    val CSR_Num = 1024
+    val REGX_Num = 32
+    val REGX_ADDR_LEN = 5
+    val CSR_Num = 32
     val CSR_ADDR_LEN  = 12
     val START_ADDR    = 0.U(WORD_LEN.W)         //PC start address
     val EXIT_INST = 0x00000000.U(WORD_LEN.W)    //exit instruction
@@ -72,12 +72,12 @@ object Consts {
     val REN_EN   = 1.U(REN_LEN.W)
 
     //write back select
-    val WB_SEL_LEN = 3
-    val WB_NULL    = 0.U(WB_SEL_LEN.W)
-    val WB_ALU     = 0.U(WB_SEL_LEN.W)  //default
-    val WB_MEM     = 1.U(WB_SEL_LEN.W)
-    val WB_PC      = 2.U(WB_SEL_LEN.W)
-    val WB_CSR     = 3.U(WB_SEL_LEN.W)
+    val WB_LEN = 3
+    val WB_NULL    = 0.U(WB_LEN.W)
+    val WB_ALU     = 0.U(WB_LEN.W)  //default
+    val WB_MEM     = 1.U(WB_LEN.W)
+    val WB_PC      = 2.U(WB_LEN.W)
+    val WB_CSR     = 3.U(WB_LEN.W)
 
     //memory write select
     val MW_LEN  = 3
