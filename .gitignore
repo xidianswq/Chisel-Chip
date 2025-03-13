@@ -1,8 +1,8 @@
 ### Project Specific stuff
 # test_run_dir/*
-.metals/
-.vscode/
-.github
+.metals/*
+.vscode/*
+.github/*
 
 ### XilinxISE template
 # intermediate build files
