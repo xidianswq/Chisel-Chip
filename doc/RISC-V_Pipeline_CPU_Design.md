@@ -200,7 +200,7 @@ sbt sbtVersion
 
    2. 文件结构
 
-       ![在这里插入图片描述](RISC-V流水线CPU设计/16caabae54a558db43345e8bfb1e62ca.png) 
+       ![在这里插入图片描述](RISC-V_Pipeline_CPU_Design/16caabae54a558db43345e8bfb1e62ca.png) 
 
        ```
        src/
@@ -288,7 +288,7 @@ sbt sbtVersion
 
     Chisel的工具流 ：生成 `*.v`，`*.fir`文件和`*.anno.json` 
 
-    <img src="RISC-V流水线CPU设计/bf6900a5d1cf8cd548f626ad57687ae7.png" alt="在这里插入图片描述" style="zoom: 33%;" /> 
+    <img src="RISC-V_Pipeline_CPU_Design/bf6900a5d1cf8cd548f626ad57687ae7.png" alt="在这里插入图片描述" style="zoom: 33%;" /> 
 
 
 
@@ -2092,11 +2092,11 @@ uext(imm_z)将5位以上用0位拓展；先读后写入更新值
 
 ​	1. RV32I/RV64I整数指令集使用**32个通用REG和一个特殊REG（PC）**，**位宽XLEN**不同，x0 寄存器的所有位都被硬布线为 0 值。其他寄存器具体作用如下：
 
-![img](RISC-V流水线CPU设计/wps63.jpg) 
+![img](RISC-V_Pipeline_CPU_Design/wps63.jpg) 
 
 2. RV32I 有四种指令格式：**R/I/S/U**，指令集中的任何指令都可以根据操作数的数量、种类、规模以及自身的功能需求（如ADDRI/ADDR/ADDS/ADDU）,选用其中一种格式.所有这些指令格式都是 32 位固定长度,并且必须在内存中对齐到 4 字节的边界；
 
-![img](RISC-V流水线CPU设计/wps64.jpg) 
+![img](RISC-V_Pipeline_CPU_Design/wps64.jpg) 
 
 3. RV64I 采用与 RV32I 相同的指令格式,只是将整数寄存器和所支持的用户地址空间扩展到了 64 位,增加了一些操作低 32 位的“*W”指令；
 4. RV32E 是对 RV32I 指令集的一种简化,将可用的整数寄存器的数目从 32 减少到 16,即只使用 x0~x15 和 pc 完成所有的指令功能（调用约定和ABI(application binary interface,应用程序二进制接口)与RV32I不兼容）；
@@ -2107,31 +2107,31 @@ uext(imm_z)将5位以上用0位拓展；先读后写入更新值
 
 7. 拓展指令集...
 
-![img](RISC-V流水线CPU设计/wps65.jpg) 
+![img](RISC-V_Pipeline_CPU_Design/wps65.jpg) 
 
 8. RISC-V权限规范：机器模式(Machine,M 模式,***所有权限,必须实现***)、用户模式(User,U 模式，最低级别)、管理模式(Supervisor,S 模式)、监视模式(Hypervisor,H 模式).其中,H 模式暂时处于草案状态
 
-![img](RISC-V流水线CPU设计/wps66.jpg) 
+![img](RISC-V_Pipeline_CPU_Design/wps66.jpg) 
 
-![img](RISC-V流水线CPU设计/wps67.jpg) 
+![img](RISC-V_Pipeline_CPU_Design/wps67.jpg) 
 
  
 
 ### ***<2>***RISC-V硬件平台
 
-![img](RISC-V流水线CPU设计/wps68.jpg) 
+![img](RISC-V_Pipeline_CPU_Design/wps68.jpg) 
 
 1. 处理器设计：
 
-![img](RISC-V流水线CPU设计/wps69.jpg) 
+![img](RISC-V_Pipeline_CPU_Design/wps69.jpg) 
 
 2. 处理器和模拟器方面的主要研究成果：
 
-![img](RISC-V流水线CPU设计/wps70.jpg) 
+![img](RISC-V_Pipeline_CPU_Design/wps70.jpg) 
 
-![img](RISC-V流水线CPU设计/wps71.jpg) 
+![img](RISC-V_Pipeline_CPU_Design/wps71.jpg) 
 
-![img](RISC-V流水线CPU设计/wps72.jpg) 
+![img](RISC-V_Pipeline_CPU_Design/wps72.jpg) 
 
 > 图源：[？]riscvarchieve. RISC-V Cores and SoC Overview. 2021. https://github.com/riscvarchive/riscv-cores-list	
 
@@ -2139,7 +2139,7 @@ uext(imm_z)将5位以上用0位拓展；先读后写入更新值
 
 ### ***<3>***RISC-V系统设计
 
-![img](RISC-V流水线CPU设计/wps73.jpg)
+![img](RISC-V_Pipeline_CPU_Design/wps73.jpg)
 
 ***多处理器系统和处理器集群系统未看***
 
@@ -2155,9 +2155,9 @@ uext(imm_z)将5位以上用0位拓展；先读后写入更新值
 
 系统可能遭受的安全威胁：硬件微架构攻击、内存攻击、侧信道攻击(side channel attack,简称 SCA).（具体攻击示例见原文，如系统供应链的微码木马和缓冲区溢出攻击等）
 
-![img](RISC-V流水线CPU设计/wps74.jpg) 
+![img](RISC-V_Pipeline_CPU_Design/wps74.jpg) 
 
-![img](RISC-V流水线CPU设计/wps75.jpg) 
+![img](RISC-V_Pipeline_CPU_Design/wps75.jpg) 
 
 ### ***<7>***RISC-V应用场景分析
 
@@ -2171,19 +2171,19 @@ uext(imm_z)将5位以上用0位拓展；先读后写入更新值
 
 全书目录：RISC-V简介、RV32I、RISC-V汇编、RV32G、乘除法RV32M、浮点操作RV32F/RV32D、原子操作RV32A、压缩拓展RV32C、向量拓展RV32V、RV64G、RV32/64特权架构、RISC-V未来拓展
 
-![1740314944830](RISC-V流水线CPU设计/1740314944830.png)
+![1740314944830](RISC-V_Pipeline_CPU_Design/1740314944830.png)
 
 ### ***<1>***RISC-V设计目标
 
 1. 通用ISA（它应该对所有微体系结构样式都有效：例如微编码或硬连线控制;顺序或乱序执行流水线; 单发射或超标量等等；支持专业化[定制加速器]；适用所有实现技术......）；是***\*模块化ISA\****（区别于增量型ISA[如X86向前兼容]），核心是一个名为RV32I的基础ISA；特性为简洁性(与ARM和X86对比)，简单的***\*指令组合\****来实现复杂功能并提升性能（更快的时钟频率或更低的平均单条指令周期数[CPI]）；提升空间（保留操作码空间以供未来的提升或自定义指令）；程序大小更小（X86虽然使用可变字节长度指令，但有着一到两个字节长前缀的负担，迫使它们使用原始 x86 的有限的空余操作码空间）；易于编程/编译/链接（***\*寄存器更多\****[32]，每条指令最多1个时钟周期）
 
-![img](RISC-V流水线CPU设计/wps76.jpg) 
+![img](RISC-V_Pipeline_CPU_Design/wps76.jpg) 
 
 ### *<2>*RV32I
 
 1. ***\*六种基本指令格式\****：用于***\*寄存器-寄存器操作\****的 ***\*R 类型\****指令，用于***\*短立即数和访存 load 操作\****的 ***\*I 型\****指令，用于***\*访存 store 操作\****的 ***\*S 型\****指令，用于***\*条件跳转\****操作的 ***\*B 类型\****指令，用于***\*长立即数\****的 ***\*U 型\****指令和用于***\*无条件跳转\****的 ***\*J 型\****指令。
 
-![img](RISC-V流水线CPU设计/wps77.jpg) 
+![img](RISC-V_Pipeline_CPU_Design/wps77.jpg) 
 
 2. RISC-V 将立即数中的位从自然排布进行了一些移位轮换，将指令信号的扇出和立即数多路复用的成本降低了近两倍，这也简化了低端实现中的数据通路逻辑.(ARM-32 指令集 12 位的立即字的8 位被零扩展到全宽度，然后被循环右移剩余 4 位的值乘 2。这些条件执行指令不仅使用频率低而且增加了乱序处理器的复杂性。)；即使处理器没有添加乘除法扩展，完整的 RISC-V 软件栈也可以运行；load和store指令的支持的唯一寻址模式是符号扩展 12 位立即数到基地址寄存器（RV32I ***\*省略\****了 ARM-32 和 x86-32 的***\*复杂寻址模式\****，且***\*没有特殊的堆栈指令\****）；支持内存数据***\*不对齐访问\****；条件分支指令的寻址方式是 12 位的立即数乘以 2，符号扩展它，然后将得到值加到PC 上作为分支的跳转地址（bltu 允许使用单个指令检查有符号数组的边界[任何负索引都将比任何非负边界更大]）
 
@@ -2193,15 +2193,15 @@ uext(imm_z)将5位以上用0位拓展；先读后写入更新值
 
    使用指令图表示:（具体使用见附录A）
 
-![img](RISC-V流水线CPU设计/wps78.jpg) 
+![img](RISC-V_Pipeline_CPU_Design/wps78.jpg) 
 
 5. RV32I寄存器：x0~x31+PC，***\*PC另作为一个特殊寄存器\****，其中x0~x31使用应用程序二进制接口（ABI）所定义的寄存器名称见下。（x0：为常量 0 单独分配一个寄存器是 RISC-V ISA 能如此简单的一个很大的因素，可以***\*用零寄存器作为操作数完成功能相同的操作\****）（***\*PC 作为一个寄存器使硬件分支预测变得复杂\****，任何改变寄存器的指令都可能导致分支跳转，且通用寄存器少一个）
 
-![img](RISC-V流水线CPU设计/wps79.jpg) 
+![img](RISC-V_Pipeline_CPU_Design/wps79.jpg) 
 
 6. 相关特性（其他改进见***\*P37\****）：
 
-![img](RISC-V流水线CPU设计/wps80.jpg) 
+![img](RISC-V_Pipeline_CPU_Design/wps80.jpg) 
 
 ### ***<3>***RISC-V汇编语言
 
@@ -2215,51 +2215,51 @@ uext(imm_z)将5位以上用0位拓展；先读后写入更新值
 
 2. RISC-V 有够多的寄存器能将操作数存放在寄存器中***\*同时也能减少保存和恢复寄存器的次数。\****在函数调用的时不保留部分寄存器存储的值的为***\*临时寄存器\****；反之为***\*保存寄存器\****。（频繁地保存和恢复寄存器会***\*访问内存降低性能\****）
 
-![img](RISC-V流水线CPU设计/wps81.jpg) 
+![img](RISC-V_Pipeline_CPU_Design/wps81.jpg) 
 
 3. 标准的 RV32I ***\*函数入口和出口\****:
 
-![img](RISC-V流水线CPU设计/wps82.jpg) 
+![img](RISC-V_Pipeline_CPU_Design/wps82.jpg) 
 
-![img](RISC-V流水线CPU设计/wps83.jpg) 
+![img](RISC-V_Pipeline_CPU_Design/wps83.jpg) 
 
 4. 汇编器：汇编指示符（汇编器命令，告诉汇编器代码和数据的位置、指定程序中使用的特定代码和数据常量等）：
 
-![img](RISC-V流水线CPU设计/wps84.jpg) 
+![img](RISC-V_Pipeline_CPU_Design/wps84.jpg) 
 
 5. 伪指令：
 
-![img](RISC-V流水线CPU设计/wps85.jpg) 
+![img](RISC-V_Pipeline_CPU_Design/wps85.jpg) 
 
 6. ***\*链接器\****：链接器允许各个文件独立地进行编译和汇编；除了指令，每个目标文件还包含一个符号表，存储了程序中标签，由链接过程确定地址。其中包括了数据标签和代码标签（数据标签需要调整 lui和 addi，代码标签需要调整 auipc 和 jalr）；RISC-V 编译器支持多个 ABI，ilp32，ilp32f 和 ilp32d（ilp32 表示 C 语言的整型（int），长整型（long）和指针（pointer）都是 32 位，可选后***\*缀表示如何传递浮点参数\****。在 lip32 中，浮点参数在整数寄存器中传递；在 ilp32f 中，单精度浮点参数在浮点寄存器中传递；在 ilp32d 中，双精度浮点参数也在浮点寄存器中传递。）；如果想在浮点寄存中传递浮点参数，需要相应的浮点 ISA 添加 F 或 D 扩展（见第 5 章）。因此要编译 RV32I 的代码***\*（GCC 选项-march=rv32i）\****，***\*必须使用 ilp32 ABI（GCC选项-mabi=lib32）\****。反过来，调用约定并不要求浮点指令一定要使用浮点寄存器，因此RV32IFD 与 ilp32，ilp32f 和 ilp32d 都兼容。链接器检查程序的 ABI 是否和库匹配。
 
-![img](RISC-V流水线CPU设计/wps86.jpg) 
+![img](RISC-V_Pipeline_CPU_Design/wps86.jpg) 
 
-![img](RISC-V流水线CPU设计/wps87.jpg) 
+![img](RISC-V_Pipeline_CPU_Design/wps87.jpg) 
 
 ### ***<4>***RISC-V特权架构
 
 1. 我们引入的所有指令都在用户模式（应用程序的代码在此模式下运行）下可用；除此之外，运行最可信的代码的机器模式（machine mode），以及为 Linux，FreeBSD 和 Windows 等操作系统提供支持的监管者模式（supervisor mode）。嵌入式系统运行时（runtime）和操作系统用新模式的功能来响应外部事件，如网络数据包的到达；支持多任务处理和任务间保护；抽象和虚拟化硬件功能等。
 
-![img](RISC-V流水线CPU设计/wps88.jpg) 
+![img](RISC-V_Pipeline_CPU_Design/wps88.jpg) 
 
 2. 机器模式M：是 RISC-V 中 hart（hardware thread，硬件线程）可以执行的最高权限模式。在 M 模式下运行的 hart 对内存，I/O 和一些对于启动和配置系统来说必要的底层功能有着完全的使用权。因此它是唯一所有标准 RISC-V 处理器都必须实现的权限模式；最重要的特性是***\*拦截和处理异常\****（不寻常的运行时事件）的能力；一类是同步异常，这类异常在指令执行期间产生，如访问了无效的存储器地址或执行了具有无效操作码的指令时，另一类是中断，它是与指令流异步的外部事件。同步异常如下：
 
-![img](RISC-V流水线CPU设计/wps89.jpg) 
+![img](RISC-V_Pipeline_CPU_Design/wps89.jpg) 
 
 3. 三种标准的中断源：软件、时钟和外部来源。软件中断通过向内存映射寄存器中存数来触发；当 hart 的时间比较器（一个名为 mtimecmp 的内存映射寄存器）大于实时计数器mtime 时，会触发时钟中断；外部中断由平台级中断控制器（大多数外部设备连接到这个中断控制器）引发。
 
-4. ***\*机器模式下的异常处理：\****处理器在M模式下运行，只有在全局中断使能位 mstatus.MIE 置 1 时才会产生中断.此外，每个中断在控制状态寄存器 mie 中都有自己的使能位。这些位在 mie 中的位置对应于中断码exception code。![img](RISC-V流水线CPU设计/wps90.jpg)
+4. ***\*机器模式下的异常处理：\****处理器在M模式下运行，只有在全局中断使能位 mstatus.MIE 置 1 时才会产生中断.此外，每个中断在控制状态寄存器 mie 中都有自己的使能位。这些位在 mie 中的位置对应于中断码exception code。![img](RISC-V_Pipeline_CPU_Design/wps90.jpg)
 
-![img](RISC-V流水线CPU设计/wps91.jpg) 
+![img](RISC-V_Pipeline_CPU_Design/wps91.jpg) 
 
 5. 用户模式（U模式）拒绝使用这些功能，并在尝试执行 M 模式指令或访问 CSR 的时候产生非法指令异常。通过将 mstatus.MPP 设置为 U（如图 10.5 所示，编码为 0）。如果在U模式下发生异常，则把控制移交给 M 模式。物理内存保护（PMP，Physical Memory Protection）功能允许M模式指定U模式可以访问的内存地址[但 PMP 仅支持固定数量的内存区域，因此无法对它进行扩展从而适应复杂的应用程序]。
 
 6. 监管者模式（S模式）：使用基于页面的虚拟内存，这构成了S模式的核心；S 模式的中断和异常会进行系统调用，RISC-V 提供了一种异常委托机制，可以选择性地将中断和同步异常交给 S 模式处理，而完全绕过 M 模式（S 模式异常将会移交 S 模式的异常处理程序，而不是 M 模式的异常处理程序）（S 模式不直接控制时钟中断和软件中断，而是使用 ecall 指令请求 M模式设置定时器或代表它发送处理器间中断。）。通过mideleg（Machine Interrupt Delegation，机器中断委托）CSR、sie、sip、sstatus等CSR；页表项SvX见手册，satp（Supervisor Address Translation and Protection，监管者地址转换和保护）的 S 模式控制状态寄存器控制了分页系统。用地址转换缓存（通常称为 TLB，全称为 Translation Lookaside Buffer）来减少访存开销，sfence.vma 会通知处理器，可能修改了页表以刷新转换缓存。
 
-![img](RISC-V流水线CPU设计/wps92.jpg) 
+![img](RISC-V_Pipeline_CPU_Design/wps92.jpg) 
 
-<img src="RISC-V流水线CPU设计/wps93.jpg" alt="img" style="zoom:80%;" /> 
+<img src="RISC-V_Pipeline_CPU_Design/wps93.jpg" alt="img" style="zoom:80%;" /> 
 
 7. RISC-V 特权架构的模块化特性满足了各种系统的需求。十分精简的机器模式以低成本的特征支持裸机嵌入式应用。附加的用户模式和物理内存保护功能共同支持了更复杂的嵌入式系统中的多任务处理。最后，监管者模式和基于页面的虚拟内存提供了运行现代操作系统所必需的灵活性。
 
@@ -2324,7 +2324,7 @@ uext(imm_z)将5位以上用0位拓展；先读后写入更新值
 
    - 在“取指”单元设计中，指令寄存器采用了指令耦合寄存器设计， 保证了“快速”取指，同时采用分支预测设计，有效避免了条件跳转指令造成的 流水线冲刷而带来的性能丢失；“执行”单元针对流水线存在的WAW和RAW两 种数据相关性而设计了旁路电路模块；“访存”单元设计增加访存控制信号，判 断是否需要暂停，从而提高硬件模块的利用率和吞吐率。 
 
-   - ![1741157567687](RISC-V流水线CPU设计/1741157567687.png)
+   - ![1741157567687](RISC-V_Pipeline_CPU_Design/1741157567687.png)
 
      在取指阶段可加入静态指令预测器；旁路单元即branch；在执行和访存阶段可加入乘除法器；**在访存阶段可加入总线接口**
 
@@ -2346,7 +2346,7 @@ uext(imm_z)将5位以上用0位拓展；先读后写入更新值
 
 1. 处理器结构
 
-    <img src="RISC-V流水线CPU设计/v2-20223328f722525f581b4a5f47b9033f_1440w-1740313048631.jpg" alt="img" style="zoom:50%;" /> 
+    <img src="RISC-V_Pipeline_CPU_Design/v2-20223328f722525f581b4a5f47b9033f_1440w-1740313048631.jpg" alt="img" style="zoom:50%;" /> 
    
    从图中可以看出，Rocket-Chip项目有六个组成部分：
    
@@ -2426,7 +2426,7 @@ uext(imm_z)将5位以上用0位拓展；先读后写入更新值
 
 ### CPU结构
 
-![1740802195510](RISC-V流水线CPU设计/1740802195510.png)
+![1740802195510](RISC-V_Pipeline_CPU_Design/1740802195510.png)
 
 分析每个阶段信号输入情况，**相同颜色端口表示可以插入流水线寄存器**，为了时序同一，需要加入***多级延迟***的**加粗斜体**表示
 
@@ -2477,7 +2477,7 @@ sudo bash riscv-tests.sh cpu_riscv_tests riscv-tests
 > - 若涉及对比实验，建议量化指标（如覆盖率提升百分比、仿真加速比）；
 > - 引用ChiselTest官方文档或相关论文（如UCB RISC-V项目案例）以增强权威性。
 
-![1740834282175](RISC-V流水线CPU设计/1740834282175.png)
+![1740834282175](RISC-V_Pipeline_CPU_Design/1740834282175.png)
 
 > **RISC-V GNU Toolchain** 是基于开源GNU编译器集合（GCC）和二进制工具链（Binutils）构建的专用开发工具链，旨在为RISC-V指令集架构（ISA）提供完整的软件编译与调试支持。作为RISC-V生态系统的核心组成部分，该工具链支持RV32/RV64基础指令集及标准扩展（如I、M、A、F、D、C等），同时兼容自定义指令扩展的集成，为开发者提供了高度灵活的软硬件协同设计能力。其核心组件包括RISC-V架构优化的C/C++编译器（`riscv64-unknown-elf-gcc`）、汇编器（`riscv64-unknown-elf-as`）、链接器（`riscv64-unknown-elf-ld`）以及调试工具（GDB），可生成适用于裸机环境（Bare-metal）或嵌入式操作系统的可执行代码。此外，工具链支持多目标平台（如Linux、RTOS）的交叉编译，并通过与QEMU等仿真工具结合，显著降低了RISC-V软硬件原型的开发与验证成本。作为开源项目，其持续迭代得益于全球开发者社区的协作，已被广泛应用于学术研究、工业级芯片设计及教学实践，进一步推动了RISC-V生态的标准化与普及。
 >
@@ -2938,7 +2938,7 @@ sudo bash riscv-tests.sh cpu_riscv_tests riscv-tests
    > 
    > 此解析可依据目标期刊格式要求进一步调整技术术语密度或补充交叉引用（如RISC-V特权架构手册对`mcause`编码的定义）。
 
-   ![riscv-tests_rv32ui-p-add_result](RISC-V流水线CPU设计/riscv-tests_rv32ui-p-add_result.png)
+   ![riscv-tests_rv32ui-p-add_result](RISC-V_Pipeline_CPU_Design/riscv-tests_rv32ui-p-add_result.png)
 
    > ### 测试结果分析
    >
@@ -3016,9 +3016,9 @@ sudo bash riscv-tests.sh cpu_riscv_tests riscv-tests
    > - 可添加具体案例数据（如某处理器核的综合频率、资源占用表）；
    > - 引用Chisel官方文档或Xilinx技术报告（如UG901综合指南）以增强方法可信度；
    > - 若涉及对比实验（如Chisel与传统Verilog开发效率对比），建议量化开发周期或代码行数（LOC）差异。
-   
+
    除pc逻辑使用时序逻辑，其他均使用组合逻辑，使用wire定义，大量三元运算符和assign赋值，综合成LUT6和部分进位链CARRY4、二路选择器MUXF7、触发器FDRE...
-   
+
    ```verilog
    always @(posedge clock) begin
        if(reg_x_MPORT_1_en & reg_x_MPORT_1_mask) begin
@@ -3043,8 +3043,8 @@ sudo bash riscv-tests.sh cpu_riscv_tests riscv-tests
            reg_pc <= reg_pc_next_default;
        end
    end
-```
-   
+   ```
+
 ```verilog
    //I、S、B类型指令判断
    wire [31:0] _inst_type_T = io_instmem_inst & 32'h707f; // @[Lookup.scala 31:38]
@@ -3056,10 +3056,10 @@ sudo bash riscv-tests.sh cpu_riscv_tests riscv-tests
    	wire  _inst_type_T_1 = 32'h2003 == _inst_type_T; // @[Lookup.scala 31:38]
    ...
    wire [31:0] alu_out = _alu_out_T ? _alu_out_T_2 : _alu_out_T_46; // @[Mux.scala 98:16]
-   ```
-   
+```
+
    32数写的读取通过拼接4个8位实现
-   
+
    ```verilog
    wire [7:0] mem_io_instmem_inst_hi_hi_data; // @[Mem.scala 43:18]
    ...
@@ -3084,7 +3084,7 @@ sudo bash riscv-tests.sh cpu_riscv_tests riscv-tests
        end
    end
    ```
-   
+
    > ### Chisel至Verilog转换的硬件结构映射分析
    >
    > 基于Chisel硬件描述生成的Verilog代码展现出显著的特征导向型综合结果，其逻辑实现方式与目标FPGA架构（Xilinx 7系列）紧密适配。通过分析关键模块的RTL实现，可揭示Chisel高层次抽象与底层硬件资源间的映射策略。
@@ -3177,7 +3177,7 @@ sudo bash riscv-tests.sh cpu_riscv_tests riscv-tests
 
 #### 综合结果
 
-![Schematic_2](RISC-V流水线CPU设计/Schematic_2.png)
+![Schematic_2](RISC-V_Pipeline_CPU_Design/Schematic_2.png)
 
 > ### Vivado综合流程与时钟网络配置
 >
@@ -3201,27 +3201,27 @@ sudo bash riscv-tests.sh cpu_riscv_tests riscv-tests
 
 #### 波形图
 
-![tb_Top_behav_2](RISC-V流水线CPU设计/tb_Top_behav_2-1741245735782.png)
+![tb_Top_behav_2](RISC-V_Pipeline_CPU_Design/tb_Top_behav_2-1741245735782.png)
 
 IF阶段
 
-![tb_CPU_IF](RISC-V流水线CPU设计/tb_CPU_IF.png)
+![tb_CPU_IF](RISC-V_Pipeline_CPU_Design/tb_CPU_IF.png)
 
 ID阶段
 
-![tb_CPU_ID](RISC-V流水线CPU设计/tb_CPU_ID.png)
+![tb_CPU_ID](RISC-V_Pipeline_CPU_Design/tb_CPU_ID.png)
 
 EX阶段
 
-![tb_CPU_EX](RISC-V流水线CPU设计/tb_CPU_EX.png)
+![tb_CPU_EX](RISC-V_Pipeline_CPU_Design/tb_CPU_EX.png)
 
 MEM阶段
 
-![tb_CPU_MEM](RISC-V流水线CPU设计/tb_CPU_MEM.png)
+![tb_CPU_MEM](RISC-V_Pipeline_CPU_Design/tb_CPU_MEM.png)
 
 WB阶段
 
-![tb_CPU_WB](RISC-V流水线CPU设计/tb_CPU_WB.png)
+![tb_CPU_WB](RISC-V_Pipeline_CPU_Design/tb_CPU_WB.png)
 
 > ### 测试波形与指令执行分析
 >
@@ -3274,21 +3274,21 @@ WB阶段
 
 #### 时序报告
 
-![timing_summary](RISC-V流水线CPU设计/timing_summary.png)
+![timing_summary](RISC-V_Pipeline_CPU_Design/timing_summary.png)
 
 建立时间Setup
 
-![timing_setup](RISC-V流水线CPU设计/timing_setup.png)
+![timing_setup](RISC-V_Pipeline_CPU_Design/timing_setup.png)
 
-![timing_setup_path_1](RISC-V流水线CPU设计/timing_setup_path_1.png)
+![timing_setup_path_1](RISC-V_Pipeline_CPU_Design/timing_setup_path_1.png)
 
-![timing_setup_path_2](RISC-V流水线CPU设计/timing_setup_path_2.png)
+![timing_setup_path_2](RISC-V_Pipeline_CPU_Design/timing_setup_path_2.png)
 
-![timing_setup_path_3](RISC-V流水线CPU设计/timing_setup_path_3.png)
+![timing_setup_path_3](RISC-V_Pipeline_CPU_Design/timing_setup_path_3.png)
 
 
 
-![timing_setup_path_4](RISC-V流水线CPU设计/timing_setup_path_4.png)
+![timing_setup_path_4](RISC-V_Pipeline_CPU_Design/timing_setup_path_4.png)
 
 最长路径在CSR命令的执行，在IF阶段涉及到判断ECALL指令可能读取Mem类到CSR寄存器再到PC；而csr_wdata的计算涉及到寄存器reg_x的rs1，通过alu_out输出给csr_wdata。
 
@@ -3296,9 +3296,9 @@ WB阶段
 
 保持时间Hold
 
-![timing_hold](RISC-V流水线CPU设计/timing_hold-1741246008360.png)
+![timing_hold](RISC-V_Pipeline_CPU_Design/timing_hold-1741246008360.png)
 
-![timing_hold_path_1](RISC-V流水线CPU设计/timing_hold_path_1.png)
+![timing_hold_path_1](RISC-V_Pipeline_CPU_Design/timing_hold_path_1.png)
 
 理论最高频率：1s/10.683ns≈93.6MHz
 
@@ -3370,11 +3370,11 @@ WB阶段
 
 #### 资源使用情况
 
-![implementation_resource](RISC-V流水线CPU设计/implementation_resource.png)
+![implementation_resource](RISC-V_Pipeline_CPU_Design/implementation_resource.png)
 
-![implementation_power_summary](RISC-V流水线CPU设计/implementation_power_summary.png)
+![implementation_power_summary](RISC-V_Pipeline_CPU_Design/implementation_power_summary.png)
 
-![implementation_power_on-chip](CPU-code/Chisel-Chip/doc/pic/CPU/tb/implementation_power_on-chip.png)
+![implementation_power_on-chip](RISC-V_Pipeline_CPU_Design/implementation_power_on-chip.png)
 
 > ### 资源利用与功耗特性分析
 >
@@ -3614,7 +3614,7 @@ WB阶段
 
 4. #### 处理数据冒险
 
-   ![data_hazard](RISC-V流水线CPU设计/data_hazard.png)
+   ![data_hazard](RISC-V_Pipeline_CPU_Design/data_hazard.png)
 
    使用自定义指令集进行测试发现了ID/WB间的数据冒险。如图，在if执行第二条指令`addi x5,x0,0x123	//32_10_02_93`时，wb在第六个时钟周期才完成写回，故在第三条指令`and  x28,x5,x6	//00_62_FE_33`时，在第五个时钟周期时x6的数据还未写回，造成计算结果错误，及`0x321 & 0x0FF`变成`0x321 & 0X000`。
 
