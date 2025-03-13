@@ -51,7 +51,6 @@
 ```
 tree                           explain
 ├─doc                           - document
-|  ├─
 │  └─pic                        - picture
 │      ├─CPU                    - CPU Project pic
 │      │  ├─tb                  - testbench pic
