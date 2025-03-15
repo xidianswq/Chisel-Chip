@@ -52,11 +52,11 @@
 tree                           explain
 ├─doc                           - document
 │  └─pic                        - picture
-│      ├─CPU                    - CPU Project pic
-│      │  ├─tb                  - testbench pic
-|      |  ├─ChiselTest          - terminal output pic
-|      |  └─Verilog             - Verilog code pic
-│      └─CPU_PIPELINE
+│     ├─CPU                     - CPU Project pic
+│     │  ├─tb                   - testbench pic
+|     |  ├─ChiselTest           - terminal output pic
+|     |  └─Verilog              - Verilog code pic
+│     └─CPU_PIPELINE
 ├─generated                     - generated .v file
 ├─src                           - source code
 │  ├─main
