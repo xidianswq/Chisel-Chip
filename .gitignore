@@ -3,6 +3,9 @@
 .metals/*
 .vscode/*
 .github/*
+project/
+!project/build.properties
+!project/plugins.sbt
 
 ### XilinxISE template
 # intermediate build files

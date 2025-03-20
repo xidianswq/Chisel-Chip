@@ -5,6 +5,9 @@ categories: ['学习笔记']
 tags: ['cpu','chisel','risc-v']
 ---
 
+
+
+
 [TOC]
 
 # 语言学习
@@ -1846,7 +1849,7 @@ uext(imm_z)将5位以上用0位拓展；先读后写入更新值
 
 若无法搭建riscv-gnu环境，可在项目源码目录`riscv-chisel-book-master\target\share\riscv-tests\isa`中找到相应指令的.dump文件，但仍需编译成二进制文件
 
-1. #### 安装 [riscv-collab/riscv-gnu-toolchain: GNU toolchain for RISC-V, including GCC](https://github.com/riscv-collab/riscv-gnu-toolchain) 
+1. #### 安装 [riscv-gnu-toolchain: GNU toolchain for RISC-V](https://github.com/riscv-collab/riscv-gnu-toolchain) [^15]
 
    官方源：
 
@@ -2179,7 +2182,7 @@ uext(imm_z)将5位以上用0位拓展；先读后写入更新值
 
 ![img](RISC-V_Pipeline_CPU_Design/wps76.jpg) 
 
-### *<2>*RV32I
+### *<2>*RV32I[^13]
 
 1. ***\*六种基本指令格式\****：用于***\*寄存器-寄存器操作\****的 ***\*R 类型\****指令，用于***\*短立即数和访存 load 操作\****的 ***\*I 型\****指令，用于***\*访存 store 操作\****的 ***\*S 型\****指令，用于***\*条件跳转\****操作的 ***\*B 类型\****指令，用于***\*长立即数\****的 ***\*U 型\****指令和用于***\*无条件跳转\****的 ***\*J 型\****指令。
 
@@ -2191,7 +2194,7 @@ uext(imm_z)将5位以上用0位拓展；先读后写入更新值
 
 4. 其他指令：***\*控制状态寄存器指令（csrrc、csrrs...）\****；ecall；fence；系统指令...RISC-V 使用***\*内存映射I / O\****而不是像x86-32一样，使用 in，out，等指令；为支持字符串处理，RISC-V 实现了***\*字节存取\****，而不是像 x86-32 那样实现了 rep，movs等特殊的字符串处理指令。
 
-   使用指令图表示:（具体使用见附录A）
+   使用指令图[^12]表示:（具体使用见附录A）
 
 ![img](RISC-V_Pipeline_CPU_Design/wps78.jpg) 
 
@@ -2237,7 +2240,7 @@ uext(imm_z)将5位以上用0位拓展；先读后写入更新值
 
 ![img](RISC-V_Pipeline_CPU_Design/wps87.jpg) 
 
-### ***<4>***RISC-V特权架构
+### ***<4>***RISC-V特权架构[^14]
 
 1. 我们引入的所有指令都在用户模式（应用程序的代码在此模式下运行）下可用；除此之外，运行最可信的代码的机器模式（machine mode），以及为 Linux，FreeBSD 和 Windows 等操作系统提供支持的监管者模式（supervisor mode）。嵌入式系统运行时（runtime）和操作系统用新模式的功能来响应外部事件，如网络数据包的到达；支持多任务处理和任务间保护；抽象和虚拟化硬件功能等。
 
@@ -2334,17 +2337,25 @@ uext(imm_z)将5位以上用0位拓展；先读后写入更新值
    
    - 第二章相关研究部分大量使用流水线、其他soc结构、总线通信协议等充量；第三章按5级流水分别具体介绍；第四章SOC部分具体介绍总线外挂外设的通信协议；由于其各阶段部件独立，综合后按模块分布。仿真测试先按阶段给出波形图，然后大量使用部件的具体结构和仿真充量
 
+## [6]处理器流水线冒险及其解决策略[^17]
+
+
+
+
+
+
+
 
 
 ---
 
 # 开源处理器
 
-## [1]Rocket Chip Generator
+## [1]Rocket Chip Generator[^12]
 
 > 参考： [RISC-V的“Demo”级项目——Rocket-chip](https://zhuanlan.zhihu.com/p/140360043) 
 
-1. 处理器结构
+1. ### 处理器结构
 
     <img src="RISC-V_Pipeline_CPU_Design/v2-20223328f722525f581b4a5f47b9033f_1440w-1740313048631.jpg" alt="img" style="zoom:50%;" /> 
    
@@ -2357,7 +2368,7 @@ uext(imm_z)将5位以上用0位拓展；先读后写入更新值
    - E为TileLink，为UC Berkeley自行开发的片上总线，用于连接处理器、缓存和外设
    - F为Peripheral，包括AMBA兼容总线（AXI，AHB-Lite和APB）的发生器以及各种转换器和控制器。
    
-2. 主要资源清单
+2. ### 主要资源清单
 
    > 参考： [RISC-V SoC生成器---Rocket Chip介绍_rocket chip 发生器](https://blog.csdn.net/qq_39507748/article/details/120138302) 
 
@@ -2417,6 +2428,97 @@ uext(imm_z)将5位以上用0位拓展；先读后写入更新值
    >Directory in which Synopsys VCS simulations are compiled and run.
    >* **vsrc**
    >Verilog sources containing interfaces, harnesses and VPI.
+
+3. ### RooketCore代码
+
+   1. 构建标志位`RocketCoreParams`
+
+      通过设置里面的参数更改处理器配置如`xLen: Int = 64,`、`useSupervisor: Boolean = false,`等，生成最终的Verilog
+
+   2. 处理器IO
+
+      Rocket处理器IO配置类`HasRocketCoreIO`中将处理器通过特定IO口如`val fpu = Flipped(new FPUCoreIO())`与其它部件连接。
+
+   3. 主要部分`Rocket`类
+
+      在`val decode_table`中根据配置选择具体的译码器类型如`I32Decode`、`I64Decode`、`HypervisorDecode`等，在`IDecode.Scala`中定义
+
+      直接在主体部分定义各阶段流水线寄存器：
+
+      ````scala
+      val ex_reg_xcpt_interrupt  = Reg(Bool())
+      val ex_reg_valid           = Reg(Bool())
+      val ex_reg_rvc             = Reg(Bool())
+      ...
+      val mem_reg_xcpt_interrupt  = Reg(Bool())
+      ...
+      val wb_reg_valid           = Reg(Bool())
+      ...
+      ````
+
+   4. 译码阶段
+
+      连接译码模块信号、处理信号。前面提到在`IDecode.Scala`中定义译码器，其中的实现方式是直接进行指令译码：
+
+      ![rocket_IDecode](RISC-V_Pipeline_CPU_Design/rocket_IDecode.png)
+
+      ```scala
+      class IDecode(implicit val p: Parameters) extends DecodeConstants
+      {
+        val table: Array[(BitPat, List[BitPat])] = Array(
+          BNE->       List(Y,N,N,Y,N,N,Y,Y,A2_RS2, A1_RS1, IMM_SB,DW_XPR,FN_SNE,   N,M_X,        N,N,N,N,N,N,N,CSR.N,N,N,N,N),
+            ...
+      ```
+
+   5. 执行阶段
+
+      rocket选择在ex阶段得到一二操作数ex_op1和ex_op2。然后在rocket内直接新建了一个alu模块和除法器div模块：
+
+      ```scala
+      val alu = Module(new ALU)
+      alu.io.dw := ex_ctrl.alu_dw
+      alu.io.fn := ex_ctrl.alu_fn
+      alu.io.in2 := ex_op2.asUInt
+      alu.io.in1 := ex_op1.asUInt
+      ```
+
+   6. 寄存器文件的封装
+
+      ```scala
+      class RegFile(n: Int, w: Int, zero: Boolean = false) {
+        val rf = Mem(n, UInt(w.W))
+        private def access(addr: UInt) = rf(~addr(log2Up(n)-1,0))
+        private val reads = ArrayBuffer[(UInt,UInt)]()
+        private var canRead = true
+        def read(addr: UInt) = {
+          require(canRead)
+          reads += addr -> Wire(UInt())
+          reads.last._2 := Mux(zero.B && addr === 0.U, 0.U, access(addr))
+          reads.last._2
+        }
+        def write(addr: UInt, data: UInt) = {
+          canRead = false
+          when (addr =/= 0.U) {
+            access(addr) := data
+            for ((raddr, rdata) <- reads)
+              when (addr === raddr) { rdata := data }
+          }
+        }
+      }
+      
+      //useage
+      val rf = new RegFile(regAddrMask, xLen)
+      when (rf_wen) { rf.write(rf_waddr, rf_wdata) }
+      
+      ```
+
+   7. 思考与改进
+
+      方法的封装`def`、器件化（如ALU模块）较阶段化（如EX模块）更好
+
+## [2]XiangShan
+
+ ![香山架构图](RISC-V_Pipeline_CPU_Design/nanhu.png) 
 
 
 
@@ -3451,6 +3553,32 @@ WB阶段
    ```scala
    /*
    type: Hardware
+   name: NAME(explain)
+   */
+   class NAME extends Module{
+       val io = IO(new Bundle{
+           val in = new Bundle{
+               ...
+           }
+           val out = new MEM_IO()
+           ...
+       })
+       //register file
+   	...
+       //input wire connection
+   	...
+       //logic
+   	...
+       //output wire connection
+       ...
+       //debug info
+       ...
+   }
+   ```
+
+   ```scala
+   /*
+   type: Hardware
    name: Memory access unit(内存访问单元)
    */
    class MEM extends Module{
@@ -3543,7 +3671,20 @@ WB阶段
    在Top中定义各组成模块、流水哦寄存器，并连接如下，可以清晰看到流水线寄存器层级，以及为时序匹配的多级延迟（如wb.io.if_in需要三级流水线寄存器传递pc信号，才与其他信号如Mem阶段的信号，同时到达。
 
    ```scala
-   //core module
+   package cpu_pipeline
+   
+   import chisel3._
+   import chisel3.util._
+   import public.Consts._
+   import public.Instructions._
+   
+   
+   class Top extends Module{
+       val io = IO(new Bundle{
+           val exit = Output(Bool())
+       })
+   
+       //core module
        val memory = Module(new Memory)
        val pc = Module(new PC)
        val id = Module(new ID)
@@ -3556,71 +3697,104 @@ WB阶段
        val if_io_reg = Module(new PC_IO_REG)
        val if_io_reg_n = Module(new PC_IO_REG)
        val if_io_reg_nn = Module(new PC_IO_REG)
-       val if_io_reg_nnn = Module(new PC_IO_REG)
        val id_io_reg = Module(new ID_IO_REG)
        val id_io_reg_n = Module(new ID_IO_REG)
-       val id_io_reg_nn = Module(new ID_IO_REG)
        val ex_io_reg = Module(new ALU_IO_REG)
-       val ex_io_reg_n = Module(new ALU_IO_REG)
-       val mem_io_reg = Module(new MEM_IO_REG)
+       val mem_io_reg = Module(new WB_IO_REG)
    
    
        //connect modules and pipeline registers
-       pc.io.ex_in     <> alu.io.out
-       pc.io.br_in     <> br.io.out
+       pc.io.in.ex_in     <> alu.io.out
+       pc.io.in.br_in     <> br.io.out
        pc.io.instmem   <> memory.io.instmem
    
-       id.io.if_in     <> if_io_reg.io.out
-           if_io_reg.io.in <> pc.io.out
-       id.io.wb_in     <> wb.io.out
+       id.io.in.if_in     <> if_io_reg.io.out
+           if_io_reg.io.in     <> pc.io.out
+       id.io.in.wb_in     <> wb.io.out //no pipeline register
        
-       alu.io.id_in    <> id_io_reg.io.out
-           id.io.out       <> id_io_reg.io.in
+       alu.io.in.id_in    <> id_io_reg.io.out
+           id_io_reg.io.in     <> id.io.out
        
-       br.io.if_in     <> if_io_reg_n.io.out
-           if_io_reg_n.io.in <> if_io_reg.io.out
-           if_io_reg.io.in <> pc.io.out
-       br.io.id_in     <> id_io_reg.io.out
-           id_io_reg.io.in <> id.io.out
+       br.io.in.if_in     <> if_io_reg_n.io.out
+           if_io_reg_n.io.in   <> if_io_reg.io.out
+           if_io_reg.io.in     <> pc.io.out
+       br.io.in.id_in     <> id_io_reg.io.out
+           id_io_reg.io.in     <> id.io.out
        
-       mem.io.if_in    <> if_io_reg_nn.io.out
-           if_io_reg_nn.io.in <> if_io_reg_n.io.out
-           if_io_reg_n.io.in <> if_io_reg.io.out
-           if_io_reg.io.in <> pc.io.out
-       mem.io.id_in    <> id_io_reg_n.io.out
-           id_io_reg_n.io.in <> id_io_reg.io.out
-           id_io_reg.io.in <> id.io.out
-       mem.io.ex_in    <> ex_io_reg.io.out
-           ex_io_reg.io.in <> alu.io.out
+       mem.io.in.if_in    <> if_io_reg_nn.io.out
+           if_io_reg_nn.io.in  <> if_io_reg_n.io.out
+           if_io_reg_n.io.in   <> if_io_reg.io.out
+           if_io_reg.io.in     <> pc.io.out
+       mem.io.in.id_in    <> id_io_reg_n.io.out
+           id_io_reg_n.io.in   <> id_io_reg.io.out
+           id_io_reg.io.in     <> id.io.out
+       mem.io.in.ex_in    <> ex_io_reg.io.out
+           ex_io_reg.io.in     <> alu.io.out
        mem.io.datamem  <> memory.io.datamem
        
-       wb.io.if_in     <> if_io_reg_nnn.io.out
-           if_io_reg_nnn.io.in <> if_io_reg_nn.io.out
-           if_io_reg_nn.io.in <> if_io_reg_n.io.out
-           if_io_reg_n.io.in <> if_io_reg.io.out
-           if_io_reg.io.in <> pc.io.out
-       wb.io.id_in     <> id_io_reg_nn.io.out
-           id_io_reg_nn.io.in <> id_io_reg_n.io.out
-           id_io_reg_n.io.in <> id_io_reg.io.out
-           id_io_reg.io.in <>id.io.out
-       wb.io.ex_in     <> ex_io_reg_n.io.out
-           ex_io_reg_n.io.in <> ex_io_reg.io.out
-           ex_io_reg.io.in <> alu.io.out
-       wb.io.mem_in    <> mem_io_reg.io.out
-           mem_io_reg.io.in <> mem.io.out
+       wb.io.in.mem_in    <> mem_io_reg.io.out
+           mem_io_reg.io.in    <> mem.io.out
+   
+       val inst = pc.io.out.inst
+       val reg_pc = pc.io.out.reg_pc
+       io.exit := MuxCase(false.asBool, Seq(
+           (inst === UNIMP) -> true.asBool,
+           (inst === EXIT_INST) -> true.asBool,
+           (reg_pc === EXIT_PC) -> true.asBool
+       ))
+       printf("------------------------END-----------------------\n")
+       printf(p"exit: ${io.exit}\n")
+       printf("\n")
+       
+   }
+   
+   object TopOption extends App {
+       (new chisel3.stage.ChiselStage).emitVerilog(new Top(), Array("--target-dir", "generated"))
+   }
    ```
 
    
 
-4. #### 处理数据冒险
+4. #### 流水线冒险
+
+   常见的冒险主要有结构冒险、数据冒险和控制冒险三种
+
+   - 结构冒险：当一条指令需要的硬件部件还在为之前的指令工作，而无法为这条指令提供服务。
+
+   - 数据冒险：后面的指令需要用到前面的指令的执行结果，而前面的指令尚未写回导致的冲突。
+
+     类型：RAW（read after write）先写后读相关性；WAW（write after write）先写后写相关性；WAR（write after read）先读后写相关性
+
+     解决：数据前递； 装载-使用型数据冒险——流水线阻塞（执行nop指令） [^17]
+
+   - 控制（分支）冒险：当前面执行的指令需要改变后续指令执行顺序时（如执行跳转指令），流水线中已执行后面指令造成的冲突。 
+
+     解决：阻塞或分支预测（静态、动态【实现方法是采用分支预测缓存或分支历史表，其中记录了分支最近是否执行】、竞赛预测器【典型的竞赛预测器对每个分支地址有两个预测，一个是 基于全局的分支行为，一个是基于局部信息的】）
+
+   应用实例：主要关注不可预测分支；使代码适合**条件传送**（减少if语句【**条件转移**】的使用）[^17]
+
+5. #### 处理数据冒险
+
+   冒险现象：
 
    ![data_hazard](RISC-V_Pipeline_CPU_Design/data_hazard.png)
 
-   使用自定义指令集进行测试发现了ID/WB间的数据冒险。如图，在if执行第二条指令`addi x5,x0,0x123	//32_10_02_93`时，wb在第六个时钟周期才完成写回，故在第三条指令`and  x28,x5,x6	//00_62_FE_33`时，在第五个时钟周期时x6的数据还未写回，造成计算结果错误，及`0x321 & 0x0FF`变成`0x321 & 0X000`。
+   使用自定义指令集进行测试发现了**ID/WB间的数据冒险**。如图，在if执行第二条指令`addi x5,x0,0x123	//32_10_02_93`时，wb在第六个时钟周期才完成写回，故在第三条指令`and  x28,x5,x6	//00_62_FE_33`时，在第五个时钟周期时x6的数据还未写回，造成计算结果错误，及`0x321 & 0x0FF`变成`0x321 & 0X000`。
 
-5. #### 处理分支冒险
+   具体分析：
 
-6. #### 存储器文件的抽象优化
+   ![data_hazard_analyze](RISC-V_Pipeline_CPU_Design/data_hazard_analyze.png)
+
+   - 可以看到第四个指令的ID阶段已经和第一条指令的WB阶段在时钟周期上已经重合了，所以数据冒险的发生只可能在该指令的后两条指令中的EX、MEM和WB阶段。
+   - 针对ID/MEM间数据冒险，通过将MEM阶段的信号用流水线寄存器直接和ID相连，则达成ID-pipeline_reg-MEM的一周期延迟互联，在执行指令i+1时，刚好上周期执行指令i时存入pipeline_reg的信号可以传入在本周期传入ID中。
+
+   解决方法：
+
+   - 数据前递（直通）：ID/WB间数据冒险——将wb阶段的rd_data流水线寄存器直连id阶段的rs1_data和rs2_data；ID/MEM间数据冒险——将
+
+6. #### 处理分支冒险
+
+7. #### 存储器文件的抽象优化
 
    所使用的寄存器、存储器转化为Verilog后全是reg，应调整接口成SRAM的，并在Verilog中调用IP
 
@@ -3642,3 +3816,10 @@ WB阶段
 [^9]:大卫·帕特森,安德鲁·沃特曼.RISC-V手册[M].勾凌睿,陈璐,刘志刚,译.北京：电子工业出版社，2023.12.
 [^10]: 余子濠,刘志刚,李一苇,等.芯片敏捷开发实践:标签化RISC-V[J].计算机研究与发展,2019,56(01):35-48.
 [^11]:刘先强.基于RISC-V的五级流水线处理器的设计与研究[D].山东大学,2021.DOI:10.27272/d.cnki.gshdu.2021.004681.
+[^12]:Waterman A, Asanovic K. The RISC-V Instruction Set Manual, Volume I: Unprivileged ISA. Vol. 1. SiFive Inc., 2021.
+[^13]:The RISC-V Instruction Set Manual, Volume I: User-Level ISA, Document Version 2.2 , Editors Andrew Waterman and Krste Asanovic, RISC-V Foundation, May 2017.
+[^14]:The RISC-V Instruction Set Manual, Volume II: Privileged Architecture, Document Version 20190608-Priv-MSU-Ratified, Editors Andrew Waterman and Krste Asanovi´c, RISC-V Foundation, June 2019
+[^15]:RISC-V Collaborators. 2023. "riscv-gnu-toolchain: RISC-V GNU Compiler Toolchain." GitHub repository. Last modified September 7, 2023. https://github.com/riscv-collab/riscv-gnu-toolchain.
+[^16]:RISC-V Software Source Contributors. 2023. "riscv-tests: RISC-V Architectural Test Suite." GitHub repository. Last modified September 12, 2023. https://github.com/riscv-software-src/riscv-tests.
+
+[^17]:李云飞,陈洪相.处理器流水线冒险及其解决策略[J].信息技术与信息化,2018,(11):35-38.

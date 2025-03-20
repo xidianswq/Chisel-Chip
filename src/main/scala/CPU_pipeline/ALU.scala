@@ -38,15 +38,17 @@ name: ALU(算术逻辑单元)
 */
 class ALU extends Module{
     val io = IO(new Bundle{
-        val id_in = Flipped(new ID_IO())
+        val in = new Bundle{
+            val id_in = Flipped(new ID_IO())
+        }
         val out = new ALU_IO()
     })
 
     //input wire connection
-    val op1_data = io.id_in.op1_data
-    val op2_data = io.id_in.op2_data
-    val exe_fun = io.id_in.exe_fun
-    val rd_sel = io.id_in.rd_sel
+    val op1_data = io.in.id_in.op1_data
+    val op2_data = io.in.id_in.op2_data
+    val exe_fun = io.in.id_in.exe_fun
+    val rd_sel = io.in.id_in.rd_sel
 
     //ALU logic
     val alu_out = MuxCase(0.U(WORD_LEN.W), Seq(
@@ -70,4 +72,8 @@ class ALU extends Module{
     io.out.alu_out := alu_out
     io.out.jump_flag := jump_flag
 
+    //debug info
+    printf("-------------EX------------\n")
+    printf(p"alu_out: 0x${Hexadecimal(alu_out)}\n")
+    printf(p"jump_flg: $jump_flag\n")
 }

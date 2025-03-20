@@ -7,61 +7,31 @@
     "class":"firrtl.transforms.DedupedResult",
     "original":"~Top|PC_IO_REG",
     "duplicate":"~Top|Top/if_io_reg:PC_IO_REG",
-    "index":0.4117647058823529
+    "index":0.5
   },
   {
     "class":"firrtl.transforms.DedupedResult",
     "original":"~Top|PC_IO_REG_1",
     "duplicate":"~Top|Top/if_io_reg_n:PC_IO_REG",
-    "index":0.47058823529411764
+    "index":0.5714285714285714
   },
   {
     "class":"firrtl.transforms.DedupedResult",
     "original":"~Top|PC_IO_REG_2",
     "duplicate":"~Top|Top/if_io_reg_nn:PC_IO_REG",
-    "index":0.5294117647058824
-  },
-  {
-    "class":"firrtl.transforms.DedupedResult",
-    "original":"~Top|PC_IO_REG_3",
-    "duplicate":"~Top|Top/if_io_reg_nnn:PC_IO_REG",
-    "index":0.5882352941176471
+    "index":0.6428571428571429
   },
   {
     "class":"firrtl.transforms.DedupedResult",
     "original":"~Top|ID_IO_REG",
     "duplicate":"~Top|Top/id_io_reg:ID_IO_REG",
-    "index":0.6470588235294118
+    "index":0.7142857142857143
   },
   {
     "class":"firrtl.transforms.DedupedResult",
     "original":"~Top|ID_IO_REG_1",
     "duplicate":"~Top|Top/id_io_reg_n:ID_IO_REG",
-    "index":0.7058823529411765
-  },
-  {
-    "class":"firrtl.transforms.DedupedResult",
-    "original":"~Top|ID_IO_REG_2",
-    "duplicate":"~Top|Top/id_io_reg_nn:ID_IO_REG",
-    "index":0.7647058823529411
-  },
-  {
-    "class":"firrtl.transforms.DedupedResult",
-    "original":"~Top|ALU_IO_REG",
-    "duplicate":"~Top|Top/ex_io_reg:ALU_IO_REG",
-    "index":0.8235294117647058
-  },
-  {
-    "class":"firrtl.transforms.DedupedResult",
-    "original":"~Top|ALU_IO_REG_1",
-    "duplicate":"~Top|Top/ex_io_reg_n:ALU_IO_REG",
-    "index":0.8823529411764706
-  },
-  {
-    "class":"firrtl.transforms.DedupedResult",
-    "original":"~Top|MEM_IO_REG",
-    "duplicate":"~Top|Top/mem_io_reg:PC_IO_REG",
-    "index":0.9411764705882353
+    "index":0.7857142857142857
   },
   {
     "class":"firrtl.EmitCircuitAnnotation",

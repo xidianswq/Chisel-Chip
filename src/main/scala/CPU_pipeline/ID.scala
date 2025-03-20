@@ -64,8 +64,10 @@ name: Instruction Decoder(指令译码器)
 */
 class ID extends Module{
     val io = IO(new Bundle{
-        val if_in = Flipped(new PC_IO())
-        val wb_in = Flipped(new WB_IO())
+        val in = new Bundle{
+            val if_in = Flipped(new PC_IO())
+            val wb_in = Flipped(new WB_IO())
+        }
         val out = new ID_IO()
     })
 
@@ -73,20 +75,23 @@ class ID extends Module{
     val reg_x = RegInit(VecInit(Seq.fill(REGX_Num)(0.U(WORD_LEN.W))))
 
     //input wire connection
-    val inst = io.if_in.inst
-    val reg_pc = io.if_in.reg_pc
-    val wb_rd_wen = io.wb_in.rd_wen
-    val wb_rd_addr = io.wb_in.rd_addr
-    val wb_rd_data = io.wb_in.rd_data
+    val inst = io.in.if_in.inst
+    val reg_pc = io.in.if_in.reg_pc
+    val wb_rd_wen = io.in.wb_in.rd_wen
+    val wb_rd_addr = io.in.wb_in.rd_addr
+    val wb_rd_data = io.in.wb_in.rd_data
 
     //decode logic
     val rs1_addr = inst(19, 15)
     val rs2_addr = inst(24, 20)
     val rd_addr  = inst(11, 7)
     val csr_addr_default = inst(31,20)
-    val rs1_data = Mux((rs1_addr =/= 0.U(REGX_ADDR_LEN.W)), reg_x(rs1_addr), 0.U(WORD_LEN.W))
-    val rs2_data = Mux((rs2_addr =/= 0.U(REGX_ADDR_LEN.W)), reg_x(rs2_addr), 0.U(WORD_LEN.W))
-
+    val rs1_data = MuxCase(reg_x(rs1_addr),Seq(
+        (rs1_addr === 0.U(REGX_ADDR_LEN.W)) -> 0.U(WORD_LEN.W),
+        ))
+    val rs2_data = MuxCase(reg_x(rs2_addr),Seq(
+        (rs2_addr === 0.U(REGX_ADDR_LEN.W)) -> 0.U(WORD_LEN.W),
+        ))
     val imm_i    = inst(31, 20)                         //I-type imm
     val imm_i_sext = Cat(Fill(20, imm_i(11)), imm_i)    //sign-extend imm_i
     val imm_s    = Cat(inst(31, 25), inst(11, 7))       //S-type imm
@@ -181,4 +186,10 @@ class ID extends Module{
     io.out.rs2_data := rs2_data
     io.out.imm_b_sext := imm_b_sext
     
+    //debug info
+    printf("-------------ID------------\n")
+    printf(p"rs1_addr: $rs1_addr\n")
+    printf(p"rs2_addr: $rs2_addr\n")
+    printf(p"op1_data: 0x${Hexadecimal(op1_data)}\n")
+    printf(p"op2_data: 0x${Hexadecimal(op2_data)}\n")
 }

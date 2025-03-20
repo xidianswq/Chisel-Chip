@@ -24,58 +24,43 @@ class Top extends Module{
     val if_io_reg = Module(new PC_IO_REG)
     val if_io_reg_n = Module(new PC_IO_REG)
     val if_io_reg_nn = Module(new PC_IO_REG)
-    val if_io_reg_nnn = Module(new PC_IO_REG)
     val id_io_reg = Module(new ID_IO_REG)
     val id_io_reg_n = Module(new ID_IO_REG)
-    val id_io_reg_nn = Module(new ID_IO_REG)
     val ex_io_reg = Module(new ALU_IO_REG)
-    val ex_io_reg_n = Module(new ALU_IO_REG)
-    val mem_io_reg = Module(new MEM_IO_REG)
+    val mem_io_reg = Module(new WB_IO_REG)
 
 
     //connect modules and pipeline registers
-    pc.io.ex_in     <> alu.io.out
-    pc.io.br_in     <> br.io.out
+    pc.io.in.ex_in     <> alu.io.out
+    pc.io.in.br_in     <> br.io.out
     pc.io.instmem   <> memory.io.instmem
 
-    id.io.if_in     <> if_io_reg.io.out
-        if_io_reg.io.in <> pc.io.out
-    id.io.wb_in     <> wb.io.out
+    id.io.in.if_in     <> if_io_reg.io.out
+        if_io_reg.io.in     <> pc.io.out
+    id.io.in.wb_in     <> wb.io.out //no pipeline register
     
-    alu.io.id_in    <> id_io_reg.io.out
-        id.io.out       <> id_io_reg.io.in
+    alu.io.in.id_in    <> id_io_reg.io.out
+        id_io_reg.io.in     <> id.io.out
     
-    br.io.if_in     <> if_io_reg_n.io.out
-        if_io_reg_n.io.in <> if_io_reg.io.out
-        if_io_reg.io.in <> pc.io.out
-    br.io.id_in     <> id_io_reg.io.out
-        id_io_reg.io.in <> id.io.out
+    br.io.in.if_in     <> if_io_reg_n.io.out
+        if_io_reg_n.io.in   <> if_io_reg.io.out
+        if_io_reg.io.in     <> pc.io.out
+    br.io.in.id_in     <> id_io_reg.io.out
+        id_io_reg.io.in     <> id.io.out
     
-    mem.io.if_in    <> if_io_reg_nn.io.out
-        if_io_reg_nn.io.in <> if_io_reg_n.io.out
-        if_io_reg_n.io.in <> if_io_reg.io.out
-        if_io_reg.io.in <> pc.io.out
-    mem.io.id_in    <> id_io_reg_n.io.out
-        id_io_reg_n.io.in <> id_io_reg.io.out
-        id_io_reg.io.in <> id.io.out
-    mem.io.ex_in    <> ex_io_reg.io.out
-        ex_io_reg.io.in <> alu.io.out
+    mem.io.in.if_in    <> if_io_reg_nn.io.out
+        if_io_reg_nn.io.in  <> if_io_reg_n.io.out
+        if_io_reg_n.io.in   <> if_io_reg.io.out
+        if_io_reg.io.in     <> pc.io.out
+    mem.io.in.id_in    <> id_io_reg_n.io.out
+        id_io_reg_n.io.in   <> id_io_reg.io.out
+        id_io_reg.io.in     <> id.io.out
+    mem.io.in.ex_in    <> ex_io_reg.io.out
+        ex_io_reg.io.in     <> alu.io.out
     mem.io.datamem  <> memory.io.datamem
     
-    wb.io.if_in     <> if_io_reg_nnn.io.out
-        if_io_reg_nnn.io.in <> if_io_reg_nn.io.out
-        if_io_reg_nn.io.in <> if_io_reg_n.io.out
-        if_io_reg_n.io.in <> if_io_reg.io.out
-        if_io_reg.io.in <> pc.io.out
-    wb.io.id_in     <> id_io_reg_nn.io.out
-        id_io_reg_nn.io.in <> id_io_reg_n.io.out
-        id_io_reg_n.io.in <> id_io_reg.io.out
-        id_io_reg.io.in <>id.io.out
-    wb.io.ex_in     <> ex_io_reg_n.io.out
-        ex_io_reg_n.io.in <> ex_io_reg.io.out
-        ex_io_reg.io.in <> alu.io.out
-    wb.io.mem_in    <> mem_io_reg.io.out
-        mem_io_reg.io.in <> mem.io.out
+    wb.io.in.mem_in    <> mem_io_reg.io.out
+        mem_io_reg.io.in    <> mem.io.out
 
     val inst = pc.io.out.inst
     val reg_pc = pc.io.out.reg_pc
@@ -84,6 +69,9 @@ class Top extends Module{
         (inst === EXIT_INST) -> true.asBool,
         (reg_pc === EXIT_PC) -> true.asBool
     ))
+    printf("------------------------END-----------------------\n")
+    printf(p"exit: ${io.exit}\n")
+    printf("\n")
     
 }
 

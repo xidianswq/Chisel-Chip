@@ -8,6 +8,7 @@ import public.Instructions._
 /*
 type: IO Port
 name: MEM_IO(内存接口)
+note: abandoned
 datamem_rdata: Data memory read data,output
 csr_rdata: CSR read data,output
 */
@@ -19,6 +20,7 @@ class MEM_IO extends Bundle{
 /*
 type: Hardware
 name: MEM Pipeline Register(访存阶段流水线寄存器)
+note: abandoned
 */
 class MEM_IO_REG extends Module{
     val io = IO(new Bundle{
@@ -38,10 +40,13 @@ name: Memory access unit(内存访问单元)
 */
 class MEM extends Module{
     val io = IO(new Bundle{
-        val if_in = Flipped(new PC_IO())
-        val id_in = Flipped(new ID_IO())
-        val ex_in = Flipped(new ALU_IO())
-        val out = new MEM_IO()
+        val in = new Bundle{
+            val if_in = Flipped(new PC_IO())
+            val id_in = Flipped(new ID_IO())
+            val ex_in = Flipped(new ALU_IO())
+        }
+        //val out = new MEM_IO()
+        val out = new WB_IO()
         val datamem = Flipped(new DataMem_IO())
     })
 
@@ -49,13 +54,21 @@ class MEM extends Module{
     val reg_csr = RegInit(VecInit(Seq.fill(CSR_Num)(0.U(WORD_LEN.W))))
 
     //input wire connection
-    val mem_wen = io.id_in.mem_wen
-    val rs2_data = io.id_in.rs2_data
-    val csr_addr_default = io.id_in.csr_addr_default
-    val csr_cmd = io.id_in.csr_cmd
-    val op1_data = io.id_in.op1_data
-    val alu_out = io.ex_in.alu_out
+    val reg_pc = io.in.if_in.reg_pc
+    val rd_addr = io.in.id_in.rd_addr
+    val csr_addr_default = io.in.id_in.csr_addr_default
+    val rs2_data = io.in.id_in.rs2_data
+    val op1_data = io.in.id_in.op1_data
+    val csr_cmd = io.in.id_in.csr_cmd
+    val mem_wen = io.in.id_in.mem_wen
+    val rd_sel = io.in.id_in.rd_sel
+    val rd_wen = io.in.id_in.rd_wen
+    
+    val alu_out = io.in.ex_in.alu_out
 
+    val datamem_rdata = io.datamem.rdata
+    
+    //Data memory access
     io.datamem.addr  := alu_out
     io.datamem.wen   := mem_wen.asBool()
     io.datamem.wdata := rs2_data
@@ -75,7 +88,23 @@ class MEM extends Module{
         reg_csr(csr_addr) := csr_wdata
     }
 
+    //WB logic
+    val rd_data = MuxCase(alu_out, Seq(
+        (rd_sel === WB_MEM) -> datamem_rdata,
+        (rd_sel === WB_PC)  -> (reg_pc + 4.U(WORD_LEN.W)),
+        (rd_sel === WB_CSR) -> csr_rdata
+    ))
+
     //output wire connection
-    io.out.datamem_rdata := io.datamem.rdata
-    io.out.csr_rdata := csr_rdata
+    // io.out.datamem_rdata := datamem_rdata
+    // io.out.csr_rdata := csr_rdata
+    io.out.rd_wen := rd_wen
+    io.out.rd_addr := rd_addr
+    io.out.rd_data := rd_data
+
+    //debug info
+    printf("-------------MEM-----------\n")
+    printf(p"datamem.wen: ${io.datamem.wen}\n")
+    printf(p"datamem.wdata: 0x${Hexadecimal(io.datamem.wdata)}\n")
+    printf(p"csr_wdata: 0x${Hexadecimal(csr_wdata)}\n")
 }

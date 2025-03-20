@@ -38,18 +38,20 @@ name: Program Counter(程序计数器)
 */  
 class PC extends Module{
     val io = IO(new Bundle{
-        val ex_in = Flipped(new ALU_IO())
-        val br_in = Flipped(new BR_IO())
+        val in = new Bundle{
+            val ex_in = Flipped(new ALU_IO())
+            val br_in = Flipped(new BR_IO())
+        }
         val out = new PC_IO()
         val instmem = Flipped(new InstMem_IO())
     })
 
     //input wire connection
     val inst = io.instmem.inst
-    val br_flag     = io.br_in.br_flag
-    val br_target   = io.br_in.br_target
-    val jump_flag   = io.ex_in.jump_flag
-    val alu_out     = io.ex_in.alu_out
+    val br_flag     = io.in.br_in.br_flag
+    val br_target   = io.in.br_in.br_target
+    val jump_flag   = io.in.ex_in.jump_flag
+    val alu_out     = io.in.ex_in.alu_out
 
     //program counter update
     val reg_pc = RegInit(START_ADDR)
@@ -66,4 +68,9 @@ class PC extends Module{
     io.out.reg_pc := reg_pc
     io.out.inst := io.instmem.inst
     
+    //debug info
+    printf("-----------------------START----------------------\n")
+    printf("-------------IF------------\n")
+    printf(p"reg_pc: 0x${Hexadecimal(reg_pc)}\n")
+    printf(p"inst: 0x${Hexadecimal(inst)}\n")
 }

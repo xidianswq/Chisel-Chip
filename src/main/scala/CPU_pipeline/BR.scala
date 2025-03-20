@@ -38,17 +38,19 @@ name: Branch(分支跳转结构)
 */  
 class BR extends Module{
     val io = IO(new Bundle{
-        val if_in = Flipped(new PC_IO())
-        val id_in = Flipped(new ID_IO())
+        val in = new Bundle{
+            val if_in = Flipped(new PC_IO())
+            val id_in = Flipped(new ID_IO())
+        }
         val out = new BR_IO()
     })
 
     //input wire connection
-    val reg_pc = io.if_in.reg_pc
-    val op1_data = io.id_in.op1_data
-    val op2_data = io.id_in.op2_data
-    val imm_b_sext = io.id_in.imm_b_sext
-    val exe_fun = io.id_in.exe_fun
+    val reg_pc = io.in.if_in.reg_pc
+    val op1_data = io.in.id_in.op1_data
+    val op2_data = io.in.id_in.op2_data
+    val imm_b_sext = io.in.id_in.imm_b_sext
+    val exe_fun = io.in.id_in.exe_fun
 
     //branch logic
     val br_target = reg_pc + imm_b_sext
@@ -64,4 +66,9 @@ class BR extends Module{
     //output wire connection
     io.out.br_flag := br_flag
     io.out.br_target := br_target
+
+    //debug info
+    printf(p"branch_flg: $br_flag\n")
+    printf(p"branch_target: 0x${Hexadecimal(br_target)}\n")
+
 }

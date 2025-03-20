@@ -40,29 +40,26 @@ name: Write back unit(写回单元)
 */
 class WB extends Module{
     val io = IO(new Bundle{
-        val if_in = Flipped(new PC_IO())
-        val id_in = Flipped(new ID_IO())
-        val ex_in = Flipped(new ALU_IO())
-        val mem_in = Flipped(new MEM_IO())
+        val in = new Bundle{
+            //val mem_in = Flipped(new MEM_IO())
+            val mem_in = Flipped(new WB_IO())
+        }
         val out = new WB_IO()
     })
 
     //input wire connection
-    val reg_pc = io.if_in.reg_pc
-    val rd_sel = io.id_in.rd_sel
-    val alu_out = io.ex_in.alu_out
-    val datamem_rdata = io.mem_in.datamem_rdata
-    val csr_rdata = io.mem_in.csr_rdata
-    
-    //WB logic
-    val rd_data = MuxCase(alu_out, Seq(
-        (rd_sel === WB_MEM) -> datamem_rdata,
-        (rd_sel === WB_PC)  -> (reg_pc + 4.U(WORD_LEN.W)),
-        (rd_sel === WB_CSR) -> csr_rdata
-    ))
-    
+    val rd_wen = io.in.mem_in.rd_wen
+    val rd_addr = io.in.mem_in.rd_addr
+    val rd_data = io.in.mem_in.rd_data
+
     //output wire connection
-    io.out.rd_wen := io.id_in.rd_wen
-    io.out.rd_addr := io.id_in.rd_addr
+    io.out.rd_wen := rd_wen
+    io.out.rd_addr := rd_addr
     io.out.rd_data := rd_data
+
+    //debug info
+    printf("-------------WB------------\n")
+    printf(p"rd_wen: $rd_wen\n")
+    printf(p"rd_addr: $rd_addr\n")
+    printf(p"rd_data: 0x${Hexadecimal(rd_data)}\n")
 }
