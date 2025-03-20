@@ -3,7 +3,7 @@
 .metals/*
 .vscode/*
 .github/*
-project/
+project/*
 !project/build.properties
 !project/plugins.sbt
 
