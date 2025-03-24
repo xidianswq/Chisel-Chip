@@ -1,9 +1,7 @@
----
 title: "RISC-V流水线CPU设计"
 date: 2025-2-18 13:15:24
 categories: ['学习笔记']
 tags: ['cpu','chisel','risc-v']
----
 
 
 
@@ -3672,18 +3670,15 @@ WB阶段
 
    ```scala
    package cpu_pipeline
-   
    import chisel3._
    import chisel3.util._
    import public.Consts._
    import public.Instructions._
    
-   
    class Top extends Module{
        val io = IO(new Bundle{
            val exit = Output(Bool())
        })
-   
        //core module
        val memory = Module(new Memory)
        val pc = Module(new PC)
@@ -3692,7 +3687,6 @@ WB阶段
        val br = Module(new BR)
        val mem = Module(new MEM)
        val wb = Module(new WB)
-   
        //pipeline register
        val if_io_reg = Module(new PC_IO_REG)
        val if_io_reg_n = Module(new PC_IO_REG)
@@ -3701,20 +3695,17 @@ WB阶段
        val id_io_reg_n = Module(new ID_IO_REG)
        val ex_io_reg = Module(new ALU_IO_REG)
        val mem_io_reg = Module(new WB_IO_REG)
-   
-   
        //connect modules and pipeline registers
        pc.io.in.ex_in     <> alu.io.out
        pc.io.in.br_in     <> br.io.out
        pc.io.instmem   <> memory.io.instmem
-   
+       
        id.io.in.if_in     <> if_io_reg.io.out
            if_io_reg.io.in     <> pc.io.out
        id.io.in.wb_in     <> wb.io.out //no pipeline register
        
        alu.io.in.id_in    <> id_io_reg.io.out
            id_io_reg.io.in     <> id.io.out
-       
        br.io.in.if_in     <> if_io_reg_n.io.out
            if_io_reg_n.io.in   <> if_io_reg.io.out
            if_io_reg.io.in     <> pc.io.out
@@ -3753,8 +3744,6 @@ WB阶段
    }
    ```
 
-   
-
 4. #### 流水线冒险
 
    常见的冒险主要有结构冒险、数据冒险和控制冒险三种
@@ -3781,16 +3770,31 @@ WB阶段
 
    使用自定义指令集进行测试发现了**ID/WB间的数据冒险**。如图，在if执行第二条指令`addi x5,x0,0x123	//32_10_02_93`时，wb在第六个时钟周期才完成写回，故在第三条指令`and  x28,x5,x6	//00_62_FE_33`时，在第五个时钟周期时x6的数据还未写回，造成计算结果错误，及`0x321 & 0x0FF`变成`0x321 & 0X000`。
 
+   解决方法：
+
+   - 数据前递（直通）：ID/WB和ID/MEM间数据冒险——将datamem_rdata和rd_data流水线寄存器直连id阶段的rs1_data和rs2_data
+
    具体分析：
+
+   ![1742801430517](RISC-V_Pipeline_CPU_Design/1742801430517.png)
+
+   - 从MEM_REG和REG_WB的连接线路引出数据通路直接到ID逻辑中，则可将datamem_rdata、rd_data等直接送达rs1_data等。则可将MEM和WB阶段的数据分别提前2个和3个时钟周期（跨流水线寄存器排数分别为2和3），从而在第i条和第i+1条指令间避免了数据冒险。直接解决了ID/WB间数据冒险。
+   - 而执行第i+2条指令时，MEM的数据以到达WB中，
 
    ![data_hazard_analyze](RISC-V_Pipeline_CPU_Design/data_hazard_analyze.png)
 
    - 可以看到第四个指令的ID阶段已经和第一条指令的WB阶段在时钟周期上已经重合了，所以数据冒险的发生只可能在该指令的后两条指令中的EX、MEM和WB阶段。
-   - 针对ID/MEM间数据冒险，通过将MEM阶段的信号用流水线寄存器直接和ID相连，则达成ID-pipeline_reg-MEM的一周期延迟互联，在执行指令i+1时，刚好上周期执行指令i时存入pipeline_reg的信号可以传入在本周期传入ID中。
+   - 由于在源码中，由于将rd_data的计算转移到了MEM.scala中，在WB.scala只是连接，所以MEM和WB阶段都可以通过直连rd_data解决数据冒险。而之前的EX阶段并没有所谓rd_data，不能直连；而且alu_out是作为datamem的地址访问数据datamem_rdata，导致无法将datamem中的数据提前读出。所以ID/MEM间数据冒险只能让流水线阻塞。在流水线阻塞stall时，reg_pc不变，执行BUBBLE指令（气泡指令，即用指令add x0,x0,0），相当一个气泡将EX的流水挤到MEM，再利用ID/MEM直通解决。如下图所示：
 
-   解决方法：
+   ![data_hazard_ID-EX_1](RISC-V_Pipeline_CPU_Design/data_hazard_ID-EX_1.png)
 
-   - 数据前递（直通）：ID/WB间数据冒险——将wb阶段的rd_data流水线寄存器直连id阶段的rs1_data和rs2_data；ID/MEM间数据冒险——将
+   ![data_hazard_ID-EX_2](RISC-V_Pipeline_CPU_Design/data_hazard_ID-EX_2.png)
+
+   ![1742828800588](RISC-V_Pipeline_CPU_Design/1742828800588.png)
+
+   - 流水线气泡插入微架构如上，注意需要在原有的PC_IO_REG基础上添加***原有reg_pc和inst的保持***结构，以在stall_flag有效时能够保持上一条指令的pc和inst。
+
+   
 
 6. #### 处理分支冒险
 

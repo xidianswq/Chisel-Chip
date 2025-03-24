@@ -17,8 +17,12 @@ object Consts {
     val CSR_Num = 32
     val CSR_ADDR_LEN  = 12
     val START_ADDR    = 0.U(WORD_LEN.W)         //PC start address
+    val BUBBLE    = 0x00000013.U(WORD_LEN.W)   // [ADDI x0,x0,0] = BUBBLE
     val EXIT_INST = 0x00000000.U(WORD_LEN.W)    //exit instruction
     val EXIT_PC   = 0x00000044.U(WORD_LEN.W)    //exit PC
+
+    //Pipeline parameters
+    val PIPELINE_LEN = 5
 
     //function in execute stage
     val EXE_FUN_LEN = 5

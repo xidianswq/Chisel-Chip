@@ -31,8 +31,6 @@ class ID_IO extends Bundle{
     val csr_addr_default = Output(UInt(WORD_LEN.W))
 
     val exe_fun = Output(UInt(EXE_FUN_LEN.W))
-    val op1_sel = Output(UInt(OP1_LEN.W))
-    val op2_sel = Output(UInt(OP2_LEN.W))
     val mem_wen = Output(UInt(MEN_LEN.W))
     val rd_wen  = Output(UInt(REN_LEN.W))
     val rd_sel  = Output(UInt(WB_LEN.W))
@@ -40,6 +38,8 @@ class ID_IO extends Bundle{
 
     val rs2_data = Output(UInt(WORD_LEN.W))        
     val imm_b_sext = Output(UInt(WORD_LEN.W))
+
+    val stall_flag = Output(Bool())
 }
 
 /*
@@ -66,6 +66,8 @@ class ID extends Module{
     val io = IO(new Bundle{
         val in = new Bundle{
             val if_in = Flipped(new PC_IO())
+            val id_reg_in = Flipped(new ID_IO())
+            val mem_in = Flipped(new WB_IO())
             val wb_in = Flipped(new WB_IO())
         }
         val out = new ID_IO()
@@ -75,11 +77,28 @@ class ID extends Module{
     val reg_x = RegInit(VecInit(Seq.fill(REGX_Num)(0.U(WORD_LEN.W))))
 
     //input wire connection
-    val inst = io.in.if_in.inst
+    val inst_default = io.in.if_in.inst
     val reg_pc = io.in.if_in.reg_pc
-    val wb_rd_wen = io.in.wb_in.rd_wen
-    val wb_rd_addr = io.in.wb_in.rd_addr
-    val wb_rd_data = io.in.wb_in.rd_data
+    val br_flag = io.in.if_in.br_flag
+    val jump_flag = io.in.if_in.jump_flag
+    val ex_rd_wen   = io.in.id_reg_in.rd_wen
+    val ex_rd_addr  = io.in.id_reg_in.rd_addr
+    val mem_rd_wen  = io.in.mem_in.rd_wen
+    val mem_rd_addr = io.in.mem_in.rd_addr
+    val mem_rd_data = io.in.mem_in.rd_data
+    val wb_rd_wen   = io.in.wb_in.rd_wen
+    val wb_rd_addr  = io.in.wb_in.rd_addr
+    val wb_rd_data  = io.in.wb_in.rd_data
+    
+    //data_hazard stall logic
+    val rs1_addr_default = inst_default(19, 15)
+    val rs2_addr_default = inst_default(24, 20)
+    val rs1_data_hazard = (ex_rd_wen === REN_EN) && (rs1_addr_default =/= 0.U) && (rs1_addr_default === ex_rd_addr)
+    val rs2_data_hazard = (ex_rd_wen === REN_EN) && (rs2_addr_default =/= 0.U) && (rs2_addr_default === ex_rd_addr)
+    val stall_flag = (rs1_data_hazard || rs2_data_hazard)
+    val inst = MuxCase(inst_default, Seq(
+        (br_flag || jump_flag || stall_flag) -> BUBBLE
+    ))
 
     //decode logic
     val rs1_addr = inst(19, 15)
@@ -88,10 +107,14 @@ class ID extends Module{
     val csr_addr_default = inst(31,20)
     val rs1_data = MuxCase(reg_x(rs1_addr),Seq(
         (rs1_addr === 0.U(REGX_ADDR_LEN.W)) -> 0.U(WORD_LEN.W),
-        ))
+        ((rs1_addr === mem_rd_addr) && (mem_rd_wen === REN_EN)) -> mem_rd_data, //direct connect(from MEM_logic)
+        ((rs1_addr === wb_rd_addr) && (wb_rd_wen === REN_EN)) -> wb_rd_data     //direct connect(from WB_logic/MEM_reg)
+    ))
     val rs2_data = MuxCase(reg_x(rs2_addr),Seq(
         (rs2_addr === 0.U(REGX_ADDR_LEN.W)) -> 0.U(WORD_LEN.W),
-        ))
+        ((rs2_addr === mem_rd_addr) && (mem_rd_wen === REN_EN)) -> mem_rd_data, //direct connect(from MEM_logic)
+        ((rs2_addr === wb_rd_addr) && (wb_rd_wen === REN_EN)) -> wb_rd_data     //direct connect(from WB_logic/MEM_reg)
+    ))
     val imm_i    = inst(31, 20)                         //I-type imm
     val imm_i_sext = Cat(Fill(20, imm_i(11)), imm_i)    //sign-extend imm_i
     val imm_s    = Cat(inst(31, 25), inst(11, 7))       //S-type imm
@@ -176,8 +199,6 @@ class ID extends Module{
     io.out.csr_addr_default := csr_addr_default
     
     io.out.exe_fun := exe_fun
-    io.out.op1_sel := op1_sel
-    io.out.op2_sel := op2_sel
     io.out.mem_wen := mem_wen
     io.out.rd_wen := rd_wen
     io.out.rd_sel := rd_sel
@@ -185,6 +206,8 @@ class ID extends Module{
 
     io.out.rs2_data := rs2_data
     io.out.imm_b_sext := imm_b_sext
+
+    io.out.stall_flag := stall_flag
     
     //debug info
     printf("-------------ID------------\n")
@@ -192,4 +215,5 @@ class ID extends Module{
     printf(p"rs2_addr: $rs2_addr\n")
     printf(p"op1_data: 0x${Hexadecimal(op1_data)}\n")
     printf(p"op2_data: 0x${Hexadecimal(op2_data)}\n")
+    printf(p"stall_flag: $stall_flag\n")
 }

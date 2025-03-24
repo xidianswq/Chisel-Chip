@@ -21,7 +21,7 @@ class Top extends Module{
     val wb = Module(new WB)
 
     //pipeline register
-    val if_io_reg = Module(new PC_IO_REG)
+    val if_io_reg = Module(new PC_BUBBLE_REG)
     val if_io_reg_n = Module(new PC_IO_REG)
     val if_io_reg_nn = Module(new PC_IO_REG)
     val id_io_reg = Module(new ID_IO_REG)
@@ -31,13 +31,17 @@ class Top extends Module{
 
 
     //connect modules and pipeline registers
+    pc.io.in.id_in     <> id.io.out
     pc.io.in.ex_in     <> alu.io.out
     pc.io.in.br_in     <> br.io.out
     pc.io.instmem   <> memory.io.instmem
 
     id.io.in.if_in     <> if_io_reg.io.out
+        if_io_reg.io.stall_flag  <> id.io.out.stall_flag
         if_io_reg.io.in     <> pc.io.out
-    id.io.in.wb_in     <> wb.io.out //no pipeline register
+    id.io.in.id_reg_in <> id_io_reg.io.out
+    id.io.in.wb_in     <> wb.io.out         //no pipeline register
+    id.io.in.mem_in  <> mem.io.out   //direct connect
     
     alu.io.in.id_in    <> id_io_reg.io.out
         id_io_reg.io.in     <> id.io.out

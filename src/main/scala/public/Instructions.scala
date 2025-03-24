@@ -62,6 +62,6 @@ object Instructions{
     val ECALL   = BitPat("b0000_0000_0000_0000_0000_0000_0111_0011")
     
     //custom instructions
-    val PCNT    = BitPat("b0000_0000_0000_????_?110_????_?000_1011")
+    //val NOP     = BitPat("b0000_0000_0000_0000_0000_0000_0001_0011")
     val UNIMP   = BitPat("b1100_0000_0000_0000_0001_0000_0111_0011")
 }

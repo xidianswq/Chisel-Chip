@@ -6,18 +6,12 @@
   {
     "class":"firrtl.transforms.DedupedResult",
     "original":"~Top|PC_IO_REG",
-    "duplicate":"~Top|Top/if_io_reg:PC_IO_REG",
-    "index":0.5
-  },
-  {
-    "class":"firrtl.transforms.DedupedResult",
-    "original":"~Top|PC_IO_REG_1",
     "duplicate":"~Top|Top/if_io_reg_n:PC_IO_REG",
     "index":0.5714285714285714
   },
   {
     "class":"firrtl.transforms.DedupedResult",
-    "original":"~Top|PC_IO_REG_2",
+    "original":"~Top|PC_IO_REG_1",
     "duplicate":"~Top|Top/if_io_reg_nn:PC_IO_REG",
     "index":0.6428571428571429
   },
