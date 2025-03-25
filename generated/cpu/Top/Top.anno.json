@@ -1,0 +1,23 @@
+[
+  {
+    "class":"firrtl.transforms.BlackBoxInlineAnno",
+    "target":"Top.Mem",
+    "name":"Top.Mem.mem.v",
+    "text":"module BindsTo_0_Mem(\n  input         clock,\n  input  [31:0] io_instmem_addr,\n  output [31:0] io_instmem_inst,\n  input  [31:0] io_datamem_addr,\n  output [31:0] io_datamem_rdata,\n  input         io_datamem_wen,\n  input  [31:0] io_datamem_wdata\n);\n\ninitial begin\n  $readmemh(\"src/main/resources/CPU/test.hex\", Mem.mem);\nend\n                      endmodule\n\nbind Mem BindsTo_0_Mem BindsTo_0_Mem_Inst(.*);"
+  },
+  {
+    "class":"firrtl.EmitCircuitAnnotation",
+    "emitter":"firrtl.VerilogEmitter"
+  },
+  {
+    "class":"firrtl.annotations.LoadMemoryAnnotation",
+    "target":"Top.Mem.mem",
+    "fileName":"src/main/resources/CPU/test.hex",
+    "hexOrBinary":"h",
+    "originalMemoryNameOpt":"mem"
+  },
+  {
+    "class":"firrtl.transforms.BlackBoxTargetDirAnno",
+    "targetDir":"generated/cpu/Top"
+  }
+]

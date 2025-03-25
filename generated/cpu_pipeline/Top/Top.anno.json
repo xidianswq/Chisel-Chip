@@ -6,6 +6,30 @@
     "text":"module BindsTo_0_Memory(\n  input         clock,\n  input  [31:0] io_instmem_addr,\n  output [31:0] io_instmem_inst,\n  input  [31:0] io_datamem_addr,\n  output [31:0] io_datamem_rdata,\n  input         io_datamem_wen,\n  input  [31:0] io_datamem_wdata\n);\n\ninitial begin\n  $readmemh(\"src/main/resources/CPU/test.hex\", Memory.mem);\nend\n                      endmodule\n\nbind Memory BindsTo_0_Memory BindsTo_0_Memory_Inst(.*);"
   },
   {
+    "class":"firrtl.transforms.DedupedResult",
+    "original":"~Top|PC_IO_REG",
+    "duplicate":"~Top|Top/if_io_reg_n:PC_IO_REG",
+    "index":0.5714285714285714
+  },
+  {
+    "class":"firrtl.transforms.DedupedResult",
+    "original":"~Top|PC_IO_REG_1",
+    "duplicate":"~Top|Top/if_io_reg_nn:PC_IO_REG",
+    "index":0.6428571428571429
+  },
+  {
+    "class":"firrtl.transforms.DedupedResult",
+    "original":"~Top|ID_IO_REG",
+    "duplicate":"~Top|Top/id_io_reg:ID_IO_REG",
+    "index":0.7142857142857143
+  },
+  {
+    "class":"firrtl.transforms.DedupedResult",
+    "original":"~Top|ID_IO_REG_1",
+    "duplicate":"~Top|Top/id_io_reg_n:ID_IO_REG",
+    "index":0.7857142857142857
+  },
+  {
     "class":"firrtl.EmitCircuitAnnotation",
     "emitter":"firrtl.VerilogEmitter"
   },
@@ -18,6 +42,6 @@
   },
   {
     "class":"firrtl.transforms.BlackBoxTargetDirAnno",
-    "targetDir":"generated"
+    "targetDir":"generated/cpu_pipeline/Top"
   }
 ]

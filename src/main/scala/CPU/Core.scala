@@ -214,7 +214,6 @@ class Core extends Module{
     printf(p"rd_data: 0x${Hexadecimal(rd_data)}\n")
     printf("------------------------END-----------------------\n")
     printf(p"exit: ${io.exit}\n")
-    printf(p"globalpointer: ${reg_x(3)}\n")
     printf("\n")
 }
 

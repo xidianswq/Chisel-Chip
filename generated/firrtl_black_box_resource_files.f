@@ -1,1 +1,0 @@
-C:\Users\SWQ2003\Desktop\CPU-code\Chisel-Chip\generated\Top.Memory.mem.v

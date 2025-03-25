@@ -80,5 +80,5 @@ class Top extends Module{
 }
 
 object TopOption extends App {
-    (new chisel3.stage.ChiselStage).emitVerilog(new Top(), Array("--target-dir", "generated"))
+    (new chisel3.stage.ChiselStage).emitVerilog(new Top(), Array("--target-dir", "generated/cpu_pipeline/Top"))
 }

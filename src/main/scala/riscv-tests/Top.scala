@@ -18,7 +18,3 @@ class Top extends Module{
     io.globalpointer := core.io.globalpointer
     io.exit := core.io.exit
 }
-
-object TopOption extends App {
-    (new chisel3.stage.ChiselStage).emitVerilog(new Top(), Array("--target-dir", "generated"))
-}

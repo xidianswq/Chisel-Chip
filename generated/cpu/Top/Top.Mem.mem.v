@@ -9,7 +9,7 @@ module BindsTo_0_Mem(
 );
 
 initial begin
-  $readmemh("src/main/resources/test.hex", Mem.mem);
+  $readmemh("src/main/resources/CPU/test.hex", Mem.mem);
 end
                       endmodule
 

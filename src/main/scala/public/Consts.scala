@@ -8,13 +8,13 @@ object Consts {
 
     //Instruction Memory
     val IMEM_WIDTH = 32     //32bit
-    val IMEM_DEPTH = 1024  //1KB
+    val IMEM_DEPTH = 16384  //16KB
     val IMEM_HEX_PATH = "src/main/resources/CPU/test.hex"
 
     //Rigister
     val REGX_Num = 32
     val REGX_ADDR_LEN = 5
-    val CSR_Num = 32
+    val CSR_Num = 4096
     val CSR_ADDR_LEN  = 12
     val START_ADDR    = 0.U(WORD_LEN.W)         //PC start address
     val NOP    = 0x00000013.U(WORD_LEN.W)   // [ADDI x0,x0,0] = NOP
