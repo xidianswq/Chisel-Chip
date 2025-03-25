@@ -3756,15 +3756,17 @@ WB阶段
 
      解决：数据前递； 装载-使用型数据冒险——流水线阻塞（执行nop指令） [^17]
 
+     ![data_hazard](RISC-V_Pipeline_CPU_Design/data_hazard-1742873707633.png)
+
    - 控制（分支）冒险：当前面执行的指令需要改变后续指令执行顺序时（如执行跳转指令），流水线中已执行后面指令造成的冲突。 
 
      解决：阻塞或分支预测（静态、动态【实现方法是采用分支预测缓存或分支历史表，其中记录了分支最近是否执行】、竞赛预测器【典型的竞赛预测器对每个分支地址有两个预测，一个是 基于全局的分支行为，一个是基于局部信息的】）
 
    应用实例：主要关注不可预测分支；使代码适合**条件传送**（减少if语句【**条件转移**】的使用）[^17]
 
-5. #### 处理数据冒险
+5. #### 处理数据冒险和分支冒险
 
-   冒险现象：
+   数据冒险现象：
 
    ![data_hazard](RISC-V_Pipeline_CPU_Design/data_hazard.png)
 
@@ -3784,21 +3786,105 @@ WB阶段
    ![data_hazard_analyze](RISC-V_Pipeline_CPU_Design/data_hazard_analyze.png)
 
    - 可以看到第四个指令的ID阶段已经和第一条指令的WB阶段在时钟周期上已经重合了，所以数据冒险的发生只可能在该指令的后两条指令中的EX、MEM和WB阶段。
-   - 由于在源码中，由于将rd_data的计算转移到了MEM.scala中，在WB.scala只是连接，所以MEM和WB阶段都可以通过直连rd_data解决数据冒险。而之前的EX阶段并没有所谓rd_data，不能直连；而且alu_out是作为datamem的地址访问数据datamem_rdata，导致无法将datamem中的数据提前读出。所以ID/MEM间数据冒险只能让流水线阻塞。在流水线阻塞stall时，reg_pc不变，执行BUBBLE指令（气泡指令，即用指令add x0,x0,0），相当一个气泡将EX的流水挤到MEM，再利用ID/MEM直通解决。如下图所示：
 
-   ![data_hazard_ID-EX_1](RISC-V_Pipeline_CPU_Design/data_hazard_ID-EX_1.png)
+   - 由于在源码中，由于将rd_data的计算转移到了MEM.scala中，在WB.scala只是连接，所以MEM和WB阶段都可以通过直连rd_data解决数据冒险。而之前的EX阶段并没有所谓rd_data，不能直连；而且alu_out是作为datamem的地址访问数据datamem_rdata，导致无法将datamem中的数据提前读出。所以ID/MEM间数据冒险只能让流水线阻塞。在流水线阻塞stall时，reg_pc不变，执行BUBBLE指令（气泡指令，即用**NOP空指令**add x0,x0,0），相当一个气泡将EX的流水挤到MEM，***再利用ID/MEM直通解决***。如下图所示：
 
-   ![data_hazard_ID-EX_2](RISC-V_Pipeline_CPU_Design/data_hazard_ID-EX_2.png)
+     ![data_hazard_ID-EX](RISC-V_Pipeline_CPU_Design/data_hazard_ID-EX.png)
 
-   ![1742828800588](RISC-V_Pipeline_CPU_Design/1742828800588.png)
-
-   - 流水线气泡插入微架构如上，注意需要在原有的PC_IO_REG基础上添加***原有reg_pc和inst的保持***结构，以在stall_flag有效时能够保持上一条指令的pc和inst。
+     **注意**：stall_flag信号在clocki+1时产生（黄色标识），由ID的逻辑部分ID logic和其流水线寄存器ID REG产生。而对于逻辑电路ID logic，stall_flag对ID logic的影响（使其内的insti变为BUBBLE）发生在同一周期，**而对于时序电路部分IF logic（含有reg_pc）和IF REG的影响则在下一周期体现**。
 
    
 
-6. #### 处理分支冒险
+   
 
-7. #### 存储器文件的抽象优化
+   
+
+   分支冒险具体分析：
+
+   ![branch_hazard](RISC-V_Pipeline_CPU_Design/branch_hazard.png)
+
+   ![branch_hazard_tb](RISC-V_Pipeline_CPU_Design/branch_hazard_tb.png)
+
+   ![branch_hazard_analyze](RISC-V_Pipeline_CPU_Design/branch_hazard_analyze.png)
+
+   波形图的第一个时钟周期对应下面分析表的clocki-1，这里采用流水线停顿（气泡）的方法解决分支冒险。对比两种冒险的分析表可知，分支冒险与ID/EX数据冒险类似，唯一的不同是分支冒险需要冲刷掉已经读取的指令（PCi和PCi+1），分别在clocki+1的ID logic和clocki+2的IF REG中使用BUBBLE冲刷掉；而ID/EX的数据冒险则需要将pci指令保留下来。
+
+   
+
+   
+
+   
+
+   总结：
+
+   ![1742877182242](RISC-V_Pipeline_CPU_Design/1742877182242.png)
+
+   - 流水线气泡插入微架构如上，注意需要在原有的PC_IO_REG基础上添加***原有reg_pc和inst的保持和气泡产生***结构，以在stall_flag有效时能够保持上一条指令的pc和inst、分支或跳转时则使用BUBBLE冲洗。
+
+   ```scala
+   //PC.scala
+   val reg_pc_next = MuxCase(reg_pc_next_default, Seq(
+       br_flag    -> br_target,
+       jump_flag  -> alu_out,
+       //(inst === ECALL) -> reg_csr(0x305) // go to trap_vector
+       stall_flag -> reg_pc    //ID/EX data_hazard stall
+   ))
+   reg_pc := reg_pc_next
+   
+   /*
+   type: Hardware
+   name: PC Bubble Register(泡沫寄存器)
+   note: 用于流水线冒险时的泡沫处理
+   */
+   class PC_BUBBLE_REG extends Module{
+       val io = IO(new Bundle{
+           val stall_flag = Input(Bool())
+           val in = Flipped(new PC_IO())
+           val out = new PC_IO()
+       })
+   
+       //register file
+       val reg_pc = RegInit(0.U(WORD_LEN.W))
+       val inst = RegInit(0.U(WORD_LEN.W))
+   
+       //input wire connection
+       val stall_flag = io.stall_flag
+       val reg_pc_default = io.in.reg_pc
+       val inst_default = io.in.inst
+       val br_flag = io.in.br_flag
+       val jump_flag = io.in.jump_flag
+   
+       //data hazard stall logic
+       reg_pc :=MuxCase(reg_pc_default, Seq(
+           stall_flag -> reg_pc
+       ))
+       inst := MuxCase(inst_default, Seq(
+           (br_flag || jump_flag) -> NOP,
+           stall_flag -> inst
+       ))
+   
+       //output wire connection
+       io.out.reg_pc := reg_pc
+       io.out.inst := inst
+       io.out.br_flag := br_flag
+       io.out.jump_flag := jump_flag
+   }
+   
+   //ID.scala
+   //data_hazard stall logic
+   val rs1_addr_default = inst_default(19, 15)
+   val rs2_addr_default = inst_default(24, 20)
+   val rs1_data_hazard = (ex_rd_wen === REN_EN) && (rs1_addr_default =/= 0.U) && (rs1_addr_default === ex_rd_addr)
+   val rs2_data_hazard = (ex_rd_wen === REN_EN) && (rs2_addr_default =/= 0.U) && (rs2_addr_default === ex_rd_addr)
+   val stall_flag = (rs1_data_hazard || rs2_data_hazard)
+   val inst = MuxCase(inst_default, Seq(
+       (br_flag || jump_flag || stall_flag) -> NOP
+   ))
+   ```
+
+   
+
+6. #### 存储器文件的抽象优化
 
    所使用的寄存器、存储器转化为Verilog后全是reg，应调整接口成SRAM的，并在Verilog中调用IP
 

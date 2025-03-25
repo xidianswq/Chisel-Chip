@@ -1,0 +1,38 @@
+[*]
+[*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
+[*] Tue Mar 25 08:08:21 2025
+[*]
+[dumpfile] "C:\Users\SWQ2003\Desktop\CPU-code\Chisel-Chip\test_run_dir\cpu_pipeline_should_work\test_run_dir\cpu_pipeline_should_work\Top.vcd"
+[savefile] "C:\Users\SWQ2003\Desktop\CPU-code\Chisel-Chip\test_run_dir\cpu_pipeline_should_work\cpu_pipeline_pc-inst.gtkw"
+[timestart] 91
+[size] 1920 991
+[pos] -138 -138
+*-4.035847 91 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] Top.
+[sst_width] 239
+[signals_width] 250
+[sst_expanded] 1
+[sst_vpaned_height] 550
+@28
+Top.pc.clock
+Top.pc.reset
+Top.id_io_reg.io_out_rd_wen
+@22
+Top.id.rs1_addr_default[4:0]
+Top.id.rs2_addr_default[4:0]
+Top.id_io_reg.io_out_rd_addr[4:0]
+@28
+Top.id.rs1_data_hazard
+Top.id.rs2_data_hazard
+Top.alu.jump_flag
+Top.br.br_flag
+Top.id.stall_flag
+@22
+Top.pc.reg_pc[31:0]
+Top.if_io_reg.reg_pc[31:0]
+Top.if_io_reg_n.io_out_reg_pc[31:0]
+Top.pc.io_out_inst[31:0]
+Top.if_io_reg.io_out_inst[31:0]
+Top.id.inst[31:0]
+[pattern_trace] 1
+[pattern_trace] 0

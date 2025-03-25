@@ -97,7 +97,7 @@ class ID extends Module{
     val rs2_data_hazard = (ex_rd_wen === REN_EN) && (rs2_addr_default =/= 0.U) && (rs2_addr_default === ex_rd_addr)
     val stall_flag = (rs1_data_hazard || rs2_data_hazard)
     val inst = MuxCase(inst_default, Seq(
-        (br_flag || jump_flag || stall_flag) -> BUBBLE
+        (br_flag || jump_flag || stall_flag) -> NOP
     ))
 
     //decode logic

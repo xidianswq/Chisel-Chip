@@ -1434,13 +1434,15 @@ circuit Top :
     reg inst : UInt<32>, clock with :
       reset => (UInt<1>("h0"), inst) @[PC.scala 51:23]
     node _reg_pc_T = mux(io_stall_flag, reg_pc, io_in_reg_pc) @[Mux.scala 98:16]
-    node _inst_T = mux(io_stall_flag, inst, io_in_inst) @[Mux.scala 98:16]
+    node _inst_T = or(io_in_br_flag, io_in_jump_flag) @[PC.scala 65:18]
+    node _inst_T_1 = mux(io_stall_flag, inst, io_in_inst) @[Mux.scala 98:16]
+    node _inst_T_2 = mux(_inst_T, UInt<32>("h13"), _inst_T_1) @[Mux.scala 98:16]
     io_out_reg_pc <= reg_pc @[PC.scala 70:19]
     io_out_inst <= inst @[PC.scala 71:17]
     io_out_br_flag <= io_in_br_flag @[PC.scala 72:20]
     io_out_jump_flag <= io_in_jump_flag @[PC.scala 73:22]
     reg_pc <= mux(reset, UInt<32>("h0"), _reg_pc_T) @[PC.scala 50:25 PC.scala 50:25 PC.scala 61:12]
-    inst <= mux(reset, UInt<32>("h0"), _inst_T) @[PC.scala 51:23 PC.scala 51:23 PC.scala 64:10]
+    inst <= mux(reset, UInt<32>("h0"), _inst_T_2) @[PC.scala 51:23 PC.scala 51:23 PC.scala 64:10]
 
   module PC_IO_REG :
     input clock : Clock

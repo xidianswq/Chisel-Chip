@@ -37,7 +37,7 @@ class PC_IO_REG extends Module{
 /*
 type: Hardware
 name: PC Bubble Register(泡沫寄存器)
-note: 用于数据冒险时的泡沫处理
+note: 用于流水线冒险时的泡沫处理
 */
 class PC_BUBBLE_REG extends Module{
     val io = IO(new Bundle{
@@ -62,7 +62,7 @@ class PC_BUBBLE_REG extends Module{
         stall_flag -> reg_pc
     ))
     inst := MuxCase(inst_default, Seq(
-        (br_flag || jump_flag) -> BUBBLE,   //疑问：多此一举？
+        (br_flag || jump_flag) -> NOP,
         stall_flag -> inst
     ))
 

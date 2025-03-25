@@ -17,7 +17,7 @@ object Consts {
     val CSR_Num = 32
     val CSR_ADDR_LEN  = 12
     val START_ADDR    = 0.U(WORD_LEN.W)         //PC start address
-    val BUBBLE    = 0x00000013.U(WORD_LEN.W)   // [ADDI x0,x0,0] = BUBBLE
+    val NOP    = 0x00000013.U(WORD_LEN.W)   // [ADDI x0,x0,0] = NOP
     val EXIT_INST = 0x00000000.U(WORD_LEN.W)    //exit instruction
     val EXIT_PC   = 0x00000044.U(WORD_LEN.W)    //exit PC
 
