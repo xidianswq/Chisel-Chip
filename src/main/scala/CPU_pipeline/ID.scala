@@ -30,11 +30,11 @@ class ID_IO extends Bundle{
     val rd_addr     = Output(UInt(REGX_ADDR_LEN.W))
     val csr_addr_default = Output(UInt(WORD_LEN.W))
 
-    val exe_fun = Output(UInt(EXE_FUN_LEN.W))
-    val mem_wen = Output(UInt(MEN_LEN.W))
-    val rd_wen  = Output(UInt(REN_LEN.W))
-    val rd_sel  = Output(UInt(WB_LEN.W))
-    val csr_cmd = Output(UInt(CSR_LEN.W))
+    val exe_fun     = Output(UInt(EXE_FUN_LEN.W))
+    val mem_wen     = Output(UInt(MEN_LEN.W))
+    val rd_wen      = Output(UInt(REN_LEN.W))
+    val rd_sel      = Output(UInt(WB_LEN.W))
+    val csr_cmd     = Output(UInt(CSR_LEN.W))
 
     val rs2_data    = Output(UInt(WORD_LEN.W))        
     val imm_b_sext  = Output(UInt(WORD_LEN.W))
@@ -52,8 +52,8 @@ class ID_IO_REG extends Module{
 
     val id_io_reg = RegInit(0.U.asTypeOf(new ID_IO()))
 
-    id_io_reg := io.in
-    io.out := id_io_reg
+    id_io_reg   := io.in
+    io.out      := id_io_reg
 }
 
 /*
@@ -64,7 +64,7 @@ class ID extends Module{
     val io = IO(new Bundle{
         val in = new Bundle{
             val if_in   = Flipped(new PC_IO())
-            val stall_in    = Flipped(new Stall_IO())
+            val stall_in= Flipped(new Stall_IO())
             val mem_in  = Flipped(new WB_IO())
             val wb_in   = Flipped(new WB_IO())
         }
@@ -72,7 +72,7 @@ class ID extends Module{
     })
 
     //register file
-    val reg_x = RegInit(VecInit(Seq.fill(REGX_Num)(0.U(WORD_LEN.W))))
+    val reg_x   = RegInit(VecInit(Seq.fill(REGX_Num)(0.U(WORD_LEN.W))))
 
     //input wire connection
     val inst_default    = io.in.if_in.inst

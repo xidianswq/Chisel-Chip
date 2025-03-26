@@ -32,16 +32,16 @@ class Top extends Module{
 
 
     //connect modules and pipeline registers
-    pc.io.in.stall_in   <> stall.io.out          //no pipeline register
+    pc.io.in.stall_in   <> stall.io.out          
     pc.io.in.ex_in      <> alu.io.out
-    pc.io.in.br_in      <> br.io.out             //no pipeline register
+    pc.io.in.br_in      <> br.io.out             
     pc.io.instmem       <> memory.io.instmem
 
     stall.io.in.if_in   <> if_io_reg.io.out      //data hazard stall flag
         if_io_reg.io.in <> pc.io.out
     stall.io.in.id_reg_in   <> id_io_reg.io.out
         id_io_reg.io.in     <> id.io.out
-        
+
     if_io_reg.io.stall_in   <> stall.io.out
 
     id.io.in.if_in      <> if_io_reg.io.out

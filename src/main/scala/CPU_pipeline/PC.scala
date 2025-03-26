@@ -100,8 +100,8 @@ class PC extends Module{
     val reg_pc              = RegInit(START_ADDR)
     val reg_pc_next_default = reg_pc + 4.U(WORD_LEN.W)
     val reg_pc_next         = MuxCase(reg_pc_next_default, Seq(
-        br_flag    -> br_target,
         jump_flag  -> alu_out,
+        br_flag    -> br_target,
         //(inst === ECALL) -> reg_csr(0x305) // go to trap_vector
         stall_flag -> reg_pc    //ID/EX data_hazard stall
     ))
