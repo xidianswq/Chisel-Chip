@@ -7,25 +7,25 @@
     "class":"firrtl.transforms.DedupedResult",
     "original":"~Top|PC_IO_REG",
     "duplicate":"~Top|Top/if_io_reg_n:PC_IO_REG",
-    "index":0.5714285714285714
+    "index":0.6
   },
   {
     "class":"firrtl.transforms.DedupedResult",
     "original":"~Top|PC_IO_REG_1",
     "duplicate":"~Top|Top/if_io_reg_nn:PC_IO_REG",
-    "index":0.6428571428571429
+    "index":0.6666666666666666
   },
   {
     "class":"firrtl.transforms.DedupedResult",
     "original":"~Top|ID_IO_REG",
     "duplicate":"~Top|Top/id_io_reg:ID_IO_REG",
-    "index":0.7142857142857143
+    "index":0.7333333333333333
   },
   {
     "class":"firrtl.transforms.DedupedResult",
     "original":"~Top|ID_IO_REG_1",
     "duplicate":"~Top|Top/id_io_reg_n:ID_IO_REG",
-    "index":0.7857142857142857
+    "index":0.8
   },
   {
     "class":"firrtl.EmitCircuitAnnotation",

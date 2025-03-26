@@ -13,7 +13,7 @@ rd_addr: Register write address,output
 rd_data: Register write data,output
 */
 class WB_IO extends Bundle{
-    val rd_wen = Output(UInt(REN_LEN.W))
+    val rd_wen  = Output(UInt(REN_LEN.W))
     val rd_addr = Output(UInt(REGX_ADDR_LEN.W))
     val rd_data = Output(UInt(WORD_LEN.W))
 }
@@ -24,14 +24,14 @@ name: WB Pipeline Register(写回阶段流水线寄存器)
 */
 class WB_IO_REG extends Module{
     val io = IO(new Bundle{
-        val in = Flipped(new WB_IO())
+        val in  = Flipped(new WB_IO())
         val out = new WB_IO()
     })
 
     val wb_io_reg = RegInit(0.U.asTypeOf(new WB_IO()))
 
-    wb_io_reg := io.in
-    io.out := wb_io_reg
+    wb_io_reg   := io.in
+    io.out      := wb_io_reg
 }
 
 /*
@@ -48,14 +48,14 @@ class WB extends Module{
     })
 
     //input wire connection
-    val rd_wen = io.in.mem_in.rd_wen
+    val rd_wen  = io.in.mem_in.rd_wen
     val rd_addr = io.in.mem_in.rd_addr
     val rd_data = io.in.mem_in.rd_data
 
     //output wire connection
-    io.out.rd_wen := rd_wen
-    io.out.rd_addr := rd_addr
-    io.out.rd_data := rd_data
+    io.out.rd_wen   := rd_wen
+    io.out.rd_addr  := rd_addr
+    io.out.rd_data  := rd_data
 
     //debug info
     printf("-------------WB------------\n")

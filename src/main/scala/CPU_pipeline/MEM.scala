@@ -54,24 +54,24 @@ class MEM extends Module{
     val reg_csr = RegInit(VecInit(Seq.fill(CSR_Num)(0.U(WORD_LEN.W))))
 
     //input wire connection
-    val reg_pc = io.in.if_in.reg_pc
-    val rd_addr = io.in.id_in.rd_addr
-    val csr_addr_default = io.in.id_in.csr_addr_default
-    val rs2_data = io.in.id_in.rs2_data
-    val op1_data = io.in.id_in.op1_data
-    val csr_cmd = io.in.id_in.csr_cmd
-    val mem_wen = io.in.id_in.mem_wen
-    val rd_sel = io.in.id_in.rd_sel
-    val rd_wen = io.in.id_in.rd_wen
+    val reg_pc      = io.in.if_in.reg_pc
+    val rd_addr     = io.in.id_in.rd_addr
+    val csr_addr_default    = io.in.id_in.csr_addr_default
+    val rs2_data    = io.in.id_in.rs2_data
+    val op1_data    = io.in.id_in.op1_data
+    val csr_cmd     = io.in.id_in.csr_cmd
+    val mem_wen     = io.in.id_in.mem_wen
+    val rd_sel  = io.in.id_in.rd_sel
+    val rd_wen  = io.in.id_in.rd_wen
     
     val alu_out = io.in.ex_in.alu_out
 
-    val datamem_rdata = io.datamem.rdata
+    val datamem_rdata   = io.datamem.rdata
     
     //Data memory access
-    io.datamem.addr  := alu_out
-    io.datamem.wen   := mem_wen.asBool()
-    io.datamem.wdata := rs2_data
+    io.datamem.addr     := alu_out
+    io.datamem.wen      := mem_wen.asBool()
+    io.datamem.wdata    := rs2_data
 
     //CSR operation
     val csr_addr = MuxCase(csr_addr_default, Seq(
@@ -98,9 +98,9 @@ class MEM extends Module{
     //output wire connection
     // io.out.datamem_rdata := datamem_rdata
     // io.out.csr_rdata := csr_rdata
-    io.out.rd_wen := rd_wen
-    io.out.rd_addr := rd_addr
-    io.out.rd_data := rd_data
+    io.out.rd_wen   := rd_wen
+    io.out.rd_addr  := rd_addr
+    io.out.rd_data  := rd_data
 
     //debug info
     printf("-------------MEM-----------\n")

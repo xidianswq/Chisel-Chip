@@ -25,9 +25,9 @@ rs2_data: Register 2 data,output            (MEM stage,datamem rdata)
 imm_b_sext: Sign-extend B-type imm,output   (EX stage,BR br_target)
 */
 class ID_IO extends Bundle{
-    val op1_data = Output(UInt(WORD_LEN.W))
-    val op2_data = Output(UInt(WORD_LEN.W))
-    val rd_addr = Output(UInt(REGX_ADDR_LEN.W))
+    val op1_data    = Output(UInt(WORD_LEN.W))
+    val op2_data    = Output(UInt(WORD_LEN.W))
+    val rd_addr     = Output(UInt(REGX_ADDR_LEN.W))
     val csr_addr_default = Output(UInt(WORD_LEN.W))
 
     val exe_fun = Output(UInt(EXE_FUN_LEN.W))
@@ -36,10 +36,8 @@ class ID_IO extends Bundle{
     val rd_sel  = Output(UInt(WB_LEN.W))
     val csr_cmd = Output(UInt(CSR_LEN.W))
 
-    val rs2_data = Output(UInt(WORD_LEN.W))        
-    val imm_b_sext = Output(UInt(WORD_LEN.W))
-
-    val stall_flag = Output(Bool())
+    val rs2_data    = Output(UInt(WORD_LEN.W))        
+    val imm_b_sext  = Output(UInt(WORD_LEN.W))
 }
 
 /*
@@ -65,10 +63,10 @@ name: Instruction Decoder(指令译码器)
 class ID extends Module{
     val io = IO(new Bundle{
         val in = new Bundle{
-            val if_in = Flipped(new PC_IO())
-            val id_reg_in = Flipped(new ID_IO())
-            val mem_in = Flipped(new WB_IO())
-            val wb_in = Flipped(new WB_IO())
+            val if_in   = Flipped(new PC_IO())
+            val stall_in    = Flipped(new Stall_IO())
+            val mem_in  = Flipped(new WB_IO())
+            val wb_in   = Flipped(new WB_IO())
         }
         val out = new ID_IO()
     })
@@ -77,12 +75,11 @@ class ID extends Module{
     val reg_x = RegInit(VecInit(Seq.fill(REGX_Num)(0.U(WORD_LEN.W))))
 
     //input wire connection
-    val inst_default = io.in.if_in.inst
-    val reg_pc = io.in.if_in.reg_pc
-    val br_flag = io.in.if_in.br_flag
-    val jump_flag = io.in.if_in.jump_flag
-    val ex_rd_wen   = io.in.id_reg_in.rd_wen
-    val ex_rd_addr  = io.in.id_reg_in.rd_addr
+    val inst_default    = io.in.if_in.inst
+    val reg_pc      = io.in.if_in.reg_pc
+    val br_flag     = io.in.if_in.br_flag
+    val jump_flag   = io.in.if_in.jump_flag
+    val stall_flag  = io.in.stall_in.stall_flag
     val mem_rd_wen  = io.in.mem_in.rd_wen
     val mem_rd_addr = io.in.mem_in.rd_addr
     val mem_rd_data = io.in.mem_in.rd_data
@@ -90,12 +87,6 @@ class ID extends Module{
     val wb_rd_addr  = io.in.wb_in.rd_addr
     val wb_rd_data  = io.in.wb_in.rd_data
     
-    //data_hazard stall logic
-    val rs1_addr_default = inst_default(19, 15)
-    val rs2_addr_default = inst_default(24, 20)
-    val rs1_data_hazard = (ex_rd_wen === REN_EN) && (rs1_addr_default =/= 0.U) && (rs1_addr_default === ex_rd_addr)
-    val rs2_data_hazard = (ex_rd_wen === REN_EN) && (rs2_addr_default =/= 0.U) && (rs2_addr_default === ex_rd_addr)
-    val stall_flag = (rs1_data_hazard || rs2_data_hazard)
     val inst = MuxCase(inst_default, Seq(
         (br_flag || jump_flag || stall_flag) -> NOP
     ))
@@ -115,18 +106,18 @@ class ID extends Module{
         ((rs2_addr === mem_rd_addr) && (mem_rd_wen === REN_EN)) -> mem_rd_data, //direct connect(from MEM_logic)
         ((rs2_addr === wb_rd_addr) && (wb_rd_wen === REN_EN)) -> wb_rd_data     //direct connect(from WB_logic/MEM_reg)
     ))
-    val imm_i    = inst(31, 20)                         //I-type imm
-    val imm_i_sext = Cat(Fill(20, imm_i(11)), imm_i)    //sign-extend imm_i
-    val imm_s    = Cat(inst(31, 25), inst(11, 7))       //S-type imm
-    val imm_s_sext = Cat(Fill(20, imm_s(11)), imm_s)    //sign-extend imm_s
-    val imm_b = Cat(inst(31), inst(7), inst(30, 25), inst(11, 8))
-    val imm_b_sext = Cat(Fill(19, imm_b(11)), imm_b, 0.U(1.U))
-    val imm_j = Cat(inst(31), inst(19, 12), inst(20), inst(30, 21))
-    val imm_j_sext = Cat(Fill(11, imm_j(19)), imm_j, 0.U(1.U))
-    val imm_u = inst(31,12)
-    val imm_u_shifted = Cat(imm_u, Fill(12, 0.U))
-    val imm_z = inst(19,15)                             //U-type imm
-    val imm_z_uext = Cat(Fill(27, 0.U), imm_z)          //unsign-extend imm_z
+    val imm_i       = inst(31, 20)                         //I-type imm
+    val imm_i_sext  = Cat(Fill(20, imm_i(11)), imm_i)    //sign-extend imm_i
+    val imm_s       = Cat(inst(31, 25), inst(11, 7))       //S-type imm
+    val imm_s_sext  = Cat(Fill(20, imm_s(11)), imm_s)    //sign-extend imm_s
+    val imm_b       = Cat(inst(31), inst(7), inst(30, 25), inst(11, 8))
+    val imm_b_sext  = Cat(Fill(19, imm_b(11)), imm_b, 0.U(1.U))
+    val imm_j       = Cat(inst(31), inst(19, 12), inst(20), inst(30, 21))
+    val imm_j_sext  = Cat(Fill(11, imm_j(19)), imm_j, 0.U(1.U))
+    val imm_u       = inst(31,12)
+    val imm_u_shifted   = Cat(imm_u, Fill(12, 0.U))
+    val imm_z       = inst(19,15)                             //U-type imm
+    val imm_z_uext  = Cat(Fill(27, 0.U), imm_z)          //unsign-extend imm_z
 
     val inst_type = ListLookup(inst,
         List(ALU_NULL, OP1_RS1, OP2_RS2, MEN_NULL, REN_NULL, WB_NULL  , CSR_NULL),
@@ -195,19 +186,17 @@ class ID extends Module{
     //output wire connection
     io.out.op1_data := op1_data
     io.out.op2_data := op2_data
-    io.out.rd_addr := rd_addr
+    io.out.rd_addr  := rd_addr
     io.out.csr_addr_default := csr_addr_default
     
-    io.out.exe_fun := exe_fun
-    io.out.mem_wen := mem_wen
-    io.out.rd_wen := rd_wen
-    io.out.rd_sel := rd_sel
-    io.out.csr_cmd := csr_cmd
+    io.out.exe_fun  := exe_fun
+    io.out.mem_wen  := mem_wen
+    io.out.rd_wen   := rd_wen
+    io.out.rd_sel   := rd_sel
+    io.out.csr_cmd  := csr_cmd
 
-    io.out.rs2_data := rs2_data
-    io.out.imm_b_sext := imm_b_sext
-
-    io.out.stall_flag := stall_flag
+    io.out.rs2_data     := rs2_data
+    io.out.imm_b_sext   := imm_b_sext
     
     //debug info
     printf("-------------ID------------\n")

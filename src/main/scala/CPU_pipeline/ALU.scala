@@ -12,8 +12,8 @@ alu_out: ALU output,output
 jump_flag: Jump flag,output
 */
 class ALU_IO extends Bundle{
-    val alu_out = Output(UInt(WORD_LEN.W))
-    val jump_flag = Output(Bool())
+    val alu_out     = Output(UInt(WORD_LEN.W))
+    val jump_flag   = Output(Bool())
 }
 
 /*
@@ -22,14 +22,14 @@ name: ALU Pipeline Register(算术逻辑单元流水线寄存器)
 */
 class ALU_IO_REG extends Module{
     val io = IO(new Bundle{
-        val in = Flipped(new ALU_IO())
+        val in  = Flipped(new ALU_IO())
         val out = new ALU_IO()
     })
 
     val alu_io_reg = RegInit(0.U.asTypeOf(new ALU_IO()))
 
-    alu_io_reg := io.in
-    io.out := alu_io_reg
+    alu_io_reg  := io.in
+    io.out      := alu_io_reg
 }
 
 /*
@@ -45,10 +45,10 @@ class ALU extends Module{
     })
 
     //input wire connection
-    val op1_data = io.in.id_in.op1_data
-    val op2_data = io.in.id_in.op2_data
-    val exe_fun = io.in.id_in.exe_fun
-    val rd_sel = io.in.id_in.rd_sel
+    val op1_data    = io.in.id_in.op1_data
+    val op2_data    = io.in.id_in.op2_data
+    val exe_fun     = io.in.id_in.exe_fun
+    val rd_sel      = io.in.id_in.rd_sel
 
     //ALU logic
     val alu_out = MuxCase(0.U(WORD_LEN.W), Seq(
@@ -69,8 +69,8 @@ class ALU extends Module{
     val jump_flag = (rd_sel === WB_PC)
 
     //output wire connection
-    io.out.alu_out := alu_out
-    io.out.jump_flag := jump_flag
+    io.out.alu_out      := alu_out
+    io.out.jump_flag    := jump_flag
 
     //debug info
     printf("-------------EX------------\n")
