@@ -2,8 +2,8 @@ package cpu_pipeline
 
 import chisel3._
 import chisel3.util._
-import public.Consts._
-import public.Instructions._
+import cpu_pipeline.Consts._
+import cpu_pipeline.Instructions._
 
 /*
 type: IO Port
@@ -71,10 +71,10 @@ class ID extends Module{
         val out = new ID_IO()
     })
 
-    //register file
-    val reg_x   = RegInit(VecInit(Seq.fill(REGX_Num)(0.U(WORD_LEN.W))))
+    // register file
+    val reg_x   = RegInit(VecInit(Seq.fill(REGX_NUM)(0.U(REG_LEN.W))))
 
-    //input wire connection
+    // input wire connection
     val inst_default    = io.in.if_in.inst
     val reg_pc      = io.in.if_in.reg_pc
     val br_flag     = io.in.if_in.br_flag
@@ -91,33 +91,33 @@ class ID extends Module{
         (br_flag || jump_flag || stall_flag) -> NOP
     ))
 
-    //decode logic
+    // decode logic
     val rs1_addr = inst(19, 15)
     val rs2_addr = inst(24, 20)
     val rd_addr  = inst(11, 7)
     val csr_addr_default = inst(31,20)
     val rs1_data = MuxCase(reg_x(rs1_addr),Seq(
         (rs1_addr === 0.U(REGX_ADDR_LEN.W)) -> 0.U(WORD_LEN.W),
-        ((rs1_addr === mem_rd_addr) && (mem_rd_wen === REN_EN)) -> mem_rd_data, //direct connect(from MEM_logic)
-        ((rs1_addr === wb_rd_addr) && (wb_rd_wen === REN_EN)) -> wb_rd_data     //direct connect(from WB_logic/MEM_reg)
+        ((rs1_addr === mem_rd_addr) && (mem_rd_wen === REN_EN)) -> mem_rd_data, // direct connect(from MEM_logic)
+        ((rs1_addr === wb_rd_addr) && (wb_rd_wen === REN_EN)) -> wb_rd_data     // direct connect(from WB_logic/MEM_reg)
     ))
     val rs2_data = MuxCase(reg_x(rs2_addr),Seq(
         (rs2_addr === 0.U(REGX_ADDR_LEN.W)) -> 0.U(WORD_LEN.W),
-        ((rs2_addr === mem_rd_addr) && (mem_rd_wen === REN_EN)) -> mem_rd_data, //direct connect(from MEM_logic)
-        ((rs2_addr === wb_rd_addr) && (wb_rd_wen === REN_EN)) -> wb_rd_data     //direct connect(from WB_logic/MEM_reg)
+        ((rs2_addr === mem_rd_addr) && (mem_rd_wen === REN_EN)) -> mem_rd_data, // direct connect(from MEM_logic)
+        ((rs2_addr === wb_rd_addr) && (wb_rd_wen === REN_EN)) -> wb_rd_data     // direct connect(from WB_logic/MEM_reg)
     ))
-    val imm_i       = inst(31, 20)                         //I-type imm
-    val imm_i_sext  = Cat(Fill(20, imm_i(11)), imm_i)    //sign-extend imm_i
-    val imm_s       = Cat(inst(31, 25), inst(11, 7))       //S-type imm
-    val imm_s_sext  = Cat(Fill(20, imm_s(11)), imm_s)    //sign-extend imm_s
+    val imm_i       = inst(31, 20)                          // I-type imm
+    val imm_i_sext  = Cat(Fill(20, imm_i(11)), imm_i)       // sign-extend imm_i
+    val imm_s       = Cat(inst(31, 25), inst(11, 7))        // S-type imm
+    val imm_s_sext  = Cat(Fill(20, imm_s(11)), imm_s)       // sign-extend imm_s
     val imm_b       = Cat(inst(31), inst(7), inst(30, 25), inst(11, 8))
     val imm_b_sext  = Cat(Fill(19, imm_b(11)), imm_b, 0.U(1.U))
     val imm_j       = Cat(inst(31), inst(19, 12), inst(20), inst(30, 21))
     val imm_j_sext  = Cat(Fill(11, imm_j(19)), imm_j, 0.U(1.U))
     val imm_u       = inst(31,12)
     val imm_u_shifted   = Cat(imm_u, Fill(12, 0.U))
-    val imm_z       = inst(19,15)                             //U-type imm
-    val imm_z_uext  = Cat(Fill(27, 0.U), imm_z)          //unsign-extend imm_z
+    val imm_z       = inst(19,15)                           // U-type imm
+    val imm_z_uext  = Cat(Fill(27, 0.U), imm_z)             // unsign-extend imm_z
 
     val inst_type = ListLookup(inst,
         List(ALU_NULL, OP1_RS1, OP2_RS2, MEN_NULL, REN_NULL, WB_NULL  , CSR_NULL),
@@ -178,12 +178,12 @@ class ID extends Module{
         (op2_sel === OP2_IMU) -> imm_u_shifted
     ))
 
-    //write back logic
+    // write back logic
     when(wb_rd_wen === REN_EN && wb_rd_addr =/= 0.U(WORD_LEN.W)){
         reg_x(wb_rd_addr) := wb_rd_data
     }
 
-    //output wire connection
+    // output wire connection
     io.out.op1_data := op1_data
     io.out.op2_data := op2_data
     io.out.rd_addr  := rd_addr
@@ -198,7 +198,7 @@ class ID extends Module{
     io.out.rs2_data     := rs2_data
     io.out.imm_b_sext   := imm_b_sext
     
-    //debug info
+    // debug info
     printf("-------------ID------------\n")
     printf(p"rs1_addr: $rs1_addr\n")
     printf(p"rs2_addr: $rs2_addr\n")

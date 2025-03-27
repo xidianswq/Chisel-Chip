@@ -2,8 +2,7 @@ package cpu_pipeline
 
 import chisel3._
 import chisel3.util._
-import public.Consts._
-import public.Instructions._
+import cpu_pipeline.Consts._
 
 /*
 type: IO Port
@@ -18,22 +17,6 @@ class ALU_IO extends Bundle{
 
 /*
 type: Hardware
-name: ALU Pipeline Register(算术逻辑单元流水线寄存器)
-*/
-class ALU_IO_REG extends Module{
-    val io = IO(new Bundle{
-        val in  = Flipped(new ALU_IO())
-        val out = new ALU_IO()
-    })
-
-    val alu_io_reg = RegInit(0.U.asTypeOf(new ALU_IO()))
-
-    alu_io_reg  := io.in
-    io.out      := alu_io_reg
-}
-
-/*
-type: Hardware
 name: ALU(算术逻辑单元)
 */
 class ALU extends Module{
@@ -44,13 +27,13 @@ class ALU extends Module{
         val out = new ALU_IO()
     })
 
-    //input wire connection
+    // input wire connection
     val op1_data    = io.in.id_in.op1_data
     val op2_data    = io.in.id_in.op2_data
     val exe_fun     = io.in.id_in.exe_fun
     val rd_sel      = io.in.id_in.rd_sel
 
-    //ALU logic
+    // ALU logic
     val alu_out = MuxCase(0.U(WORD_LEN.W), Seq(
         (exe_fun === ALU_ADD)   -> (op1_data + op2_data),
         (exe_fun === ALU_SUB)   -> (op1_data - op2_data),
@@ -65,14 +48,14 @@ class ALU extends Module{
         (exe_fun === ALU_JALR)  -> ((op1_data + op2_data) & ~1.U(WORD_LEN.W)),
         (exe_fun === ALU_COPY1) -> op1_data
     ))
-    //jump
+    // jump
     val jump_flag = (rd_sel === WB_PC)
 
-    //output wire connection
+    // output wire connection
     io.out.alu_out      := alu_out
     io.out.jump_flag    := jump_flag
 
-    //debug info
+    // debug info
     printf("-------------EX------------\n")
     printf(p"alu_out: 0x${Hexadecimal(alu_out)}\n")
     printf(p"jump_flg: $jump_flag\n")

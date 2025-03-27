@@ -2,20 +2,20 @@ package cpu
 
 import chisel3._
 import chisel3.util._
-import public.Consts._
-import public.Instructions._
+import cpu.Consts._
+import cpu.Instructions._
 
 class Core extends Module{
     val io = IO(new Bundle{
-        val instmem = Flipped(new InstMemPortIO())
-        val datamem = Flipped(new DataMemPortIO())
+        val instmem = Flipped(new InstMem_IO())
+        val datamem = Flipped(new DataMem_IO())
         val exit = Output(Bool())   //program end signal
     })
     
     //32x32bit general purpose register and a WORD_LEN-bit program counter
-    val reg_x = Mem(REGX_Num, UInt(WORD_LEN.W))
-    val reg_pc = RegInit(START_ADDR)
-    val reg_csr = Mem(CSR_Num, UInt(WORD_LEN.W))
+    val reg_x = Mem(REGX_NUM, UInt(REG_LEN.W))
+    val reg_pc = RegInit(START_PC)
+    val reg_csr = Mem(CSR_NUM, UInt(REG_LEN.W))
 
 
 
@@ -29,7 +29,7 @@ class Core extends Module{
     val alu_out   = Wire(UInt(WORD_LEN.W))
 
     //program counter update
-    val reg_pc_next_default = reg_pc + 4.U(WORD_LEN.W)
+    val reg_pc_next_default = reg_pc + 4.U(REG_LEN.W)
     val reg_pc_next = MuxCase(reg_pc_next_default, Seq(
         br_flag  -> br_target,
         jump_flag -> alu_out,

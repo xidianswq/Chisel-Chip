@@ -10,10 +10,10 @@ class Top extends Module{
     })
 
     val core = Module(new Core)
-    val instmem = Module(new Mem)
+    val memory = Module(new Memory)
 
-    core.io.instmem <> instmem.io.instmem
-    core.io.datamem <> instmem.io.datamem
+    core.io.instmem <> memory.io.instmem
+    core.io.datamem <> memory.io.datamem
     io.exit := core.io.exit
 }
 

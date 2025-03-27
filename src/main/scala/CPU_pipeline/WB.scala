@@ -2,8 +2,7 @@ package cpu_pipeline
 
 import chisel3._
 import chisel3.util._
-import public.Consts._
-import public.Instructions._
+import cpu_pipeline.Consts._
 
 /*
 type: IO Port
@@ -47,17 +46,17 @@ class WB extends Module{
         val out = new WB_IO()
     })
 
-    //input wire connection
+    // input wire connection
     val rd_wen  = io.in.mem_in.rd_wen
     val rd_addr = io.in.mem_in.rd_addr
     val rd_data = io.in.mem_in.rd_data
 
-    //output wire connection
+    // output wire connection
     io.out.rd_wen   := rd_wen
     io.out.rd_addr  := rd_addr
     io.out.rd_data  := rd_data
 
-    //debug info
+    // debug info
     printf("-------------WB------------\n")
     printf(p"rd_wen: $rd_wen\n")
     printf(p"rd_addr: $rd_addr\n")

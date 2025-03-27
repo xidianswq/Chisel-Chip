@@ -9,7 +9,7 @@
   },
   {
     "class":"firrtl.annotations.LoadMemoryAnnotation",
-    "target":"Top.Mem.mem",
+    "target":"Top.Memory.mem",
     "fileName":"src/main/resources/CPU/test.hex",
     "hexOrBinary":"h",
     "originalMemoryNameOpt":"mem"

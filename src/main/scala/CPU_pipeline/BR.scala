@@ -2,8 +2,7 @@ package cpu_pipeline
 
 import chisel3._
 import chisel3.util._
-import public.Consts._
-import public.Instructions._
+import cpu_pipeline.Consts._
 
 /* 
 type: IO Port
@@ -45,14 +44,14 @@ class BR extends Module{
         val out = new BR_IO()
     })
 
-    //input wire connection
+    // input wire connection
     val reg_pc      = io.in.if_in.reg_pc
     val op1_data    = io.in.id_in.op1_data
     val op2_data    = io.in.id_in.op2_data
     val imm_b_sext  = io.in.id_in.imm_b_sext
     val exe_fun     = io.in.id_in.exe_fun
 
-    //branch logic
+    // branch logic
     val br_target   = reg_pc + imm_b_sext
     val br_flag     = MuxCase(false.B, Seq(
         (exe_fun === BR_BEQ)  ->  (op1_data === op2_data),
@@ -63,11 +62,11 @@ class BR extends Module{
         (exe_fun === BR_BGEU) -> !(op1_data < op2_data)
     ))
 
-    //output wire connection
+    // output wire connection
     io.out.br_flag      := br_flag
     io.out.br_target    := br_target
 
-    //debug info
+    // debug info
     printf(p"branch_flg: $br_flag\n")
     printf(p"branch_target: 0x${Hexadecimal(br_target)}\n")
 
