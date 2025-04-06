@@ -5,10 +5,10 @@
 [info] loading settings for project chisel-chip-build-build from metals.sbt ...
 [info] loading project definition from C:\Users\SWQ2003\Desktop\CPU-code\Chisel-Chip\project\project
 [success] Generated .bloop\chisel-chip-build-build.json
-[success] Total time: 3 s, completed 2025-3-27 21:13:53
+[success] Total time: 2 s, completed 2025-3-28 11:14:54
 [info] loading settings for project chisel-chip-build from metals.sbt,plugins.sbt ...
 [info] loading project definition from C:\Users\SWQ2003\Desktop\CPU-code\Chisel-Chip\project
-[success] Total time: 2 s, completed 2025-3-27 21:13:55
+[success] Total time: 1 s, completed 2025-3-28 11:14:56
 [info] loading settings for project root from build.sbt ...
 [info] set current project to %NAME% (in build file:/C:/Users/SWQ2003/Desktop/CPU-code/Chisel-Chip/)
 [info] compiling 1 Scala source to C:\Users\SWQ2003\Desktop\CPU-code\Chisel-Chip\target\scala-2.12\classes ...
@@ -20607,13 +20607,13 @@ stall_flag:  0
 -------------IF------------
 reg_pc: 0x00000050
 inst: 0x00000093
-test Top Success: 0 tests passed in 793 cycles in 6.168802 seconds 128.55 Hz
+test Top Success: 0 tests passed in 793 cycles in 3.348010 seconds 236.86 Hz
 [info] RiscvTest:
 [info] cpu_pipeline_riscv_tests_riscv_tests
 [info] - should work
-[info] Run completed in 22 seconds, 886 milliseconds.
+[info] Run completed in 16 seconds, 420 milliseconds.
 [info] Total number of tests run: 1
 [info] Suites: completed 1, aborted 0
 [info] Tests: succeeded 1, failed 0, canceled 0, ignored 0, pending 0
 [info] All tests passed.
-[success] Total time: 29 s, completed 2025-3-27 21:14:24
+[success] Total time: 21 s, completed 2025-3-28 11:15:17

@@ -22,14 +22,14 @@ function arg_check(){
 
 function clean(){
     echo "[WARNNING] clean former results[Y/n]?"
-    read -n 1 -r
+    read -n 1 -r -t 5
     if [[ ! $REPLY =~ ^[Nn]$ ]]; then
         rm -rf $RESULT_DIR/$DIR_NAME/
     fi
 
     echo -e '\n'
     echo "[WARNNING] clean former riscv-tests files[y/N]?"
-    read -n 1 -r
+    read -n 1 -r -t 5
     if [[ $REPLY =~ ^[Yy]$ ]]; then
         rm -rf $SRC_DIR/riscv-tests/$DIR_NAME/
         return 1
@@ -61,7 +61,7 @@ function loop_test(){
 
     echo -e '\n'
     echo "[INFO] start $ISA test [Y/n]?"
-    read -n 1 -r
+    read -n 1 -r -t 5
     if [[ $REPLY =~ ^[Nn]$ ]]; then
         return 0
     fi
@@ -99,6 +99,7 @@ function main(){
     arg_check $@
     PACKAGE_NAME=$1
     DIR_NAME=$2
+    start_time=$(date +%s)
 
     clean
     if [ $? -eq 1 ]; then
@@ -108,7 +109,12 @@ function main(){
     loop_test UI_INSTS[@] $PACKAGE_NAME "ui" $DIR_NAME
     loop_test MI_INSTS[@] $PACKAGE_NAME "mi" $DIR_NAME
 
-    echo "[INFO] test finished, check results in $RESULT_DIR/$DIR_NAME/summary.txt"
+    end_time=$(date +%s)
+    echo -e "\n[INFO] test finished"
+    echo -e "\n[INFO] test finished\n" >> $RESULT_DIR/$DIR_NAME/summary.txt
+    echo "[INFO] time cost: $((end_time-start_time))s"
+    echo "[INFO] time cost: $((end_time-start_time))s" >> $RESULT_DIR/$DIR_NAME/summary.txt
+    echo "[INFO] check results in $RESULT_DIR/$DIR_NAME/summary.txt"
     read
 }
 

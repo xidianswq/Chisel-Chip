@@ -29,7 +29,11 @@
 [INFO] jalr 	 test succeed
 [INFO] lui 	 test succeed
 [INFO] auipc 	 test succeed
-[SUMMARY] 31/31 \t ui \t tests succeed
+[SUMMARY] 31/31 	 ui 	 tests succeed
 [INFO] csr 	 test succeed
 [INFO] scall 	 test succeed
-[SUMMARY] 2/2 \t mi \t tests succeed
+[SUMMARY] 2/2 	 mi 	 tests succeed
+
+[INFO] test finished
+
+[INFO] time cost: 1063s
