@@ -1210,6 +1210,53 @@ sbt sbtVersion
 
    
 
+---
+
+# 课程学习
+
+## [1]哈工大RISC-V SoC Verilog vivado
+
+![img](RISC-V_Pipeline_CPU_Design/wps1-1744605634880.jpg)![img](file:///C:\Users\SWQ2003\AppData\Local\Temp\ksohtml16564\wps2.jpg)![img](file:///C:\Users\SWQ2003\AppData\Local\Temp\ksohtml16564\wps3.jpg)
+
+1．SoC仿真
+
+2．取值译码单元（IF、ID）设计
+
+3．控制单元实现
+
+完整数据通路：
+
+![img](RISC-V_Pipeline_CPU_Design/wps4-1744605676551.jpg) 
+
+4．基于trace验证cpu方法
+
+5．总线、IO设计及上板验证
+
+6．流水线设计
+
+
+
+## [2]“一生一芯”
+
+### 一、 设备和输入输出 
+
+1. AM——抽象接口，针对MMIO（Memory-mapped I/O，统一编址）和PMIO（port-mapped I/O，独立编址）
+2. 常用外设——GPIO、串口、时钟、键盘、显卡
+3. 实现方法——总线协议+设备控制器
+
+二、总线
+
+1.  Decoupled创建简单握手连接
+2. 采用自定义定义函数进行处理器模式选择
+3. AXI4总线的原理、总线仲裁器（Arbiter）
+4. crossbar（Xbar），Xbar和Arbiter可合并成多进多出Xbar，也称Interconnect，总线桥等
+
+![1744609078943](RISC-V_Pipeline_CPU_Design/1744609078943.png)
+
+5. RISCV内存访问检查机制
+
+![1744610422444](RISC-V_Pipeline_CPU_Design/1744610422444.png)
+
 
 
 ---
@@ -2081,7 +2128,7 @@ uext(imm_z)将5位以上用0位拓展；先读后写入更新值
 
 ### 第七章 取指
 
-1. 快速取指
+1. #### 快速取指
 
    > 片外DDR存储器或FLASH存储器可能需要几十个存储周期的延迟，片上SRAM也可能要几个周期的延迟
 
@@ -2090,23 +2137,68 @@ uext(imm_z)将5位以上用0位拓展；先读后写入更新值
    - ITCM（Instruction Tightly Couple Memory）指令紧耦合存储器：**小容量**，离处理器核很近的专用存储器（通常SRAM），存放关键程序指令
    - I-Cache（Instruction Cache）指令缓存：“将容量巨大的外部存储器空间**动态映射**到容量有限的指令缓存中”，不确定性（缓存不命中【Cache Miss】则需从外部存储器重新存取数据）
    
-2. 非对齐指令取指方法
+2. #### 非对齐指令取指方法
 
    - 对于普通指令：使用剩余缓存（Leftover Buffer），本次读取的32位指令只用到了16位，剩余16位存缓存与下一次的前16位拼接
    - 分支跳转指令：多体（Bank）化SRAM存储指令，奇偶交错存储指令，一周期读两块SRAM拼接
 
-3. 分支指令的处理
+3. #### 分支指令的处理
+
+   分支指令分为：无条件直接/间接跳转（Unconditional Direct/Indirect Jump/Branch【jar/jalr】）、有条件直接/间接跳转（Conditional ~）
 
    分支预测技术（Branch Prediction）：预测取指（Speculative Fetch，预测“方向”和地址）和预测执行（Speculative Execution，对预取指令的执行）
 
-   “方向”预测：
+   ##### “方向”预测
 
    - 静态预测——不依赖曾经执行过的指令信息和历史信息，只依靠指令本身的信息进行预测。
+
      - 总是预测分支不跳转
      - BTFN预测（Back Taken，Forward Not Taken，向前预测不跳转，向后预测跳转）
+
    - 动态预测——依赖曾经执行过的指令的历史信息和分支跳转指令本身信息进行预测。
-     - n比特饱和计数器（n-bit saturating counter）：强不需要跳转（strongly not taken）、弱不需要跳转（weekly ~）、弱需要跳转（~ taken）、强需要跳转四种状态。
-   - 预测错误的措施——流水线冲刷（Flush Pipeline）；分支延迟槽（Delay Slot，不使用Bubble而是在跳转指令后紧跟必须执行的指令，进而不浪费性能【早期MIPS架构】）
+
+     - 两比特饱和计数器（n-bit saturating counter）：强不需要跳转（strongly not taken）、弱不需要跳转（weekly ~）、弱需要跳转（~ taken）、强需要跳转四种状态。
+
+       ![2-bit saturating counter](RISC-V_Pipeline_CPU_Design/Branch_prediction_2bit_saturating_counter-dia.svg.png) 
+
+     - 预测器表格（Predictor Table）：每一条分支指令分配一个专有的饱和计数器，**表格组织方式**（大小）和**索引方式**（别名重合问题【Aliasing，有限表格对应大量分支指令必定产生索引重合】）
+
+     - 一级预测器：直接使用预测器表格，并使用PC的一部分进行索引其对应的两比特饱和计数器，使用其计数器进行预测，最终跳转的结果作为计数器更新的输入。但是索引机制过于简单，且未考虑分支**指令的上下文执行历史**，精度不如二级预测器。
+
+     - 两级预测器（相关预测器【Correlation-Based Branch Predictor】）：通过PC索引该分支跳转指令的跳转历史，然后使用n-bit的**分支跳转历史**（Branch History）作为索引，将2^n个两比特饱和计数器组织成PHT（Pattern History Table），考虑了分支指令的历史跳转信息；不是将PC作为索引，而是n-bit的历史，进而构建起跳转模式。
+
+        <img src="RISC-V_Pipeline_CPU_Design/Two-level_branch_prediction.svg.png" alt="Two-level adaptive branch predictor" style="zoom:33%;" /> [^18]
+
+       > 1.  ["New Algorithm Improves Branch Prediction: 3/27/95"](https://www.cs.cmu.edu/afs/cs/academic/class/15213-f00/docs/mpr-branchpredict.pdf) (PDF). *[Microprocessor Report](https://en.wikipedia.org/wiki/Microprocessor_Report)*. **9** (4). March 27, 1995. [Archived](https://web.archive.org/web/20150310190847/https://www.cs.cmu.edu/afs/cs/academic/class/15213-f00/docs/mpr-branchpredict.pdf) (PDF) from the original on 2015-03-10. Retrieved 2016-02-02.
+
+     - 局部分支历史（Local History）、局部预测器（Local Branch Predictor）和全局历史（Global ~，所有分支指令的跳转历史）、全局预测器——全局分支预测算法GShare和Gselect（索引方式不同）
+
+   ##### “地址”预测
+
+   - BTB（Branch Target Buffer，分支目标缓存）：记录分支指令PC值及其跳转地址
+   - RAS（Return Address Stack，返回地址堆栈）：调用函数时压栈返回地址（PC+4），返回时直接出栈作为预测地址。
+   - Indirect BTB：“存储较多历史目标地址，通过高级索引方式进行匹配，可以说是结合了BTB和动态两级预测器的计数”[^6]
+
+   ##### 预测错误的措施
+
+   - 流水线冲刷（Flush Pipeline）
+   - 分支延迟槽（Delay Slot，不使用Bubble而是在跳转指令后紧跟必须执行的指令，进而不浪费性能【早期MIPS架构】）
+
+4. #### 指令长度识别码[^13]
+
+   ![RISC-V_instruction_length_encoding](RISC-V_Pipeline_CPU_Design/RISC-V_instruction_length_encoding.png)
+
+   （RISC-V架构中的16位压缩指令集的指令和64位指令集可对应到32位的等效指令）
+
+5. #### 提供明确的RAS依据
+
+   RISC-V架构中明确规定，如果使用jal指令且目标寄存器值rd等于x1或者x5，则需要进行RAS压栈；如果使用jalr指令，则按照使用的寄存器值（rs1和rd）的不同，明确规定了相应的RAS压栈或出栈行为。
+
+   ![Return-address stack prediction hints encoded in register speciers used in the instruction. In the above, link is true when the register is either x1 or x5.](RISC-V_Pipeline_CPU_Design/Return-address stack prediction hints encoded in register speciers used in the instruction.png)[^13]
+
+### 第八章 执行
+
+1. 
 
 
 
@@ -2551,7 +2643,13 @@ uext(imm_z)将5位以上用0位拓展；先读后写入更新值
 
 ## [2]XiangShan
 
- ![香山架构图](RISC-V_Pipeline_CPU_Design/nanhu.png) 
+![香山架构图](RISC-V_Pipeline_CPU_Design/nanhu.png) 
+
+## [3]蜂鸟E203
+
+1. ### 取指实现
+
+   IFU（包括simple-BPU【简单分支预测，针对Bxx和jar、jalr指令】、Mini-Decode【微译码，针对分支预测通过译码】）和ITCM组成；IFU通过标准接口访问ITCM和BIU（Bus Interface Unit，总线单元接口）
 
 
 
@@ -3948,3 +4046,4 @@ WB阶段
 [^16]:RISC-V Software Source Contributors. 2023. "riscv-tests: RISC-V Architectural Test Suite." GitHub repository. Last modified September 12, 2023. https://github.com/riscv-software-src/riscv-tests.
 
 [^17]:李云飞,陈洪相.处理器流水线冒险及其解决策略[J].信息技术与信息化,2018,(11):35-38.
+[^18]:Gwennap L. New algorithm improves branch prediction[J]. Microprocessor Report, 1995, 9(4): 17-21.

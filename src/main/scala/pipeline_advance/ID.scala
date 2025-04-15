@@ -1,9 +1,9 @@
-package cpu_pipeline
+package pipeline_advance
 
 import chisel3._
 import chisel3.util._
-import cpu_pipeline.Consts._
-import cpu_pipeline.Instructions._
+import pipeline_advance.Consts._
+import pipeline_advance.Instructions._
 
 /*
 type: IO Port

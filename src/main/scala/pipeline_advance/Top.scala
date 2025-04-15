@@ -1,9 +1,9 @@
-package cpu_pipeline
+package pipeline_advance
 
 import chisel3._
 import chisel3.util._
-import cpu_pipeline.Consts._
-import cpu_pipeline.Instructions._
+import pipeline_advance.Consts._
+import pipeline_advance.Instructions._
 
 
 class Top extends Module{
@@ -16,9 +16,7 @@ class Top extends Module{
     val pc      = Module(new PC)
     val id      = Module(new ID)
     val stall   = Module(new Stall)
-    val alu     = Module(new ALU)
-    val br      = Module(new BR)
-    val csr     = Module(new CSR)
+    val ex      = Module(new EX)
     val mem     = Module(new MEM)
     val wb      = Module(new WB)
 
@@ -34,9 +32,7 @@ class Top extends Module{
 
     // connect modules and pipeline registers
     pc.io.in.stall_in   <> stall.io.out        // no pipeline register to pc
-    pc.io.in.ex_in      <> alu.io.out
-    pc.io.in.br_in      <> br.io.out
-    pc.io.in.csr_in     <> csr.io.out           
+    pc.io.in.ex_in      <> ex.io.out    
     pc.io.instmem       <> memory.io.instmem
 
     stall.io.in.if_in   <> if_io_reg.io.out     // data hazard stall flag
@@ -52,26 +48,17 @@ class Top extends Module{
     id.io.in.wb_in      <> wb.io.out             // no pipeline register
     id.io.in.mem_in     <> mem.io.out            // direct connect
     
-    alu.io.in.id_in     <> id_io_reg.io.out
+    ex.io.in.id_in     <> id_io_reg.io.out
         id_io_reg.io.in <> id.io.out
-    br.io.in.if_in      <> if_io_reg_n.io.out
+    ex.io.in.if_in      <> if_io_reg_n.io.out
         if_io_reg_n.io.in   <> if_io_reg.io.out
-        if_io_reg.io.in     <> pc.io.out
-    br.io.in.id_in      <> id_io_reg.io.out
-        id_io_reg.io.in     <> id.io.out
-    csr.io.in.id_in     <> id_io_reg.io.out
-        id_io_reg.io.in     <> id.io.out
 
     mem.io.in.if_in     <> if_io_reg_nn.io.out
         if_io_reg_nn.io.in  <> if_io_reg_n.io.out
-        if_io_reg_n.io.in   <> if_io_reg.io.out
-        if_io_reg.io.in     <> pc.io.out
     mem.io.in.id_in     <> id_io_reg_n.io.out
         id_io_reg_n.io.in   <> id_io_reg.io.out
-        id_io_reg.io.in     <> id.io.out
     mem.io.in.ex_in     <> ex_io_reg.io.out
-        ex_io_reg.io.in.alu_io  <> alu.io.out
-        ex_io_reg.io.in.csr_io  <> csr.io.out
+        ex_io_reg.io.in <> ex.io.out
     mem.io.datamem      <> memory.io.datamem
     
     wb.io.in.mem_in     <> mem_io_reg.io.out

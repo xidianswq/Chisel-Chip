@@ -1,9 +1,9 @@
-package cpu_pipeline
+package pipeline_advance
 
 import chisel3._
 import chisel3.util._
-import cpu_pipeline.Consts._
-import cpu_pipeline.Instructions._
+import pipeline_advance.Consts._
+import pipeline_advance.Instructions._
 
 /*
 type: IO Port
@@ -81,9 +81,7 @@ class PC extends Module{
     val io = IO(new Bundle{
         val in = new Bundle{
             val stall_in    = Flipped(new Stall_IO())
-            val ex_in       = Flipped(new ALU_IO())
-            val br_in       = Flipped(new BR_IO())
-            val csr_in      = Flipped(new CSR_IO())
+            val ex_in       = Flipped(new EX_IO())
         }
         val out     = new PC_IO()
         val instmem = Flipped(new InstMem_IO())
@@ -92,11 +90,11 @@ class PC extends Module{
     // input wire connection
     val inst        = io.instmem.inst
     val stall_flag  = io.in.stall_in.stall_flag
-    val br_flag     = io.in.br_in.br_flag
-    val br_target   = io.in.br_in.br_target
-    val jump_flag   = io.in.ex_in.jump_flag
-    val alu_out     = io.in.ex_in.alu_out
-    val trap_vector = io.in.csr_in.trap_vector
+    val br_flag     = io.in.ex_in.br_io.br_flag
+    val br_target   = io.in.ex_in.br_io.br_target
+    val jump_flag   = io.in.ex_in.alu_io.jump_flag
+    val alu_out     = io.in.ex_in.alu_io.alu_out
+    val trap_vector = io.in.ex_in.csr_io.trap_vector
 
     // program counter update
     val reg_pc              = RegInit(START_PC)

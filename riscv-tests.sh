@@ -22,14 +22,14 @@ function arg_check(){
 
 function clean(){
     echo "[WARNNING] clean former results[Y/n]?"
-    read -n 1 -r -t 5
+    read -n 1 -r -t 10
     if [[ ! $REPLY =~ ^[Nn]$ ]]; then
         rm -rf $RESULT_DIR/$DIR_NAME/
     fi
 
     echo -e '\n'
     echo "[WARNNING] clean former riscv-tests files[y/N]?"
-    read -n 1 -r -t 5
+    read -n 1 -r -t 10
     if [[ $REPLY =~ ^[Yy]$ ]]; then
         rm -rf $SRC_DIR/riscv-tests/$DIR_NAME/
         return 1
@@ -61,7 +61,7 @@ function loop_test(){
 
     echo -e '\n'
     echo "[INFO] start $ISA test [Y/n]?"
-    read -n 1 -r -t 5
+    read -n 1 -r -t 10
     if [[ $REPLY =~ ^[Nn]$ ]]; then
         return 0
     fi
@@ -81,16 +81,16 @@ function loop_test(){
         sed -e "s/{package}/$PACKAGE_NAME/" -e "s/{isa}/$ISA/" -e "s/{inst}/$INST/" $WORK_DIR/riscv-tests/Memory_temp.scala > $SRC_DIR/riscv-tests/$DIR_NAME/Memory.scala
         sbt "testOnly $PACKAGE_NAME.RiscvTest" > $RESULT_DIR/$DIR_NAME/$INST.txt
         if [ $? -ne 0 ]; then
-            echo -e "[ERROR] $INST \t test failed"
-            echo -e "[ERROR] $INST \t test failed" >> $RESULT_DIR/$DIR_NAME/summary.txt
+            echo -e "[ERROR] $INST \t test failed" | tee -a $RESULT_DIR/$DIR_NAME/summary.txt
+             # echo -e "[ERROR] $INST \t test failed" >> $RESULT_DIR/$DIR_NAME/summary.txt
         else
             succeed=$((succeed+1))
-            echo -e "[INFO] $INST \t test succeed"
-            echo -e "[INFO] $INST \t test succeed" >> $RESULT_DIR/$DIR_NAME/summary.txt
+            echo -e "[INFO] $INST \t test succeed" | tee -a $RESULT_DIR/$DIR_NAME/summary.txt
+            # echo -e "[INFO] $INST \t test succeed" >> $RESULT_DIR/$DIR_NAME/summary.txt
         fi
     done
-    echo -e "[SUMMARY] $succeed/$isa_num \t $ISA \t tests succeed"
-    echo -e "[SUMMARY] $succeed/$isa_num \t $ISA \t tests succeed" >> $RESULT_DIR/$DIR_NAME/summary.txt
+    echo -e "[SUMMARY] $succeed/$isa_num \t $ISA \t tests succeed" | tee -a $RESULT_DIR/$DIR_NAME/summary.txt
+    # echo -e "[SUMMARY] $succeed/$isa_num \t $ISA \t tests succeed" >> $RESULT_DIR/$DIR_NAME/summary.txt
 
     return 1
 }
@@ -110,10 +110,10 @@ function main(){
     loop_test MI_INSTS[@] $PACKAGE_NAME "mi" $DIR_NAME
 
     end_time=$(date +%s)
-    echo -e "\n[INFO] test finished"
-    echo -e "\n[INFO] test finished\n" >> $RESULT_DIR/$DIR_NAME/summary.txt
-    echo "[INFO] time cost: $((end_time-start_time))s"
-    echo "[INFO] time cost: $((end_time-start_time))s" >> $RESULT_DIR/$DIR_NAME/summary.txt
+    echo -e "\n[INFO] test finished" | tee -a $RESULT_DIR/$DIR_NAME/summary.txt
+    # echo -e "\n[INFO] test finished\n" >> $RESULT_DIR/$DIR_NAME/summary.txt
+    echo "[INFO] time cost: $((end_time-start_time))s" | tee -a $RESULT_DIR/$DIR_NAME/summary.txt
+    # echo "[INFO] time cost: $((end_time-start_time))s" >> $RESULT_DIR/$DIR_NAME/summary.txt
     echo "[INFO] check results in $RESULT_DIR/$DIR_NAME/summary.txt"
     read
 }

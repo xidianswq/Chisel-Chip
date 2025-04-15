@@ -1,9 +1,9 @@
-package cpu_pipeline
+package pipeline_advance
 
 import chisel3._
 import chisel3.util._
 import chisel3.util.experimental.loadMemoryFromFile
-import cpu_pipeline.Consts._
+import pipeline_advance.Consts._
 
 /*
 type: IO Port
