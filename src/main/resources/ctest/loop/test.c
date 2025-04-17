@@ -3,12 +3,9 @@ int main()
 {
         int i = 0;
         int j = 0;
-        int k = 0;
         for(i=0;i<100;i++){
-        	for(j=100;j>0;j--){
-        		for(k=0;k<100;k++){
-        			if(k>=i+j)break;
-        		}
+        	for(j=100-i;j>0;j--){
+			if(j>i)break;
         	}
         }
         asm volatile("unimp");
