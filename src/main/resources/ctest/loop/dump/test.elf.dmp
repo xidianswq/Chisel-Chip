@@ -16,7 +16,7 @@ Disassembly of section .text:
   20:	01c0006f          	j	3c <main+0x3c>
   24:	fe842703          	lw	a4,-24(s0)
   28:	fec42783          	lw	a5,-20(s0)
-  2c:	02e7c063          	blt	a5,a4,4c <main+0x4c>
+  2c:	02f75063          	bge	a4,a5,4c <main+0x4c>
   30:	fe842783          	lw	a5,-24(s0)
   34:	00278793          	addi	a5,a5,2
   38:	fef42423          	sw	a5,-24(s0)
