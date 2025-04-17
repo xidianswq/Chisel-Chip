@@ -1,0 +1,4293 @@
+[info] welcome to sbt 1.9.7 (Oracle Corporation Java 1.8.0_301)
+[info] loading global plugins from C:\Users\SWQ2003\.sbt\1.0\plugins
+[info] loading settings for project chisel-chip-build-build-build from metals.sbt ...
+[info] loading project definition from D:\improve&work\work\大四上\毕设\CPU-code\Chisel-Chip\project\project\project
+[info] loading settings for project chisel-chip-build-build from metals.sbt ...
+[info] loading project definition from D:\improve&work\work\大四上\毕设\CPU-code\Chisel-Chip\project\project
+[success] Generated .bloop\chisel-chip-build-build.json
+[success] Total time: 3 s, completed 2025-4-17 21:45:57
+[info] loading settings for project chisel-chip-build from metals.sbt,plugins.sbt ...
+[info] loading project definition from D:\improve&work\work\大四上\毕设\CPU-code\Chisel-Chip\project
+[success] Total time: 1 s, completed 2025-4-17 21:45:59
+[info] loading settings for project root from build.sbt ...
+[info] set current project to %NAME% (in build file:/D:/improve&work/work/大四上/毕设/CPU-code/Chisel-Chip/)
+[info] compiling 1 Scala source to D:\improve&work\work\大四上\毕设\CPU-code\Chisel-Chip\target\scala-2.12\classes ...
+[info] done compiling
+Elaborating design...
+Done elaborating.
+-------------WB------------
+rd_wen:  0
+rd_addr:   0
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x00000000
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000000
+inst: 0x0540006f
+-------------WB------------
+rd_wen:  0
+rd_addr:   0
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x00000000
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:  20
+op1_data: 0x00000000
+op2_data: 0x00000054
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000004
+inst: 0x34202f73
+-------------WB------------
+rd_wen:  0
+rd_addr:   0
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x00000040
+csr_addr  = 0x00000054
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000054
+jump_flg:  1
+------------Stall----------
+pred_miss_flag:  1
+pred_flag:  1
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000008
+inst: 0x00800f93
+-------------WB------------
+rd_wen:  0
+rd_addr:   0
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x00000004
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000054
+inst: 0x00000093
+-------------WB------------
+rd_wen:  1
+rd_addr:   0
+rd_data: 0x00000004
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x00000008
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000058
+inst: 0x00000113
+-------------WB------------
+rd_wen:  1
+rd_addr:   0
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x00000854
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x0000005c
+inst: 0x00000193
+-------------WB------------
+rd_wen:  1
+rd_addr:   0
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x0000005a
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000060
+inst: 0x00000213
+-------------WB------------
+rd_wen:  1
+rd_addr:   1
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x0000085e
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000064
+inst: 0x00000293
+-------------WB------------
+rd_wen:  1
+rd_addr:   2
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x00000064
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000068
+inst: 0x00000313
+-------------WB------------
+rd_wen:  1
+rd_addr:   3
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x00000868
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x0000006c
+inst: 0x00000393
+-------------WB------------
+rd_wen:  1
+rd_addr:   4
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x0000006e
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000070
+inst: 0x00000413
+-------------WB------------
+rd_wen:  1
+rd_addr:   5
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x00000872
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000074
+inst: 0x00000493
+-------------WB------------
+rd_wen:  1
+rd_addr:   6
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x00000078
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000078
+inst: 0x00000513
+-------------WB------------
+rd_wen:  1
+rd_addr:   7
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x0000087c
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x0000007c
+inst: 0x00000593
+-------------WB------------
+rd_wen:  1
+rd_addr:   8
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x00000082
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000080
+inst: 0x00000613
+-------------WB------------
+rd_wen:  1
+rd_addr:   9
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x00000886
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000084
+inst: 0x00000693
+-------------WB------------
+rd_wen:  1
+rd_addr:  10
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x0000008c
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000088
+inst: 0x00000713
+-------------WB------------
+rd_wen:  1
+rd_addr:  11
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x00000890
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x0000008c
+inst: 0x00000793
+-------------WB------------
+rd_wen:  1
+rd_addr:  12
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x00000096
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000090
+inst: 0x00000813
+-------------WB------------
+rd_wen:  1
+rd_addr:  13
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x0000089a
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000094
+inst: 0x00000893
+-------------WB------------
+rd_wen:  1
+rd_addr:  14
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x000000a0
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000098
+inst: 0x00000913
+-------------WB------------
+rd_wen:  1
+rd_addr:  15
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x000008a4
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x0000009c
+inst: 0x00000993
+-------------WB------------
+rd_wen:  1
+rd_addr:  16
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x000000aa
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x000000a0
+inst: 0x00000a13
+-------------WB------------
+rd_wen:  1
+rd_addr:  17
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x000008ae
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x000000a4
+inst: 0x00000a93
+-------------WB------------
+rd_wen:  1
+rd_addr:  18
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x000000b4
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x000000a8
+inst: 0x00000b13
+-------------WB------------
+rd_wen:  1
+rd_addr:  19
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x000008b8
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x000000ac
+inst: 0x00000b93
+-------------WB------------
+rd_wen:  1
+rd_addr:  20
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x000000be
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x000000b0
+inst: 0x00000c13
+-------------WB------------
+rd_wen:  1
+rd_addr:  21
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x000008c2
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x000000b4
+inst: 0x00000c93
+-------------WB------------
+rd_wen:  1
+rd_addr:  22
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x000000c8
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x000000b8
+inst: 0x00000d13
+-------------WB------------
+rd_wen:  1
+rd_addr:  23
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x000008cc
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x000000bc
+inst: 0x00000d93
+-------------WB------------
+rd_wen:  1
+rd_addr:  24
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x000000d2
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x000000c0
+inst: 0x00000e13
+-------------WB------------
+rd_wen:  1
+rd_addr:  25
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x000008d6
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x000000c4
+inst: 0x00000e93
+-------------WB------------
+rd_wen:  1
+rd_addr:  26
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x000000dc
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x000000c8
+inst: 0x00000f13
+-------------WB------------
+rd_wen:  1
+rd_addr:  27
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x000008e0
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x000000cc
+inst: 0x00000f93
+-------------WB------------
+rd_wen:  1
+rd_addr:  28
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x000000e6
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x000000d0
+inst: 0xf1402573
+-------------WB------------
+rd_wen:  1
+rd_addr:  29
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x000008ea
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:  20
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x000000d4
+inst: 0x00051063
+-------------WB------------
+rd_wen:  1
+rd_addr:  30
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0xfffff7da
+csr_addr  = 0x00000f14
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  1
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x000000d8
+inst: 0x00000297
+-------------WB------------
+rd_wen:  1
+rd_addr:  31
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x000000d4
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:  10
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x000000d8
+inst: 0x00000297
+-------------WB------------
+rd_wen:  1
+rd_addr:  10
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x000000d4
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x000000d8
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x000000dc
+inst: 0x01028293
+-------------WB------------
+rd_wen:  1
+rd_addr:   0
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x000008dc
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x000000d8
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  1
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x000000e0
+inst: 0x30529073
+-------------WB------------
+rd_wen:  0
+rd_addr:   0
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x000000dc
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   5
+rs2_addr:  16
+op1_data: 0x000000d8
+op2_data: 0x00000010
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x000000e0
+inst: 0x30529073
+-------------WB------------
+rd_wen:  1
+rd_addr:   5
+rd_data: 0x000000d8
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x000008e0
+csr_addr  = 0x00000010
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x000000e8
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  1
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x000000e4
+inst: 0x74445073
+-------------WB------------
+rd_wen:  1
+rd_addr:   0
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x000000e0
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   5
+rs2_addr:   5
+op1_data: 0x000000e8
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x000000e4
+inst: 0x74445073
+-------------WB------------
+rd_wen:  1
+rd_addr:   5
+rd_data: 0x000000e8
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x000003e0
+csr_addr  = 0x00000305
+csr_rdata = 0x00000000
+csr_wdata = 0x000000e8
+-------------EX------------
+alu_out: 0x000000e8
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   8
+rs2_addr:   4
+op1_data: 0x00000008
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x000000e8
+inst: 0x00000297
+-------------WB------------
+rd_wen:  1
+rd_addr:   0
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x000000e8
+branch_flg:  0
+branch_target: 0x00000824
+csr_addr  = 0x00000744
+csr_rdata = 0x00000000
+csr_wdata = 0x00000008
+-------------EX------------
+alu_out: 0x00000008
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x000000e8
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x000000ec
+inst: 0x01028293
+-------------WB------------
+rd_wen:  1
+rd_addr:   0
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x000008ec
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x000000e8
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  1
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x000000f0
+inst: 0x30529073
+-------------WB------------
+rd_wen:  1
+rd_addr:   0
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x000000ec
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   5
+rs2_addr:  16
+op1_data: 0x000000e8
+op2_data: 0x00000010
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x000000f0
+inst: 0x30529073
+-------------WB------------
+rd_wen:  1
+rd_addr:   5
+rd_data: 0x000000e8
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x000008f0
+csr_addr  = 0x00000010
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x000000f8
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  1
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x000000f4
+inst: 0x18005073
+-------------WB------------
+rd_wen:  1
+rd_addr:   0
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x000000f0
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   5
+rs2_addr:   5
+op1_data: 0x000000f8
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x000000f4
+inst: 0x18005073
+-------------WB------------
+rd_wen:  1
+rd_addr:   5
+rd_data: 0x000000f8
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x000003f0
+csr_addr  = 0x00000305
+csr_rdata = 0x000000e8
+csr_wdata = 0x000000f8
+-------------EX------------
+alu_out: 0x000000f8
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x000000f8
+inst: 0x00000297
+-------------WB------------
+rd_wen:  1
+rd_addr:   0
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x000000f8
+branch_flg:  0
+branch_target: 0x00000274
+csr_addr  = 0x00000180
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x000000f8
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x000000fc
+inst: 0x02028293
+-------------WB------------
+rd_wen:  1
+rd_addr:   0
+rd_data: 0x000000e8
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x000008fc
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x000000f8
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  1
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000100
+inst: 0x30529073
+-------------WB------------
+rd_wen:  1
+rd_addr:   0
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x000000fc
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   5
+rs2_addr:   0
+op1_data: 0x000000f8
+op2_data: 0x00000020
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000100
+inst: 0x30529073
+-------------WB------------
+rd_wen:  1
+rd_addr:   5
+rd_data: 0x000000f8
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x00000920
+csr_addr  = 0x00000020
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000118
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  1
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000104
+inst: 0x800002b7
+-------------WB------------
+rd_wen:  1
+rd_addr:   0
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x00000100
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   5
+rs2_addr:   5
+op1_data: 0x00000118
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000104
+inst: 0x800002b7
+-------------WB------------
+rd_wen:  1
+rd_addr:   5
+rd_data: 0x00000118
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x00000400
+csr_addr  = 0x00000305
+csr_rdata = 0x000000f8
+csr_wdata = 0x00000118
+-------------EX------------
+alu_out: 0x00000118
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x80000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000108
+inst: 0xfff28293
+-------------WB------------
+rd_wen:  1
+rd_addr:   0
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000118
+branch_flg:  0
+branch_target: 0xfffff908
+csr_addr  = 0x00000800
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x80000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  1
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x0000010c
+inst: 0x3b029073
+-------------WB------------
+rd_wen:  1
+rd_addr:   0
+rd_data: 0x000000f8
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x00000108
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   5
+rs2_addr:  31
+op1_data: 0x80000000
+op2_data: 0xffffffff
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x0000010c
+inst: 0x3b029073
+-------------WB------------
+rd_wen:  1
+rd_addr:   5
+rd_data: 0x80000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x000000ec
+csr_addr  = 0x00000fff
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x7fffffff
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  1
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000110
+inst: 0x01f00293
+-------------WB------------
+rd_wen:  1
+rd_addr:   0
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x0000010c
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   5
+rs2_addr:  16
+op1_data: 0x7fffffff
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000110
+inst: 0x01f00293
+-------------WB------------
+rd_wen:  1
+rd_addr:   5
+rd_data: 0x7fffffff
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x000004ac
+csr_addr  = 0x000003b0
+csr_rdata = 0x00000000
+csr_wdata = 0x7fffffff
+-------------EX------------
+alu_out: 0x7fffffff
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:  31
+op1_data: 0x00000000
+op2_data: 0x0000001f
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000114
+inst: 0x3a029073
+-------------WB------------
+rd_wen:  1
+rd_addr:   0
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x00000914
+csr_addr  = 0x0000001f
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x0000001f
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  1
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000118
+inst: 0x30405073
+-------------WB------------
+rd_wen:  1
+rd_addr:   0
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x00000114
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   5
+rs2_addr:   0
+op1_data: 0x0000001f
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000118
+inst: 0x30405073
+-------------WB------------
+rd_wen:  1
+rd_addr:   5
+rd_data: 0x0000001f
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x000004b4
+csr_addr  = 0x000003a0
+csr_rdata = 0x00000000
+csr_wdata = 0x0000001f
+-------------EX------------
+alu_out: 0x0000001f
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   4
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x0000011c
+inst: 0x00000297
+-------------WB------------
+rd_wen:  1
+rd_addr:   0
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x00000418
+csr_addr  = 0x00000304
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x0000011c
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000120
+inst: 0x01428293
+-------------WB------------
+rd_wen:  1
+rd_addr:   0
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x00000920
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x0000011c
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  1
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000124
+inst: 0x30529073
+-------------WB------------
+rd_wen:  1
+rd_addr:   0
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x00000120
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   5
+rs2_addr:  20
+op1_data: 0x0000011c
+op2_data: 0x00000014
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000124
+inst: 0x30529073
+-------------WB------------
+rd_wen:  1
+rd_addr:   5
+rd_data: 0x0000011c
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x00000924
+csr_addr  = 0x00000014
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000130
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  1
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000128
+inst: 0x30205073
+-------------WB------------
+rd_wen:  1
+rd_addr:   0
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x00000124
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   5
+rs2_addr:   5
+op1_data: 0x00000130
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000128
+inst: 0x30205073
+-------------WB------------
+rd_wen:  1
+rd_addr:   5
+rd_data: 0x00000130
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x00000424
+csr_addr  = 0x00000305
+csr_rdata = 0x00000118
+csr_wdata = 0x00000130
+-------------EX------------
+alu_out: 0x00000130
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   2
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x0000012c
+inst: 0x30305073
+-------------WB------------
+rd_wen:  1
+rd_addr:   0
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000130
+branch_flg:  0
+branch_target: 0x00000428
+csr_addr  = 0x00000302
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   3
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000130
+inst: 0x00000193
+-------------WB------------
+rd_wen:  1
+rd_addr:   0
+rd_data: 0x00000118
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x0000042c
+csr_addr  = 0x00000303
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000134
+inst: 0x00000297
+-------------WB------------
+rd_wen:  1
+rd_addr:   0
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x00000932
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000134
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000138
+inst: 0xed028293
+-------------WB------------
+rd_wen:  1
+rd_addr:   0
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x00000938
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000134
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  1
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x0000013c
+inst: 0x30529073
+-------------WB------------
+rd_wen:  1
+rd_addr:   3
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x00000138
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   5
+rs2_addr:  16
+op1_data: 0x00000134
+op2_data: 0xfffffed0
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x0000013c
+inst: 0x30529073
+-------------WB------------
+rd_wen:  1
+rd_addr:   5
+rd_data: 0x00000134
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0xfffffffc
+csr_addr  = 0x00000ed0
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000004
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  1
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000140
+inst: 0x00100513
+-------------WB------------
+rd_wen:  1
+rd_addr:   0
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x0000013c
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   5
+rs2_addr:   5
+op1_data: 0x00000004
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000140
+inst: 0x00100513
+-------------WB------------
+rd_wen:  1
+rd_addr:   5
+rd_data: 0x00000004
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x0000043c
+csr_addr  = 0x00000305
+csr_rdata = 0x00000130
+csr_wdata = 0x00000004
+-------------EX------------
+alu_out: 0x00000004
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   1
+op1_data: 0x00000000
+op2_data: 0x00000001
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000144
+inst: 0x01f51513
+-------------WB------------
+rd_wen:  1
+rd_addr:   0
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000004
+branch_flg:  0
+branch_target: 0x0000014a
+csr_addr  = 0x00000001
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000001
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  1
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000148
+inst: 0x00054c63
+-------------WB------------
+rd_wen:  1
+rd_addr:   0
+rd_data: 0x00000130
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x00000144
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:  10
+rs2_addr:  31
+op1_data: 0x00000001
+op2_data: 0x0000001f
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000148
+inst: 0x00054c63
+-------------WB------------
+rd_wen:  1
+rd_addr:  10
+rd_data: 0x00000001
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x0000014e
+csr_addr  = 0x0000001f
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x80000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  1
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x0000014c
+inst: 0x0ff0000f
+-------------WB------------
+rd_wen:  1
+rd_addr:   0
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x00000148
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:  10
+rs2_addr:   0
+op1_data: 0x80000000
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x0000014c
+inst: 0x0ff0000f
+-------------WB------------
+rd_wen:  1
+rd_addr:  10
+rd_data: 0x80000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  1
+branch_target: 0x00000160
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  1
+pred_flag:  1
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000150
+inst: 0x00100193
+-------------WB------------
+rd_wen:  1
+rd_addr:   0
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x0000014c
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000160
+inst: 0x00000293
+-------------WB------------
+rd_wen:  0
+rd_addr:  24
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x00000150
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000164
+inst: 0x00028a63
+-------------WB------------
+rd_wen:  1
+rd_addr:   0
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x00000964
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  1
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000168
+inst: 0x10529073
+-------------WB------------
+rd_wen:  1
+rd_addr:   0
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x00000164
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   5
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000168
+inst: 0x10529073
+-------------WB------------
+rd_wen:  1
+rd_addr:   5
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  1
+branch_target: 0x00000178
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  1
+pred_flag:  1
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x0000016c
+inst: 0x0000b2b7
+-------------WB------------
+rd_wen:  1
+rd_addr:   0
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x00000168
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000178
+inst: 0x30005073
+-------------WB------------
+rd_wen:  0
+rd_addr:  20
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x0000016c
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x0000017c
+inst: 0x00002537
+-------------WB------------
+rd_wen:  1
+rd_addr:   0
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x00000478
+csr_addr  = 0x00000300
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00002000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000180
+inst: 0x80050513
+-------------WB------------
+rd_wen:  1
+rd_addr:   0
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x00000186
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00002000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  1
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000184
+inst: 0x30052073
+-------------WB------------
+rd_wen:  1
+rd_addr:   0
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x00000180
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:  10
+rs2_addr:   0
+op1_data: 0x00002000
+op2_data: 0xfffff800
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000184
+inst: 0x30052073
+-------------WB------------
+rd_wen:  1
+rd_addr:  10
+rd_data: 0x00002000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0xfffff18a
+csr_addr  = 0x00000800
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00001800
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  1
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000188
+inst: 0x00000297
+-------------WB------------
+rd_wen:  1
+rd_addr:   0
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x00000184
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:  10
+rs2_addr:   0
+op1_data: 0x00001800
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000188
+inst: 0x00000297
+-------------WB------------
+rd_wen:  1
+rd_addr:  10
+rd_data: 0x00001800
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x00000484
+csr_addr  = 0x00000300
+csr_rdata = 0x00000000
+csr_wdata = 0x00001800
+-------------EX------------
+alu_out: 0x00001800
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000188
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x0000018c
+inst: 0x01428293
+-------------WB------------
+rd_wen:  1
+rd_addr:   0
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x0000098c
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000188
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  1
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000190
+inst: 0x34129073
+-------------WB------------
+rd_wen:  1
+rd_addr:   0
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x0000018c
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   5
+rs2_addr:  20
+op1_data: 0x00000188
+op2_data: 0x00000014
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000190
+inst: 0x34129073
+-------------WB------------
+rd_wen:  1
+rd_addr:   5
+rd_data: 0x00000188
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x00000990
+csr_addr  = 0x00000014
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x0000019c
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  1
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000194
+inst: 0xf1402573
+-------------WB------------
+rd_wen:  1
+rd_addr:   0
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x00000190
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   5
+rs2_addr:   1
+op1_data: 0x0000019c
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000194
+inst: 0xf1402573
+-------------WB------------
+rd_wen:  1
+rd_addr:   5
+rd_data: 0x0000019c
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x000004d0
+csr_addr  = 0x00000341
+csr_rdata = 0x00000000
+csr_wdata = 0x0000019c
+-------------EX------------
+alu_out: 0x0000019c
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:  20
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000198
+inst: 0x30200073
+-------------WB------------
+rd_wen:  1
+rd_addr:   0
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0xfffff89e
+csr_addr  = 0x00000f14
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   2
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x0000019c
+inst: 0x00200193
+-------------WB------------
+rd_wen:  1
+rd_addr:   0
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x00000498
+csr_addr  = 0x00000302
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   2
+op1_data: 0x00000000
+op2_data: 0x00000002
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x000001a0
+inst: 0x00800313
+-------------WB------------
+rd_wen:  1
+rd_addr:  10
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x0000099e
+csr_addr  = 0x00000002
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000002
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   8
+op1_data: 0x00000000
+op2_data: 0x00000008
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x000001a4
+inst: 0x000022b7
+-------------WB------------
+rd_wen:  0
+rd_addr:   0
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x000001a6
+csr_addr  = 0x00000008
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000008
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00002000
+stall_flag:  0
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x000001a8
+inst: 0x80028293
+-------------WB------------
+rd_wen:  1
+rd_addr:   3
+rd_data: 0x00000002
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x000009a8
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00002000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  1
+gp: 0x00000000
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x000001ac
+inst: 0x3002b073
+-------------WB------------
+rd_wen:  1
+rd_addr:   6
+rd_data: 0x00000008
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x000001a8
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   5
+rs2_addr:   0
+op1_data: 0x00002000
+op2_data: 0xfffff800
+stall_flag:  0
+gp: 0x00000002
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x000001ac
+inst: 0x3002b073
+-------------WB------------
+rd_wen:  1
+rd_addr:   5
+rd_data: 0x00002000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0xfffff9ac
+csr_addr  = 0x00000800
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00001800
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  1
+gp: 0x00000002
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x000001b0
+inst: 0x300023f3
+-------------WB------------
+rd_wen:  1
+rd_addr:   0
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x000001ac
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   5
+rs2_addr:   0
+op1_data: 0x00001800
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000002
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x000001b0
+inst: 0x300023f3
+-------------WB------------
+rd_wen:  1
+rd_addr:   5
+rd_data: 0x00001800
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x000004ac
+csr_addr  = 0x00000300
+csr_rdata = 0x00001800
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00001800
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000002
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x000001b4
+inst: 0x0072f2b3
+-------------WB------------
+rd_wen:  1
+rd_addr:   0
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x00000cb6
+csr_addr  = 0x00000300
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  1
+gp: 0x00000002
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x000001b8
+inst: 0x00028463
+-------------WB------------
+rd_wen:  1
+rd_addr:   0
+rd_data: 0x00001800
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x000001b4
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   5
+rs2_addr:   7
+op1_data: 0x00001800
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000002
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x000001b8
+inst: 0x00028463
+-------------WB------------
+rd_wen:  1
+rd_addr:   7
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x000009b8
+csr_addr  = 0x00000007
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  1
+gp: 0x00000002
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x000001bc
+inst: 0x00b00313
+-------------WB------------
+rd_wen:  1
+rd_addr:   0
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x000001b8
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   5
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000002
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x000001bc
+inst: 0x00b00313
+-------------WB------------
+rd_wen:  1
+rd_addr:   5
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  1
+branch_target: 0x000001c0
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  1
+pred_flag:  1
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000002
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x000001c0
+inst: 0x000022b7
+-------------WB------------
+rd_wen:  1
+rd_addr:   0
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x000001bc
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000002
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x000001c0
+inst: 0x000022b7
+-------------WB------------
+rd_wen:  0
+rd_addr:   8
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x000001c0
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00002000
+stall_flag:  0
+gp: 0x00000002
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x000001c4
+inst: 0x80028293
+-------------WB------------
+rd_wen:  1
+rd_addr:   0
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x000009c4
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00002000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  1
+gp: 0x00000002
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x000001c8
+inst: 0x3002b073
+-------------WB------------
+rd_wen:  1
+rd_addr:   0
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x000001c4
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   5
+rs2_addr:   0
+op1_data: 0x00002000
+op2_data: 0xfffff800
+stall_flag:  0
+gp: 0x00000002
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x000001c8
+inst: 0x3002b073
+-------------WB------------
+rd_wen:  1
+rd_addr:   5
+rd_data: 0x00002000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0xfffff9c8
+csr_addr  = 0x00000800
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00001800
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  1
+gp: 0x00000002
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x000001cc
+inst: 0x00000297
+-------------WB------------
+rd_wen:  1
+rd_addr:   0
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x000001c8
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   5
+rs2_addr:   0
+op1_data: 0x00001800
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000002
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x000001cc
+inst: 0x00000297
+-------------WB------------
+rd_wen:  1
+rd_addr:   5
+rd_data: 0x00001800
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x000004c8
+csr_addr  = 0x00000300
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00001800
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x000001cc
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000002
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x000001d0
+inst: 0x01028293
+-------------WB------------
+rd_wen:  1
+rd_addr:   0
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x000009d0
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x000001cc
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  1
+gp: 0x00000002
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x000001d4
+inst: 0x34129073
+-------------WB------------
+rd_wen:  1
+rd_addr:   0
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x000001d0
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   5
+rs2_addr:  16
+op1_data: 0x000001cc
+op2_data: 0x00000010
+stall_flag:  0
+gp: 0x00000002
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x000001d4
+inst: 0x34129073
+-------------WB------------
+rd_wen:  1
+rd_addr:   5
+rd_data: 0x000001cc
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x000009d4
+csr_addr  = 0x00000010
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x000001dc
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  1
+gp: 0x00000002
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x000001d8
+inst: 0x30200073
+-------------WB------------
+rd_wen:  1
+rd_addr:   0
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x000001d4
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   5
+rs2_addr:   1
+op1_data: 0x000001dc
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000002
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x000001d8
+inst: 0x30200073
+-------------WB------------
+rd_wen:  1
+rd_addr:   5
+rd_data: 0x000001dc
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x00000514
+csr_addr  = 0x00000341
+csr_rdata = 0x0000019c
+csr_wdata = 0x000001dc
+-------------EX------------
+alu_out: 0x000001dc
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   2
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000002
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x000001dc
+inst: 0x00100193
+-------------WB------------
+rd_wen:  1
+rd_addr:   0
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x000004d8
+csr_addr  = 0x00000302
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   1
+op1_data: 0x00000000
+op2_data: 0x00000001
+stall_flag:  0
+gp: 0x00000002
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x000001e0
+inst: 0x00000073
+-------------WB------------
+rd_wen:  1
+rd_addr:   0
+rd_data: 0x0000019c
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x000009de
+csr_addr  = 0x00000001
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000001
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000002
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000004
+inst: 0x34202f73
+-------------WB------------
+rd_wen:  0
+rd_addr:   0
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x000001e0
+csr_addr  = 0x00000342
+csr_rdata = 0x00000000
+csr_wdata = 0x0000000b
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   2
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000002
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000008
+inst: 0x00800f93
+-------------WB------------
+rd_wen:  1
+rd_addr:   3
+rd_data: 0x00000001
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x00000362
+csr_addr  = 0x00000342
+csr_rdata = 0x0000000b
+csr_wdata = 0x0000000b
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   8
+op1_data: 0x00000000
+op2_data: 0x00000008
+stall_flag:  0
+gp: 0x00000002
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x0000000c
+inst: 0x03ff0a63
+-------------WB------------
+rd_wen:  0
+rd_addr:   0
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x00000826
+csr_addr  = 0x00000008
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000008
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  1
+gp: 0x00000001
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000010
+inst: 0x00900f93
+-------------WB------------
+rd_wen:  1
+rd_addr:  30
+rd_data: 0x0000000b
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x0000000c
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:  30
+rs2_addr:  31
+op1_data: 0x0000000b
+op2_data: 0x00000008
+stall_flag:  0
+gp: 0x00000001
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000010
+inst: 0x00900f93
+-------------WB------------
+rd_wen:  1
+rd_addr:  31
+rd_data: 0x00000008
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x00000040
+csr_addr  = 0x0000003f
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   9
+op1_data: 0x00000000
+op2_data: 0x00000009
+stall_flag:  0
+gp: 0x00000001
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000014
+inst: 0x03ff0663
+-------------WB------------
+rd_wen:  1
+rd_addr:   0
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000008
+branch_flg:  0
+branch_target: 0x0000082e
+csr_addr  = 0x00000009
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000009
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  1
+gp: 0x00000001
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000018
+inst: 0x00b00f93
+-------------WB------------
+rd_wen:  0
+rd_addr:  20
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x00000014
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:  30
+rs2_addr:  31
+op1_data: 0x0000000b
+op2_data: 0x00000009
+stall_flag:  0
+gp: 0x00000001
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000018
+inst: 0x00b00f93
+-------------WB------------
+rd_wen:  1
+rd_addr:  31
+rd_data: 0x00000009
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x00000040
+csr_addr  = 0x0000003f
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:  11
+op1_data: 0x00000000
+op2_data: 0x0000000b
+stall_flag:  0
+gp: 0x00000001
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x0000001c
+inst: 0x03ff0263
+-------------WB------------
+rd_wen:  1
+rd_addr:   0
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000009
+branch_flg:  0
+branch_target: 0x00000836
+csr_addr  = 0x0000000b
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x0000000b
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  1
+gp: 0x00000001
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000020
+inst: 0x00000f17
+-------------WB------------
+rd_wen:  0
+rd_addr:  12
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x0000001c
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:  30
+rs2_addr:  31
+op1_data: 0x0000000b
+op2_data: 0x0000000b
+stall_flag:  0
+gp: 0x00000001
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000020
+inst: 0x00000f17
+-------------WB------------
+rd_wen:  1
+rd_addr:  31
+rd_data: 0x0000000b
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  1
+branch_target: 0x00000040
+csr_addr  = 0x0000003f
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  1
+pred_flag:  1
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000001
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000024
+inst: 0x1fcf0f13
+-------------WB------------
+rd_wen:  1
+rd_addr:   0
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x0000000b
+branch_flg:  0
+branch_target: 0x00000020
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  0
+gp: 0x00000001
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000040
+inst: 0x00001f17
+-------------WB------------
+rd_wen:  0
+rd_addr:   4
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x00000024
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000040
+op2_data: 0x00001000
+stall_flag:  0
+gp: 0x00000001
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000044
+inst: 0xfc3f2023
+-------------WB------------
+rd_wen:  1
+rd_addr:   0
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x0000005e
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00001040
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  1
+gp: 0x00000001
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000048
+inst: 0x00001f17
+-------------WB------------
+rd_wen:  1
+rd_addr:   0
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x00000044
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:  30
+rs2_addr:   3
+op1_data: 0x00001040
+op2_data: 0xffffffc0
+stall_flag:  0
+gp: 0x00000001
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000048
+inst: 0x00001f17
+-------------WB------------
+rd_wen:  1
+rd_addr:  30
+rd_data: 0x00001040
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0xfffff804
+csr_addr  = 0x00000fc3
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00001000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000048
+op2_data: 0x00001000
+stall_flag:  0
+gp: 0x00000001
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x0000004c
+inst: 0xfa0f2e23
+-------------WB------------
+rd_wen:  1
+rd_addr:   0
+rd_data: 0x00000000
+-------------MEM-----------
+datamem.wen:  1
+datamem.wdata: 0x00000001
+branch_flg:  0
+branch_target: 0x00000066
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00001048
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:   0
+rs2_addr:   0
+op1_data: 0x00000000
+op2_data: 0x00000000
+stall_flag:  1
+gp: 0x00000001
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000050
+inst: 0xff1ff06f
+pred_times: 5
+miss_times: 5
+success rate: 0%
+-------------WB------------
+rd_wen:  0
+rd_addr:   0
+rd_data: 0x00001000
+-------------MEM-----------
+datamem.wen:  0
+datamem.wdata: 0x00000000
+branch_flg:  0
+branch_target: 0x0000004c
+csr_addr  = 0x00000000
+csr_rdata = 0x00000000
+csr_wdata = 0x00000000
+-------------EX------------
+alu_out: 0x00000000
+jump_flg:  0
+------------Stall----------
+pred_miss_flag:  0
+pred_flag:  0
+-------------ID------------
+rs1_addr:  30
+rs2_addr:   0
+op1_data: 0x00001048
+op2_data: 0xffffffbc
+stall_flag:  0
+gp: 0x00000001
+-----------------------START----------------------
+-------------IF------------
+reg_pc: 0x00000050
+inst: 0xff1ff06f
+test Top Success: 0 tests passed in 148 cycles in 1.857541 seconds 79.68 Hz
+[info] RiscvTest:
+[info] pipeline_advance_riscv_tests_riscv_tests
+[info] - should work
+[info] Run completed in 18 seconds, 565 milliseconds.
+[info] Total number of tests run: 1
+[info] Suites: completed 1, aborted 0
+[info] Tests: succeeded 1, failed 0, canceled 0, ignored 0, pending 0
+[info] All tests passed.
+[success] Total time: 26 s, completed 2025-4-17 21:46:25

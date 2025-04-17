@@ -1,0 +1,38 @@
+[INFO] sw 	 test succeed
+[INFO] lw 	 test succeed
+[INFO] add 	 test succeed
+[INFO] addi 	 test succeed
+[INFO] sub 	 test succeed
+[INFO] and 	 test succeed
+[INFO] andi 	 test succeed
+[INFO] or 	 test succeed
+[INFO] ori 	 test succeed
+[INFO] xor 	 test succeed
+[INFO] xori 	 test succeed
+[INFO] sll 	 test succeed
+[INFO] srl 	 test succeed
+[INFO] sra 	 test succeed
+[INFO] slli 	 test succeed
+[INFO] srli 	 test succeed
+[INFO] srai 	 test succeed
+[INFO] slt 	 test succeed
+[INFO] sltu 	 test succeed
+[INFO] slti 	 test succeed
+[INFO] sltiu 	 test succeed
+[INFO] beq 	 test succeed
+[INFO] bne 	 test succeed
+[INFO] blt 	 test succeed
+[INFO] bge 	 test succeed
+[INFO] bltu 	 test succeed
+[INFO] bgeu 	 test succeed
+[INFO] jal 	 test succeed
+[INFO] jalr 	 test succeed
+[INFO] lui 	 test succeed
+[INFO] auipc 	 test succeed
+[SUMMARY] 31/31 	 ui 	 tests succeed
+[INFO] csr 	 test succeed
+[INFO] scall 	 test succeed
+[SUMMARY] 2/2 	 mi 	 tests succeed
+
+[INFO] test finished
+[INFO] time cost: 1402s

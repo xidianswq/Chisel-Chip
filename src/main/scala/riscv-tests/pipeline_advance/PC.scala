@@ -1,9 +1,9 @@
-package pipeline_advance
+package pipeline_advance_riscv_tests
 
 import chisel3._
 import chisel3.util._
-import pipeline_advance.Consts._
-import pipeline_advance.Instructions._
+import pipeline_advance_riscv_tests.Consts._
+import pipeline_advance_riscv_tests.Instructions._
 
 /*
 type: IO Port

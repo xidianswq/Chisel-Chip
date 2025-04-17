@@ -1,12 +1,12 @@
-package {package}
+package pipeline_advance_riscv_tests
 
 import chisel3._
-import {package}.Consts._
+import pipeline_advance_riscv_tests.Consts._
 import org.scalatest._
 import chiseltest._
 
 // class RiscvTest extends FlatSpec with ChiselScalatestTester {
-//   behavior of "{package}_riscv_tests"
+//   behavior of "pipeline_advance_riscv_tests_riscv_tests"
 //   it should "work" in {
 //     test(new Top) 
 //     { dut =>
@@ -21,7 +21,7 @@ import chiseltest._
 // }
 
 class RiscvTest extends FlatSpec with ChiselScalatestTester {
-  behavior of "{package}_riscv_tests"
+  behavior of "pipeline_advance_riscv_tests_riscv_tests"
   it should "work" in {
     test(new Top) { dut =>
       dut.clock.setTimeout(2000)

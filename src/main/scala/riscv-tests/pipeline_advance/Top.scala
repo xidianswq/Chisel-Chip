@@ -1,14 +1,17 @@
-package pipeline_advance
+package pipeline_advance_riscv_tests
 
 import chisel3._
 import chisel3.util._
-import pipeline_advance.Consts._
-import pipeline_advance.Instructions._
+import pipeline_advance_riscv_tests.Consts._
+import pipeline_advance_riscv_tests.Instructions._
 
 
 class Top extends Module{
     val io = IO(new Bundle{
         val exit = Output(Bool())
+        val gp   = Output(UInt(WORD_LEN.W))
+        val pred_flag = Output(Bool())
+        val miss_flag = Output(Bool())
     })
 
     // core module
@@ -78,9 +81,11 @@ class Top extends Module{
         (inst   === EXIT_INST)  -> true.asBool,
         (reg_pc === EXIT_PC)    -> true.asBool
     ))
-    
+    io.gp := id.io.gp
+    io.pred_flag := stall.io.out.pred_flag
+    io.miss_flag := stall.io.out.pred_miss_flag
 }
 
 object TopOption extends App {
-    (new chisel3.stage.ChiselStage).emitVerilog(new Top(), Array("--target-dir", "generated/pipeline_advance/Top"))
+    (new chisel3.stage.ChiselStage).emitVerilog(new Top(), Array("--target-dir", "generated/pipeline_advance_riscv_tests/Top"))
 }

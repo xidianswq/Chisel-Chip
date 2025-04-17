@@ -15,6 +15,7 @@ function arg_check(){
         echo "[INFO] Usage: .\riscv-tests.sh <package name> <directory name in src/main/scala>"
         echo "[EXAMPLE] .\riscv-tests.sh cpu_riscv_tests cpu"
         echo "[EXAMPLE] .\riscv-tests.sh cpu_pipeline_riscv_tests cpu_pipeline"
+        echo "[EXAMPLE] .\riscv-tests.sh pipeline_advance_riscv_tests pipeline_advance"
         read
         exit 1
     fi
@@ -28,7 +29,7 @@ function clean(){
     fi
 
     echo -e '\n'
-    echo "[WARNNING] clean former riscv-tests files[y/N]?"
+    echo "[WARNNING] clean & remake riscv-tests files[y/N]?"
     read -n 1 -r -t 10
     if [[ $REPLY =~ ^[Yy]$ ]]; then
         rm -rf $SRC_DIR/riscv-tests/$DIR_NAME/
@@ -82,15 +83,12 @@ function loop_test(){
         sbt "testOnly $PACKAGE_NAME.RiscvTest" > $RESULT_DIR/$DIR_NAME/$INST.txt
         if [ $? -ne 0 ]; then
             echo -e "[ERROR] $INST \t test failed" | tee -a $RESULT_DIR/$DIR_NAME/summary.txt
-             # echo -e "[ERROR] $INST \t test failed" >> $RESULT_DIR/$DIR_NAME/summary.txt
         else
             succeed=$((succeed+1))
             echo -e "[INFO] $INST \t test succeed" | tee -a $RESULT_DIR/$DIR_NAME/summary.txt
-            # echo -e "[INFO] $INST \t test succeed" >> $RESULT_DIR/$DIR_NAME/summary.txt
         fi
     done
     echo -e "[SUMMARY] $succeed/$isa_num \t $ISA \t tests succeed" | tee -a $RESULT_DIR/$DIR_NAME/summary.txt
-    # echo -e "[SUMMARY] $succeed/$isa_num \t $ISA \t tests succeed" >> $RESULT_DIR/$DIR_NAME/summary.txt
 
     return 1
 }
@@ -111,9 +109,7 @@ function main(){
 
     end_time=$(date +%s)
     echo -e "\n[INFO] test finished" | tee -a $RESULT_DIR/$DIR_NAME/summary.txt
-    # echo -e "\n[INFO] test finished\n" >> $RESULT_DIR/$DIR_NAME/summary.txt
     echo "[INFO] time cost: $((end_time-start_time))s" | tee -a $RESULT_DIR/$DIR_NAME/summary.txt
-    # echo "[INFO] time cost: $((end_time-start_time))s" >> $RESULT_DIR/$DIR_NAME/summary.txt
     echo "[INFO] check results in $RESULT_DIR/$DIR_NAME/summary.txt"
     read
 }

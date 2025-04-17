@@ -301,9 +301,58 @@ sbt sbtVersion
 
 ---
 
+# 课程学习
+
+## [1]哈工大RISC-V SoC Verilog vivado
+
+![img](RISC-V_Pipeline_CPU_Design/wps1-1744605634880.jpg)![img](file:///C:\Users\SWQ2003\AppData\Local\Temp\ksohtml16564\wps2.jpg)![img](file:///C:\Users\SWQ2003\AppData\Local\Temp\ksohtml16564\wps3.jpg)
+
+1．SoC仿真
+
+2．取值译码单元（IF、ID）设计
+
+3．控制单元实现
+
+完整数据通路：
+
+![img](RISC-V_Pipeline_CPU_Design/wps4-1744605676551.jpg) 
+
+4．基于trace验证cpu方法
+
+5．总线、IO设计及上板验证
+
+6．流水线设计
 
 
-## [4] 敏捷硬件开发语言 Chisel 与数字系统设计[^4]
+
+## [2]“一生一芯”
+
+### 一、 设备和输入输出 
+
+1. AM——抽象接口，针对MMIO（Memory-mapped I/O，统一编址）和PMIO（port-mapped I/O，独立编址）
+2. 常用外设——GPIO、串口、时钟、键盘、显卡
+3. 实现方法——总线协议+设备控制器
+
+二、总线
+
+1.  Decoupled创建简单握手连接
+2. 采用自定义定义函数进行处理器模式选择
+3. AXI4总线的原理、总线仲裁器（Arbiter）
+4. crossbar（Xbar），Xbar和Arbiter可合并成多进多出Xbar，也称Interconnect，总线桥等
+
+![1744609078943](RISC-V_Pipeline_CPU_Design/1744609078943.png)
+
+5. RISCV内存访问检查机制
+
+![1744610422444](RISC-V_Pipeline_CPU_Design/1744610422444.png)
+
+
+
+---
+
+# 图书阅读
+
+## [1] 敏捷硬件开发语言 Chisel 与数字系统设计[^4]
 
 ### 第一、二章
 
@@ -336,9 +385,9 @@ sbt sbtVersion
    注：若不使用W方法，则`1.U(32)`表示取“1”的第32位；***Bool类型固定位1位宽***，若使用类型转换，如`asBools(8)`则得到Bool类型序列`Seq[Bool]`；Bool类有`asClock`方法，Clock只有一个方法`asUINnt`
 
    使用`final macro def apply(x: Int, y: Int): UInt`方法，返回此UInt中从高位x到低位y（包括两端）的位子集，静态寻址。
-   
+
    使用类型转换实现子类赋值：将UInt***通过`asBools`转化成`seq[Bool]`***，配合VecInit构成向量，便可对指定位进行赋值，最后在使用asUInt转化回来：
-   
+
    ```scala
    class TestModule extends Module { 
      val io = IO(new Bundle { 
@@ -352,7 +401,7 @@ sbt sbtVersion
     io.out := bools.asUInt 
    } 
    ```
-   
+
 9. 向量
 
    可使用scala内建数组、列表、集等数据结构或chisel专属的Vec[T]，其伴生对象有一个apply工厂方法VecFactory构建：eg. `val myVec = wire(vec(3,UInt(32.W))) `；
@@ -426,7 +475,6 @@ sbt sbtVersion
    >
    > - chisel还不支持inout双向端口，从性质上端口仍是线网
    > - 对于简单端口可使一个继承自Bundle的***匿名***类“`new Bundle{...}`”，但对于较大的公共接口，应单独写成***具名***的Bundle子类方便修改。
-   >
 
     ```scala
    val io=IO(new Bundle{
@@ -447,35 +495,35 @@ sbt sbtVersion
         ... 
     }
     ```
-   
+
    1. 翻转端口列表方向`Flipped()`（**避免大量同名但是方向相反要重写**）
-   
+
       ```scala
       class MyModule_2 extends Module { 
           val io = IO(Flipped(new MyIO)) // out是输入，in是输出 
           ... 
       } 
       ```
-   
+
    2. 整体连接`<>`（用于**父子模块**端口**同向**连通或**同级**同名**反向**端口连接）
-   
-         ```scala
-         class MyModule extends Module { 
-             val io = IO(new Bundle { 
-                 val x = new MyIO 
-                 val y = Flipped(new MyIO) 
-                 val supX = new MyIO 
-             }) 
-             io.x <> io.y //相当于io.y.in:=io.x.in;io.x.out:=io.y.out 
-             val sub = Module(new MySubModule) 
-             io.supX <> sub.io.sbuX //相当于sub.io.sbuX.in:=io.supX.in;io.supX.out:=sub.io.sbuX.out 
-         }
-         ```
-   
+
+      ```scala
+      class MyModule extends Module { 
+          val io = IO(new Bundle { 
+              val x = new MyIO 
+              val y = Flipped(new MyIO) 
+              val supX = new MyIO 
+          }) 
+          io.x <> io.y //相当于io.y.in:=io.x.in;io.x.out:=io.y.out 
+          val sub = Module(new MySubModule) 
+          io.supX <> sub.io.sbuX //相当于sub.io.sbuX.in:=io.supX.in;io.supX.out:=sub.io.sbuX.out 
+      }
+      ```
+
    3. 动态修改端口
-   
+
       通过引入scala的Boolean参数、可选值及if语句创建；或使用`Zero-Width`（位宽为0不生成）：
-   
+
       ```scala
        class HalfFullAdder(val hasCarry: Boolean) extends Module { 
            val io = IO(new Bundle { 
@@ -490,7 +538,7 @@ sbt sbtVersion
            io.carryOut := sum(1) 
        } 
       ```
-   
+
          
 
 
@@ -506,28 +554,28 @@ sbt sbtVersion
    >
    > ```scala
    > class add extend MultiIOModule {
-   >     val a = IO(Input(UInt(1.W)))
-   >     val b = IO(Input(UInt(1.W)))
-   >     val c = IO(Output(UInt(2.W)))
-   >     out c := io.a + io.b
+   >  val a = IO(Input(UInt(1.W)))
+   >  val b = IO(Input(UInt(1.W)))
+   >  val c = IO(Output(UInt(2.W)))
+   >  out c := io.a + io.b
    > }
    > ```
-   
-   
+
+
    1. 定义模块：一般通过继承Module类实现，具备以下特点
-   
+
       1. 继承自Module类
-   
+
       2. 包含一个用于接口的抽象类"io"，且必须引用端口对象（即有`val io = IO(...)`）
-   
+
       3. 在类的主构造器里进行内部电路连线（即在类里面有相关构造内容【`:=`，`<>`和一些控制结构等】）
-   
+
    2. 例化模块（*使用`new`生成一个实例对象并传递给单例对象`Module`的`apply`方法*）
-   
+
       `val m1 = Module(new Mux2)`
-   
+
    3. 批量例化：利用向量的工厂方法`VecInit[T<:Data]`（模块的“io”字段是Bundle类型，是参数“Data”子类；*实际电路连线只需针对模块端口*），一般调用单例对象`Seq`的`fill`方法生成io序列
-   
+
       ```scala
       val m = VecInit(Seq.fill(3)(Module(new Mux2).io)) 
       // 例化了三个Mux2，并且参数是端口字段io 
@@ -536,7 +584,7 @@ sbt sbtVersion
       m(0).in1 := io.in1 
       ...
       ```
-   
+
       
 
 4. #### 线网
@@ -548,6 +596,7 @@ sbt sbtVersion
    myNode := 0.U; 
    myNode := io.in + 1.U;//Scala作为软件语言顺序执行，定义具有覆盖性
    ```
+
    ```scala   
    val w0 = Wire(UInt()) // width is inferred 若不提供位宽，代码将自动推断
    val w1 = Wire(UInt(8.W)) // width is set to 8  
@@ -598,151 +647,151 @@ sbt sbtVersion
 
 5. #### 寄存器
 
-      1. 普通寄存器`Reg[T<:Data](t:T)`的赋值和Wire类似，可在`when`语句中用全局reset信号进行同步复位（要用`asBool()`将Reset类型转换）
-      
-      2. `RegNext[T<:Data](next:T)`——一般用于构造延迟一个周期的信号
-      
-         ```scala
-         val foo = Reg(UInt(4.W))           // width is 4 
-         val bar = Reg(chiselTypeOf(foo)) // width is 4 
-         bar := foo
-         ```
-      
-         另一个工厂方法`RegNext[T<:Data](next:T,init:T)`可以复位到制定值；
-      
-         使用RegNext实现输入信号的1、2周期延时：
-         
-         ```scala
-         class lay extends Module { 
-             val io = IO(new Bundle { 
-                 val a = Input(UInt(1.W)) 
-                 val c1 = Output(UInt(1.W)) 
-                 val c2 = Output(UInt(1.W)) 
-             }) 
-             io.c1 := RegNext(io.a,0.U) 
-             io.c2 := RegNext(io.c1,0.U) 
-         } 
-         ```
-         
-         实现8bit计数器：
-         
-         ```scala
-         class counter extends Module { 
-             val io = IO(new Bundle { 
-         	    val out = Output(UInt(3.W)) 
-             }) 
-          io.out := RegNext(io.out + 1.U, 0.U)
-         }
-         ```
-         
-      3. `RegInt[T<:Data](init:T)`——复位时被设置为初始值（类似`WireDefault`）【单/双参数形式】
-      
-         ```scala
-      //Literal chisel3.Bits initializer: width will be set to match 
-         val r1 = RegInit(1.U) // width will be inferred to be 1 
-      val r2 = RegInit(1.U(8.W)) // width is set to 8 
-         
-         //Non-Literal Element initializer - width will be inferred 
-         val x = Wire(UInt()) 
-         val y = Wire(UInt(8.W)) 
-      val r1 = RegInit(x) // width will be inferred 
-         val r2 = RegInit(y) // width will be inferred 
-          
-         //Aggregate initializer - width will be set to match the aggregate 
-         class MyBundle extends Bundle { 
-           val unknown = UInt() 
-           val known   = UInt(8.W) 
-         } 
-         val w1 = Reg(new MyBundle) 
-         val w2 = RegInit(w1) 
-         // Width of w2.unknown is inferred 
-         // Width of w2.known is set to 8 
-         ```
-      
-      4. `util`包中的`RegEnable`——构建一个带使能端的寄存器
-      
-         ```scala
-         val regWithEnable = RegEnable(nextVal, ena)
-         val regWithEnableAndReset = RegEnable(nextVal, 0.U, ena)
-         ```
-      
-      5. `util`包中的`ShiftRegister[T<:Data](in:T,n:Int,resetData:T,en)`——移位寄存器
-      
-         ```scala
-         val regDelayTwo = ShiftRegister(nextVal, 2, ena)
-         val regDelayTwoReset = ShiftRegister(nextVal, 2, 0.U, ena)
-         ```
-      
-      6. 例子（多个寄存器）
-      
-         ```scala
-         import chisel3._ 
-         import chisel3.util._ 
-         
-         class REG extends Module { 
+   1. 普通寄存器`Reg[T<:Data](t:T)`的赋值和Wire类似，可在`when`语句中用全局reset信号进行同步复位（要用`asBool()`将Reset类型转换）
+
+   2. `RegNext[T<:Data](next:T)`——一般用于构造延迟一个周期的信号
+
+      ```scala
+      val foo = Reg(UInt(4.W))           // width is 4 
+      val bar = Reg(chiselTypeOf(foo)) // width is 4 
+      bar := foo
+      ```
+
+      另一个工厂方法`RegNext[T<:Data](next:T,init:T)`可以复位到制定值；
+
+      使用RegNext实现输入信号的1、2周期延时：
+
+      ```scala
+      class lay extends Module { 
           val io = IO(new Bundle { 
-             val a = Input(UInt(8.W)) 
-          val en = Input(Bool()) 
-             val c = Output(UInt(1.W)) 
-           })
-           val reg0 = RegNext(io.a) 
-           val reg1 = RegNext(io.a, 0.U) 
-           val reg2 = RegInit(0.U(8.W)) 
-           val reg3 = Reg(UInt(8.W)) 
-           val reg4 = Reg(UInt(8.W)) 
-           val reg5 = RegEnable(io.a + 1.U, 0.U, io.en) 
-           val reg6 = RegEnable(io.a - 1.U, io.en) 
-           val reg7 = ShiftRegister(io.a, 3, 0.U, io.en) 
-           val reg8 = ShiftRegister(io.a, 3, io.en) 
-          
-           reg2 := io.a.andR 
-           reg3 := io.a.orR 
-           when(reset.asBool) { 
-             reg4 := 0.U 
-           }.otherwise { 
-             reg4 := 1.U 
-           } 
-           io.c := reg0(0) & reg1(0) & reg2(0) & reg3(0) & reg4(0) & reg5(0) & reg6(0) & reg7(0) & reg8(0) 
-         }
-         ```
-      
-      7. 异步寄存器（异步时钟、复位）——使用`withClockAndReset`或`withClock`或`withReset`构造
-      
-      8. 寄存器组——通过`Vec[T]`和`VecInit`
-      
-         ```scala
-         class REG2 extends Module { 
-           val io = IO(new Bundle { 
-             val a = Input(UInt(8.W)) 
-             val en = Input(Bool()) 
-          val c = Output(UInt(1.W)) 
+              val a = Input(UInt(1.W)) 
+              val c1 = Output(UInt(1.W)) 
+              val c2 = Output(UInt(1.W)) 
           }) 
-          val reg0 = RegNext(VecInit(io.a, io.a)) 
-          val reg1 = RegNext(VecInit(io.a, io.a), VecInit(0.U, 0.U)) 
-          val reg2 = RegInit(VecInit(0.U(8.W), 0.U(8.W))) 
-          val reg3 = Reg(Vec(2, UInt(8.W))) 
-          val reg4 = Reg(Vec(2, UInt(8.W))) 
-          val reg5 = RegEnable(VecInit(io.a + 1.U, io.a + 1.U), VecInit(0.U(8.W), 
-         0.U(8.W)), io.en) 
-          val reg6 = RegEnable(VecInit(io.a - 1.U, io.a - 1.U), io.en) 
-          val reg7 = ShiftRegister(VecInit(io.a, io.a), 3, VecInit(0.U(8.W), 0.U(8.W)), io.en)
-          val reg8 = ShiftRegister(VecInit(io.a, io.a), 3, io.en) 
-         
-          reg2(0) := io.a.andR 
-          reg2(1) := io.a.andR 
-          reg3(0) := io.a.orR 
-          reg3(1) := io.a.orR 
-          when(reset.asBool) { 
-          reg4(0) := 0.U 
-          reg4(1) := 0.U 
-          }.otherwise { 
-          reg4(0) := 1.U 
-          reg4(1) := 1.U 
-          }
-          ...
-          } 
-         ```
+          io.c1 := RegNext(io.a,0.U) 
+          io.c2 := RegNext(io.c1,0.U) 
+      } 
+      ```
+
+      实现8bit计数器：
+
+      ```scala
+      class counter extends Module { 
+          val io = IO(new Bundle { 
+      	    val out = Output(UInt(3.W)) 
+          }) 
+       io.out := RegNext(io.out + 1.U, 0.U)
+      }
+      ```
+
+   3. `RegInt[T<:Data](init:T)`——复位时被设置为初始值（类似`WireDefault`）【单/双参数形式】
+
+      ```scala
+      //Literal chisel3.Bits initializer: width will be set to match 
+      val r1 = RegInit(1.U) // width will be inferred to be 1 
+      val r2 = RegInit(1.U(8.W)) // width is set to 8 
       
+      //Non-Literal Element initializer - width will be inferred 
+      val x = Wire(UInt()) 
+      val y = Wire(UInt(8.W)) 
+      val r1 = RegInit(x) // width will be inferred 
+      val r2 = RegInit(y) // width will be inferred 
+       
+      //Aggregate initializer - width will be set to match the aggregate 
+      class MyBundle extends Bundle { 
+        val unknown = UInt() 
+        val known   = UInt(8.W) 
+      } 
+      val w1 = Reg(new MyBundle) 
+      val w2 = RegInit(w1) 
+      // Width of w2.unknown is inferred 
+      // Width of w2.known is set to 8 
+      ```
+
+   4. `util`包中的`RegEnable`——构建一个带使能端的寄存器
+
+      ```scala
+      val regWithEnable = RegEnable(nextVal, ena)
+      val regWithEnableAndReset = RegEnable(nextVal, 0.U, ena)
+      ```
+
+   5. `util`包中的`ShiftRegister[T<:Data](in:T,n:Int,resetData:T,en)`——移位寄存器
+
+      ```scala
+      val regDelayTwo = ShiftRegister(nextVal, 2, ena)
+      val regDelayTwoReset = ShiftRegister(nextVal, 2, 0.U, ena)
+      ```
+
+   6. 例子（多个寄存器）
+
+      ```scala
+      import chisel3._ 
+      import chisel3.util._ 
+      
+      class REG extends Module { 
+       val io = IO(new Bundle { 
+          val a = Input(UInt(8.W)) 
+       val en = Input(Bool()) 
+          val c = Output(UInt(1.W)) 
+        })
+        val reg0 = RegNext(io.a) 
+        val reg1 = RegNext(io.a, 0.U) 
+        val reg2 = RegInit(0.U(8.W)) 
+        val reg3 = Reg(UInt(8.W)) 
+        val reg4 = Reg(UInt(8.W)) 
+        val reg5 = RegEnable(io.a + 1.U, 0.U, io.en) 
+        val reg6 = RegEnable(io.a - 1.U, io.en) 
+        val reg7 = ShiftRegister(io.a, 3, 0.U, io.en) 
+        val reg8 = ShiftRegister(io.a, 3, io.en) 
+       
+        reg2 := io.a.andR 
+        reg3 := io.a.orR 
+        when(reset.asBool) { 
+          reg4 := 0.U 
+        }.otherwise { 
+          reg4 := 1.U 
+        } 
+        io.c := reg0(0) & reg1(0) & reg2(0) & reg3(0) & reg4(0) & reg5(0) & reg6(0) & reg7(0) & reg8(0) 
+      }
+      ```
+
+   7. 异步寄存器（异步时钟、复位）——使用`withClockAndReset`或`withClock`或`withReset`构造
+
+   8. 寄存器组——通过`Vec[T]`和`VecInit`
+
+      ```scala
+      class REG2 extends Module { 
+        val io = IO(new Bundle { 
+          val a = Input(UInt(8.W)) 
+          val en = Input(Bool()) 
+       val c = Output(UInt(1.W)) 
+       }) 
+       val reg0 = RegNext(VecInit(io.a, io.a)) 
+       val reg1 = RegNext(VecInit(io.a, io.a), VecInit(0.U, 0.U)) 
+       val reg2 = RegInit(VecInit(0.U(8.W), 0.U(8.W))) 
+       val reg3 = Reg(Vec(2, UInt(8.W))) 
+       val reg4 = Reg(Vec(2, UInt(8.W))) 
+       val reg5 = RegEnable(VecInit(io.a + 1.U, io.a + 1.U), VecInit(0.U(8.W), 
+      0.U(8.W)), io.en) 
+       val reg6 = RegEnable(VecInit(io.a - 1.U, io.a - 1.U), io.en) 
+       val reg7 = ShiftRegister(VecInit(io.a, io.a), 3, VecInit(0.U(8.W), 0.U(8.W)), io.en)
+       val reg8 = ShiftRegister(VecInit(io.a, io.a), 3, io.en) 
+      
+       reg2(0) := io.a.andR 
+       reg2(1) := io.a.andR 
+       reg3(0) := io.a.orR 
+       reg3(1) := io.a.orR 
+       when(reset.asBool) { 
+       reg4(0) := 0.U 
+       reg4(1) := 0.U 
+       }.otherwise { 
+       reg4(0) := 1.U 
+       reg4(1) := 1.U 
+       }
+       ...
+       } 
+      ```
+
 6. ### when语句
 
    通常用于给带***使能信号***的寄存器更新数据，对于有**复位信号**的寄存器推荐***使用`RegInit`声明***，而非在when中使用`Reset.asBool`作为复位条件
@@ -775,6 +824,7 @@ sbt sbtVersion
    - `MuxLookup(idx,default,Array(0.U->a,1.U->b,...))`（chisel3.util）——成立条件为从0开始的索引，***相当于`MuxCase(default,Array((idx===0.U)->a,(idx===1.U)->b,...))`***
 
    - `Mux1H`（chisel3.util）——选择信号为独热码
+
    - `PriorityMux`（chisel3.util）——多个选择信号有效按优先级（靠前的优先）选择
 
    注：在Verilog中使用always编写能综合出时序逻辑和组合逻辑，导致reg变量存在二义性；if...else语句不能传播位置态x，导致仿真阶段不能发现一些问题，故工业级Verilog代码大多用assign构建电路。
@@ -1017,9 +1067,9 @@ sbt sbtVersion
          ```
 
       2. `loadMemoryFromFileInLine`（chisel3.4.3）使用方法与1.相同，但将读取文件数据代码直接嵌入LoadMem模块中。
-      
+
       3. 使用RAM实现一个带有空、满标志的8bit同步FIFO模块
-      
+
          ```scala
          class SynFifo extends Module{ 
              val io = IO(new Bundle() { 
@@ -1210,61 +1260,7 @@ sbt sbtVersion
 
    
 
----
-
-# 课程学习
-
-## [1]哈工大RISC-V SoC Verilog vivado
-
-![img](RISC-V_Pipeline_CPU_Design/wps1-1744605634880.jpg)![img](file:///C:\Users\SWQ2003\AppData\Local\Temp\ksohtml16564\wps2.jpg)![img](file:///C:\Users\SWQ2003\AppData\Local\Temp\ksohtml16564\wps3.jpg)
-
-1．SoC仿真
-
-2．取值译码单元（IF、ID）设计
-
-3．控制单元实现
-
-完整数据通路：
-
-![img](RISC-V_Pipeline_CPU_Design/wps4-1744605676551.jpg) 
-
-4．基于trace验证cpu方法
-
-5．总线、IO设计及上板验证
-
-6．流水线设计
-
-
-
-## [2]“一生一芯”
-
-### 一、 设备和输入输出 
-
-1. AM——抽象接口，针对MMIO（Memory-mapped I/O，统一编址）和PMIO（port-mapped I/O，独立编址）
-2. 常用外设——GPIO、串口、时钟、键盘、显卡
-3. 实现方法——总线协议+设备控制器
-
-二、总线
-
-1.  Decoupled创建简单握手连接
-2. 采用自定义定义函数进行处理器模式选择
-3. AXI4总线的原理、总线仲裁器（Arbiter）
-4. crossbar（Xbar），Xbar和Arbiter可合并成多进多出Xbar，也称Interconnect，总线桥等
-
-![1744609078943](RISC-V_Pipeline_CPU_Design/1744609078943.png)
-
-5. RISCV内存访问检查机制
-
-![1744610422444](RISC-V_Pipeline_CPU_Design/1744610422444.png)
-
-
-
----
-
-
-# 图书阅读
-
-## [1]CPU制作入门[^5]
+## [2]CPU制作入门[^5]
 
 ### 第一、二章 计算机架构
 
@@ -2116,7 +2112,7 @@ uext(imm_z)将5位以上用0位拓展；先读后写入更新值
 
 
 
-## [2]手把手教你设计 CPU[^6]
+## [3]手把手教你设计 CPU[^6]
 
 ### 第六章 蜂鸟 E200 流水线介绍
 
@@ -3675,229 +3671,229 @@ WB阶段
 
 ### 构建过程
 
-1. #### 拆分Core成指令处理阶段的模块
+#### 1、拆分Core成指令处理阶段的模块
 
-   ***既要考虑部件（ALU、BR...）的特性，也要考虑阶段（IF、ID...）的可读性，避免接口过于复杂，简化最后Top中的连接过程***。读者将Core拆分成了以下几个模块：PC、ID、ALU、BR、MEM、WB，配合指令与数据存储器Memory和顶层模块Top，构成流水线处理器。
+***既要考虑部件（ALU、BR...）的特性，也要考虑阶段（IF、ID...）的可读性，避免接口过于复杂，简化最后Top中的连接过程***。读者将Core拆分成了以下几个模块：PC、ID、ALU、BR、MEM、WB，配合指令与数据存储器Memory和顶层模块Top，构成流水线处理器。
 
-   每个模块通过规范的形式定义，如MEM阶段模块代码如下。在其类class MEM中，首先定义接口io，里面的Bundle类都是使用模块化的接口如PC_IO等；然后定义存储文件如reg_csr、reg_x等，如果有的话；然后定义内部变量val如mem_wen、alu_out等，并连接到输入接口如io.ex_in.alu_out，确保主体逻辑代码无需修改直接从原本的Core复制过来即可；最后将输出信号连接到输出接口。
+每个模块通过规范的形式定义，如MEM阶段模块代码如下。在其类class MEM中，首先定义接口io，里面的Bundle类都是使用模块化的接口如PC_IO等；然后定义存储文件如reg_csr、reg_x等，如果有的话；然后定义内部变量val如mem_wen、alu_out等，并连接到输入接口如io.ex_in.alu_out，确保主体逻辑代码无需修改直接从原本的Core复制过来即可；最后将输出信号连接到输出接口。
 
-   ```scala
-   /*
-   type: Hardware
-   name: NAME(explain)
-   */
-   class NAME extends Module{
-       val io = IO(new Bundle{
-           val in = new Bundle{
-               ...
-           }
-           val out = new MEM_IO()
-           ...
-       })
-       //register file
-   	...
-       //input wire connection
-   	...
-       //logic
-   	...
-       //output wire connection
-       ...
-       //debug info
-       ...
-   }
-   ```
+```scala
+/*
+type: Hardware
+name: NAME(explain)
+*/
+class NAME extends Module{
+    val io = IO(new Bundle{
+        val in = new Bundle{
+            ...
+        }
+        val out = new MEM_IO()
+        ...
+    })
+    //register file
+	...
+    //input wire connection
+	...
+    //logic
+	...
+    //output wire connection
+    ...
+    //debug info
+    ...
+}
+```
 
-   ```scala
-   /*
-   type: Hardware
-   name: Memory access unit(内存访问单元)
-   */
-   class MEM extends Module{
-       val io = IO(new Bundle{
-           val if_in = Flipped(new PC_IO())
-           val id_in = Flipped(new ID_IO())
-           val ex_in = Flipped(new ALU_IO())
-           val out = new MEM_IO()
-           val datamem = Flipped(new DataMem_IO())
-       })
-   
-       //register file
-       val reg_csr = RegInit(VecInit(Seq.fill(CSR_Num)(0.U(WORD_LEN.W))))
-   
-       //input wire connection
-       val mem_wen = io.id_in.mem_wen
-       val rs2_data = io.id_in.rs2_data
-       val csr_addr_default = io.id_in.csr_addr_default
-       val csr_cmd = io.id_in.csr_cmd
-       val op1_data = io.id_in.op1_data
-       val alu_out = io.ex_in.alu_out
-   
-       io.datamem.addr  := alu_out
-       io.datamem.wen   := mem_wen.asBool()
-       io.datamem.wdata := rs2_data
-   
-       //CSR operation
-       val csr_addr = MuxCase(csr_addr_default, Seq(
-           (csr_cmd === CSR_E) -> 0x342.U(CSR_ADDR_LEN.W)
-       ))
-       val csr_rdata = reg_csr(csr_addr)
-       val csr_wdata = MuxCase(0.U(WORD_LEN.W), Seq(
-           (csr_cmd === CSR_W) -> op1_data,
-           (csr_cmd === CSR_S) -> (csr_rdata | op1_data),
-           (csr_cmd === CSR_C) -> (csr_rdata & ~op1_data),
-           (csr_cmd === CSR_E) -> 11.U(WORD_LEN.W)
-       ))
-       when(csr_cmd =/= CSR_NULL){
-           reg_csr(csr_addr) := csr_wdata
-       }
-   
-       //output wire connection
-       io.out.datamem_rdata := io.datamem.rdata
-       io.out.csr_rdata := csr_rdata
-   }
-   ```
+```scala
+/*
+type: Hardware
+name: Memory access unit(内存访问单元)
+*/
+class MEM extends Module{
+    val io = IO(new Bundle{
+        val if_in = Flipped(new PC_IO())
+        val id_in = Flipped(new ID_IO())
+        val ex_in = Flipped(new ALU_IO())
+        val out = new MEM_IO()
+        val datamem = Flipped(new DataMem_IO())
+    })
 
-2. #### 构建模块IO的流水线寄存器硬件接口
+    //register file
+    val reg_csr = RegInit(VecInit(Seq.fill(CSR_Num)(0.U(WORD_LEN.W))))
 
-   ```scala
-   package cpu_pipeline
-   
-   import chisel3._
-   import chisel3.util._
-   import public.Consts._
-   import public.Instructions._
-   
-   /*
-   type: IO Port
-   name: MEM_IO(内存接口)
-   datamem_rdata: Data memory read data,output
-   csr_rdata: CSR read data,output
-   */
-   class MEM_IO extends Bundle{
-       val datamem_rdata = Output(UInt(WORD_LEN.W))
-       val csr_rdata = Output(UInt(WORD_LEN.W))
-   }
-   
-   /*
-   type: Hardware
-   name: MEM Pipeline Register(访存阶段流水线寄存器)
-   */
-   class MEM_IO_REG extends Module{
-       val io = IO(new Bundle{
-           val in = Flipped(new MEM_IO())
-           val out = new MEM_IO()
-       })
-   
-       val mem_io_reg = RegInit(0.U.asTypeOf(new MEM_IO()))
-   
-       mem_io_reg := io.in
-       io.out := mem_io_reg
-   }
-   ```
+    //input wire connection
+    val mem_wen = io.id_in.mem_wen
+    val rs2_data = io.id_in.rs2_data
+    val csr_addr_default = io.id_in.csr_addr_default
+    val csr_cmd = io.id_in.csr_cmd
+    val op1_data = io.id_in.op1_data
+    val alu_out = io.ex_in.alu_out
 
-   为每个模块定义其输出端口——X_IO端口，以便在class X内部连接输出以及其他模块Y调用连接；定义X_IO端口的流水线寄存器模组X_IO_REG，以便在Top中使用`<>`进行寄存器和模块端口的快速连接。其中寄存器的定义使用`0.U.asTypeOf(new MEM_IO())`快速定义端口列表中的数据类型【如`0.U.asTypeOf(new PC_IO())}`其值为：`PC_IO(reg_pc -> 000000000000, inst -> 000000000000)`】
+    io.datamem.addr  := alu_out
+    io.datamem.wen   := mem_wen.asBool()
+    io.datamem.wdata := rs2_data
 
-3. #### Top中连线
+    //CSR operation
+    val csr_addr = MuxCase(csr_addr_default, Seq(
+        (csr_cmd === CSR_E) -> 0x342.U(CSR_ADDR_LEN.W)
+    ))
+    val csr_rdata = reg_csr(csr_addr)
+    val csr_wdata = MuxCase(0.U(WORD_LEN.W), Seq(
+        (csr_cmd === CSR_W) -> op1_data,
+        (csr_cmd === CSR_S) -> (csr_rdata | op1_data),
+        (csr_cmd === CSR_C) -> (csr_rdata & ~op1_data),
+        (csr_cmd === CSR_E) -> 11.U(WORD_LEN.W)
+    ))
+    when(csr_cmd =/= CSR_NULL){
+        reg_csr(csr_addr) := csr_wdata
+    }
 
-   在Top中定义各组成模块、流水哦寄存器，并连接如下，可以清晰看到流水线寄存器层级，以及为时序匹配的多级延迟（如wb.io.if_in需要三级流水线寄存器传递pc信号，才与其他信号如Mem阶段的信号，同时到达。
+    //output wire connection
+    io.out.datamem_rdata := io.datamem.rdata
+    io.out.csr_rdata := csr_rdata
+}
+```
 
-   ```scala
-   package cpu_pipeline
-   import chisel3._
-   import chisel3.util._
-   import public.Consts._
-   import public.Instructions._
-   
-   class Top extends Module{
-       val io = IO(new Bundle{
-           val exit = Output(Bool())
-       })
-       //core module
-       val memory = Module(new Memory)
-       val pc = Module(new PC)
-       val id = Module(new ID)
-       val alu = Module(new ALU)
-       val br = Module(new BR)
-       val mem = Module(new MEM)
-       val wb = Module(new WB)
-       //pipeline register
-       val if_io_reg = Module(new PC_IO_REG)
-       val if_io_reg_n = Module(new PC_IO_REG)
-       val if_io_reg_nn = Module(new PC_IO_REG)
-       val id_io_reg = Module(new ID_IO_REG)
-       val id_io_reg_n = Module(new ID_IO_REG)
-       val ex_io_reg = Module(new ALU_IO_REG)
-       val mem_io_reg = Module(new WB_IO_REG)
-       //connect modules and pipeline registers
-       pc.io.in.ex_in     <> alu.io.out
-       pc.io.in.br_in     <> br.io.out
-       pc.io.instmem   <> memory.io.instmem
-       
-       id.io.in.if_in     <> if_io_reg.io.out
-           if_io_reg.io.in     <> pc.io.out
-       id.io.in.wb_in     <> wb.io.out //no pipeline register
-       
-       alu.io.in.id_in    <> id_io_reg.io.out
-           id_io_reg.io.in     <> id.io.out
-       br.io.in.if_in     <> if_io_reg_n.io.out
-           if_io_reg_n.io.in   <> if_io_reg.io.out
-           if_io_reg.io.in     <> pc.io.out
-       br.io.in.id_in     <> id_io_reg.io.out
-           id_io_reg.io.in     <> id.io.out
-       
-       mem.io.in.if_in    <> if_io_reg_nn.io.out
-           if_io_reg_nn.io.in  <> if_io_reg_n.io.out
-           if_io_reg_n.io.in   <> if_io_reg.io.out
-           if_io_reg.io.in     <> pc.io.out
-       mem.io.in.id_in    <> id_io_reg_n.io.out
-           id_io_reg_n.io.in   <> id_io_reg.io.out
-           id_io_reg.io.in     <> id.io.out
-       mem.io.in.ex_in    <> ex_io_reg.io.out
-           ex_io_reg.io.in     <> alu.io.out
-       mem.io.datamem  <> memory.io.datamem
-       
-       wb.io.in.mem_in    <> mem_io_reg.io.out
-           mem_io_reg.io.in    <> mem.io.out
-   
-       val inst = pc.io.out.inst
-       val reg_pc = pc.io.out.reg_pc
-       io.exit := MuxCase(false.asBool, Seq(
-           (inst === UNIMP) -> true.asBool,
-           (inst === EXIT_INST) -> true.asBool,
-           (reg_pc === EXIT_PC) -> true.asBool
-       ))
-       printf("------------------------END-----------------------\n")
-       printf(p"exit: ${io.exit}\n")
-       printf("\n")
-       
-   }
-   
-   object TopOption extends App {
-       (new chisel3.stage.ChiselStage).emitVerilog(new Top(), Array("--target-dir", "generated"))
-   }
-   ```
+#### 2、构建模块IO的流水线寄存器硬件接口
 
-4. #### 流水线冒险
+```scala
+package cpu_pipeline
 
-   常见的冒险主要有结构冒险、数据冒险和控制冒险三种
+import chisel3._
+import chisel3.util._
+import public.Consts._
+import public.Instructions._
 
-   - 结构冒险：当一条指令需要的硬件部件还在为之前的指令工作，而无法为这条指令提供服务。
+/*
+type: IO Port
+name: MEM_IO(内存接口)
+datamem_rdata: Data memory read data,output
+csr_rdata: CSR read data,output
+*/
+class MEM_IO extends Bundle{
+    val datamem_rdata = Output(UInt(WORD_LEN.W))
+    val csr_rdata = Output(UInt(WORD_LEN.W))
+}
 
-   - 数据冒险：后面的指令需要用到前面的指令的执行结果，而前面的指令尚未写回导致的冲突。
+/*
+type: Hardware
+name: MEM Pipeline Register(访存阶段流水线寄存器)
+*/
+class MEM_IO_REG extends Module{
+    val io = IO(new Bundle{
+        val in = Flipped(new MEM_IO())
+        val out = new MEM_IO()
+    })
 
-     类型：RAW（read after write）先写后读相关性；WAW（write after write）先写后写相关性；WAR（write after read）先读后写相关性
+    val mem_io_reg = RegInit(0.U.asTypeOf(new MEM_IO()))
 
-     解决：数据前递； 装载-使用型数据冒险——流水线阻塞（执行nop指令） [^17]
+    mem_io_reg := io.in
+    io.out := mem_io_reg
+}
+```
 
-     ![data_hazard](RISC-V_Pipeline_CPU_Design/data_hazard-1742873707633.png)
+为每个模块定义其输出端口——X_IO端口，以便在class X内部连接输出以及其他模块Y调用连接；定义X_IO端口的流水线寄存器模组X_IO_REG，以便在Top中使用`<>`进行寄存器和模块端口的快速连接。其中寄存器的定义使用`0.U.asTypeOf(new MEM_IO())`快速定义端口列表中的数据类型【如`0.U.asTypeOf(new PC_IO())}`其值为：`PC_IO(reg_pc -> 000000000000, inst -> 000000000000)`】
 
-   - 控制（分支）冒险：当前面执行的指令需要改变后续指令执行顺序时（如执行跳转指令），流水线中已执行后面指令造成的冲突。 
+#### 3、Top中连线
 
-     解决：阻塞或分支预测（静态、动态【实现方法是采用分支预测缓存或分支历史表，其中记录了分支最近是否执行】、竞赛预测器【典型的竞赛预测器对每个分支地址有两个预测，一个是 基于全局的分支行为，一个是基于局部信息的】）
+在Top中定义各组成模块、流水哦寄存器，并连接如下，可以清晰看到流水线寄存器层级，以及为时序匹配的多级延迟（如wb.io.if_in需要三级流水线寄存器传递pc信号，才与其他信号如Mem阶段的信号，同时到达。
 
-   应用实例：主要关注不可预测分支；使代码适合**条件传送**（减少if语句【**条件转移**】的使用）[^17]
+```scala
+package cpu_pipeline
+import chisel3._
+import chisel3.util._
+import public.Consts._
+import public.Instructions._
 
-5. #### 处理数据冒险和分支冒险
+class Top extends Module{
+    val io = IO(new Bundle{
+        val exit = Output(Bool())
+    })
+    //core module
+    val memory = Module(new Memory)
+    val pc = Module(new PC)
+    val id = Module(new ID)
+    val alu = Module(new ALU)
+    val br = Module(new BR)
+    val mem = Module(new MEM)
+    val wb = Module(new WB)
+    //pipeline register
+    val if_io_reg = Module(new PC_IO_REG)
+    val if_io_reg_n = Module(new PC_IO_REG)
+    val if_io_reg_nn = Module(new PC_IO_REG)
+    val id_io_reg = Module(new ID_IO_REG)
+    val id_io_reg_n = Module(new ID_IO_REG)
+    val ex_io_reg = Module(new ALU_IO_REG)
+    val mem_io_reg = Module(new WB_IO_REG)
+    //connect modules and pipeline registers
+    pc.io.in.ex_in     <> alu.io.out
+    pc.io.in.br_in     <> br.io.out
+    pc.io.instmem   <> memory.io.instmem
+    
+    id.io.in.if_in     <> if_io_reg.io.out
+        if_io_reg.io.in     <> pc.io.out
+    id.io.in.wb_in     <> wb.io.out //no pipeline register
+    
+    alu.io.in.id_in    <> id_io_reg.io.out
+        id_io_reg.io.in     <> id.io.out
+    br.io.in.if_in     <> if_io_reg_n.io.out
+        if_io_reg_n.io.in   <> if_io_reg.io.out
+        if_io_reg.io.in     <> pc.io.out
+    br.io.in.id_in     <> id_io_reg.io.out
+        id_io_reg.io.in     <> id.io.out
+    
+    mem.io.in.if_in    <> if_io_reg_nn.io.out
+        if_io_reg_nn.io.in  <> if_io_reg_n.io.out
+        if_io_reg_n.io.in   <> if_io_reg.io.out
+        if_io_reg.io.in     <> pc.io.out
+    mem.io.in.id_in    <> id_io_reg_n.io.out
+        id_io_reg_n.io.in   <> id_io_reg.io.out
+        id_io_reg.io.in     <> id.io.out
+    mem.io.in.ex_in    <> ex_io_reg.io.out
+        ex_io_reg.io.in     <> alu.io.out
+    mem.io.datamem  <> memory.io.datamem
+    
+    wb.io.in.mem_in    <> mem_io_reg.io.out
+        mem_io_reg.io.in    <> mem.io.out
+
+    val inst = pc.io.out.inst
+    val reg_pc = pc.io.out.reg_pc
+    io.exit := MuxCase(false.asBool, Seq(
+        (inst === UNIMP) -> true.asBool,
+        (inst === EXIT_INST) -> true.asBool,
+        (reg_pc === EXIT_PC) -> true.asBool
+    ))
+    printf("------------------------END-----------------------\n")
+    printf(p"exit: ${io.exit}\n")
+    printf("\n")
+    
+}
+
+object TopOption extends App {
+    (new chisel3.stage.ChiselStage).emitVerilog(new Top(), Array("--target-dir", "generated"))
+}
+```
+
+#### 4、流水线冒险
+
+常见的冒险主要有结构冒险、数据冒险和控制冒险三种
+
+- 结构冒险：当一条指令需要的硬件部件还在为之前的指令工作，而无法为这条指令提供服务。
+
+- 数据冒险：后面的指令需要用到前面的指令的执行结果，而前面的指令尚未写回导致的冲突。
+
+  类型：RAW（read after write）先写后读相关性；WAW（write after write）先写后写相关性；WAR（write after read）先读后写相关性
+
+  解决：数据前递； 装载-使用型数据冒险——流水线阻塞（执行nop指令） [^17]
+
+  ![data_hazard](RISC-V_Pipeline_CPU_Design/data_hazard-1742873707633.png)
+
+- 控制（分支）冒险：当前面执行的指令需要改变后续指令执行顺序时（如执行跳转指令），流水线中已执行后面指令造成的冲突。 
+
+  解决：阻塞或分支预测（静态、动态【实现方法是采用分支预测缓存或分支历史表，其中记录了分支最近是否执行】、竞赛预测器【典型的竞赛预测器对每个分支地址有两个预测，一个是 基于全局的分支行为，一个是基于局部信息的】）
+
+应用实例：主要关注不可预测分支；使代码适合**条件传送**（减少if语句【**条件转移**】的使用）[^17]
+
+1. #### 处理数据冒险和分支冒险
 
    数据冒险现象：
 
@@ -4015,11 +4011,29 @@ WB阶段
    ))
    ```
 
-   
 
-6. #### 存储器文件的抽象优化
 
-   所使用的寄存器、存储器转化为Verilog后全是reg，应调整接口成SRAM的，并在Verilog中调用IP
+
+#### 5、分支预测
+
+新建BP.scala，由2级预测器（branch_history、pattern_table）和BTB组成，分为更新逻辑和查询逻辑。
+
+由EX_logic产生的jump_flag_/_target、br_flag_/_target信号和id阶段的reg_pc（if_io_reg_n）作为索引更新branch_history、pattern_table和BTB；使用PC直接传入的reg_pc作为索引查找branch_history和pattern_table判断是否跳转，若预测跳转，查找BTB给出预测。
+
+在Stall.scala中加入了预测不命中判断逻辑，即jump或br指令在EX_logic阶段会产生真正的跳转“方向”和“地址”，立即判断其紧接着的下一条指令与真正地址是否相同，输出pred_miss_flag到ID_logic和PC_BUBBLE_REG，如果未命中则冲刷。
+
+![1744896720692](RISC-V_Pipeline_CPU_Design/1744896720692.png)
+
+如图所示，阴影部分表示预测不命中后的更正指令，橙色表示该信号在该周期受pred_miss_flag和br_target/jump_target的作用改变，在clocki+1周期内，由EX_logic产生jump/br_flag/target信号并立刻与存于IF_BUBBLE_REG中的reg_pc（即在clocki产生的预测地址pred_target）进行对比生成pred_miss_flag信号，并且pred_miss_flag立即作用于ID_logic中instj和BUBBLE间的选择，
+
+
+
+
+
+#### 6、存储器文件的抽象优化
+
+所使用的寄存器、存储器转化为Verilog后全是reg，应调整接口成SRAM的，并在Verilog中调用IP
+
 
 
 
