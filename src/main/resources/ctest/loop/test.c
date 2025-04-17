@@ -10,5 +10,4 @@ int main()
         }
         asm volatile("unimp");
         asm volatile("unimp");
-        return 0;
 }
