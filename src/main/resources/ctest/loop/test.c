@@ -3,8 +3,8 @@ int main()
 {
         int i = 0;
         int j = 0;
-        for(i=0;i<15;i++){
-        	for(j=15-i;j>0;j--){
+        for(i=0;i<10;i++){
+        	for(j=0;j<10;j=j+2){
 			if(j>i)break;
         	}
         }
