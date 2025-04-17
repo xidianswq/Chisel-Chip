@@ -1,9 +1,9 @@
-package pipeline_advance
+package pipeline_advance_riscv_tests
 
 import chisel3._
 import chisel3.util._
-import pipeline_advance.Consts._
-import pipeline_advance.Instructions._
+import pipeline_advance_riscv_tests.Consts._
+import pipeline_advance_riscv_tests.Instructions._
 
 /*
 type: IO Port
@@ -69,6 +69,7 @@ class ID extends Module{
             val wb_in   = Flipped(new WB_IO())
         }
         val out = new ID_IO()
+        val gp  = Output(UInt(WORD_LEN.W))
     })
 
     // register file
@@ -197,6 +198,8 @@ class ID extends Module{
 
     io.out.rs2_data     := rs2_data
     io.out.imm_b_sext   := imm_b_sext
+
+    io.gp := reg_x(3)
     
     // debug info
     printf("-------------ID------------\n")
@@ -205,4 +208,5 @@ class ID extends Module{
     printf(p"op1_data: 0x${Hexadecimal(op1_data)}\n")
     printf(p"op2_data: 0x${Hexadecimal(op2_data)}\n")
     printf(p"stall_flag: $stall_flag\n")
+    printf(p"gp: 0x${Hexadecimal(io.gp)}\n")
 }

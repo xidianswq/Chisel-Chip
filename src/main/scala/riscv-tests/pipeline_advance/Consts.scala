@@ -1,4 +1,4 @@
-package pipeline_advance
+package pipeline_advance_riscv_tests
 
 import chisel3._
 

@@ -1,8 +1,8 @@
-package pipeline_advance
+package pipeline_advance_riscv_tests
 
 import chisel3._
 import chisel3.util._
-import pipeline_advance.Consts._
+import pipeline_advance_riscv_tests.Consts._
 
 /*
 type: IO Port
@@ -13,6 +13,7 @@ pred_miss_flag: BP Unit Predict miss flag,output
 class Stall_IO extends Bundle{
     val stall_flag      = Output(Bool())
     val pred_miss_flag   = Output(Bool())
+    val pred_flag      = Output(Bool())
 }
 
 /*
@@ -45,8 +46,15 @@ class Stall extends Module{
     val rs2_data_hazard     = (ex_rd_wen === REN_EN) && (rs2_addr_default =/= 0.U) && (rs2_addr_default === ex_rd_addr)
     val stall_flag          = (rs1_data_hazard || rs2_data_hazard)
     val pred_miss_flag      = (jump_flag && (reg_pc =/= jump_target)) || (br_flag && (reg_pc =/= br_target))
+    val pred_flag           = (jump_flag || br_flag)
 
     // output wire connection
     io.out.stall_flag       := stall_flag
     io.out.pred_miss_flag   := pred_miss_flag
+    io.out.pred_flag        := pred_flag
+
+    // debug info
+    printf("------------Stall----------\n")
+    printf(p"pred_miss_flag: $pred_miss_flag\n")
+    printf(p"pred_flag: $pred_flag\n")
 }
