@@ -1,0 +1,82 @@
+
+test:     file format elf32-littleriscv
+
+
+Disassembly of section .text:
+
+00000000 <main>:
+   0:	fe010113          	addi	sp,sp,-32
+   4:	00812e23          	sw	s0,28(sp)
+   8:	02010413          	addi	s0,sp,32
+   c:	fe042623          	sw	zero,-20(s0)
+  10:	fe042423          	sw	zero,-24(s0)
+  14:	fe042223          	sw	zero,-28(s0)
+  18:	fe042623          	sw	zero,-20(s0)
+  1c:	06c0006f          	j	88 <main+0x88>
+  20:	06400793          	li	a5,100
+  24:	fef42423          	sw	a5,-24(s0)
+  28:	04c0006f          	j	74 <main+0x74>
+  2c:	fe042223          	sw	zero,-28(s0)
+  30:	0240006f          	j	54 <main+0x54>
+  34:	fec42703          	lw	a4,-20(s0)
+  38:	fe842783          	lw	a5,-24(s0)
+  3c:	00f707b3          	add	a5,a4,a5
+  40:	fe442703          	lw	a4,-28(s0)
+  44:	02f75063          	bge	a4,a5,64 <main+0x64>
+  48:	fe442783          	lw	a5,-28(s0)
+  4c:	00178793          	addi	a5,a5,1
+  50:	fef42223          	sw	a5,-28(s0)
+  54:	fe442703          	lw	a4,-28(s0)
+  58:	06300793          	li	a5,99
+  5c:	fce7dce3          	bge	a5,a4,34 <main+0x34>
+  60:	0080006f          	j	68 <main+0x68>
+  64:	00000013          	nop
+  68:	fe842783          	lw	a5,-24(s0)
+  6c:	fff78793          	addi	a5,a5,-1
+  70:	fef42423          	sw	a5,-24(s0)
+  74:	fe842783          	lw	a5,-24(s0)
+  78:	faf04ae3          	bgtz	a5,2c <main+0x2c>
+  7c:	fec42783          	lw	a5,-20(s0)
+  80:	00178793          	addi	a5,a5,1
+  84:	fef42623          	sw	a5,-20(s0)
+  88:	fec42703          	lw	a4,-20(s0)
+  8c:	06300793          	li	a5,99
+  90:	f8e7d8e3          	bge	a5,a4,20 <main+0x20>
+  94:	c0001073          	unimp
+  98:	00000793          	li	a5,0
+  9c:	00078513          	mv	a0,a5
+  a0:	01c12403          	lw	s0,28(sp)
+  a4:	02010113          	addi	sp,sp,32
+  a8:	00008067          	ret
+
+Disassembly of section .comment:
+
+00000000 <.comment>:
+   0:	3a434347          	fmsub.d	ft6,ft6,ft4,ft7,rmm
+   4:	2820                	fld	fs0,80(s0)
+   6:	33616367          	0x33616367
+   a:	3231                	jal	fffff916 <_end+0xffffe916>
+   c:	61373833          	0x61373833
+  10:	3162                	fld	ft2,56(sp)
+  12:	2029                	jal	1c <main+0x1c>
+  14:	3031                	jal	fffff820 <_end+0xffffe820>
+  16:	322e                	fld	ft4,232(sp)
+  18:	302e                	fld	ft0,232(sp)
+	...
+
+Disassembly of section .riscv.attributes:
+
+00000000 <.riscv.attributes>:
+   0:	1b41                	addi	s6,s6,-16
+   2:	0000                	unimp
+   4:	7200                	flw	fs0,32(a2)
+   6:	7369                	lui	t1,0xffffa
+   8:	01007663          	bgeu	zero,a6,14 <main+0x14>
+   c:	0011                	c.nop	4
+   e:	0000                	unimp
+  10:	1004                	addi	s1,sp,32
+  12:	7205                	lui	tp,0xfffe1
+  14:	3376                	fld	ft6,376(sp)
+  16:	6932                	flw	fs2,12(sp)
+  18:	7032                	flw	ft0,44(sp)
+  1a:	0030                	addi	a2,sp,8
