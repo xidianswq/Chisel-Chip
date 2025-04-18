@@ -9,7 +9,7 @@ Disassembly of section .text:
    4:	00812e23          	sw	s0,28(sp)
    8:	02010413          	addi	s0,sp,32
    c:	fe042623          	sw	zero,-20(s0)
-  10:	00500793          	li	a5,5
+  10:	00700793          	li	a5,7
   14:	fef42223          	sw	a5,-28(s0)
   18:	fe042423          	sw	zero,-24(s0)
   1c:	0280006f          	j	44 <main+0x44>
@@ -23,7 +23,7 @@ Disassembly of section .text:
   3c:	00178793          	addi	a5,a5,1
   40:	fef42623          	sw	a5,-20(s0)
   44:	fec42703          	lw	a4,-20(s0)
-  48:	00900793          	li	a5,9
+  48:	00e00793          	li	a5,14
   4c:	fce7fae3          	bgeu	a5,a4,20 <main+0x20>
   50:	c0001073          	unimp
   54:	c0001073          	unimp
@@ -35,7 +35,7 @@ Disassembly of section .text:
 
 Disassembly of section .stack:
 
-00003800 <.stack>:
+00001c00 <.stack>:
 	...
 
 Disassembly of section .comment:
@@ -44,11 +44,11 @@ Disassembly of section .comment:
    0:	3a434347          	fmsub.d	ft6,ft6,ft4,ft7,rmm
    4:	2820                	fld	fs0,80(s0)
    6:	33616367          	0x33616367
-   a:	3231                	jal	fffff916 <__stack_size+0xfffff116>
+   a:	3231                	jal	fffff916 <__stack_size+0xfffff516>
    c:	61373833          	0x61373833
   10:	3162                	fld	ft2,56(sp)
   12:	2029                	jal	1c <main+0x1c>
-  14:	3031                	jal	fffff820 <__stack_size+0xfffff020>
+  14:	3031                	jal	fffff820 <__stack_size+0xfffff420>
   16:	322e                	fld	ft4,232(sp)
   18:	302e                	fld	ft0,232(sp)
 	...
