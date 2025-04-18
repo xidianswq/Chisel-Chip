@@ -6,6 +6,7 @@ int main()
         unsigned int k = 0;
         while(i<10){
 		if(j>=i)k=k+1;
+		i=i+1;
         }
         asm volatile("unimp");
         asm volatile("unimp");
