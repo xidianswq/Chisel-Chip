@@ -81,7 +81,7 @@ class SCore extends Module{
     io.exit := MuxCase(false.asBool, Seq(
         (inst   === UNIMP)      -> true.asBool,
         (inst   === EXIT_INST)  -> true.asBool,
-        (reg_pc === EXIT_PC)    -> true.asBool
+        //(reg_pc === EXIT_PC)    -> true.asBool
     ))
     io.bus <> mmu.io.out
 }

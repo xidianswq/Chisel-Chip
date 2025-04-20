@@ -13,7 +13,7 @@ object PConsts {
     // Memory
     val IMEM_WIDTH      = 32    // 32bit
     val IMEM_DEPTH      = 16384 // 16KB 16384
-    val IMEM_HEX_PATH   = "src/main/resources/CPU/test.hex"
+    val IMEM_HEX_PATH   = "src/main/resources/ctest/soc/hex/test.hex"
     val DMEM_WIDTH      = 32
 
     // Rigister

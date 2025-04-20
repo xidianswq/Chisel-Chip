@@ -79,7 +79,7 @@ class Top extends Module{
     io.exit := MuxCase(false.asBool, Seq(
         (inst   === UNIMP)      -> true.asBool,
         (inst   === EXIT_INST)  -> true.asBool,
-        (reg_pc === EXIT_PC)    -> true.asBool
+        //(reg_pc === EXIT_PC)    -> true.asBool
     ))
     io.gp := id.io.gp
     io.pred_flag := stall.io.out.pred_flag

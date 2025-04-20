@@ -34,7 +34,7 @@
   {
     "class":"firrtl.annotations.LoadMemoryAnnotation",
     "target":"Top.Memory.mem",
-    "fileName":"src/riscv-tests/hex/rv32mi-p-scall.hex",
+    "fileName":"src/main/resources/ctest/loop/hex/test.hex",
     "hexOrBinary":"h",
     "originalMemoryNameOpt":"mem"
   },
