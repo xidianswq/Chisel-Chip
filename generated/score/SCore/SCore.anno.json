@@ -1,0 +1,47 @@
+[
+  {
+    "class":"firrtl.transforms.BlackBoxInlineAnno",
+    "target":"SCore.Memory",
+    "name":"SCore.Memory.mem.v",
+    "text":"module BindsTo_0_Memory(\n  input         clock,\n  input  [31:0] io_instmem_addr,\n  output [31:0] io_instmem_inst,\n  input  [31:0] io_datamem_addr,\n  output [31:0] io_datamem_rdata,\n  input         io_datamem_wen,\n  input  [31:0] io_datamem_wdata\n);\n\ninitial begin\n  $readmemh(\"src/main/resources/ctest/soc/hex/test.hex\", Memory.mem);\nend\n                      endmodule\n\nbind Memory BindsTo_0_Memory BindsTo_0_Memory_Inst(.*);"
+  },
+  {
+    "class":"firrtl.transforms.DedupedResult",
+    "original":"~SCore|PC_IO_REG",
+    "duplicate":"~SCore|SCore/if_io_reg_n:PC_IO_REG",
+    "index":0.6842105263157895
+  },
+  {
+    "class":"firrtl.transforms.DedupedResult",
+    "original":"~SCore|PC_IO_REG_1",
+    "duplicate":"~SCore|SCore/if_io_reg_nn:PC_IO_REG",
+    "index":0.7368421052631579
+  },
+  {
+    "class":"firrtl.transforms.DedupedResult",
+    "original":"~SCore|ID_IO_REG",
+    "duplicate":"~SCore|SCore/id_io_reg:ID_IO_REG",
+    "index":0.7894736842105263
+  },
+  {
+    "class":"firrtl.transforms.DedupedResult",
+    "original":"~SCore|ID_IO_REG_1",
+    "duplicate":"~SCore|SCore/id_io_reg_n:ID_IO_REG",
+    "index":0.8421052631578947
+  },
+  {
+    "class":"firrtl.EmitCircuitAnnotation",
+    "emitter":"firrtl.VerilogEmitter"
+  },
+  {
+    "class":"firrtl.annotations.LoadMemoryAnnotation",
+    "target":"SCore.Memory.mem",
+    "fileName":"src/main/resources/ctest/soc/hex/test.hex",
+    "hexOrBinary":"h",
+    "originalMemoryNameOpt":"mem"
+  },
+  {
+    "class":"firrtl.transforms.BlackBoxTargetDirAnno",
+    "targetDir":"generated/score/SCore"
+  }
+]

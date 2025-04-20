@@ -1,0 +1,42 @@
+[*]
+[*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
+[*] Sun Apr 20 12:10:35 2025
+[*]
+[dumpfile] "D:\improve&work\work\大四上\毕设\CPU-code\Chisel-Chip\test_run_dir\soc_should_work\test_run_dir\soc_should_work\SoC.vcd"
+[savefile] "D:\improve&work\work\大四上\毕设\CPU-code\Chisel-Chip\test_run_dir\soc_should_work\apb-led.gtkw"
+[timestart] 0
+[size] 1920 991
+[pos] -138 -138
+*-5.000000 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[treeopen] SoC.
+[treeopen] SoC.core.
+[sst_width] 272
+[signals_width] 360
+[sst_expanded] 1
+[sst_vpaned_height] 550
+@22
+SoC.core.pc.reg_pc[31:0]
+SoC.core.pc.io_out_inst[31:0]
+@28
+SoC.core.pc.io_in_stall_io_stall_flag
+@29
+SoC.core.pc.io_in_stall_io_pred_miss_flag
+@22
+SoC.core.pc.io_in_bp_io_pred_target[31:0]
+@28
+SoC.core.pc.io_in_ex_io_br_io_br_flag
+@22
+SoC.core.pc.io_in_ex_io_br_io_br_target[31:0]
+@28
+SoC.core.pc.io_in_ex_io_alu_io_jump_flag
+@22
+SoC.core.pc.io_in_ex_io_alu_io_alu_out[31:0]
+SoC.core.mmu.io_mem_io_addr[31:0]
+SoC.core.mmu.io_mem_io_rdata[31:0]
+SoC.core.mmu.io_mem_io_wdata[31:0]
+@28
+SoC.core.mmu.io_mem_io_wen
+@22
+SoC.apb_periph.io_apb_out_led_io_led[31:0]
+[pattern_trace] 1
+[pattern_trace] 0

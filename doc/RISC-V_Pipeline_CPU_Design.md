@@ -4034,7 +4034,87 @@ object TopOption extends App {
 
 所使用的寄存器、存储器转化为Verilog后全是reg，应调整接口成SRAM的，并在Verilog中调用IP
 
+1、在Memory内部重新例化一个DRAM IP核（Ture Dual Port Ram，Read First，Always Enable Port Type，32*65536）
 
+```Verilog
+module Memory(
+  input         clock,
+  input  [31:0] io_instmem_addr,
+  output [31:0] io_instmem_inst,
+  input  [31:0] io_datamem_addr,
+  output [31:0] io_datamem_rdata,
+  input         io_datamem_wen,
+  input  [31:0] io_datamem_wdata
+);
+  mem sram ( // @[Top.scala 15:24]
+    .clka    (!clock),
+    .wea     (1'b0),
+    .addra   (io_instmem_addr[17:2]),
+    .dina    (32'h00000000),
+    .douta   (io_instmem_inst),
+    .clkb    (!clock),
+    .web     (io_datamem_wen),
+    .addrb   (io_datamem_addr[17:2]),
+    .dinb    (io_datamem_wdata),
+    .doutb   (io_datamem_rdata)
+  );
+endmodule
+```
+
+***注：DRAM有一周期延迟所以时钟为`!clock`，在下降沿输出指令。由于宽度为32，地址缩小4倍，且深度为64k，故地址为`io_instmem_addr[17:2]`***
+
+并选择载入存储文件coe如下（`od -An -tx4 -w4 -v test.bin >> test.hex`）：
+
+```
+memory_initialization_radix=16;
+memory_initialization_vector=
+ff010113,
+00812623,
+01010413,
+000107b7,
+0007a703,
+000107b7,
+00176713,
+00e7a023,
+000107b7,
+0007a703,
+000107b7,
+00276713,
+00e7a023,
+000107b7,
+0007a703,
+000107b7,
+00476713,
+00e7a023,
+000107b7,
+0007a703,
+000107b7,
+00876713,
+00e7a023,
+000107b7,
+0007a783,
+000107b7,
+0007a023,
+000107b7,
+0007a783,
+000107b7,
+0007a023,
+000107b7,
+0007a783,
+000107b7,
+0007a023,
+000107b7,
+0007a783,
+000107b7,
+0007a023,
+0007a023,
+0007a023,
+f71ff06f;
+```
+
+
+
+## SOC
 
 
 

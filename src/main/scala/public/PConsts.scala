@@ -20,7 +20,7 @@ object PConsts {
     val REG_LEN         = 32
     val REGX_NUM        = 32
     val REGX_ADDR_LEN   = 5
-    val CSR_NUM         = 4096
+    val CSR_NUM         = 1024
     val CSR_ADDR_LEN    = 12
     val START_PC        = 0.U(REG_LEN.W)                // PC start address
     val NOP             = "x_00000013".U(IMEM_WIDTH.W)  // [ADDI x0,x0,0] = NOP
