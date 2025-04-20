@@ -57,7 +57,7 @@ typedef struct
 
 #define IS_LED_PIN(PIN) ((PIN & (uint32_t)0x00) == 0x00 && (PIN != (uint32_t)0x00))
 
-void LED_SetBits(LED_TypeDef* LEDx, uint32_t LED_Pin);
-void LED_ReSetBits(LED_TypeDef* LEDx, uint32_t LED_Pin);
+void LED_SetBits(uint32_t LED_Pin);
+void LED_ReSetBits(uint32_t LED_Pin);
 
 #endif _LED_H
