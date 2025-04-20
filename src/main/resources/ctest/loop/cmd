@@ -1,5 +1,0 @@
-riscv64-unknown-elf-gcc -march=rv32i -mabi=ilp32 -c -o test.o test.c
-riscv64-unknown-elf-ld -b elf32-littleriscv test.o -T link.ld -o test
-riscv64-unknown-elf-objcopy -O binary test test.bin
-od -An -tx1 -w1 -v test.bin >> ./hex/test.hex
-riscv64-unknown-elf-objdump -b elf32-littleriscv -D test > ./dump/test.elf.dmp

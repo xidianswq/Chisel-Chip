@@ -2,31 +2,49 @@
 test:     file format elf32-littleriscv
 
 
-Disassembly of section .text.startup:
+Disassembly of section .text:
 
 00000000 <main>:
-   0:	000107b7          	lui	a5,0x10
-   4:	0007a703          	lw	a4,0(a5) # 10000 <main+0x10000>
-   8:	00176713          	ori	a4,a4,1
-   c:	00e7a023          	sw	a4,0(a5)
-  10:	0007a703          	lw	a4,0(a5)
-  14:	00276713          	ori	a4,a4,2
-  18:	00e7a023          	sw	a4,0(a5)
-  1c:	0007a703          	lw	a4,0(a5)
-  20:	00476713          	ori	a4,a4,4
-  24:	00e7a023          	sw	a4,0(a5)
-  28:	0007a703          	lw	a4,0(a5)
-  2c:	00876713          	ori	a4,a4,8
-  30:	00e7a023          	sw	a4,0(a5)
-  34:	0007a703          	lw	a4,0(a5)
-  38:	0007a023          	sw	zero,0(a5)
-  3c:	0007a703          	lw	a4,0(a5)
-  40:	0007a023          	sw	zero,0(a5)
-  44:	0007a703          	lw	a4,0(a5)
-  48:	0007a023          	sw	zero,0(a5)
-  4c:	0007a703          	lw	a4,0(a5)
-  50:	0007a023          	sw	zero,0(a5)
-  54:	fb1ff06f          	j	4 <main+0x4>
+   0:	ff010113          	addi	sp,sp,-16
+   4:	00812623          	sw	s0,12(sp)
+   8:	01010413          	addi	s0,sp,16
+   c:	000107b7          	lui	a5,0x10
+  10:	0007a703          	lw	a4,0(a5) # 10000 <_end+0xf000>
+  14:	000107b7          	lui	a5,0x10
+  18:	00176713          	ori	a4,a4,1
+  1c:	00e7a023          	sw	a4,0(a5) # 10000 <_end+0xf000>
+  20:	000107b7          	lui	a5,0x10
+  24:	0007a703          	lw	a4,0(a5) # 10000 <_end+0xf000>
+  28:	000107b7          	lui	a5,0x10
+  2c:	00276713          	ori	a4,a4,2
+  30:	00e7a023          	sw	a4,0(a5) # 10000 <_end+0xf000>
+  34:	000107b7          	lui	a5,0x10
+  38:	0007a703          	lw	a4,0(a5) # 10000 <_end+0xf000>
+  3c:	000107b7          	lui	a5,0x10
+  40:	00476713          	ori	a4,a4,4
+  44:	00e7a023          	sw	a4,0(a5) # 10000 <_end+0xf000>
+  48:	000107b7          	lui	a5,0x10
+  4c:	0007a703          	lw	a4,0(a5) # 10000 <_end+0xf000>
+  50:	000107b7          	lui	a5,0x10
+  54:	00876713          	ori	a4,a4,8
+  58:	00e7a023          	sw	a4,0(a5) # 10000 <_end+0xf000>
+  5c:	000107b7          	lui	a5,0x10
+  60:	0007a783          	lw	a5,0(a5) # 10000 <_end+0xf000>
+  64:	000107b7          	lui	a5,0x10
+  68:	0007a023          	sw	zero,0(a5) # 10000 <_end+0xf000>
+  6c:	000107b7          	lui	a5,0x10
+  70:	0007a783          	lw	a5,0(a5) # 10000 <_end+0xf000>
+  74:	000107b7          	lui	a5,0x10
+  78:	0007a023          	sw	zero,0(a5) # 10000 <_end+0xf000>
+  7c:	000107b7          	lui	a5,0x10
+  80:	0007a783          	lw	a5,0(a5) # 10000 <_end+0xf000>
+  84:	000107b7          	lui	a5,0x10
+  88:	0007a023          	sw	zero,0(a5) # 10000 <_end+0xf000>
+  8c:	000107b7          	lui	a5,0x10
+  90:	0007a783          	lw	a5,0(a5) # 10000 <_end+0xf000>
+  94:	000107b7          	lui	a5,0x10
+  98:	0007a023          	sw	zero,0(a5) # 10000 <_end+0xf000>
+  9c:	f71ff06f          	j	c <main+0xc>
 
 Disassembly of section .comment:
 
@@ -34,11 +52,11 @@ Disassembly of section .comment:
    0:	3a434347          	fmsub.d	ft6,ft6,ft4,ft7,rmm
    4:	2820                	fld	fs0,80(s0)
    6:	33616367          	0x33616367
-   a:	3231                	jal	fffff916 <main+0xfffff916>
+   a:	3231                	jal	fffff916 <_end+0xffffe916>
    c:	61373833          	0x61373833
   10:	3162                	fld	ft2,56(sp)
   12:	2029                	jal	1c <main+0x1c>
-  14:	3031                	jal	fffff820 <main+0xfffff820>
+  14:	3031                	jal	fffff820 <_end+0xffffe820>
   16:	322e                	fld	ft4,232(sp)
   18:	302e                	fld	ft0,232(sp)
 	...
