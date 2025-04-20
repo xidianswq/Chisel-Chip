@@ -6,6 +6,11 @@ import public.PConsts._
 import soc.DConsts._
 import peripheral._
 
+/* 
+type: IO Port
+name: MMU_IO(内存管理单元接口)
+apb_bus: APB bus interface,output
+*/
 class MMU_IO extends Bundle {
     val apb_bus = new APB_BUS()
 }

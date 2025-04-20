@@ -5,7 +5,7 @@ import public.PConsts._
 
 /*  
 name: Device_configuration_Constants
-note: Constants for MMU
+note: Constants for MMU & peripherals
 */
 object DConsts {
   val SRAM_SIZE       = 0x00010000.U(WORD_LEN.W) // SRAM size (1GB)

@@ -5,6 +5,10 @@ import chisel3.util._
 import public.PConsts._
 import soc.DConsts._
 
+/*
+type: BUS
+name: APB_BUS(自定义总线)
+*/
 class APB_BUS extends Bundle {
     val addr  = Output(UInt(WORD_LEN.W))
     val wen   = Output(Bool())
@@ -13,10 +17,21 @@ class APB_BUS extends Bundle {
     val rdata = Input(UInt(WORD_LEN.W))
 }
 
+/*
+type: IO Port
+name: APB_Peripheral_IO(自定义总线上外设集成接口)
+led_io: (see LED_IO in LED.scala)
+note: all interfaces are collected on APB bus
+*/
 class APB_Peripheral_IO extends Bundle {
     val led_io = new LED_IO()
 }
 
+/*
+type: Hardware
+name: APB_Peripheral(自定义总线控制器)
+note: deliver data to peripherals on APB bus
+*/
 class APB_Peripheral extends Module {
     val io = IO(new Bundle {
         val apb_bus = Flipped(new APB_BUS())
