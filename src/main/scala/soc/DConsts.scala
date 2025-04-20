@@ -8,7 +8,7 @@ name: Device_configuration_Constants
 note: Constants for MMU & peripherals
 */
 object DConsts {
-  val SRAM_SIZE       = 0x00010000.U(WORD_LEN.W) // SRAM size (1GB)
+  val SRAM_SIZE       = 0x00010000.U(WORD_LEN.W) // SRAM size (64KB)
   val PERIPH_SIZE     = 0x00010000.U(WORD_LEN.W) // Peripheral size (64KB)
 
   val SRAM_BASE       = 0x00000000.U(WORD_LEN.W) // SRAM base address
