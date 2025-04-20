@@ -2,12 +2,14 @@
 int main()
 {
         unsigned int i = 0;
-        unsigned int j = 7;
+        unsigned int j = 100;
         unsigned int k = 0;
-        while(i<15){
-		if(j>=i)k=k+1;
-		i=i+1;
-        }
+	for(i<0;i<100;i++){
+		for(j=100;j>0;j--){
+			if(j>i)k++;
+			else k--;
+		}
+	}
         asm volatile("unimp");
         asm volatile("unimp");
         return 0;
