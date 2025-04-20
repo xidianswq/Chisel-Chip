@@ -1,9 +1,9 @@
-package pipeline_advance
+package score
 
 import chisel3._
 import chisel3.util._
-import pipeline_advance.Consts._
-import pipeline_advance.Instructions._
+import public.PConsts._
+import public.Instructions._
 
 /*
 type: IO Port

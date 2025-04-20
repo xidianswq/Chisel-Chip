@@ -1,13 +1,13 @@
-package pipeline_advance
+package score
 
 import chisel3._
 import chisel3.util._
-import pipeline_advance.Consts._
-import pipeline_advance.Instructions._
+import public.PConsts._
+import public.Instructions._
 import peripheral._
 
 
-class Top extends Module{
+class SCore extends Module{
     val io = IO(new Bundle{
         val bus  = new MMU_IO()
         val exit = Output(Bool())
@@ -87,5 +87,5 @@ class Top extends Module{
 }
 
 object TopOption extends App {
-    (new chisel3.stage.ChiselStage).emitVerilog(new Top(), Array("--target-dir", "generated/pipeline_advance/Top"))
+    (new chisel3.stage.ChiselStage).emitVerilog(new SCore(), Array("--target-dir", "generated/score/SCore"))
 }

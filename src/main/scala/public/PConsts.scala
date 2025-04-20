@@ -1,8 +1,12 @@
-package pipeline_advance
+package public
 
 import chisel3._
 
-object Consts {
+/* 
+name: Public_configuration_Constants
+note: Constants for all design
+*/
+object PConsts {
     // Word size
     val WORD_LEN        = 32
 
@@ -16,7 +20,7 @@ object Consts {
     val REG_LEN         = 32
     val REGX_NUM        = 32
     val REGX_ADDR_LEN   = 5
-    val CSR_NUM         = 1024
+    val CSR_NUM         = 4096
     val CSR_ADDR_LEN    = 12
     val START_PC        = 0.U(REG_LEN.W)                // PC start address
     val NOP             = "x_00000013".U(IMEM_WIDTH.W)  // [ADDI x0,x0,0] = NOP
@@ -97,13 +101,13 @@ object Consts {
     val CSR_W       = 1.U(CSR_LEN.W)   // write
     val CSR_S       = 2.U(CSR_LEN.W)   // set
     val CSR_C       = 3.U(CSR_LEN.W)   // clear
-    val CSR_E       = 4.U(CSR_LEN.W)   // ecall
+    val CSR_E       = 4.U(CSR_LEN.W)   // ecall 
 
+    // *****Specific parameters*****
     // Pipeline parameters
     val PIPELINE_LEN    = 5
 
     // BP parameters
     val TABLE_WIDTH   = 8
     val TABLE_DEPTH   = 256
-    
 }

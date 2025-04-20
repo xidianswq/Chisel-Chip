@@ -1,7 +1,9 @@
 [
   {
-    "class":"firrtl.stage.FirrtlFileAnnotation",
-    "file":"test_run_dir\\pipeline_advance_should_work\\Top.lo.fir"
+    "class":"firrtl.transforms.BlackBoxInlineAnno",
+    "target":"Top.Memory",
+    "name":"Top.Memory.mem.v",
+    "text":"module BindsTo_0_Memory(\n  input         clock,\n  input  [31:0] io_instmem_addr,\n  output [31:0] io_instmem_inst,\n  input  [31:0] io_datamem_addr,\n  output [31:0] io_datamem_rdata,\n  input         io_datamem_wen,\n  input  [31:0] io_datamem_wdata\n);\n\ninitial begin\n  $readmemh(\"src/main/resources/CPU/test.hex\", Memory.mem);\nend\n                      endmodule\n\nbind Memory BindsTo_0_Memory BindsTo_0_Memory_Inst(.*);"
   },
   {
     "class":"firrtl.transforms.DedupedResult",
@@ -29,7 +31,7 @@
   },
   {
     "class":"firrtl.EmitCircuitAnnotation",
-    "emitter":"firrtl.LowFirrtlEmitter"
+    "emitter":"firrtl.VerilogEmitter"
   },
   {
     "class":"firrtl.annotations.LoadMemoryAnnotation",
@@ -40,6 +42,6 @@
   },
   {
     "class":"firrtl.transforms.BlackBoxTargetDirAnno",
-    "targetDir":"test_run_dir\\pipeline_advance_should_work"
+    "targetDir":"generated/pipeline_advance/Top"
   }
 ]
