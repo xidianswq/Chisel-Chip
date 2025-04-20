@@ -6,10 +6,19 @@ import public.PConsts._
 import soc.DConsts._
 import soc.LED_Consts._
 
+/*
+type: IO Port
+name: LED IO(LED output interface)
+led: LED control wire,output
+*/
 class LED_IO extends Bundle {
   val led = Output(UInt(WORD_LEN.W))
 }
 
+/* 
+type: Hardware
+name: LED controlor(LED驱动器)
+*/
 class LED extends Module {
   val io = IO(new Bundle {
     val bus = Flipped(new APB_BUS())
