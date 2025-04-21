@@ -4,7 +4,6 @@ import chisel3._
 import chisel3.util._
 import public.PConsts._
 import soc.DConsts._
-import soc.LED_Consts._
 
 /*
 type: IO Port
@@ -21,17 +20,16 @@ name: LED controlor(LED驱动器)
 */
 class LED extends Module {
   val io = IO(new Bundle {
-    val bus = Flipped(new APB_BUS())
-    val out = new LED_IO()
+    val bus    = Flipped(new APB_BUS())
+    val led_io = new LED_IO()
   })
 
   // LED registers (refer to device.h)
-  val led_control_reg = RegInit(0.U(LED_WIDTH.W))
+  val led_control_reg = RegInit(0.U(LED_SIZE.W))
 
   // input wire connection
   val wen   = io.bus.wen
-  val addr  = io.bus.addr
-  val wdata = io.bus.wdata
+  val wdata = io.bus.out.wdata
 
   // led contorl logic
   when(wen) {
@@ -41,8 +39,8 @@ class LED extends Module {
   }
 
   // output wire connection
-  io.bus.valid  := true.B // always valid
-  io.bus.rdata  := led_control_reg
-  io.out.led    := led_control_reg
+  io.bus.in.valid  := true.B // always valid
+  io.bus.in.rdata  := led_control_reg
+  io.led_io.led    := led_control_reg
 
 }

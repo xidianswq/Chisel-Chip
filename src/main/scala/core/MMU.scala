@@ -1,4 +1,4 @@
-package score
+package pipeline_advance
 
 import chisel3._
 import chisel3.util._
@@ -24,7 +24,7 @@ class MMU extends Module {
     val io = IO(new Bundle {
         val mem_io  = new DataMem_IO()
         val datamem = Flipped(new DataMem_IO())
-        val out     = new MMU_IO()
+        val mmu_io  = new MMU_IO()
     })
 
     // input wire connection & variable declaration
@@ -39,8 +39,8 @@ class MMU extends Module {
     val APB_addr    = addr
     val APB_wen     = Wire(Bool())
     val APB_wdata   = wdata
-    val APB_valid   = io.out.apb_bus.valid
-    val APB_rdata   = io.out.apb_bus.rdata
+    val APB_valid   = io.mmu_io.apb_bus.in.valid
+    val APB_rdata   = io.mmu_io.apb_bus.in.rdata
 
     // MMU logic
     when(addr >= SRAM_BASE && addr < (SRAM_BASE + SRAM_SIZE)) {
@@ -65,13 +65,13 @@ class MMU extends Module {
     }
 
     // output wire connection
-    io.datamem.addr     := datamem_addr
     io.datamem.wen      := datamem_wen
+    io.datamem.addr     := datamem_addr
     io.datamem.wdata    := datamem_wdata
 
-    io.out.apb_bus.addr := APB_addr
-    io.out.apb_bus.wen  := APB_wen
-    io.out.apb_bus.wdata := APB_wdata
+    io.mmu_io.apb_bus.wen       := APB_wen
+    io.mmu_io.apb_bus.out.addr  := APB_addr
+    io.mmu_io.apb_bus.out.wdata := APB_wdata
 
     io.mem_io.rdata     := rdata
 }

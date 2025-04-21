@@ -4116,6 +4116,36 @@ f71ff06f;
 
 ## SOC
 
+### MMU
+
+编写DConsts.scala（Device Constants）规定SRAM的大小为64KB以及其他外设地址，使用SW或LW指令时若超过这一范围，MMU将通过自定义总线（APB_BUS）向外传递信息。
+
+
+
+### 总线桥
+
+自定义总线（APB_BUS）包含5个信号：3个写信号2个读信号；同时定义总线桥APB_Peripheral将所有使用自定义总线（APB_BUS）的外设连接到APB_Peripheral，APB_Peripheral统一向这些外设通过自定义总线（APB_BUS）通信。
+
+
+
+### 外设控制器
+
+外设控制器通过某种总线协议与总线进行通信，如LED使用自定义总线（APB_BUS）与APB_Peripheral连接。
+
+
+
+### SOC
+
+在SOC内包含3个分：处理器核心Core、总线桥APB_Peripheral、外设Peripherals
+
+
+
+## 抽象机器接口AM
+
+编写外设控制库文件device.h、led.c、led.h，从而可以方便进行外设控制，类似stm32标准库。
+
+
+
 
 
 

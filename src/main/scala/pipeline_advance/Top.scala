@@ -83,7 +83,7 @@ class Top extends Module{
         (inst   === EXIT_INST)  -> true.asBool,
         (reg_pc === EXIT_PC)    -> true.asBool
     ))
-    io.bus <> mmu.io.out
+    io.bus <> mmu.io.mmu_io
 }
 
 object TopOption extends App {

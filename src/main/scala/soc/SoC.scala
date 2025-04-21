@@ -23,7 +23,7 @@ class SoC extends Module {
 
     // output wire connect
     io.exit                     := core.io.exit             // connect exit signal to top module
-    io.out.APB_Peripheral_io    <> apb_periph.io.apb_out    // connect LED to APB bus
+    io.out.APB_Peripheral_io    <> apb_periph.io.peripheral_io    // connect LED to APB bus
 }
 
 object TopOption extends App {

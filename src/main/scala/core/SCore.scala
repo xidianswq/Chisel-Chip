@@ -83,7 +83,7 @@ class SCore extends Module{
         //(reg_pc === EXIT_PC)    -> true.asBool,
         //(inst   === EXIT_INST)  -> true.asBool,
     ))
-    io.bus <> mmu.io.out
+    io.bus <> mmu.io.mmu_io
 }
 
 object TopOption extends App {
