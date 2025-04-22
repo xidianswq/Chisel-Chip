@@ -3427,39 +3427,34 @@ circuit SoC :
   module SDT : 
     input clock : Clock
     input reset : Reset
-    output io : {flip bus : {in : {flip valid : UInt<1>, flip rdata : UInt<32>}, wen : UInt<1>, out : {addr : UInt<32>, wdata : UInt<32>}}, sdt_io : {sdta : UInt<16>, sdtb : UInt<16>, sdtc : UInt<16>, sdtd : UInt<16>}}
+    output io : {flip bus : {in : {flip valid : UInt<1>, flip rdata : UInt<32>}, wen : UInt<1>, out : {addr : UInt<32>, wdata : UInt<32>}}, sdt_io : {sdta : UInt<32>, sdtb : UInt<32>}}
     
-    wire _sdt_outputdata_reg_WIRE : UInt<16>[4] @[SDT.scala 26:45]
-    _sdt_outputdata_reg_WIRE[0] <= UInt<16>("h00") @[SDT.scala 26:45]
-    _sdt_outputdata_reg_WIRE[1] <= UInt<16>("h00") @[SDT.scala 26:45]
-    _sdt_outputdata_reg_WIRE[2] <= UInt<16>("h00") @[SDT.scala 26:45]
-    _sdt_outputdata_reg_WIRE[3] <= UInt<16>("h00") @[SDT.scala 26:45]
-    reg sdt_outputdata_reg : UInt<16>[4], clock with : (reset => (reset, _sdt_outputdata_reg_WIRE)) @[SDT.scala 26:37]
-    node _sel_T = sub(io.bus.out.addr, UInt<32>("h010800")) @[SDT.scala 34:26]
-    node _sel_T_1 = tail(_sel_T, 1) @[SDT.scala 34:26]
-    node _sel_T_2 = shr(_sel_T_1, 1) @[SDT.scala 34:38]
-    node sel = bits(_sel_T_2, 1, 0) @[SDT.scala 34:43]
-    when io.bus.wen : @[SDT.scala 35:15]
-      node _sdt_outputdata_reg_T = bits(io.bus.out.wdata, 15, 0) @[SDT.scala 36:41]
-      sdt_outputdata_reg[sel] <= _sdt_outputdata_reg_T @[SDT.scala 36:33]
-      skip @[SDT.scala 35:15]
-    else : @[SDT.scala 37:16]
-      sdt_outputdata_reg[0] <= sdt_outputdata_reg[0] @[SDT.scala 38:28]
-      sdt_outputdata_reg[1] <= sdt_outputdata_reg[1] @[SDT.scala 38:28]
-      sdt_outputdata_reg[2] <= sdt_outputdata_reg[2] @[SDT.scala 38:28]
-      sdt_outputdata_reg[3] <= sdt_outputdata_reg[3] @[SDT.scala 38:28]
-      skip @[SDT.scala 37:16]
-    io.sdt_io.sdta <= sdt_outputdata_reg[0] @[SDT.scala 43:20]
-    io.sdt_io.sdtb <= sdt_outputdata_reg[1] @[SDT.scala 44:20]
-    io.sdt_io.sdtc <= sdt_outputdata_reg[2] @[SDT.scala 45:20]
-    io.sdt_io.sdtd <= sdt_outputdata_reg[3] @[SDT.scala 46:20]
-    io.bus.in.valid <= UInt<1>("h01") @[SDT.scala 48:22]
-    io.bus.in.rdata <= sdt_outputdata_reg[sel] @[SDT.scala 49:22]
+    wire _sdt_outputdata_reg_WIRE : UInt<32>[2] @[SDT.scala 24:45]
+    _sdt_outputdata_reg_WIRE[0] <= UInt<32>("h00") @[SDT.scala 24:45]
+    _sdt_outputdata_reg_WIRE[1] <= UInt<32>("h00") @[SDT.scala 24:45]
+    reg sdt_outputdata_reg : UInt<32>[2], clock with : (reset => (reset, _sdt_outputdata_reg_WIRE)) @[SDT.scala 24:37]
+    node _sel_T = sub(io.bus.out.addr, UInt<32>("h010800")) @[SDT.scala 32:26]
+    node _sel_T_1 = tail(_sel_T, 1) @[SDT.scala 32:26]
+    node sel = shr(_sel_T_1, 2) @[SDT.scala 32:38]
+    when io.bus.wen : @[SDT.scala 33:15]
+      node _T = bits(sel, 0, 0)
+      node _sdt_outputdata_reg_T = bits(io.bus.out.wdata, 31, 0) @[SDT.scala 34:41]
+      sdt_outputdata_reg[_T] <= _sdt_outputdata_reg_T @[SDT.scala 34:33]
+      skip @[SDT.scala 33:15]
+    else : @[SDT.scala 35:16]
+      sdt_outputdata_reg[0] <= sdt_outputdata_reg[0] @[SDT.scala 36:28]
+      sdt_outputdata_reg[1] <= sdt_outputdata_reg[1] @[SDT.scala 36:28]
+      skip @[SDT.scala 35:16]
+    node _rdata_T = bits(sel, 0, 0)
+    io.sdt_io.sdta <= sdt_outputdata_reg[0] @[SDT.scala 41:20]
+    io.sdt_io.sdtb <= sdt_outputdata_reg[1] @[SDT.scala 42:20]
+    io.bus.in.valid <= UInt<1>("h01") @[SDT.scala 44:22]
+    io.bus.in.rdata <= sdt_outputdata_reg[_rdata_T] @[SDT.scala 45:22]
     
   module APB_Peripheral : 
     input clock : Clock
     input reset : Reset
-    output io : {flip apb_bus : {in : {flip valid : UInt<1>, flip rdata : UInt<32>}, wen : UInt<1>, out : {addr : UInt<32>, wdata : UInt<32>}}, peripheral_io : {led_io : {led : UInt<32>}, key_io : {flip key : UInt<32>}, sdt_io : {sdta : UInt<16>, sdtb : UInt<16>, sdtc : UInt<16>, sdtd : UInt<16>}}}
+    output io : {flip apb_bus : {in : {flip valid : UInt<1>, flip rdata : UInt<32>}, wen : UInt<1>, out : {addr : UInt<32>, wdata : UInt<32>}}, peripheral_io : {led_io : {led : UInt<32>}, key_io : {flip key : UInt<32>}, sdt_io : {sdta : UInt<32>, sdtb : UInt<32>}}}
     
     inst led of LED @[APB.scala 48:21]
     led.clock <= clock
@@ -3478,9 +3473,9 @@ circuit SoC :
     sdt.io.bus.out.addr <= io.apb_bus.out.addr @[APB.scala 55:20]
     node led_sel = eq(io.apb_bus.out.addr, UInt<32>("h010000")) @[APB.scala 68:24]
     node key_sel = eq(io.apb_bus.out.addr, UInt<32>("h010400")) @[APB.scala 69:24]
-    node _sdt_sel_T = geq(io.apb_bus.out.addr, UInt<32>("h010800")) @[APB.scala 70:24]
-    node _sdt_sel_T_1 = lt(io.apb_bus.out.addr, UInt<32>("h010808")) @[APB.scala 70:45]
-    node sdt_sel = and(_sdt_sel_T, _sdt_sel_T_1) @[APB.scala 70:37]
+    node _sdt_sel_T = geq(io.apb_bus.out.addr, UInt<32>("h010800")) @[APB.scala 70:26]
+    node _sdt_sel_T_1 = lt(io.apb_bus.out.addr, UInt<32>("h010808")) @[APB.scala 70:49]
+    node sdt_sel = and(_sdt_sel_T, _sdt_sel_T_1) @[APB.scala 70:40]
     node led_wen = mux(led_sel, io.apb_bus.wen, UInt<1>("h00")) @[APB.scala 71:22]
     node key_wen = mux(key_sel, io.apb_bus.wen, UInt<1>("h00")) @[APB.scala 72:22]
     node sdt_wen = mux(sdt_sel, io.apb_bus.wen, UInt<1>("h00")) @[APB.scala 73:22]
@@ -3497,15 +3492,13 @@ circuit SoC :
     io.apb_bus.in.rdata <= rdata @[APB.scala 90:25]
     io.peripheral_io.led_io.led <= led.io.led_io.led @[APB.scala 92:29]
     key.io.key_io.key <= io.peripheral_io.key_io.key @[APB.scala 93:29]
-    io.peripheral_io.sdt_io.sdtd <= sdt.io.sdt_io.sdtd @[APB.scala 94:29]
-    io.peripheral_io.sdt_io.sdtc <= sdt.io.sdt_io.sdtc @[APB.scala 94:29]
     io.peripheral_io.sdt_io.sdtb <= sdt.io.sdt_io.sdtb @[APB.scala 94:29]
     io.peripheral_io.sdt_io.sdta <= sdt.io.sdt_io.sdta @[APB.scala 94:29]
     
   module SoC : 
     input clock : Clock
     input reset : UInt<1>
-    output io : {exit : UInt<1>, out : {APB_Peripheral_io : {led_io : {led : UInt<32>}, key_io : {flip key : UInt<32>}, sdt_io : {sdta : UInt<16>, sdtb : UInt<16>, sdtc : UInt<16>, sdtd : UInt<16>}}}}
+    output io : {exit : UInt<1>, out : {APB_Peripheral_io : {led_io : {led : UInt<32>}, key_io : {flip key : UInt<32>}, sdt_io : {sdta : UInt<32>, sdtb : UInt<32>}}}}
     
     inst core of SCore @[SoC.scala 18:29]
     core.clock <= clock
@@ -3519,8 +3512,6 @@ circuit SoC :
     core.io.bus.apb_bus.in.rdata <= apb_periph.io.apb_bus.in.rdata @[SoC.scala 22:33]
     core.io.bus.apb_bus.in.valid <= apb_periph.io.apb_bus.in.valid @[SoC.scala 22:33]
     io.exit <= core.io.exit @[SoC.scala 25:33]
-    io.out.APB_Peripheral_io.sdt_io.sdtd <= apb_periph.io.peripheral_io.sdt_io.sdtd @[SoC.scala 26:33]
-    io.out.APB_Peripheral_io.sdt_io.sdtc <= apb_periph.io.peripheral_io.sdt_io.sdtc @[SoC.scala 26:33]
     io.out.APB_Peripheral_io.sdt_io.sdtb <= apb_periph.io.peripheral_io.sdt_io.sdtb @[SoC.scala 26:33]
     io.out.APB_Peripheral_io.sdt_io.sdta <= apb_periph.io.peripheral_io.sdt_io.sdta @[SoC.scala 26:33]
     apb_periph.io.peripheral_io.key_io.key <= io.out.APB_Peripheral_io.key_io.key @[SoC.scala 26:33]

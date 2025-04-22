@@ -2,49 +2,194 @@
 test:     file format elf32-littleriscv
 
 
+Disassembly of section .text.init:
+
+00000000 <_start>:
+   0:	00010117          	auipc	sp,0x10
+   4:	00010113          	mv	sp,sp
+   8:	004000ef          	jal	ra,c <main>
+
 Disassembly of section .text:
 
-00000000 <main>:
-   0:	ff010113          	addi	sp,sp,-16
-   4:	00812623          	sw	s0,12(sp)
-   8:	01010413          	addi	s0,sp,16
-   c:	000107b7          	lui	a5,0x10
-  10:	0007a703          	lw	a4,0(a5) # 10000 <_end+0xf000>
-  14:	000107b7          	lui	a5,0x10
-  18:	00176713          	ori	a4,a4,1
-  1c:	00e7a023          	sw	a4,0(a5) # 10000 <_end+0xf000>
-  20:	000107b7          	lui	a5,0x10
-  24:	0007a703          	lw	a4,0(a5) # 10000 <_end+0xf000>
-  28:	000107b7          	lui	a5,0x10
-  2c:	00276713          	ori	a4,a4,2
-  30:	00e7a023          	sw	a4,0(a5) # 10000 <_end+0xf000>
-  34:	000107b7          	lui	a5,0x10
-  38:	0007a703          	lw	a4,0(a5) # 10000 <_end+0xf000>
-  3c:	000107b7          	lui	a5,0x10
-  40:	00476713          	ori	a4,a4,4
-  44:	00e7a023          	sw	a4,0(a5) # 10000 <_end+0xf000>
-  48:	000107b7          	lui	a5,0x10
-  4c:	0007a703          	lw	a4,0(a5) # 10000 <_end+0xf000>
-  50:	000107b7          	lui	a5,0x10
-  54:	00876713          	ori	a4,a4,8
-  58:	00e7a023          	sw	a4,0(a5) # 10000 <_end+0xf000>
-  5c:	000107b7          	lui	a5,0x10
-  60:	0007a783          	lw	a5,0(a5) # 10000 <_end+0xf000>
-  64:	000107b7          	lui	a5,0x10
-  68:	0007a023          	sw	zero,0(a5) # 10000 <_end+0xf000>
-  6c:	000107b7          	lui	a5,0x10
-  70:	0007a783          	lw	a5,0(a5) # 10000 <_end+0xf000>
-  74:	000107b7          	lui	a5,0x10
-  78:	0007a023          	sw	zero,0(a5) # 10000 <_end+0xf000>
-  7c:	000107b7          	lui	a5,0x10
-  80:	0007a783          	lw	a5,0(a5) # 10000 <_end+0xf000>
-  84:	000107b7          	lui	a5,0x10
-  88:	0007a023          	sw	zero,0(a5) # 10000 <_end+0xf000>
-  8c:	000107b7          	lui	a5,0x10
-  90:	0007a783          	lw	a5,0(a5) # 10000 <_end+0xf000>
-  94:	000107b7          	lui	a5,0x10
-  98:	0007a023          	sw	zero,0(a5) # 10000 <_end+0xf000>
-  9c:	f71ff06f          	j	c <main+0xc>
+0000000c <main>:
+   c:	fe010113          	addi	sp,sp,-32 # ffe0 <_stack_end+0x7e0>
+  10:	00112e23          	sw	ra,28(sp)
+  14:	00812c23          	sw	s0,24(sp)
+  18:	02010413          	addi	s0,sp,32
+  1c:	fe042623          	sw	zero,-20(s0)
+  20:	fe042423          	sw	zero,-24(s0)
+  24:	fe042223          	sw	zero,-28(s0)
+  28:	fe042023          	sw	zero,-32(s0)
+  2c:	fff00513          	li	a0,-1
+  30:	1d4000ef          	jal	ra,204 <LED_SetBits>
+  34:	0ff00513          	li	a0,255
+  38:	0a4000ef          	jal	ra,dc <KEY_ReadInputData>
+  3c:	fea42623          	sw	a0,-20(s0)
+  40:	000107b7          	lui	a5,0x10
+  44:	f0078513          	addi	a0,a5,-256 # ff00 <_stack_end+0x700>
+  48:	094000ef          	jal	ra,dc <KEY_ReadInputData>
+  4c:	00050793          	mv	a5,a0
+  50:	0087d793          	srli	a5,a5,0x8
+  54:	fef42423          	sw	a5,-24(s0)
+  58:	fec42703          	lw	a4,-20(s0)
+  5c:	fe842783          	lw	a5,-24(s0)
+  60:	00f707b3          	add	a5,a4,a5
+  64:	00879793          	slli	a5,a5,0x8
+  68:	fef42223          	sw	a5,-28(s0)
+  6c:	fec42703          	lw	a4,-20(s0)
+  70:	fe842783          	lw	a5,-24(s0)
+  74:	00f707b3          	add	a5,a4,a5
+  78:	00879793          	slli	a5,a5,0x8
+  7c:	fef42023          	sw	a5,-32(s0)
+  80:	fff00513          	li	a0,-1
+  84:	1b8000ef          	jal	ra,23c <LED_ResetBits>
+  88:	fe442583          	lw	a1,-28(s0)
+  8c:	000117b7          	lui	a5,0x11
+  90:	80078513          	addi	a0,a5,-2048 # 10800 <_sp+0x800>
+  94:	018000ef          	jal	ra,ac <SDT_Write>
+  98:	fe042583          	lw	a1,-32(s0)
+  9c:	000117b7          	lui	a5,0x11
+  a0:	80478513          	addi	a0,a5,-2044 # 10804 <_sp+0x804>
+  a4:	008000ef          	jal	ra,ac <SDT_Write>
+  a8:	f85ff06f          	j	2c <main+0x20>
+
+000000ac <SDT_Write>:
+  ac:	fe010113          	addi	sp,sp,-32
+  b0:	00812e23          	sw	s0,28(sp)
+  b4:	02010413          	addi	s0,sp,32
+  b8:	fea42623          	sw	a0,-20(s0)
+  bc:	feb42423          	sw	a1,-24(s0)
+  c0:	fec42783          	lw	a5,-20(s0)
+  c4:	fe842703          	lw	a4,-24(s0)
+  c8:	00e7a023          	sw	a4,0(a5)
+  cc:	00000013          	nop
+  d0:	01c12403          	lw	s0,28(sp)
+  d4:	02010113          	addi	sp,sp,32
+  d8:	00008067          	ret
+
+000000dc <KEY_ReadInputData>:
+  dc:	fe010113          	addi	sp,sp,-32
+  e0:	00812e23          	sw	s0,28(sp)
+  e4:	02010413          	addi	s0,sp,32
+  e8:	fea42623          	sw	a0,-20(s0)
+  ec:	000107b7          	lui	a5,0x10
+  f0:	40078793          	addi	a5,a5,1024 # 10400 <_sp+0x400>
+  f4:	0007a703          	lw	a4,0(a5)
+  f8:	fec42783          	lw	a5,-20(s0)
+  fc:	00f777b3          	and	a5,a4,a5
+ 100:	00078513          	mv	a0,a5
+ 104:	01c12403          	lw	s0,28(sp)
+ 108:	02010113          	addi	sp,sp,32
+ 10c:	00008067          	ret
+
+00000110 <KEY_ReadInputDataBit>:
+ 110:	fd010113          	addi	sp,sp,-48
+ 114:	02812623          	sw	s0,44(sp)
+ 118:	03010413          	addi	s0,sp,48
+ 11c:	fca42e23          	sw	a0,-36(s0)
+ 120:	fe0407a3          	sb	zero,-17(s0)
+ 124:	000107b7          	lui	a5,0x10
+ 128:	40078793          	addi	a5,a5,1024 # 10400 <_sp+0x400>
+ 12c:	0007a703          	lw	a4,0(a5)
+ 130:	fdc42783          	lw	a5,-36(s0)
+ 134:	00f777b3          	and	a5,a4,a5
+ 138:	00078863          	beqz	a5,148 <KEY_ReadInputDataBit+0x38>
+ 13c:	00100793          	li	a5,1
+ 140:	fef407a3          	sb	a5,-17(s0)
+ 144:	0080006f          	j	14c <KEY_ReadInputDataBit+0x3c>
+ 148:	fe0407a3          	sb	zero,-17(s0)
+ 14c:	fef44783          	lbu	a5,-17(s0)
+ 150:	00078513          	mv	a0,a5
+ 154:	02c12403          	lw	s0,44(sp)
+ 158:	03010113          	addi	sp,sp,48
+ 15c:	00008067          	ret
+
+00000160 <led_init>:
+ 160:	fe010113          	addi	sp,sp,-32
+ 164:	00812e23          	sw	s0,28(sp)
+ 168:	02010413          	addi	s0,sp,32
+ 16c:	fea42623          	sw	a0,-20(s0)
+ 170:	feb42423          	sw	a1,-24(s0)
+ 174:	00000013          	nop
+ 178:	01c12403          	lw	s0,28(sp)
+ 17c:	02010113          	addi	sp,sp,32
+ 180:	00008067          	ret
+
+00000184 <LED_ReadInputData>:
+ 184:	fe010113          	addi	sp,sp,-32
+ 188:	00812e23          	sw	s0,28(sp)
+ 18c:	02010413          	addi	s0,sp,32
+ 190:	fea42623          	sw	a0,-20(s0)
+ 194:	000107b7          	lui	a5,0x10
+ 198:	0007a703          	lw	a4,0(a5) # 10000 <_sp>
+ 19c:	fec42783          	lw	a5,-20(s0)
+ 1a0:	00f777b3          	and	a5,a4,a5
+ 1a4:	00078513          	mv	a0,a5
+ 1a8:	01c12403          	lw	s0,28(sp)
+ 1ac:	02010113          	addi	sp,sp,32
+ 1b0:	00008067          	ret
+
+000001b4 <LED_ReadInputDataBit>:
+ 1b4:	fd010113          	addi	sp,sp,-48
+ 1b8:	02812623          	sw	s0,44(sp)
+ 1bc:	03010413          	addi	s0,sp,48
+ 1c0:	fca42e23          	sw	a0,-36(s0)
+ 1c4:	fe0407a3          	sb	zero,-17(s0)
+ 1c8:	000107b7          	lui	a5,0x10
+ 1cc:	0007a703          	lw	a4,0(a5) # 10000 <_sp>
+ 1d0:	fdc42783          	lw	a5,-36(s0)
+ 1d4:	00f77733          	and	a4,a4,a5
+ 1d8:	00100793          	li	a5,1
+ 1dc:	00f70663          	beq	a4,a5,1e8 <LED_ReadInputDataBit+0x34>
+ 1e0:	fe0407a3          	sb	zero,-17(s0)
+ 1e4:	00c0006f          	j	1f0 <LED_ReadInputDataBit+0x3c>
+ 1e8:	00100793          	li	a5,1
+ 1ec:	fef407a3          	sb	a5,-17(s0)
+ 1f0:	fef44783          	lbu	a5,-17(s0)
+ 1f4:	00078513          	mv	a0,a5
+ 1f8:	02c12403          	lw	s0,44(sp)
+ 1fc:	03010113          	addi	sp,sp,48
+ 200:	00008067          	ret
+
+00000204 <LED_SetBits>:
+ 204:	fe010113          	addi	sp,sp,-32
+ 208:	00812e23          	sw	s0,28(sp)
+ 20c:	02010413          	addi	s0,sp,32
+ 210:	fea42623          	sw	a0,-20(s0)
+ 214:	000107b7          	lui	a5,0x10
+ 218:	0007a683          	lw	a3,0(a5) # 10000 <_sp>
+ 21c:	000107b7          	lui	a5,0x10
+ 220:	fec42703          	lw	a4,-20(s0)
+ 224:	00e6e733          	or	a4,a3,a4
+ 228:	00e7a023          	sw	a4,0(a5) # 10000 <_sp>
+ 22c:	00000013          	nop
+ 230:	01c12403          	lw	s0,28(sp)
+ 234:	02010113          	addi	sp,sp,32
+ 238:	00008067          	ret
+
+0000023c <LED_ResetBits>:
+ 23c:	fe010113          	addi	sp,sp,-32
+ 240:	00812e23          	sw	s0,28(sp)
+ 244:	02010413          	addi	s0,sp,32
+ 248:	fea42623          	sw	a0,-20(s0)
+ 24c:	000107b7          	lui	a5,0x10
+ 250:	0007a703          	lw	a4,0(a5) # 10000 <_sp>
+ 254:	fec42783          	lw	a5,-20(s0)
+ 258:	0017b793          	seqz	a5,a5
+ 25c:	0ff7f793          	andi	a5,a5,255
+ 260:	00078693          	mv	a3,a5
+ 264:	000107b7          	lui	a5,0x10
+ 268:	00d77733          	and	a4,a4,a3
+ 26c:	00e7a023          	sw	a4,0(a5) # 10000 <_sp>
+ 270:	00000013          	nop
+ 274:	01c12403          	lw	s0,28(sp)
+ 278:	02010113          	addi	sp,sp,32
+ 27c:	00008067          	ret
+
+Disassembly of section .stack:
+
+0000f800 <_sp-0x800>:
+	...
 
 Disassembly of section .comment:
 
@@ -52,11 +197,11 @@ Disassembly of section .comment:
    0:	3a434347          	fmsub.d	ft6,ft6,ft4,ft7,rmm
    4:	2820                	fld	fs0,80(s0)
    6:	33616367          	0x33616367
-   a:	3231                	jal	fffff916 <_end+0xffffe916>
+   a:	3231                	jal	fffff916 <_sp+0xfffef916>
    c:	61373833          	0x61373833
   10:	3162                	fld	ft2,56(sp)
-  12:	2029                	jal	1c <main+0x1c>
-  14:	3031                	jal	fffff820 <_end+0xffffe820>
+  12:	2029                	jal	1c <main+0x10>
+  14:	3031                	jal	fffff820 <_sp+0xfffef820>
   16:	322e                	fld	ft4,232(sp)
   18:	302e                	fld	ft0,232(sp)
 	...
@@ -68,7 +213,7 @@ Disassembly of section .riscv.attributes:
    2:	0000                	unimp
    4:	7200                	flw	fs0,32(a2)
    6:	7369                	lui	t1,0xffffa
-   8:	01007663          	bgeu	zero,a6,14 <main+0x14>
+   8:	01007663          	bgeu	zero,a6,14 <main+0x8>
    c:	0011                	c.nop	4
    e:	0000                	unimp
   10:	1004                	addi	s1,sp,32

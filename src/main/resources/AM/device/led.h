@@ -60,6 +60,6 @@ typedef struct
 uint32_t LED_ReadInputData(uint32_t LED_Pin);
 uint8_t LED_ReadInputDataBit(uint32_t LED_Pin);
 void LED_SetBits(uint32_t LED_Pin);
-void LED_ReSetBits(uint32_t LED_Pin);
+void LED_ResetBits(uint32_t LED_Pin);
 
 #endif

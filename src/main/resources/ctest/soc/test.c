@@ -15,13 +15,11 @@ int main()
         LED_SetBits(LED_Pin_ALL);
         a = KEY_ReadInputData(KEYA_Pin_ALL);
         b = KEY_ReadInputData(KEYB_Pin_ALL) >> 8;
-        c = a & b;
-        d = a + b;
+        c = a + b << 8;
+        d = (a + b) << 8;
         LED_ResetBits(LED_Pin_ALL);
-        SDT_Write(SDTA, a);
-        SDT_Write(SDTB, b);
-        SDT_Write(SDTC, c);
-        SDT_Write(SDTD, d);
+        SDT_Write(SDTA, c);
+        SDT_Write(SDTB, d);
     }
 
     asm volatile("unimp");

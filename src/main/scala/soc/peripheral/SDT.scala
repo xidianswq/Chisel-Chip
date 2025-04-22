@@ -13,8 +13,6 @@ sdt: SDT input wire,input
 class SDT_IO extends Bundle {
     val sdta = Output(UInt(SDT_SIZE.W))
     val sdtb = Output(UInt(SDT_SIZE.W))
-    val sdtc = Output(UInt(SDT_SIZE.W))
-    val sdtd = Output(UInt(SDT_SIZE.W))
 }
 
 class SDT extends Module {
@@ -23,7 +21,7 @@ class SDT extends Module {
         val sdt_io = new SDT_IO()
     })
     // sdt inputdata register
-    val sdt_outputdata_reg = RegInit(VecInit(Seq.fill(4)(0.U(SDT_SIZE.W))))
+    val sdt_outputdata_reg = RegInit(VecInit(Seq.fill(2)(0.U(SDT_SIZE.W))))
 
     // input wire connection
     val addr    = io.bus.out.addr
@@ -31,7 +29,7 @@ class SDT extends Module {
     val wdata   = io.bus.out.wdata
 
     // DigtalTube control logic
-    val sel     = ((addr - SDT_BASE) >> 1)(1,0)
+    val sel     = ((addr - SDT_BASE) >> 2)
     when(wen) {
         sdt_outputdata_reg(sel) := wdata(SDT_SIZE-1,0)
     }.otherwise{
@@ -42,8 +40,6 @@ class SDT extends Module {
     // output wire connection
     io.sdt_io.sdta := sdt_outputdata_reg(0)
     io.sdt_io.sdtb := sdt_outputdata_reg(1)
-    io.sdt_io.sdtc := sdt_outputdata_reg(2)
-    io.sdt_io.sdtd := sdt_outputdata_reg(3)
 
     io.bus.in.valid  := true.B // always valid
     io.bus.in.rdata  := rdata

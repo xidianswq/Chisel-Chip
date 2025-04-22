@@ -21,7 +21,7 @@ typedef struct
 /* 7 Segment DigtalTube Outputdata Register (32 LEDs) */
 typedef struct
 {
-  __IO uint16_t ODR;                          /* Offset: 0x000  DigtalTube Outputdata Register */
+  __IO uint32_t ODR;                          /* Offset: 0x000  DigtalTube Outputdata Register */
 } SDT_TypeDef;
 
 /* USART Control Register */
@@ -59,9 +59,7 @@ typedef struct
 #define LED                 ((LED_TypeDef *) LED_BASE) /* LED base address */
 #define KEY                 ((KEY_TypeDef *) KEY_BASE) /* KEY base address */
 #define SDTA                ((SDT_TypeDef *) (SDT_BASE + 0x000)) /* SDT A base address */
-#define SDTB                ((SDT_TypeDef *) (SDT_BASE + 0x002)) /* SDT B base address */
-#define SDTC                ((SDT_TypeDef *) (SDT_BASE + 0x004)) /* SDT B base address */
-#define SDTD                ((SDT_TypeDef *) (SDT_BASE + 0x006)) /* SDT B base address */
+#define SDTB                ((SDT_TypeDef *) (SDT_BASE + 0x004)) /* SDT B base address */
 #define USART               ((USART_TypeDef *) USART_BASE) /* USART base address */
 
 #define assert_param(expr) ((void)0)

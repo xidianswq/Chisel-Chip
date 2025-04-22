@@ -15152,52 +15152,35 @@ circuit SoC :
     input io_bus_wen : UInt<1>
     input io_bus_out_addr : UInt<32>
     input io_bus_out_wdata : UInt<32>
-    output io_sdt_io_sdta : UInt<16>
-    output io_sdt_io_sdtb : UInt<16>
-    output io_sdt_io_sdtc : UInt<16>
-    output io_sdt_io_sdtd : UInt<16>
+    output io_sdt_io_sdta : UInt<32>
+    output io_sdt_io_sdtb : UInt<32>
 
-    reg sdt_outputdata_reg_0 : UInt<16>, clock with :
-      reset => (UInt<1>("h0"), sdt_outputdata_reg_0) @[SDT.scala 26:37]
-    reg sdt_outputdata_reg_1 : UInt<16>, clock with :
-      reset => (UInt<1>("h0"), sdt_outputdata_reg_1) @[SDT.scala 26:37]
-    reg sdt_outputdata_reg_2 : UInt<16>, clock with :
-      reset => (UInt<1>("h0"), sdt_outputdata_reg_2) @[SDT.scala 26:37]
-    reg sdt_outputdata_reg_3 : UInt<16>, clock with :
-      reset => (UInt<1>("h0"), sdt_outputdata_reg_3) @[SDT.scala 26:37]
-    node _sel_T = sub(io_bus_out_addr, UInt<32>("h10800")) @[SDT.scala 34:26]
-    node _sel_T_1 = tail(_sel_T, 1) @[SDT.scala 34:26]
-    node _sel_T_2 = shr(_sel_T_1, 1) @[SDT.scala 34:38]
-    node sel = bits(_sel_T_2, 1, 0) @[SDT.scala 34:43]
-    node _sdt_outputdata_reg_T = bits(io_bus_out_wdata, 15, 0) @[SDT.scala 36:41]
-    node _sdt_outputdata_reg_sel = _sdt_outputdata_reg_T @[SDT.scala 36:33 SDT.scala 36:33]
-    node _GEN_0 = mux(eq(UInt<1>("h0"), sel), _sdt_outputdata_reg_sel, sdt_outputdata_reg_0) @[SDT.scala 36:33 SDT.scala 36:33 SDT.scala 26:37]
-    node _GEN_1 = mux(eq(UInt<1>("h1"), sel), _sdt_outputdata_reg_sel, sdt_outputdata_reg_1) @[SDT.scala 36:33 SDT.scala 36:33 SDT.scala 26:37]
-    node _GEN_2 = mux(eq(UInt<2>("h2"), sel), _sdt_outputdata_reg_sel, sdt_outputdata_reg_2) @[SDT.scala 36:33 SDT.scala 36:33 SDT.scala 26:37]
-    node _GEN_3 = mux(eq(UInt<2>("h3"), sel), _sdt_outputdata_reg_sel, sdt_outputdata_reg_3) @[SDT.scala 36:33 SDT.scala 36:33 SDT.scala 26:37]
-    node _GEN_4 = mux(io_bus_wen, _GEN_0, sdt_outputdata_reg_0) @[SDT.scala 35:15 SDT.scala 38:28]
-    node _GEN_5 = mux(io_bus_wen, _GEN_1, sdt_outputdata_reg_1) @[SDT.scala 35:15 SDT.scala 38:28]
-    node _GEN_6 = mux(io_bus_wen, _GEN_2, sdt_outputdata_reg_2) @[SDT.scala 35:15 SDT.scala 38:28]
-    node _GEN_7 = mux(io_bus_wen, _GEN_3, sdt_outputdata_reg_3) @[SDT.scala 35:15 SDT.scala 38:28]
-    node _GEN_8 = validif(eq(UInt<1>("h0"), sel), sdt_outputdata_reg_0) @[SDT.scala 49:22 SDT.scala 49:22]
-    node _GEN_9 = mux(eq(UInt<1>("h1"), sel), sdt_outputdata_reg_1, _GEN_8) @[SDT.scala 49:22 SDT.scala 49:22]
-    node _GEN_10 = mux(eq(UInt<2>("h2"), sel), sdt_outputdata_reg_2, _GEN_9) @[SDT.scala 49:22 SDT.scala 49:22]
-    node _GEN_11 = mux(eq(UInt<2>("h3"), sel), sdt_outputdata_reg_3, _GEN_10) @[SDT.scala 49:22 SDT.scala 49:22]
-    node _sdt_outputdata_reg_WIRE_0 = UInt<16>("h0") @[SDT.scala 26:45 SDT.scala 26:45]
-    node _sdt_outputdata_reg_WIRE_1 = UInt<16>("h0") @[SDT.scala 26:45 SDT.scala 26:45]
-    node _sdt_outputdata_reg_WIRE_2 = UInt<16>("h0") @[SDT.scala 26:45 SDT.scala 26:45]
-    node _sdt_outputdata_reg_WIRE_3 = UInt<16>("h0") @[SDT.scala 26:45 SDT.scala 26:45]
-    node _sdt_outputdata_reg_sel_0 = _GEN_11 @[SDT.scala 49:22]
-    io_bus_in_valid <= UInt<1>("h1") @[SDT.scala 48:22]
-    io_bus_in_rdata <= _sdt_outputdata_reg_sel_0 @[SDT.scala 49:22]
-    io_sdt_io_sdta <= sdt_outputdata_reg_0 @[SDT.scala 43:20]
-    io_sdt_io_sdtb <= sdt_outputdata_reg_1 @[SDT.scala 44:20]
-    io_sdt_io_sdtc <= sdt_outputdata_reg_2 @[SDT.scala 45:20]
-    io_sdt_io_sdtd <= sdt_outputdata_reg_3 @[SDT.scala 46:20]
-    sdt_outputdata_reg_0 <= mux(reset, _sdt_outputdata_reg_WIRE_0, _GEN_4) @[SDT.scala 26:37 SDT.scala 26:37]
-    sdt_outputdata_reg_1 <= mux(reset, _sdt_outputdata_reg_WIRE_1, _GEN_5) @[SDT.scala 26:37 SDT.scala 26:37]
-    sdt_outputdata_reg_2 <= mux(reset, _sdt_outputdata_reg_WIRE_2, _GEN_6) @[SDT.scala 26:37 SDT.scala 26:37]
-    sdt_outputdata_reg_3 <= mux(reset, _sdt_outputdata_reg_WIRE_3, _GEN_7) @[SDT.scala 26:37 SDT.scala 26:37]
+    reg sdt_outputdata_reg_0 : UInt<32>, clock with :
+      reset => (UInt<1>("h0"), sdt_outputdata_reg_0) @[SDT.scala 24:37]
+    reg sdt_outputdata_reg_1 : UInt<32>, clock with :
+      reset => (UInt<1>("h0"), sdt_outputdata_reg_1) @[SDT.scala 24:37]
+    node _sel_T = sub(io_bus_out_addr, UInt<32>("h10800")) @[SDT.scala 32:26]
+    node _sel_T_1 = tail(_sel_T, 1) @[SDT.scala 32:26]
+    node sel = shr(_sel_T_1, 2) @[SDT.scala 32:38]
+    node _T = bits(sel, 0, 0)
+    node _sdt_outputdata_reg_T = bits(io_bus_out_wdata, 31, 0) @[SDT.scala 34:41]
+    node _sdt_outputdata_reg_T_0 = _sdt_outputdata_reg_T @[SDT.scala 34:33 SDT.scala 34:33]
+    node _GEN_0 = mux(eq(UInt<1>("h0"), _T), _sdt_outputdata_reg_T_0, sdt_outputdata_reg_0) @[SDT.scala 34:33 SDT.scala 34:33 SDT.scala 24:37]
+    node _GEN_1 = mux(eq(UInt<1>("h1"), _T), _sdt_outputdata_reg_T_0, sdt_outputdata_reg_1) @[SDT.scala 34:33 SDT.scala 34:33 SDT.scala 24:37]
+    node _GEN_2 = mux(io_bus_wen, _GEN_0, sdt_outputdata_reg_0) @[SDT.scala 33:15 SDT.scala 36:28]
+    node _GEN_3 = mux(io_bus_wen, _GEN_1, sdt_outputdata_reg_1) @[SDT.scala 33:15 SDT.scala 36:28]
+    node _rdata_T = bits(sel, 0, 0)
+    node _GEN_4 = validif(eq(UInt<1>("h0"), _rdata_T), sdt_outputdata_reg_0) @[SDT.scala 45:22 SDT.scala 45:22]
+    node _GEN_5 = mux(eq(UInt<1>("h1"), _rdata_T), sdt_outputdata_reg_1, _GEN_4) @[SDT.scala 45:22 SDT.scala 45:22]
+    node _sdt_outputdata_reg_WIRE_0 = UInt<32>("h0") @[SDT.scala 24:45 SDT.scala 24:45]
+    node _sdt_outputdata_reg_WIRE_1 = UInt<32>("h0") @[SDT.scala 24:45 SDT.scala 24:45]
+    node _sdt_outputdata_reg_rdata_T = _GEN_5 @[SDT.scala 45:22]
+    io_bus_in_valid <= UInt<1>("h1") @[SDT.scala 44:22]
+    io_bus_in_rdata <= _sdt_outputdata_reg_rdata_T @[SDT.scala 45:22]
+    io_sdt_io_sdta <= sdt_outputdata_reg_0 @[SDT.scala 41:20]
+    io_sdt_io_sdtb <= sdt_outputdata_reg_1 @[SDT.scala 42:20]
+    sdt_outputdata_reg_0 <= mux(reset, _sdt_outputdata_reg_WIRE_0, _GEN_2) @[SDT.scala 24:37 SDT.scala 24:37]
+    sdt_outputdata_reg_1 <= mux(reset, _sdt_outputdata_reg_WIRE_1, _GEN_3) @[SDT.scala 24:37 SDT.scala 24:37]
 
   module APB_Peripheral :
     input clock : Clock
@@ -15209,19 +15192,17 @@ circuit SoC :
     input io_apb_bus_out_wdata : UInt<32>
     output io_peripheral_io_led_io_led : UInt<32>
     input io_peripheral_io_key_io_key : UInt<32>
-    output io_peripheral_io_sdt_io_sdta : UInt<16>
-    output io_peripheral_io_sdt_io_sdtb : UInt<16>
-    output io_peripheral_io_sdt_io_sdtc : UInt<16>
-    output io_peripheral_io_sdt_io_sdtd : UInt<16>
+    output io_peripheral_io_sdt_io_sdta : UInt<32>
+    output io_peripheral_io_sdt_io_sdtb : UInt<32>
 
     inst led of LED @[APB.scala 48:21]
     inst key of KEY @[APB.scala 49:21]
     inst sdt of SDT @[APB.scala 50:21]
     node led_sel = eq(io_apb_bus_out_addr, UInt<32>("h10000")) @[APB.scala 68:24]
     node key_sel = eq(io_apb_bus_out_addr, UInt<32>("h10400")) @[APB.scala 69:24]
-    node _sdt_sel_T = geq(io_apb_bus_out_addr, UInt<32>("h10800")) @[APB.scala 70:24]
-    node _sdt_sel_T_1 = lt(io_apb_bus_out_addr, UInt<32>("h10808")) @[APB.scala 70:45]
-    node sdt_sel = and(_sdt_sel_T, _sdt_sel_T_1) @[APB.scala 70:37]
+    node _sdt_sel_T = geq(io_apb_bus_out_addr, UInt<32>("h10800")) @[APB.scala 70:26]
+    node _sdt_sel_T_1 = lt(io_apb_bus_out_addr, UInt<32>("h10808")) @[APB.scala 70:49]
+    node sdt_sel = and(_sdt_sel_T, _sdt_sel_T_1) @[APB.scala 70:40]
     node led_wen = mux(led_sel, io_apb_bus_wen, UInt<1>("h0")) @[APB.scala 71:22]
     node key_wen = mux(key_sel, io_apb_bus_wen, UInt<1>("h0")) @[APB.scala 72:22]
     node sdt_wen = mux(sdt_sel, io_apb_bus_wen, UInt<1>("h0")) @[APB.scala 73:22]
@@ -15236,8 +15217,6 @@ circuit SoC :
     io_peripheral_io_led_io_led <= led.io_led_io_led @[APB.scala 92:29]
     io_peripheral_io_sdt_io_sdta <= sdt.io_sdt_io_sdta @[APB.scala 94:29]
     io_peripheral_io_sdt_io_sdtb <= sdt.io_sdt_io_sdtb @[APB.scala 94:29]
-    io_peripheral_io_sdt_io_sdtc <= sdt.io_sdt_io_sdtc @[APB.scala 94:29]
-    io_peripheral_io_sdt_io_sdtd <= sdt.io_sdt_io_sdtd @[APB.scala 94:29]
     led.clock <= clock
     led.reset <= reset
     led.io_bus_wen <= led_wen @[APB.scala 86:20]
@@ -15261,10 +15240,8 @@ circuit SoC :
     output io_exit : UInt<1>
     output io_out_APB_Peripheral_io_led_io_led : UInt<32>
     input io_out_APB_Peripheral_io_key_io_key : UInt<32>
-    output io_out_APB_Peripheral_io_sdt_io_sdta : UInt<16>
-    output io_out_APB_Peripheral_io_sdt_io_sdtb : UInt<16>
-    output io_out_APB_Peripheral_io_sdt_io_sdtc : UInt<16>
-    output io_out_APB_Peripheral_io_sdt_io_sdtd : UInt<16>
+    output io_out_APB_Peripheral_io_sdt_io_sdta : UInt<32>
+    output io_out_APB_Peripheral_io_sdt_io_sdtb : UInt<32>
 
     inst core of SCore @[SoC.scala 18:29]
     inst apb_periph of APB_Peripheral @[SoC.scala 19:29]
@@ -15272,8 +15249,6 @@ circuit SoC :
     io_out_APB_Peripheral_io_led_io_led <= apb_periph.io_peripheral_io_led_io_led @[SoC.scala 26:33]
     io_out_APB_Peripheral_io_sdt_io_sdta <= apb_periph.io_peripheral_io_sdt_io_sdta @[SoC.scala 26:33]
     io_out_APB_Peripheral_io_sdt_io_sdtb <= apb_periph.io_peripheral_io_sdt_io_sdtb @[SoC.scala 26:33]
-    io_out_APB_Peripheral_io_sdt_io_sdtc <= apb_periph.io_peripheral_io_sdt_io_sdtc @[SoC.scala 26:33]
-    io_out_APB_Peripheral_io_sdt_io_sdtd <= apb_periph.io_peripheral_io_sdt_io_sdtd @[SoC.scala 26:33]
     core.clock <= clock
     core.reset <= reset
     core.io_bus_apb_bus_in_valid <= apb_periph.io_apb_bus_in_valid @[SoC.scala 22:33]

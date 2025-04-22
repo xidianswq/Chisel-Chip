@@ -10,10 +10,8 @@
 #include "device.h"
 
 #define IS_SDT_ALL_PERIPH(PERIPH) (((PERIPH) == SDTA) || \
-                                   ((PERIPH) == SDTB) || \
-                                   ((PERIPH) == SDTC) || \
-                                   ((PERIPH) == SDTD))
+                                   ((PERIPH) == SDTB)
 
-void SDT_Write(SDT_TypeDef* SDTx, uint16_t PortVal);
+void SDT_Write(SDT_TypeDef* SDTx, uint32_t PortVal);
 
 #endif

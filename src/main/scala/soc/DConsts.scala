@@ -32,5 +32,5 @@ object DConsts {
 
   val LED_SIZE        = 32
   val KEY_SIZE        = 32
-  val SDT_SIZE        = 16
+  val SDT_SIZE        = 32
 }

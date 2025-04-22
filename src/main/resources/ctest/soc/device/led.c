@@ -35,7 +35,7 @@ void LED_SetBits(uint32_t LED_Pin)
   LED->LCR |= LED_Pin;
 }
 
-void LED_ReSetBits(uint32_t LED_Pin)
+void LED_ResetBits(uint32_t LED_Pin)
 {
   /* Check the parameters */
   assert_param(IS_LED_PIN(LED_Pin));
