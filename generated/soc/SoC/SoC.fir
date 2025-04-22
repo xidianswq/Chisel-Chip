@@ -2828,15 +2828,11 @@ circuit SoC :
   module MMU : 
     input clock : Clock
     input reset : Reset
-    output io : {mem_io : {flip addr : UInt<32>, rdata : UInt<32>, flip wen : UInt<1>, flip wdata : UInt<32>}, flip datamem : {flip addr : UInt<32>, rdata : UInt<32>, flip wen : UInt<1>, flip wdata : UInt<32>}, out : {apb_bus : {addr : UInt<32>, wen : UInt<1>, wdata : UInt<32>, flip valid : UInt<1>, flip rdata : UInt<32>}}}
+    output io : {mem_io : {flip addr : UInt<32>, rdata : UInt<32>, flip wen : UInt<1>, flip wdata : UInt<32>}, flip datamem : {flip addr : UInt<32>, rdata : UInt<32>, flip wen : UInt<1>, flip wdata : UInt<32>}, mmu_io : {apb_bus : {in : {flip valid : UInt<1>, flip rdata : UInt<32>}, wen : UInt<1>, out : {addr : UInt<32>, wdata : UInt<32>}}}}
     
     wire rdata : UInt<32> @[MMU.scala 34:21]
     wire datamem_wen : UInt<1> @[MMU.scala 36:31]
     wire APB_wen : UInt<1> @[MMU.scala 40:27]
-    node _LED_BASE_T = add(UInt<32>("h010000"), UInt<32>("h00")) @[DConsts.scala 20:42]
-    node LED_BASE = tail(_LED_BASE_T, 1) @[DConsts.scala 20:42]
-    node _USART_BASE_T = add(UInt<32>("h010000"), UInt<32>("h0400")) @[DConsts.scala 21:42]
-    node USART_BASE = tail(_USART_BASE_T, 1) @[DConsts.scala 21:42]
     node _T = geq(io.mem_io.addr, UInt<32>("h00")) @[MMU.scala 46:15]
     node _T_1 = add(UInt<32>("h00"), UInt<32>("h010000")) @[MMU.scala 46:49]
     node _T_2 = tail(_T_1, 1) @[MMU.scala 46:49]
@@ -2856,8 +2852,8 @@ circuit SoC :
       when _T_9 : @[MMU.scala 51:84]
         datamem_wen <= UInt<1>("h00") @[MMU.scala 53:21]
         APB_wen <= io.mem_io.wen @[MMU.scala 54:21]
-        when io.out.apb_bus.valid : @[MMU.scala 55:25]
-          rdata <= io.out.apb_bus.rdata @[MMU.scala 56:21]
+        when io.mmu_io.apb_bus.in.valid : @[MMU.scala 55:25]
+          rdata <= io.mmu_io.apb_bus.in.rdata @[MMU.scala 56:21]
           skip @[MMU.scala 55:25]
         else : @[MMU.scala 57:22]
           rdata <= UInt<1>("h00") @[MMU.scala 58:21]
@@ -2871,9 +2867,9 @@ circuit SoC :
     io.datamem.addr <= io.mem_io.addr @[MMU.scala 68:25]
     io.datamem.wen <= datamem_wen @[MMU.scala 69:25]
     io.datamem.wdata <= io.mem_io.wdata @[MMU.scala 70:25]
-    io.out.apb_bus.addr <= io.mem_io.addr @[MMU.scala 72:25]
-    io.out.apb_bus.wen <= APB_wen @[MMU.scala 73:25]
-    io.out.apb_bus.wdata <= io.mem_io.wdata @[MMU.scala 74:26]
+    io.mmu_io.apb_bus.wen <= APB_wen @[MMU.scala 72:33]
+    io.mmu_io.apb_bus.out.addr <= io.mem_io.addr @[MMU.scala 73:33]
+    io.mmu_io.apb_bus.out.wdata <= io.mem_io.wdata @[MMU.scala 74:33]
     io.mem_io.rdata <= rdata @[MMU.scala 76:25]
     
   module WB : 
@@ -3128,7 +3124,7 @@ circuit SoC :
   module SCore : 
     input clock : Clock
     input reset : Reset
-    output io : {bus : {apb_bus : {addr : UInt<32>, wen : UInt<1>, wdata : UInt<32>, flip valid : UInt<1>, flip rdata : UInt<32>}}, exit : UInt<1>}
+    output io : {bus : {apb_bus : {in : {flip valid : UInt<1>, flip rdata : UInt<32>}, wen : UInt<1>, out : {addr : UInt<32>, wdata : UInt<32>}}}, exit : UInt<1>}
     
     inst memory of Memory @[SCore.scala 17:25]
     memory.clock <= clock
@@ -3396,47 +3392,113 @@ circuit SoC :
     node _io_exit_T_1 = eq(UInt<32>("h0c0001073"), _io_exit_T) @[SCore.scala 82:17]
     node _io_exit_T_2 = mux(_io_exit_T_1, UInt<1>("h01"), UInt<1>("h00")) @[Mux.scala 98:16]
     io.exit <= _io_exit_T_2 @[SCore.scala 81:13]
-    mmu.io.out.apb_bus.rdata <= io.bus.apb_bus.rdata @[SCore.scala 86:12]
-    mmu.io.out.apb_bus.valid <= io.bus.apb_bus.valid @[SCore.scala 86:12]
-    io.bus.apb_bus.wdata <= mmu.io.out.apb_bus.wdata @[SCore.scala 86:12]
-    io.bus.apb_bus.wen <= mmu.io.out.apb_bus.wen @[SCore.scala 86:12]
-    io.bus.apb_bus.addr <= mmu.io.out.apb_bus.addr @[SCore.scala 86:12]
+    io.bus.apb_bus.out.wdata <= mmu.io.mmu_io.apb_bus.out.wdata @[SCore.scala 86:12]
+    io.bus.apb_bus.out.addr <= mmu.io.mmu_io.apb_bus.out.addr @[SCore.scala 86:12]
+    io.bus.apb_bus.wen <= mmu.io.mmu_io.apb_bus.wen @[SCore.scala 86:12]
+    mmu.io.mmu_io.apb_bus.in.rdata <= io.bus.apb_bus.in.rdata @[SCore.scala 86:12]
+    mmu.io.mmu_io.apb_bus.in.valid <= io.bus.apb_bus.in.valid @[SCore.scala 86:12]
     
   module LED : 
     input clock : Clock
     input reset : Reset
-    output io : {flip bus : {addr : UInt<32>, wen : UInt<1>, wdata : UInt<32>, flip valid : UInt<1>, flip rdata : UInt<32>}, out : {led : UInt<32>}}
+    output io : {flip bus : {in : {flip valid : UInt<1>, flip rdata : UInt<32>}, wen : UInt<1>, out : {addr : UInt<32>, wdata : UInt<32>}}, led_io : {led : UInt<32>}}
     
-    reg led_control_reg : UInt<32>, clock with : (reset => (reset, UInt<32>("h00"))) @[LED.scala 29:32]
-    when io.bus.wen : @[LED.scala 37:13]
-      led_control_reg <= io.bus.wdata @[LED.scala 38:21]
-      skip @[LED.scala 37:13]
-    else : @[LED.scala 39:14]
-      led_control_reg <= led_control_reg @[LED.scala 40:21]
-      skip @[LED.scala 39:14]
-    io.bus.valid <= UInt<1>("h01") @[LED.scala 44:17]
-    io.bus.rdata <= led_control_reg @[LED.scala 45:17]
-    io.out.led <= led_control_reg @[LED.scala 46:17]
+    reg led_control_reg : UInt<32>, clock with : (reset => (reset, UInt<32>("h00"))) @[LED.scala 28:32]
+    when io.bus.wen : @[LED.scala 35:13]
+      led_control_reg <= io.bus.out.wdata @[LED.scala 36:21]
+      skip @[LED.scala 35:13]
+    else : @[LED.scala 37:14]
+      led_control_reg <= led_control_reg @[LED.scala 38:21]
+      skip @[LED.scala 37:14]
+    io.bus.in.valid <= UInt<1>("h01") @[LED.scala 42:20]
+    io.bus.in.rdata <= led_control_reg @[LED.scala 43:20]
+    io.led_io.led <= led_control_reg @[LED.scala 44:20]
+    
+  module KEY : 
+    input clock : Clock
+    input reset : Reset
+    output io : {flip bus : {in : {flip valid : UInt<1>, flip rdata : UInt<32>}, wen : UInt<1>, out : {addr : UInt<32>, wdata : UInt<32>}}, key_io : {flip key : UInt<32>}}
+    
+    reg key_inputdata_reg : UInt<32>, clock with : (reset => (reset, UInt<32>("h00"))) @[KEY.scala 27:36]
+    key_inputdata_reg <= io.key_io.key @[KEY.scala 30:23]
+    io.bus.in.valid <= UInt<1>("h01") @[KEY.scala 33:22]
+    io.bus.in.rdata <= key_inputdata_reg @[KEY.scala 34:22]
+    
+  module SDT : 
+    input clock : Clock
+    input reset : Reset
+    output io : {flip bus : {in : {flip valid : UInt<1>, flip rdata : UInt<32>}, wen : UInt<1>, out : {addr : UInt<32>, wdata : UInt<32>}}, sdt_io : {sdta : UInt<32>, sdtb : UInt<32>}}
+    
+    wire _sdt_outputdata_reg_WIRE : UInt<32>[2] @[SDT.scala 24:45]
+    _sdt_outputdata_reg_WIRE[0] <= UInt<32>("h00") @[SDT.scala 24:45]
+    _sdt_outputdata_reg_WIRE[1] <= UInt<32>("h00") @[SDT.scala 24:45]
+    reg sdt_outputdata_reg : UInt<32>[2], clock with : (reset => (reset, _sdt_outputdata_reg_WIRE)) @[SDT.scala 24:37]
+    node _sel_T = sub(io.bus.out.addr, UInt<32>("h010800")) @[SDT.scala 32:26]
+    node _sel_T_1 = tail(_sel_T, 1) @[SDT.scala 32:26]
+    node sel = shr(_sel_T_1, 2) @[SDT.scala 32:38]
+    when io.bus.wen : @[SDT.scala 33:15]
+      node _T = bits(sel, 0, 0)
+      node _sdt_outputdata_reg_T = bits(io.bus.out.wdata, 31, 0) @[SDT.scala 34:41]
+      sdt_outputdata_reg[_T] <= _sdt_outputdata_reg_T @[SDT.scala 34:33]
+      skip @[SDT.scala 33:15]
+    else : @[SDT.scala 35:16]
+      sdt_outputdata_reg[0] <= sdt_outputdata_reg[0] @[SDT.scala 36:28]
+      sdt_outputdata_reg[1] <= sdt_outputdata_reg[1] @[SDT.scala 36:28]
+      skip @[SDT.scala 35:16]
+    node _rdata_T = bits(sel, 0, 0)
+    io.sdt_io.sdta <= sdt_outputdata_reg[0] @[SDT.scala 41:20]
+    io.sdt_io.sdtb <= sdt_outputdata_reg[1] @[SDT.scala 42:20]
+    io.bus.in.valid <= UInt<1>("h01") @[SDT.scala 44:22]
+    io.bus.in.rdata <= sdt_outputdata_reg[_rdata_T] @[SDT.scala 45:22]
     
   module APB_Peripheral : 
     input clock : Clock
     input reset : Reset
-    output io : {flip apb_bus : {addr : UInt<32>, wen : UInt<1>, wdata : UInt<32>, flip valid : UInt<1>, flip rdata : UInt<32>}, apb_out : {led_io : {led : UInt<32>}}}
+    output io : {flip apb_bus : {in : {flip valid : UInt<1>, flip rdata : UInt<32>}, wen : UInt<1>, out : {addr : UInt<32>, wdata : UInt<32>}}, peripheral_io : {led_io : {led : UInt<32>}, key_io : {flip key : UInt<32>}, sdt_io : {sdta : UInt<32>, sdtb : UInt<32>}}}
     
-    inst led of LED @[APB.scala 42:21]
+    inst led of LED @[APB.scala 48:21]
     led.clock <= clock
     led.reset <= reset
-    io.apb_bus.rdata <= led.io.bus.rdata @[APB.scala 45:16]
-    io.apb_bus.valid <= led.io.bus.valid @[APB.scala 45:16]
-    led.io.bus.wdata <= io.apb_bus.wdata @[APB.scala 45:16]
-    led.io.bus.wen <= io.apb_bus.wen @[APB.scala 45:16]
-    led.io.bus.addr <= io.apb_bus.addr @[APB.scala 45:16]
-    io.apb_out.led_io.led <= led.io.out.led @[APB.scala 48:23]
+    inst key of KEY @[APB.scala 49:21]
+    key.clock <= clock
+    key.reset <= reset
+    inst sdt of SDT @[APB.scala 50:21]
+    sdt.clock <= clock
+    sdt.reset <= reset
+    led.io.bus.out.wdata <= io.apb_bus.out.wdata @[APB.scala 53:20]
+    led.io.bus.out.addr <= io.apb_bus.out.addr @[APB.scala 53:20]
+    key.io.bus.out.wdata <= io.apb_bus.out.wdata @[APB.scala 54:20]
+    key.io.bus.out.addr <= io.apb_bus.out.addr @[APB.scala 54:20]
+    sdt.io.bus.out.wdata <= io.apb_bus.out.wdata @[APB.scala 55:20]
+    sdt.io.bus.out.addr <= io.apb_bus.out.addr @[APB.scala 55:20]
+    node led_sel = eq(io.apb_bus.out.addr, UInt<32>("h010000")) @[APB.scala 68:24]
+    node key_sel = eq(io.apb_bus.out.addr, UInt<32>("h010400")) @[APB.scala 69:24]
+    node _sdt_sel_T = geq(io.apb_bus.out.addr, UInt<32>("h010800")) @[APB.scala 70:26]
+    node _sdt_sel_T_1 = lt(io.apb_bus.out.addr, UInt<32>("h010808")) @[APB.scala 70:49]
+    node sdt_sel = and(_sdt_sel_T, _sdt_sel_T_1) @[APB.scala 70:40]
+    node led_wen = mux(led_sel, io.apb_bus.wen, UInt<1>("h00")) @[APB.scala 71:22]
+    node key_wen = mux(key_sel, io.apb_bus.wen, UInt<1>("h00")) @[APB.scala 72:22]
+    node sdt_wen = mux(sdt_sel, io.apb_bus.wen, UInt<1>("h00")) @[APB.scala 73:22]
+    node _rdata_T = mux(sdt_sel, sdt.io.bus.in.rdata, UInt<1>("h00")) @[Mux.scala 98:16]
+    node _rdata_T_1 = mux(key_sel, key.io.bus.in.rdata, _rdata_T) @[Mux.scala 98:16]
+    node rdata = mux(led_sel, led.io.bus.in.rdata, _rdata_T_1) @[Mux.scala 98:16]
+    node _valid_T = mux(sdt_sel, sdt.io.bus.in.valid, UInt<1>("h00")) @[Mux.scala 98:16]
+    node _valid_T_1 = mux(key_sel, key.io.bus.in.valid, _valid_T) @[Mux.scala 98:16]
+    node valid = mux(led_sel, led.io.bus.in.valid, _valid_T_1) @[Mux.scala 98:16]
+    led.io.bus.wen <= led_wen @[APB.scala 86:20]
+    key.io.bus.wen <= key_wen @[APB.scala 87:20]
+    sdt.io.bus.wen <= sdt_wen @[APB.scala 88:20]
+    io.apb_bus.in.valid <= valid @[APB.scala 89:25]
+    io.apb_bus.in.rdata <= rdata @[APB.scala 90:25]
+    io.peripheral_io.led_io.led <= led.io.led_io.led @[APB.scala 92:29]
+    key.io.key_io.key <= io.peripheral_io.key_io.key @[APB.scala 93:29]
+    io.peripheral_io.sdt_io.sdtb <= sdt.io.sdt_io.sdtb @[APB.scala 94:29]
+    io.peripheral_io.sdt_io.sdta <= sdt.io.sdt_io.sdta @[APB.scala 94:29]
     
   module SoC : 
     input clock : Clock
     input reset : UInt<1>
-    output io : {exit : UInt<1>, out : {APB_Peripheral_io : {led_io : {led : UInt<32>}}}}
+    output io : {exit : UInt<1>, out : {APB_Peripheral_io : {led_io : {led : UInt<32>}, key_io : {flip key : UInt<32>}, sdt_io : {sdta : UInt<32>, sdtb : UInt<32>}}}}
     
     inst core of SCore @[SoC.scala 18:29]
     core.clock <= clock
@@ -3444,11 +3506,14 @@ circuit SoC :
     inst apb_periph of APB_Peripheral @[SoC.scala 19:29]
     apb_periph.clock <= clock
     apb_periph.reset <= reset
-    core.io.bus.apb_bus.rdata <= apb_periph.io.apb_bus.rdata @[SoC.scala 22:33]
-    core.io.bus.apb_bus.valid <= apb_periph.io.apb_bus.valid @[SoC.scala 22:33]
-    apb_periph.io.apb_bus.wdata <= core.io.bus.apb_bus.wdata @[SoC.scala 22:33]
+    apb_periph.io.apb_bus.out.wdata <= core.io.bus.apb_bus.out.wdata @[SoC.scala 22:33]
+    apb_periph.io.apb_bus.out.addr <= core.io.bus.apb_bus.out.addr @[SoC.scala 22:33]
     apb_periph.io.apb_bus.wen <= core.io.bus.apb_bus.wen @[SoC.scala 22:33]
-    apb_periph.io.apb_bus.addr <= core.io.bus.apb_bus.addr @[SoC.scala 22:33]
+    core.io.bus.apb_bus.in.rdata <= apb_periph.io.apb_bus.in.rdata @[SoC.scala 22:33]
+    core.io.bus.apb_bus.in.valid <= apb_periph.io.apb_bus.in.valid @[SoC.scala 22:33]
     io.exit <= core.io.exit @[SoC.scala 25:33]
-    io.out.APB_Peripheral_io.led_io.led <= apb_periph.io.apb_out.led_io.led @[SoC.scala 26:33]
+    io.out.APB_Peripheral_io.sdt_io.sdtb <= apb_periph.io.peripheral_io.sdt_io.sdtb @[SoC.scala 26:33]
+    io.out.APB_Peripheral_io.sdt_io.sdta <= apb_periph.io.peripheral_io.sdt_io.sdta @[SoC.scala 26:33]
+    apb_periph.io.peripheral_io.key_io.key <= io.out.APB_Peripheral_io.key_io.key @[SoC.scala 26:33]
+    io.out.APB_Peripheral_io.led_io.led <= apb_periph.io.peripheral_io.led_io.led @[SoC.scala 26:33]
     

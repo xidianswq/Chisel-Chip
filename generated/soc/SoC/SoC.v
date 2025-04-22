@@ -30837,18 +30837,22 @@ module MMU(
   input  [31:0] io_datamem_rdata,
   output        io_datamem_wen,
   output [31:0] io_datamem_wdata,
-  output        io_out_apb_bus_wen,
-  output [31:0] io_out_apb_bus_wdata,
-  input  [31:0] io_out_apb_bus_rdata
+  input         io_mmu_io_apb_bus_in_valid,
+  input  [31:0] io_mmu_io_apb_bus_in_rdata,
+  output        io_mmu_io_apb_bus_wen,
+  output [31:0] io_mmu_io_apb_bus_out_addr,
+  output [31:0] io_mmu_io_apb_bus_out_wdata
 );
+  wire [31:0] _GEN_0 = io_mmu_io_apb_bus_in_valid ? io_mmu_io_apb_bus_in_rdata : 32'h0; // @[MMU.scala 55:25 MMU.scala 56:21 MMU.scala 58:21]
   wire  _GEN_2 = io_mem_io_addr >= 32'h10000 & io_mem_io_addr < 32'h20000 & io_mem_io_wen; // @[MMU.scala 51:84 MMU.scala 54:21 MMU.scala 63:21]
-  wire [31:0] _GEN_3 = io_mem_io_addr >= 32'h10000 & io_mem_io_addr < 32'h20000 ? io_out_apb_bus_rdata : 32'h0; // @[MMU.scala 51:84 MMU.scala 64:21]
+  wire [31:0] _GEN_3 = io_mem_io_addr >= 32'h10000 & io_mem_io_addr < 32'h20000 ? _GEN_0 : 32'h0; // @[MMU.scala 51:84 MMU.scala 64:21]
   assign io_mem_io_rdata = io_mem_io_addr < 32'h10000 ? io_datamem_rdata : _GEN_3; // @[MMU.scala 46:63 MMU.scala 50:21]
   assign io_datamem_addr = io_mem_io_addr; // @[MMU.scala 68:25]
   assign io_datamem_wen = io_mem_io_addr < 32'h10000 & io_mem_io_wen; // @[MMU.scala 46:63 MMU.scala 48:21]
   assign io_datamem_wdata = io_mem_io_wdata; // @[MMU.scala 70:25]
-  assign io_out_apb_bus_wen = io_mem_io_addr < 32'h10000 ? 1'h0 : _GEN_2; // @[MMU.scala 46:63 MMU.scala 49:21]
-  assign io_out_apb_bus_wdata = io_mem_io_wdata; // @[MMU.scala 74:26]
+  assign io_mmu_io_apb_bus_wen = io_mem_io_addr < 32'h10000 ? 1'h0 : _GEN_2; // @[MMU.scala 46:63 MMU.scala 49:21]
+  assign io_mmu_io_apb_bus_out_addr = io_mem_io_addr; // @[MMU.scala 73:33]
+  assign io_mmu_io_apb_bus_out_wdata = io_mem_io_wdata; // @[MMU.scala 74:33]
 endmodule
 module WB(
   input         clock,
@@ -31430,9 +31434,11 @@ endmodule
 module SCore(
   input         clock,
   input         reset,
+  input         io_bus_apb_bus_in_valid,
+  input  [31:0] io_bus_apb_bus_in_rdata,
   output        io_bus_apb_bus_wen,
-  output [31:0] io_bus_apb_bus_wdata,
-  input  [31:0] io_bus_apb_bus_rdata,
+  output [31:0] io_bus_apb_bus_out_addr,
+  output [31:0] io_bus_apb_bus_out_wdata,
   output        io_exit
 );
   wire  memory_clock; // @[SCore.scala 17:25]
@@ -31546,9 +31552,11 @@ module SCore(
   wire [31:0] mmu_io_datamem_rdata; // @[SCore.scala 24:25]
   wire  mmu_io_datamem_wen; // @[SCore.scala 24:25]
   wire [31:0] mmu_io_datamem_wdata; // @[SCore.scala 24:25]
-  wire  mmu_io_out_apb_bus_wen; // @[SCore.scala 24:25]
-  wire [31:0] mmu_io_out_apb_bus_wdata; // @[SCore.scala 24:25]
-  wire [31:0] mmu_io_out_apb_bus_rdata; // @[SCore.scala 24:25]
+  wire  mmu_io_mmu_io_apb_bus_in_valid; // @[SCore.scala 24:25]
+  wire [31:0] mmu_io_mmu_io_apb_bus_in_rdata; // @[SCore.scala 24:25]
+  wire  mmu_io_mmu_io_apb_bus_wen; // @[SCore.scala 24:25]
+  wire [31:0] mmu_io_mmu_io_apb_bus_out_addr; // @[SCore.scala 24:25]
+  wire [31:0] mmu_io_mmu_io_apb_bus_out_wdata; // @[SCore.scala 24:25]
   wire  wb_clock; // @[SCore.scala 25:25]
   wire  wb_reset; // @[SCore.scala 25:25]
   wire  wb_io_in_mem_io_rd_wen; // @[SCore.scala 25:25]
@@ -31774,9 +31782,11 @@ module SCore(
     .io_datamem_rdata(mmu_io_datamem_rdata),
     .io_datamem_wen(mmu_io_datamem_wen),
     .io_datamem_wdata(mmu_io_datamem_wdata),
-    .io_out_apb_bus_wen(mmu_io_out_apb_bus_wen),
-    .io_out_apb_bus_wdata(mmu_io_out_apb_bus_wdata),
-    .io_out_apb_bus_rdata(mmu_io_out_apb_bus_rdata)
+    .io_mmu_io_apb_bus_in_valid(mmu_io_mmu_io_apb_bus_in_valid),
+    .io_mmu_io_apb_bus_in_rdata(mmu_io_mmu_io_apb_bus_in_rdata),
+    .io_mmu_io_apb_bus_wen(mmu_io_mmu_io_apb_bus_wen),
+    .io_mmu_io_apb_bus_out_addr(mmu_io_mmu_io_apb_bus_out_addr),
+    .io_mmu_io_apb_bus_out_wdata(mmu_io_mmu_io_apb_bus_out_wdata)
   );
   WB wb ( // @[SCore.scala 25:25]
     .clock(wb_clock),
@@ -31892,8 +31902,9 @@ module SCore(
     .io_out_rd_addr(mem_io_reg_io_out_rd_addr),
     .io_out_rd_data(mem_io_reg_io_out_rd_data)
   );
-  assign io_bus_apb_bus_wen = mmu_io_out_apb_bus_wen; // @[SCore.scala 86:12]
-  assign io_bus_apb_bus_wdata = mmu_io_out_apb_bus_wdata; // @[SCore.scala 86:12]
+  assign io_bus_apb_bus_wen = mmu_io_mmu_io_apb_bus_wen; // @[SCore.scala 86:12]
+  assign io_bus_apb_bus_out_addr = mmu_io_mmu_io_apb_bus_out_addr; // @[SCore.scala 86:12]
+  assign io_bus_apb_bus_out_wdata = mmu_io_mmu_io_apb_bus_out_wdata; // @[SCore.scala 86:12]
   assign io_exit = 32'hc0001073 == _io_exit_T; // @[SCore.scala 82:17]
   assign memory_clock = clock;
   assign memory_io_instmem_addr = pc_io_instmem_addr; // @[SCore.scala 40:25]
@@ -31965,7 +31976,8 @@ module SCore(
   assign mmu_io_mem_io_wen = mem_io_mmu_wen; // @[SCore.scala 73:25]
   assign mmu_io_mem_io_wdata = mem_io_mmu_wdata; // @[SCore.scala 73:25]
   assign mmu_io_datamem_rdata = memory_io_datamem_rdata; // @[SCore.scala 74:25]
-  assign mmu_io_out_apb_bus_rdata = io_bus_apb_bus_rdata; // @[SCore.scala 86:12]
+  assign mmu_io_mmu_io_apb_bus_in_valid = io_bus_apb_bus_in_valid; // @[SCore.scala 86:12]
+  assign mmu_io_mmu_io_apb_bus_in_rdata = io_bus_apb_bus_in_rdata; // @[SCore.scala 86:12]
   assign wb_clock = clock;
   assign wb_reset = reset;
   assign wb_io_in_mem_io_rd_wen = mem_io_reg_io_out_rd_wen; // @[SCore.scala 76:25]
@@ -32028,22 +32040,22 @@ endmodule
 module LED(
   input         clock,
   input         reset,
+  output [31:0] io_bus_in_rdata,
   input         io_bus_wen,
-  input  [31:0] io_bus_wdata,
-  output [31:0] io_bus_rdata,
-  output [31:0] io_out_led
+  input  [31:0] io_bus_out_wdata,
+  output [31:0] io_led_io_led
 );
 `ifdef RANDOMIZE_REG_INIT
   reg [31:0] _RAND_0;
 `endif // RANDOMIZE_REG_INIT
-  reg [31:0] led_control_reg; // @[LED.scala 29:32]
-  assign io_bus_rdata = led_control_reg; // @[LED.scala 45:17]
-  assign io_out_led = led_control_reg; // @[LED.scala 46:17]
+  reg [31:0] led_control_reg; // @[LED.scala 28:32]
+  assign io_bus_in_rdata = led_control_reg; // @[LED.scala 43:20]
+  assign io_led_io_led = led_control_reg; // @[LED.scala 44:20]
   always @(posedge clock) begin
-    if (reset) begin // @[LED.scala 29:32]
-      led_control_reg <= 32'h0; // @[LED.scala 29:32]
-    end else if (io_bus_wen) begin // @[LED.scala 37:13]
-      led_control_reg <= io_bus_wdata; // @[LED.scala 38:21]
+    if (reset) begin // @[LED.scala 28:32]
+      led_control_reg <= 32'h0; // @[LED.scala 28:32]
+    end else if (io_bus_wen) begin // @[LED.scala 35:13]
+      led_control_reg <= io_bus_out_wdata; // @[LED.scala 36:21]
     end
   end
 // Register and memory initialization
@@ -32092,76 +32104,296 @@ end // initial
 `endif
 `endif // SYNTHESIS
 endmodule
+module KEY(
+  input         clock,
+  input         reset,
+  output [31:0] io_bus_in_rdata,
+  input  [31:0] io_key_io_key
+);
+`ifdef RANDOMIZE_REG_INIT
+  reg [31:0] _RAND_0;
+`endif // RANDOMIZE_REG_INIT
+  reg [31:0] key_inputdata_reg; // @[KEY.scala 27:36]
+  assign io_bus_in_rdata = key_inputdata_reg; // @[KEY.scala 34:22]
+  always @(posedge clock) begin
+    if (reset) begin // @[KEY.scala 27:36]
+      key_inputdata_reg <= 32'h0; // @[KEY.scala 27:36]
+    end else begin
+      key_inputdata_reg <= io_key_io_key; // @[KEY.scala 30:23]
+    end
+  end
+// Register and memory initialization
+`ifdef RANDOMIZE_GARBAGE_ASSIGN
+`define RANDOMIZE
+`endif
+`ifdef RANDOMIZE_INVALID_ASSIGN
+`define RANDOMIZE
+`endif
+`ifdef RANDOMIZE_REG_INIT
+`define RANDOMIZE
+`endif
+`ifdef RANDOMIZE_MEM_INIT
+`define RANDOMIZE
+`endif
+`ifndef RANDOM
+`define RANDOM $random
+`endif
+`ifdef RANDOMIZE_MEM_INIT
+  integer initvar;
+`endif
+`ifndef SYNTHESIS
+`ifdef FIRRTL_BEFORE_INITIAL
+`FIRRTL_BEFORE_INITIAL
+`endif
+initial begin
+  `ifdef RANDOMIZE
+    `ifdef INIT_RANDOM
+      `INIT_RANDOM
+    `endif
+    `ifndef VERILATOR
+      `ifdef RANDOMIZE_DELAY
+        #`RANDOMIZE_DELAY begin end
+      `else
+        #0.002 begin end
+      `endif
+    `endif
+`ifdef RANDOMIZE_REG_INIT
+  _RAND_0 = {1{`RANDOM}};
+  key_inputdata_reg = _RAND_0[31:0];
+`endif // RANDOMIZE_REG_INIT
+  `endif // RANDOMIZE
+end // initial
+`ifdef FIRRTL_AFTER_INITIAL
+`FIRRTL_AFTER_INITIAL
+`endif
+`endif // SYNTHESIS
+endmodule
+module SDT(
+  input         clock,
+  input         reset,
+  output [31:0] io_bus_in_rdata,
+  input         io_bus_wen,
+  input  [31:0] io_bus_out_addr,
+  input  [31:0] io_bus_out_wdata,
+  output [31:0] io_sdt_io_sdta,
+  output [31:0] io_sdt_io_sdtb
+);
+`ifdef RANDOMIZE_REG_INIT
+  reg [31:0] _RAND_0;
+  reg [31:0] _RAND_1;
+`endif // RANDOMIZE_REG_INIT
+  reg [31:0] sdt_outputdata_reg_0; // @[SDT.scala 24:37]
+  reg [31:0] sdt_outputdata_reg_1; // @[SDT.scala 24:37]
+  wire [31:0] _sel_T_1 = io_bus_out_addr - 32'h10800; // @[SDT.scala 32:26]
+  wire [29:0] sel = _sel_T_1[31:2]; // @[SDT.scala 32:38]
+  assign io_bus_in_rdata = sel[0] ? sdt_outputdata_reg_1 : sdt_outputdata_reg_0; // @[SDT.scala 45:22 SDT.scala 45:22]
+  assign io_sdt_io_sdta = sdt_outputdata_reg_0; // @[SDT.scala 41:20]
+  assign io_sdt_io_sdtb = sdt_outputdata_reg_1; // @[SDT.scala 42:20]
+  always @(posedge clock) begin
+    if (reset) begin // @[SDT.scala 24:37]
+      sdt_outputdata_reg_0 <= 32'h0; // @[SDT.scala 24:37]
+    end else if (io_bus_wen) begin // @[SDT.scala 33:15]
+      if (~sel[0]) begin // @[SDT.scala 34:33]
+        sdt_outputdata_reg_0 <= io_bus_out_wdata; // @[SDT.scala 34:33]
+      end
+    end
+    if (reset) begin // @[SDT.scala 24:37]
+      sdt_outputdata_reg_1 <= 32'h0; // @[SDT.scala 24:37]
+    end else if (io_bus_wen) begin // @[SDT.scala 33:15]
+      if (sel[0]) begin // @[SDT.scala 34:33]
+        sdt_outputdata_reg_1 <= io_bus_out_wdata; // @[SDT.scala 34:33]
+      end
+    end
+  end
+// Register and memory initialization
+`ifdef RANDOMIZE_GARBAGE_ASSIGN
+`define RANDOMIZE
+`endif
+`ifdef RANDOMIZE_INVALID_ASSIGN
+`define RANDOMIZE
+`endif
+`ifdef RANDOMIZE_REG_INIT
+`define RANDOMIZE
+`endif
+`ifdef RANDOMIZE_MEM_INIT
+`define RANDOMIZE
+`endif
+`ifndef RANDOM
+`define RANDOM $random
+`endif
+`ifdef RANDOMIZE_MEM_INIT
+  integer initvar;
+`endif
+`ifndef SYNTHESIS
+`ifdef FIRRTL_BEFORE_INITIAL
+`FIRRTL_BEFORE_INITIAL
+`endif
+initial begin
+  `ifdef RANDOMIZE
+    `ifdef INIT_RANDOM
+      `INIT_RANDOM
+    `endif
+    `ifndef VERILATOR
+      `ifdef RANDOMIZE_DELAY
+        #`RANDOMIZE_DELAY begin end
+      `else
+        #0.002 begin end
+      `endif
+    `endif
+`ifdef RANDOMIZE_REG_INIT
+  _RAND_0 = {1{`RANDOM}};
+  sdt_outputdata_reg_0 = _RAND_0[31:0];
+  _RAND_1 = {1{`RANDOM}};
+  sdt_outputdata_reg_1 = _RAND_1[31:0];
+`endif // RANDOMIZE_REG_INIT
+  `endif // RANDOMIZE
+end // initial
+`ifdef FIRRTL_AFTER_INITIAL
+`FIRRTL_AFTER_INITIAL
+`endif
+`endif // SYNTHESIS
+endmodule
 module APB_Peripheral(
   input         clock,
   input         reset,
+  output        io_apb_bus_in_valid,
+  output [31:0] io_apb_bus_in_rdata,
   input         io_apb_bus_wen,
-  input  [31:0] io_apb_bus_wdata,
-  output [31:0] io_apb_bus_rdata,
-  output [31:0] io_apb_out_led_io_led
+  input  [31:0] io_apb_bus_out_addr,
+  input  [31:0] io_apb_bus_out_wdata,
+  output [31:0] io_peripheral_io_led_io_led,
+  input  [31:0] io_peripheral_io_key_io_key,
+  output [31:0] io_peripheral_io_sdt_io_sdta,
+  output [31:0] io_peripheral_io_sdt_io_sdtb
 );
-  wire  led_clock; // @[APB.scala 42:21]
-  wire  led_reset; // @[APB.scala 42:21]
-  wire  led_io_bus_wen; // @[APB.scala 42:21]
-  wire [31:0] led_io_bus_wdata; // @[APB.scala 42:21]
-  wire [31:0] led_io_bus_rdata; // @[APB.scala 42:21]
-  wire [31:0] led_io_out_led; // @[APB.scala 42:21]
-  LED led ( // @[APB.scala 42:21]
+  wire  led_clock; // @[APB.scala 48:21]
+  wire  led_reset; // @[APB.scala 48:21]
+  wire [31:0] led_io_bus_in_rdata; // @[APB.scala 48:21]
+  wire  led_io_bus_wen; // @[APB.scala 48:21]
+  wire [31:0] led_io_bus_out_wdata; // @[APB.scala 48:21]
+  wire [31:0] led_io_led_io_led; // @[APB.scala 48:21]
+  wire  key_clock; // @[APB.scala 49:21]
+  wire  key_reset; // @[APB.scala 49:21]
+  wire [31:0] key_io_bus_in_rdata; // @[APB.scala 49:21]
+  wire [31:0] key_io_key_io_key; // @[APB.scala 49:21]
+  wire  sdt_clock; // @[APB.scala 50:21]
+  wire  sdt_reset; // @[APB.scala 50:21]
+  wire [31:0] sdt_io_bus_in_rdata; // @[APB.scala 50:21]
+  wire  sdt_io_bus_wen; // @[APB.scala 50:21]
+  wire [31:0] sdt_io_bus_out_addr; // @[APB.scala 50:21]
+  wire [31:0] sdt_io_bus_out_wdata; // @[APB.scala 50:21]
+  wire [31:0] sdt_io_sdt_io_sdta; // @[APB.scala 50:21]
+  wire [31:0] sdt_io_sdt_io_sdtb; // @[APB.scala 50:21]
+  wire  led_sel = io_apb_bus_out_addr == 32'h10000; // @[APB.scala 68:24]
+  wire  key_sel = io_apb_bus_out_addr == 32'h10400; // @[APB.scala 69:24]
+  wire  sdt_sel = io_apb_bus_out_addr >= 32'h10800 & io_apb_bus_out_addr < 32'h10808; // @[APB.scala 70:40]
+  wire [31:0] _rdata_T = sdt_sel ? sdt_io_bus_in_rdata : 32'h0; // @[Mux.scala 98:16]
+  wire [31:0] _rdata_T_1 = key_sel ? key_io_bus_in_rdata : _rdata_T; // @[Mux.scala 98:16]
+  LED led ( // @[APB.scala 48:21]
     .clock(led_clock),
     .reset(led_reset),
+    .io_bus_in_rdata(led_io_bus_in_rdata),
     .io_bus_wen(led_io_bus_wen),
-    .io_bus_wdata(led_io_bus_wdata),
-    .io_bus_rdata(led_io_bus_rdata),
-    .io_out_led(led_io_out_led)
+    .io_bus_out_wdata(led_io_bus_out_wdata),
+    .io_led_io_led(led_io_led_io_led)
   );
-  assign io_apb_bus_rdata = led_io_bus_rdata; // @[APB.scala 45:16]
-  assign io_apb_out_led_io_led = led_io_out_led; // @[APB.scala 48:23]
+  KEY key ( // @[APB.scala 49:21]
+    .clock(key_clock),
+    .reset(key_reset),
+    .io_bus_in_rdata(key_io_bus_in_rdata),
+    .io_key_io_key(key_io_key_io_key)
+  );
+  SDT sdt ( // @[APB.scala 50:21]
+    .clock(sdt_clock),
+    .reset(sdt_reset),
+    .io_bus_in_rdata(sdt_io_bus_in_rdata),
+    .io_bus_wen(sdt_io_bus_wen),
+    .io_bus_out_addr(sdt_io_bus_out_addr),
+    .io_bus_out_wdata(sdt_io_bus_out_wdata),
+    .io_sdt_io_sdta(sdt_io_sdt_io_sdta),
+    .io_sdt_io_sdtb(sdt_io_sdt_io_sdtb)
+  );
+  assign io_apb_bus_in_valid = led_sel | (key_sel | sdt_sel); // @[Mux.scala 98:16]
+  assign io_apb_bus_in_rdata = led_sel ? led_io_bus_in_rdata : _rdata_T_1; // @[Mux.scala 98:16]
+  assign io_peripheral_io_led_io_led = led_io_led_io_led; // @[APB.scala 92:29]
+  assign io_peripheral_io_sdt_io_sdta = sdt_io_sdt_io_sdta; // @[APB.scala 94:29]
+  assign io_peripheral_io_sdt_io_sdtb = sdt_io_sdt_io_sdtb; // @[APB.scala 94:29]
   assign led_clock = clock;
   assign led_reset = reset;
-  assign led_io_bus_wen = io_apb_bus_wen; // @[APB.scala 45:16]
-  assign led_io_bus_wdata = io_apb_bus_wdata; // @[APB.scala 45:16]
+  assign led_io_bus_wen = led_sel & io_apb_bus_wen; // @[APB.scala 71:22]
+  assign led_io_bus_out_wdata = io_apb_bus_out_wdata; // @[APB.scala 53:20]
+  assign key_clock = clock;
+  assign key_reset = reset;
+  assign key_io_key_io_key = io_peripheral_io_key_io_key; // @[APB.scala 93:29]
+  assign sdt_clock = clock;
+  assign sdt_reset = reset;
+  assign sdt_io_bus_wen = sdt_sel & io_apb_bus_wen; // @[APB.scala 73:22]
+  assign sdt_io_bus_out_addr = io_apb_bus_out_addr; // @[APB.scala 55:20]
+  assign sdt_io_bus_out_wdata = io_apb_bus_out_wdata; // @[APB.scala 55:20]
 endmodule
 module SoC(
   input         clock,
   input         reset,
   output        io_exit,
-  output [31:0] io_out_APB_Peripheral_io_led_io_led
+  output [31:0] io_out_APB_Peripheral_io_led_io_led,
+  input  [31:0] io_out_APB_Peripheral_io_key_io_key,
+  output [31:0] io_out_APB_Peripheral_io_sdt_io_sdta,
+  output [31:0] io_out_APB_Peripheral_io_sdt_io_sdtb
 );
   wire  core_clock; // @[SoC.scala 18:29]
   wire  core_reset; // @[SoC.scala 18:29]
+  wire  core_io_bus_apb_bus_in_valid; // @[SoC.scala 18:29]
+  wire [31:0] core_io_bus_apb_bus_in_rdata; // @[SoC.scala 18:29]
   wire  core_io_bus_apb_bus_wen; // @[SoC.scala 18:29]
-  wire [31:0] core_io_bus_apb_bus_wdata; // @[SoC.scala 18:29]
-  wire [31:0] core_io_bus_apb_bus_rdata; // @[SoC.scala 18:29]
+  wire [31:0] core_io_bus_apb_bus_out_addr; // @[SoC.scala 18:29]
+  wire [31:0] core_io_bus_apb_bus_out_wdata; // @[SoC.scala 18:29]
   wire  core_io_exit; // @[SoC.scala 18:29]
   wire  apb_periph_clock; // @[SoC.scala 19:29]
   wire  apb_periph_reset; // @[SoC.scala 19:29]
+  wire  apb_periph_io_apb_bus_in_valid; // @[SoC.scala 19:29]
+  wire [31:0] apb_periph_io_apb_bus_in_rdata; // @[SoC.scala 19:29]
   wire  apb_periph_io_apb_bus_wen; // @[SoC.scala 19:29]
-  wire [31:0] apb_periph_io_apb_bus_wdata; // @[SoC.scala 19:29]
-  wire [31:0] apb_periph_io_apb_bus_rdata; // @[SoC.scala 19:29]
-  wire [31:0] apb_periph_io_apb_out_led_io_led; // @[SoC.scala 19:29]
+  wire [31:0] apb_periph_io_apb_bus_out_addr; // @[SoC.scala 19:29]
+  wire [31:0] apb_periph_io_apb_bus_out_wdata; // @[SoC.scala 19:29]
+  wire [31:0] apb_periph_io_peripheral_io_led_io_led; // @[SoC.scala 19:29]
+  wire [31:0] apb_periph_io_peripheral_io_key_io_key; // @[SoC.scala 19:29]
+  wire [31:0] apb_periph_io_peripheral_io_sdt_io_sdta; // @[SoC.scala 19:29]
+  wire [31:0] apb_periph_io_peripheral_io_sdt_io_sdtb; // @[SoC.scala 19:29]
   SCore core ( // @[SoC.scala 18:29]
     .clock(core_clock),
     .reset(core_reset),
+    .io_bus_apb_bus_in_valid(core_io_bus_apb_bus_in_valid),
+    .io_bus_apb_bus_in_rdata(core_io_bus_apb_bus_in_rdata),
     .io_bus_apb_bus_wen(core_io_bus_apb_bus_wen),
-    .io_bus_apb_bus_wdata(core_io_bus_apb_bus_wdata),
-    .io_bus_apb_bus_rdata(core_io_bus_apb_bus_rdata),
+    .io_bus_apb_bus_out_addr(core_io_bus_apb_bus_out_addr),
+    .io_bus_apb_bus_out_wdata(core_io_bus_apb_bus_out_wdata),
     .io_exit(core_io_exit)
   );
   APB_Peripheral apb_periph ( // @[SoC.scala 19:29]
     .clock(apb_periph_clock),
     .reset(apb_periph_reset),
+    .io_apb_bus_in_valid(apb_periph_io_apb_bus_in_valid),
+    .io_apb_bus_in_rdata(apb_periph_io_apb_bus_in_rdata),
     .io_apb_bus_wen(apb_periph_io_apb_bus_wen),
-    .io_apb_bus_wdata(apb_periph_io_apb_bus_wdata),
-    .io_apb_bus_rdata(apb_periph_io_apb_bus_rdata),
-    .io_apb_out_led_io_led(apb_periph_io_apb_out_led_io_led)
+    .io_apb_bus_out_addr(apb_periph_io_apb_bus_out_addr),
+    .io_apb_bus_out_wdata(apb_periph_io_apb_bus_out_wdata),
+    .io_peripheral_io_led_io_led(apb_periph_io_peripheral_io_led_io_led),
+    .io_peripheral_io_key_io_key(apb_periph_io_peripheral_io_key_io_key),
+    .io_peripheral_io_sdt_io_sdta(apb_periph_io_peripheral_io_sdt_io_sdta),
+    .io_peripheral_io_sdt_io_sdtb(apb_periph_io_peripheral_io_sdt_io_sdtb)
   );
   assign io_exit = core_io_exit; // @[SoC.scala 25:33]
-  assign io_out_APB_Peripheral_io_led_io_led = apb_periph_io_apb_out_led_io_led; // @[SoC.scala 26:33]
+  assign io_out_APB_Peripheral_io_led_io_led = apb_periph_io_peripheral_io_led_io_led; // @[SoC.scala 26:33]
+  assign io_out_APB_Peripheral_io_sdt_io_sdta = apb_periph_io_peripheral_io_sdt_io_sdta; // @[SoC.scala 26:33]
+  assign io_out_APB_Peripheral_io_sdt_io_sdtb = apb_periph_io_peripheral_io_sdt_io_sdtb; // @[SoC.scala 26:33]
   assign core_clock = clock;
   assign core_reset = reset;
-  assign core_io_bus_apb_bus_rdata = apb_periph_io_apb_bus_rdata; // @[SoC.scala 22:33]
+  assign core_io_bus_apb_bus_in_valid = apb_periph_io_apb_bus_in_valid; // @[SoC.scala 22:33]
+  assign core_io_bus_apb_bus_in_rdata = apb_periph_io_apb_bus_in_rdata; // @[SoC.scala 22:33]
   assign apb_periph_clock = clock;
   assign apb_periph_reset = reset;
   assign apb_periph_io_apb_bus_wen = core_io_bus_apb_bus_wen; // @[SoC.scala 22:33]
-  assign apb_periph_io_apb_bus_wdata = core_io_bus_apb_bus_wdata; // @[SoC.scala 22:33]
+  assign apb_periph_io_apb_bus_out_addr = core_io_bus_apb_bus_out_addr; // @[SoC.scala 22:33]
+  assign apb_periph_io_apb_bus_out_wdata = core_io_bus_apb_bus_out_wdata; // @[SoC.scala 22:33]
+  assign apb_periph_io_peripheral_io_key_io_key = io_out_APB_Peripheral_io_key_io_key; // @[SoC.scala 26:33]
 endmodule

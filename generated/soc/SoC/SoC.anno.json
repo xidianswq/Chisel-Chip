@@ -9,25 +9,25 @@
     "class":"firrtl.transforms.DedupedResult",
     "original":"~SoC|PC_IO_REG",
     "duplicate":"~SoC|SoC/core:SCore/if_io_reg_n:PC_IO_REG",
-    "index":0.5909090909090909
+    "index":0.5416666666666666
   },
   {
     "class":"firrtl.transforms.DedupedResult",
     "original":"~SoC|PC_IO_REG_1",
     "duplicate":"~SoC|SoC/core:SCore/if_io_reg_nn:PC_IO_REG",
-    "index":0.6363636363636364
+    "index":0.5833333333333334
   },
   {
     "class":"firrtl.transforms.DedupedResult",
     "original":"~SoC|ID_IO_REG",
     "duplicate":"~SoC|SoC/core:SCore/id_io_reg:ID_IO_REG",
-    "index":0.6818181818181818
+    "index":0.625
   },
   {
     "class":"firrtl.transforms.DedupedResult",
     "original":"~SoC|ID_IO_REG_1",
     "duplicate":"~SoC|SoC/core:SCore/id_io_reg_n:ID_IO_REG",
-    "index":0.7272727272727273
+    "index":0.6666666666666666
   },
   {
     "class":"firrtl.EmitCircuitAnnotation",
