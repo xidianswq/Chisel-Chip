@@ -15,8 +15,8 @@ int main()
         LED_SetBits(LED_Pin_ALL);
         a = KEY_ReadInputData(KEYA_Pin_ALL);
         b = KEY_ReadInputData(KEYB_Pin_ALL) >> 8;
-        c = a + b << 8;
-        d = (a + b) << 8;
+        c = a + (b << 16);
+        d = a + b;
         LED_ResetBits(LED_Pin_ALL);
         SDT_Write(SDTA, c);
         SDT_Write(SDTB, d);

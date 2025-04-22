@@ -1,15 +1,15 @@
 [*]
 [*] GTKWave Analyzer v3.3.103 (w)1999-2019 BSI
-[*] Tue Apr 22 05:53:39 2025
+[*] Tue Apr 22 09:30:50 2025
 [*]
 [dumpfile] "/home/swq/Desktop/Chisel-Chip/test_run_dir/soc_should_work/SoC.vcd"
-[dumpfile_mtime] "Tue Apr 22 05:50:50 2025"
-[dumpfile_size] 24269334
+[dumpfile_mtime] "Tue Apr 22 09:29:21 2025"
+[dumpfile_size] 29515563
 [savefile] "/home/swq/Desktop/Chisel-Chip/test_run_dir/soc_should_work/apb-led.gtkw"
-[timestart] 2938
+[timestart] 0
 [size] 1846 814
 [pos] -1 -1
-*-7.000000 1901 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+*-12.000000 14681 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] SoC.
 [treeopen] SoC.apb_periph.
 [treeopen] SoC.core.
@@ -82,7 +82,7 @@ SoC.apb_periph.led.io_led_io_led[31:0]
 -group_end
 @22
 SoC.apb_periph.sdt.sdt_outputdata_reg_0[31:0]
-@c00022
+@c00023
 SoC.apb_periph.sdt.sdt_outputdata_reg_1[31:0]
 @28
 (0)SoC.apb_periph.sdt.sdt_outputdata_reg_1[31:0]
@@ -117,7 +117,18 @@ SoC.apb_periph.sdt.sdt_outputdata_reg_1[31:0]
 (29)SoC.apb_periph.sdt.sdt_outputdata_reg_1[31:0]
 (30)SoC.apb_periph.sdt.sdt_outputdata_reg_1[31:0]
 (31)SoC.apb_periph.sdt.sdt_outputdata_reg_1[31:0]
-@1401200
+@1401201
 -group_end
+@22
+SoC.core.id.reg_x_2[31:0]
+SoC.core.id.reg_x_8[31:0]
+SoC.core.id.reg_x_9[31:0]
+SoC.core.id.reg_x_10[31:0]
+SoC.core.id.reg_x_11[31:0]
+SoC.core.id.reg_x_12[31:0]
+SoC.core.id.reg_x_13[31:0]
+SoC.core.id.reg_x_14[31:0]
+SoC.core.id.reg_x_15[31:0]
+SoC.core.ex.io_out_alu_io_alu_out[31:0]
 [pattern_trace] 1
 [pattern_trace] 0
