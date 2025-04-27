@@ -1,11 +1,13 @@
 #include <stdio.h>
+#define NUM 10
 int main()
 {
-        unsigned int i = 0;
-        unsigned int j = 100;
-        unsigned int k = 0;
-	for(i<0;i<50;i++){
-		for(j=100-i;j>50;j--){
+
+        unsigned int i;
+        unsigned int j;
+        unsigned int k;
+	for(i=0,k=0;i<NUM;i++){
+		for(j=NUM;j>0;j--){
 			if(j>i)k++;
 			else k--;
 		}

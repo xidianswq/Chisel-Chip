@@ -9,6 +9,7 @@ class SoCTest extends FlatSpec with ChiselScalatestTester {
   behavior of "soc" 
   it should "work" in {
     test(new SoC) { dut =>
+      dut.clock.setTimeout(10000)
       var i = 0
       var key_in = 257
       while (!dut.io.exit.peek().litToBoolean){
