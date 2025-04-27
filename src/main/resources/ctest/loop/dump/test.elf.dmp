@@ -2,51 +2,54 @@
 test:     file format elf32-littleriscv
 
 
+Disassembly of section .text.init:
+
+00000000 <_start>:
+   0:	00010117          	auipc	sp,0x10
+   4:	00010113          	mv	sp,sp
+   8:	004000ef          	jal	ra,c <main>
+
 Disassembly of section .text:
 
-00000000 <main>:
-   0:	fe010113          	addi	sp,sp,-32
-   4:	00812e23          	sw	s0,28(sp)
-   8:	02010413          	addi	s0,sp,32
-   c:	fe042623          	sw	zero,-20(s0)
-  10:	06400793          	li	a5,100
-  14:	fef42423          	sw	a5,-24(s0)
-  18:	fe042223          	sw	zero,-28(s0)
-  1c:	0640006f          	j	80 <main+0x80>
-  20:	06400713          	li	a4,100
-  24:	fec42783          	lw	a5,-20(s0)
-  28:	40f707b3          	sub	a5,a4,a5
-  2c:	fef42423          	sw	a5,-24(s0)
-  30:	0380006f          	j	68 <main+0x68>
-  34:	fe842703          	lw	a4,-24(s0)
-  38:	fec42783          	lw	a5,-20(s0)
-  3c:	00e7fa63          	bgeu	a5,a4,50 <main+0x50>
-  40:	fe442783          	lw	a5,-28(s0)
-  44:	00178793          	addi	a5,a5,1
-  48:	fef42223          	sw	a5,-28(s0)
-  4c:	0100006f          	j	5c <main+0x5c>
-  50:	fe442783          	lw	a5,-28(s0)
-  54:	fff78793          	addi	a5,a5,-1
-  58:	fef42223          	sw	a5,-28(s0)
-  5c:	fe842783          	lw	a5,-24(s0)
-  60:	fff78793          	addi	a5,a5,-1
-  64:	fef42423          	sw	a5,-24(s0)
-  68:	fe842703          	lw	a4,-24(s0)
-  6c:	03200793          	li	a5,50
-  70:	fce7e2e3          	bltu	a5,a4,34 <main+0x34>
-  74:	fec42783          	lw	a5,-20(s0)
-  78:	00178793          	addi	a5,a5,1
-  7c:	fef42623          	sw	a5,-20(s0)
-  80:	fec42703          	lw	a4,-20(s0)
-  84:	03100793          	li	a5,49
-  88:	f8e7fce3          	bgeu	a5,a4,20 <main+0x20>
-  8c:	c0001073          	unimp
-  90:	c0001073          	unimp
-  94:	00000793          	li	a5,0
-  98:	00078513          	mv	a0,a5
-  9c:	01c12403          	lw	s0,28(sp)
-  a0:	02010113          	addi	sp,sp,32
-  a4:	00008067          	ret
+0000000c <main>:
+   c:	fe010113          	addi	sp,sp,-32 # ffe0 <_stack_end+0x7e0>
+  10:	00812e23          	sw	s0,28(sp)
+  14:	02010413          	addi	s0,sp,32
+  18:	fe042623          	sw	zero,-20(s0)
+  1c:	fe042223          	sw	zero,-28(s0)
+  20:	0480006f          	j	68 <main+0x5c>
+  24:	fe042423          	sw	zero,-24(s0)
+  28:	0280006f          	j	50 <main+0x44>
+  2c:	fe842703          	lw	a4,-24(s0)
+  30:	fec42783          	lw	a5,-20(s0)
+  34:	00e7f863          	bgeu	a5,a4,44 <main+0x38>
+  38:	fe442783          	lw	a5,-28(s0)
+  3c:	00178793          	addi	a5,a5,1
+  40:	fef42223          	sw	a5,-28(s0)
+  44:	fe842783          	lw	a5,-24(s0)
+  48:	00178793          	addi	a5,a5,1
+  4c:	fef42423          	sw	a5,-24(s0)
+  50:	fe842703          	lw	a4,-24(s0)
+  54:	00e00793          	li	a5,14
+  58:	fce7fae3          	bgeu	a5,a4,2c <main+0x20>
+  5c:	fec42783          	lw	a5,-20(s0)
+  60:	00178793          	addi	a5,a5,1
+  64:	fef42623          	sw	a5,-20(s0)
+  68:	fec42703          	lw	a4,-20(s0)
+  6c:	00e00793          	li	a5,14
+  70:	fae7fae3          	bgeu	a5,a4,24 <main+0x18>
+  74:	c0001073          	unimp
+  78:	c0001073          	unimp
+  7c:	00000793          	li	a5,0
+  80:	00078513          	mv	a0,a5
+  84:	01c12403          	lw	s0,28(sp)
+  88:	02010113          	addi	sp,sp,32
+  8c:	00008067          	ret
+
+Disassembly of section .stack:
+
+0000f800 <_sp-0x800>:
+	...
 
 Disassembly of section .comment:
 
@@ -54,11 +57,11 @@ Disassembly of section .comment:
    0:	3a434347          	fmsub.d	ft6,ft6,ft4,ft7,rmm
    4:	2820                	fld	fs0,80(s0)
    6:	33616367          	0x33616367
-   a:	3231                	jal	fffff916 <_end+0xffffe916>
+   a:	3231                	jal	fffff916 <_sp+0xfffef916>
    c:	61373833          	0x61373833
   10:	3162                	fld	ft2,56(sp)
-  12:	2029                	jal	1c <main+0x1c>
-  14:	3031                	jal	fffff820 <_end+0xffffe820>
+  12:	2029                	jal	1c <main+0x10>
+  14:	3031                	jal	fffff820 <_sp+0xfffef820>
   16:	322e                	fld	ft4,232(sp)
   18:	302e                	fld	ft0,232(sp)
 	...
@@ -70,7 +73,7 @@ Disassembly of section .riscv.attributes:
    2:	0000                	unimp
    4:	7200                	flw	fs0,32(a2)
    6:	7369                	lui	t1,0xffffa
-   8:	01007663          	bgeu	zero,a6,14 <main+0x14>
+   8:	01007663          	bgeu	zero,a6,14 <main+0x8>
    c:	0011                	c.nop	4
    e:	0000                	unimp
   10:	1004                	addi	s1,sp,32

@@ -202,11 +202,11 @@ class ID extends Module{
     io.gp := reg_x(3)
     
     // debug info
-    printf("-------------ID------------\n")
-    printf(p"rs1_addr: $rs1_addr\n")
-    printf(p"rs2_addr: $rs2_addr\n")
-    printf(p"op1_data: 0x${Hexadecimal(op1_data)}\n")
-    printf(p"op2_data: 0x${Hexadecimal(op2_data)}\n")
-    printf(p"stall_flag: $stall_flag\n")
-    printf(p"gp: 0x${Hexadecimal(io.gp)}\n")
+    // printf("-------------ID------------\n")
+    // printf(p"rs1_addr: $rs1_addr\n")
+    // printf(p"rs2_addr: $rs2_addr\n")
+    // printf(p"op1_data: 0x${Hexadecimal(op1_data)}\n")
+    // printf(p"op2_data: 0x${Hexadecimal(op2_data)}\n")
+    // printf(p"stall_flag: $stall_flag\n")
+    // printf(p"gp: 0x${Hexadecimal(io.gp)}\n")
 }

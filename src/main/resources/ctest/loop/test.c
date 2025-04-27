@@ -1,5 +1,5 @@
 #include <stdio.h>
-#define NUM 10
+#define NUM 15
 int main()
 {
 
@@ -7,9 +7,8 @@ int main()
         unsigned int j;
         unsigned int k;
 	for(i=0,k=0;i<NUM;i++){
-		for(j=NUM;j>0;j--){
+		for(j=0;j<NUM;j++){
 			if(j>i)k++;
-			else k--;
 		}
 	}
         asm volatile("unimp");

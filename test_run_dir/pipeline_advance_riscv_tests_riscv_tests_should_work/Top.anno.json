@@ -1,7 +1,7 @@
 [
   {
     "class":"firrtl.stage.FirrtlFileAnnotation",
-    "file":"test_run_dir\\pipeline_advance_riscv_tests_riscv_tests_should_work\\Top.lo.fir"
+    "file":"test_run_dir/pipeline_advance_riscv_tests_riscv_tests_should_work/Top.lo.fir"
   },
   {
     "class":"firrtl.transforms.DedupedResult",
@@ -40,6 +40,6 @@
   },
   {
     "class":"firrtl.transforms.BlackBoxTargetDirAnno",
-    "targetDir":"test_run_dir\\pipeline_advance_riscv_tests_riscv_tests_should_work"
+    "targetDir":"test_run_dir/pipeline_advance_riscv_tests_riscv_tests_should_work"
   }
 ]

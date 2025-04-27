@@ -56,7 +56,7 @@ class ALU extends Module{
     io.out.jump_flag    := jump_flag
 
     // debug info
-    printf("-------------EX------------\n")
+    // printf("-------------EX------------\n")
     printf(p"alu_out: 0x${Hexadecimal(alu_out)}\n")
     printf(p"jump_flg: $jump_flag\n")
 }

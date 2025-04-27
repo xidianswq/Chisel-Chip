@@ -120,7 +120,7 @@ class PC extends Module{
     
     // debug info
     printf("-----------------------START----------------------\n")
-    printf("-------------IF------------\n")
+    // printf("-------------IF------------\n")
     printf(p"reg_pc: 0x${Hexadecimal(reg_pc)}\n")
     printf(p"inst: 0x${Hexadecimal(inst)}\n")
 }

@@ -184,36 +184,36 @@ class Core extends Module{
     }
 
     io.exit := MuxCase(false.asBool, Seq(
-        (inst === UNIMP) -> true.asBool,
+        //(inst === UNIMP) -> true.asBool,
         (inst === EXIT_INST) -> true.asBool,
-        (reg_pc === EXIT_PC) -> true.asBool
+        //(reg_pc === EXIT_PC) -> true.asBool
     ))
 
     //print the information during the simulation
     printf("-----------------------START----------------------\n")
-    printf("-------------IF------------\n")
+    // printf("-------------IF------------\n")
     printf(p"reg_pc: 0x${Hexadecimal(reg_pc)}\n")
     printf(p"inst: 0x${Hexadecimal(inst)}\n")
-    printf("-------------ID------------\n")
-    printf(p"rs1_addr: $rs1_addr\n")
-    printf(p"rs2_addr: $rs2_addr\n")
-    printf(p"op1_data: 0x${Hexadecimal(op1_data)}\n")
-    printf(p"op2_data: 0x${Hexadecimal(op2_data)}\n")
-    printf("-------------EX------------\n")
+    // printf("-------------ID------------\n")
+    // printf(p"rs1_addr: $rs1_addr\n")
+    // printf(p"rs2_addr: $rs2_addr\n")
+    // printf(p"op1_data: 0x${Hexadecimal(op1_data)}\n")
+    // printf(p"op2_data: 0x${Hexadecimal(op2_data)}\n")
+    // printf("-------------EX------------\n")
     printf(p"alu_out: 0x${Hexadecimal(alu_out)}\n")
     printf(p"branch_flg: $br_flag\n")
     printf(p"branch_target: 0x${Hexadecimal(br_target)}\n")
     printf(p"jump_flg: $jump_flag\n")
-    printf("-------------MEM-----------\n")
-    printf(p"datamem.wen: ${io.datamem.wen}\n")
-    printf(p"datamem.wdata: 0x${Hexadecimal(io.datamem.wdata)}\n")
-    printf(p"csr_wdata: 0x${Hexadecimal(csr_wdata)}\n")
-    printf("-------------WB------------\n")
-    printf(p"rd_wen: $rd_wen\n")
-    printf(p"rd_addr: $rd_addr\n")
-    printf(p"rd_data: 0x${Hexadecimal(rd_data)}\n")
-    printf("------------------------END-----------------------\n")
-    printf(p"exit: ${io.exit}\n")
-    printf("\n")
+    // printf("-------------MEM-----------\n")
+    // printf(p"datamem.wen: ${io.datamem.wen}\n")
+    // printf(p"datamem.wdata: 0x${Hexadecimal(io.datamem.wdata)}\n")
+    // printf(p"csr_wdata: 0x${Hexadecimal(csr_wdata)}\n")
+    // printf("-------------WB------------\n")
+    // printf(p"rd_wen: $rd_wen\n")
+    // printf(p"rd_addr: $rd_addr\n")
+    // printf(p"rd_data: 0x${Hexadecimal(rd_data)}\n")
+    // printf("------------------------END-----------------------\n")
+    // printf(p"exit: ${io.exit}\n")
+    // printf("\n")
 }
 

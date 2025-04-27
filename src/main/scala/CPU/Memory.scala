@@ -3,7 +3,7 @@ package cpu
 import chisel3._
 import chisel3.util._
 import chisel3.util.experimental.loadMemoryFromFile
-import cpu_pipeline.Consts._
+import cpu.Consts._
 
 /*
 type: IO Port

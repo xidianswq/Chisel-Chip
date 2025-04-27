@@ -199,10 +199,10 @@ class ID extends Module{
     io.out.imm_b_sext   := imm_b_sext
     
     // debug info
-    printf("-------------ID------------\n")
-    printf(p"rs1_addr: $rs1_addr\n")
-    printf(p"rs2_addr: $rs2_addr\n")
-    printf(p"op1_data: 0x${Hexadecimal(op1_data)}\n")
-    printf(p"op2_data: 0x${Hexadecimal(op2_data)}\n")
-    printf(p"stall_flag: $stall_flag\n")
+    // printf("-------------ID------------\n")
+    // printf(p"rs1_addr: $rs1_addr\n")
+    // printf(p"rs2_addr: $rs2_addr\n")
+    // printf(p"op1_data: 0x${Hexadecimal(op1_data)}\n")
+    // printf(p"op2_data: 0x${Hexadecimal(op2_data)}\n")
+    // printf(p"stall_flag: $stall_flag\n")
 }

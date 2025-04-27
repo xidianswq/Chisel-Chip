@@ -20,7 +20,7 @@ object Consts {
     val CSR_ADDR_LEN    = 12
     val START_PC        = 0.U(REG_LEN.W)                // PC start address
     val NOP             = "x_00000013".U(IMEM_WIDTH.W)  // [ADDI x0,x0,0] = NOP
-    val EXIT_INST       = 0x00000000.U(IMEM_WIDTH.W)  // exit instruction
+    val EXIT_INST       = 0x00008067.U(IMEM_WIDTH.W)  // exit instruction
     val EXIT_PC         = 0x00000044.U(REG_LEN.W)       // exit PC
 
     // Pipeline parameters

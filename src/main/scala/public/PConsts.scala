@@ -13,7 +13,8 @@ object PConsts {
     // Memory
     val IMEM_WIDTH      = 32    // 32bit
     val IMEM_DEPTH      = 16384 // 16KB 16384
-    val IMEM_HEX_PATH   = "src/main/resources/ctest/soc/hex/test.hex"
+    // val IMEM_HEX_PATH   = "src/main/resources/ctest/soc/hex/test.hex"
+    val IMEM_HEX_PATH   = "src/main/resources/ctest/loop/hex/test.hex"
     val DMEM_WIDTH      = 32
 
     // Rigister
@@ -24,8 +25,8 @@ object PConsts {
     val CSR_ADDR_LEN    = 12
     val START_PC        = 0.U(REG_LEN.W)                // PC start address
     val NOP             = "x_00000013".U(IMEM_WIDTH.W)  // [ADDI x0,x0,0] = NOP
-    val EXIT_INST       = 0x00000000.U(IMEM_WIDTH.W)  // exit instruction
-    val EXIT_PC         = 0x00000044.U(REG_LEN.W)       // exit PC
+    val EXIT_INST       = 0x00008067.U(IMEM_WIDTH.W)    // exit instruction = ret
+    val EXIT_PC         = 0x00000044.U(REG_LEN.W)       // exit PC (riscv-tests)
 
     // function in execute stage
     val EXE_FUN_LEN = 5

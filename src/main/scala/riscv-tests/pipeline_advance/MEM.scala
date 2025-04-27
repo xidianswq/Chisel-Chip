@@ -78,7 +78,7 @@ class MEM extends Module{
     io.out.rd_data  := rd_data
 
     // debug info
-    printf("-------------MEM-----------\n")
-    printf(p"datamem.wen: ${io.datamem.wen}\n")
-    printf(p"datamem.wdata: 0x${Hexadecimal(io.datamem.wdata)}\n")
+    // printf("-------------MEM-----------\n")
+    // printf(p"datamem.wen: ${io.datamem.wen}\n")
+    // printf(p"datamem.wdata: 0x${Hexadecimal(io.datamem.wdata)}\n")
 }

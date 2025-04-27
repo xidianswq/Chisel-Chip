@@ -10,6 +10,8 @@ class Top extends Module{
     val io = IO(new Bundle{
         val exit = Output(Bool())
         val gp   = Output(UInt(WORD_LEN.W))
+        val jump_flag = Output(Bool())
+        val br_flag   = Output(Bool())
         val pred_flag = Output(Bool())
         val miss_flag = Output(Bool())
     })
@@ -77,11 +79,13 @@ class Top extends Module{
     val inst    = pc.io.out.inst
     val reg_pc  = pc.io.out.reg_pc
     io.exit := MuxCase(false.asBool, Seq(
-        (inst   === UNIMP)      -> true.asBool,
+        //(inst   === UNIMP)      -> true.asBool,
         (inst   === EXIT_INST)  -> true.asBool,
-        //(reg_pc === EXIT_PC)    -> true.asBool
+        //(reg_pc === EXIT_PC)    -> true.asBool,
     ))
     io.gp := id.io.gp
+    io.jump_flag := pc.io.out.ex_io.alu_io.jump_flag 
+    io.br_flag   := pc.io.out.ex_io.br_io.br_flag
     io.pred_flag := stall.io.out.pred_flag
     io.miss_flag := stall.io.out.pred_miss_flag
 }

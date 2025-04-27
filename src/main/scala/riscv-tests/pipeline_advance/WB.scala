@@ -57,8 +57,8 @@ class WB extends Module{
     io.out.rd_data  := rd_data
 
     // debug info
-    printf("-------------WB------------\n")
-    printf(p"rd_wen: $rd_wen\n")
-    printf(p"rd_addr: $rd_addr\n")
-    printf(p"rd_data: 0x${Hexadecimal(rd_data)}\n")
+    // printf("-------------WB------------\n")
+    // printf(p"rd_wen: $rd_wen\n")
+    // printf(p"rd_addr: $rd_addr\n")
+    // printf(p"rd_data: 0x${Hexadecimal(rd_data)}\n")
 }

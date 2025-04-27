@@ -34,7 +34,7 @@
   {
     "class":"firrtl.annotations.LoadMemoryAnnotation",
     "target":"SoC.Memory.mem",
-    "fileName":"src/main/resources/ctest/soc/hex/test.hex",
+    "fileName":"src/main/resources/ctest/loop/hex/test.hex",
     "hexOrBinary":"h",
     "originalMemoryNameOpt":"mem"
   },

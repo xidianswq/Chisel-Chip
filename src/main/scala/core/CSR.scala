@@ -55,7 +55,7 @@ class CSR extends Module{
     io.out.trap_vector  := reg_csr(0x305.U(CSR_ADDR_LEN.W))
 
     // debug info
-    printf(p"csr_addr  = 0x${Hexadecimal(csr_addr)}\n")
-    printf(p"csr_rdata = 0x${Hexadecimal(csr_rdata)}\n")
-    printf(p"csr_wdata = 0x${Hexadecimal(csr_wdata)}\n")
+    // printf(p"csr_addr  = 0x${Hexadecimal(csr_addr)}\n")
+    // printf(p"csr_rdata = 0x${Hexadecimal(csr_rdata)}\n")
+    // printf(p"csr_wdata = 0x${Hexadecimal(csr_wdata)}\n")
 }

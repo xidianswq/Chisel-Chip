@@ -9,7 +9,8 @@ object Consts {
     // Memory
     val IMEM_WIDTH      = 32    // 32bit
     val IMEM_DEPTH      = 16384 // 16KB 16384
-    val IMEM_HEX_PATH   = "src/main/resources/CPU/test.hex"
+    // val IMEM_HEX_PATH   = "src/main/resources/CPU/test.hex"
+    val IMEM_HEX_PATH   = "src/main/resources/ctest/loop/hex/test.hex"
     val DMEM_WIDTH      = 32    // 16KB 16384
 
     // Rigister
@@ -21,7 +22,7 @@ object Consts {
     val START_PC        = 0.U(REG_LEN.W)                // PC start address
     val NOP             = "x_00000013".U(IMEM_WIDTH.W)  // [ADDI x0,x0,0] = NOP
     val UNIMP           = "x_c0001073".U(IMEM_WIDTH.W)  // [CSRRW x0, cycle, x0]
-    val EXIT_INST       = "x_00000000".U(IMEM_WIDTH.W)  // exit instruction
+    val EXIT_INST       = 0x00008067.U(IMEM_WIDTH.W)  // exit instruction
     val EXIT_PC         = 0x00000044.U(REG_LEN.W)       // exit PC
 
     // Pipeline parameters

@@ -54,7 +54,7 @@ class Stall extends Module{
     io.out.pred_flag        := pred_flag
 
     // debug info
-    printf("------------Stall----------\n")
-    printf(p"pred_miss_flag: $pred_miss_flag\n")
-    printf(p"pred_flag: $pred_flag\n")
+    // printf("------------Stall----------\n")
+    // printf(p"pred_miss_flag: $pred_miss_flag\n")
+    // printf(p"pred_flag: $pred_flag\n")
 }
