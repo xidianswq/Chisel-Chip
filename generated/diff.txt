@@ -1,0 +1,314 @@
+module Memory(
+  input         clock,
+  input  [31:0] io_instmem_addr,
+  output [31:0] io_instmem_inst,
+  input  [31:0] io_datamem_addr,
+  output [31:0] io_datamem_rdata,
+  input         io_datamem_wen,
+  input  [31:0] io_datamem_wdata
+);
+  mem sram ( // @[Top.scala 15:24]
+    .clka    (!clock),
+    .wea     (1'b0),
+    .addra   (io_instmem_addr[17:2]),
+    .dina    (32'h00000000),
+    .douta   (io_instmem_inst),
+    .clkb    (!clock),
+    .web     (io_datamem_wen),
+    .addrb   (io_datamem_addr[17:2]),
+    .dinb    (io_datamem_wdata),
+    .doutb   (io_datamem_rdata)
+  );
+endmodule
+
+module clk_div
+#(parameter DIV_CLK = 10000000 )
+(
+  input clk_in,
+  input reset,
+  output clk_out
+);
+   //N/2 计数
+   reg [32:0]            cnt ;
+   always @(posedge clk_in or posedge reset) begin
+      if (reset) begin
+         cnt    <= 'b0 ;
+      end
+      else if (cnt == (DIV_CLK/2)-1) begin
+         cnt    <= 'b0 ;
+      end
+      else begin
+         cnt    <= cnt + 1'b1 ;
+      end
+    end
+   reg clk_div ;
+   always @(posedge clk_in or posedge reset) begin
+      if (reset) begin
+         clk_div <= 1'b0 ;
+      end
+      else if (cnt == (DIV_CLK/2)-1 ) begin
+         clk_div <= ~clk_div ;
+      end
+   end
+   assign clk_out = clk_div ;
+endmodule
+
+
+
+
+module seg_dis (
+    input rst,
+    input clk,
+    input [15:0] data_in_A,
+    input [15:0] data_in_B,
+    input [15:0] data_in_C,
+    input [15:0] data_in_D,
+    output reg [15:0] seg_dig,
+    output reg [7:0] seg_data
+);
+// State definitions
+localparam [3:0] 
+    s0 = 0,  s1 = 1,  s2 = 2,  s3 = 3,
+    s4 = 4,  s5 = 5,  s6 = 6,  s7 = 7,
+    s8 = 8,  s9 = 9,  s10 = 10, s11 = 11,
+    s12 = 12, s13 = 13, s14 = 14, s15 = 15;
+reg [3:0] state, next_state;
+reg [3:0] data_in_line;
+// State register
+always @(posedge clk or posedge rst) begin
+    if (rst) state <= s0;
+    else     state <= next_state;
+end
+// State transition and output logic
+always @(*) begin
+    case (state)
+        s0: begin
+            seg_dig = ~16'h0001;
+            data_in_line = data_in_A[3:0];
+            next_state = s1;
+        end
+        s1: begin
+            seg_dig = ~16'h0002;
+            data_in_line = data_in_A[7:4];
+            next_state = s2;
+        end
+        s2: begin
+            seg_dig = ~16'h0004;
+            data_in_line = data_in_A[11:8];
+            next_state = s3;
+        end
+        s3: begin
+            seg_dig = ~16'h0008;
+            data_in_line = data_in_A[15:12];
+            next_state = s4;
+        end
+        s4: begin
+            seg_dig = ~16'h0010;
+            data_in_line = data_in_B[3:0];
+            next_state = s5;
+        end
+        s5: begin
+            seg_dig = ~16'h0020;
+            data_in_line = data_in_B[7:4];
+            next_state = s6;
+        end
+        s6: begin
+            seg_dig = ~16'h0040;
+            data_in_line = data_in_B[11:8];
+            next_state = s7;
+        end
+        s7: begin
+            seg_dig = ~16'h0080;
+            data_in_line = data_in_B[15:12];
+            next_state = s8;
+        end
+        s8: begin
+            seg_dig = ~16'h0100;
+            data_in_line = data_in_C[3:0];
+            next_state = s9;
+        end
+        s9: begin
+            seg_dig = ~16'h0200;
+            data_in_line = data_in_C[7:4];
+            next_state = s10;
+        end
+        s10: begin
+            seg_dig = ~16'h0400;
+            data_in_line = data_in_C[11:8];
+            next_state = s11;
+        end
+        s11: begin
+            seg_dig = ~16'h0800;
+            data_in_line = data_in_C[15:12];
+            next_state = s12;
+        end
+        s12: begin
+            seg_dig = ~16'h1000;
+            data_in_line = data_in_D[3:0];
+            next_state = s13;
+        end
+        s13: begin
+            seg_dig = ~16'h2000;
+            data_in_line = data_in_D[7:4];
+            next_state = s14;
+        end
+        s14: begin
+            seg_dig = ~16'h4000;
+            data_in_line = data_in_D[11:8];
+            next_state = s15;
+        end
+        s15: begin
+            seg_dig = ~16'h8000;
+            data_in_line = data_in_D[15:12];
+            next_state = s0;
+        end
+        default: begin
+            seg_dig = 16'hFFFF;
+            data_in_line = 4'b0;
+            next_state = s0;
+        end
+    endcase
+end
+// Segment decoder
+always @(*) begin
+    case (data_in_line)
+        4'h0: seg_data = ~8'b00111111;  // 0
+        4'h1: seg_data = ~8'b00000110;  // 1
+        4'h2: seg_data = ~8'b01011011;  // 2
+        4'h3: seg_data = ~8'b01001111;  // 3
+        4'h4: seg_data = ~8'b01100110;  // 4
+        4'h5: seg_data = ~8'b01101101;  // 5
+        4'h6: seg_data = ~8'b01111101;  // 6
+        4'h7: seg_data = ~8'b00000111;  // 7
+        4'h8: seg_data = ~8'b01111111;  // 8
+        4'h9: seg_data = ~8'b01101111;  // 9
+        4'hA: seg_data = ~8'b01110111;  // A
+        4'hB: seg_data = ~8'b01111100;  // B
+        4'hC: seg_data = ~8'b00111001;  // C
+        4'hD: seg_data = ~8'b01011110;  // D
+        4'hE: seg_data = ~8'b01111001;  // E
+        4'hF: seg_data = ~8'b01110001;  // F
+        default: seg_data = ~8'b11111111; // All off
+    endcase
+end
+endmodule
+
+
+
+
+
+module Top(
+  input         clk_in,
+  input         reset,
+  input         rst_soc,
+  output        io_exit,
+  output [31:0] led,
+  input  [31:0] key_in,
+  output [15:0] seg_dig,
+  output [7:0] seg_data
+);
+  //assign clock=clk_in;
+  wire clock_line;
+  wire clock_line_1;
+  wire clock_line_2;
+  clk_pll clk_pll_inst(
+    .clk_in(clk_in),
+    .reset(reset),
+    .clk_out(clock_line)
+  ); 
+  clk_div #(.DIV_CLK(1000000))clk_div_inst_1
+  (
+    .clk_in(clock_line),
+    .reset(reset),
+    .clk_out(clock_line_1)
+  );
+    clk_div #(.DIV_CLK(2000))clk_div_inst_2
+  (
+    .clk_in(clock_line),
+    .reset(reset),
+    .clk_out(clock_line_2)
+  );
+  wire [31:0]io_out_APB_Peripheral_io_sdt_io_sdta_line;
+  wire [31:0]io_out_APB_Peripheral_io_sdt_io_sdtb_line;
+  SoC soc_inst(
+    .clock(clock_line_1),
+    .reset(rst_soc),
+    .io_exit(io_exit),
+    .io_out_APB_Peripheral_io_led_io_led(led),
+    .io_out_APB_Peripheral_io_key_io_key(key_in),
+    .io_out_APB_Peripheral_io_sdt_io_sdta(io_out_APB_Peripheral_io_sdt_io_sdta_line),
+    .io_out_APB_Peripheral_io_sdt_io_sdtb(io_out_APB_Peripheral_io_sdt_io_sdtb_line)
+  );
+  seg_dis seg_dis_inst(
+    .rst(reset),
+    .clk(clock_line_2),
+    .data_in_A(io_out_APB_Peripheral_io_sdt_io_sdta_line[15:0]),
+    .data_in_B(io_out_APB_Peripheral_io_sdt_io_sdta_line[31:16]),
+    .data_in_C(io_out_APB_Peripheral_io_sdt_io_sdtb_line[15:0]),
+    .data_in_D(io_out_APB_Peripheral_io_sdt_io_sdtb_line[31:16]),
+    .seg_dig(seg_dig),
+    .seg_data(seg_data)
+  );
+
+endmodule
+
+
+
+
+`timescale  1ns/1ns
+module tb_SoC();
+
+reg  clk_in              ;
+reg  reset              ;
+wire io_exit            ;
+wire [31:0] led;
+reg  [31:0] key;
+wire [31:0]io_out_APB_Peripheral_io_sdt_io_sdta_line;
+wire [31:0]io_out_APB_Peripheral_io_sdt_io_sdtb_line;
+
+initial
+    begin        
+        clk_in = 1'b1;
+        reset <=  1'b0;
+        key <= 32'h00001001;
+        #100
+        reset <=  1'b1;
+        #1000000
+        reset <=  1'b0;
+        #1000000
+        reset <=  1'b1;
+        #1000
+        reset <=  1'b0;
+       
+    end
+
+always #10 clk_in = ~clk_in    ;
+
+Top top_inst
+(
+    .clk_in              (clk_in           ),           
+    .reset              (reset           ),           
+    .io_exit            (io_exit         ),
+    .led (led),
+    .key_in (key),
+    .seg_dig(seg_dig),
+    .seg_data(seg_data)
+);
+
+//  SoC soc_inst
+//  (
+//    .clock(clk_in),
+//    .reset(reset),
+//    .io_exit(io_exit),
+//    .io_out_APB_Peripheral_io_led_io_led(led),
+//    .io_out_APB_Peripheral_io_key_io_key(key),
+//    .io_out_APB_Peripheral_io_sdt_io_sdta(io_out_APB_Peripheral_io_sdt_io_sdta_line),
+//    .io_out_APB_Peripheral_io_sdt_io_sdtb(io_out_APB_Peripheral_io_sdt_io_sdtb_line)
+//  );
+
+endmodule
+
+
+
+
+create_clock -period 10.000 -name clk_in -waveform {0.000 5.000} [get_ports clk_in]

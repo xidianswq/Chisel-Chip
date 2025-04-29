@@ -1,22 +1,20 @@
 [*]
-[*] GTKWave Analyzer v3.3.103 (w)1999-2019 BSI
-[*] Sun Apr 27 07:20:28 2025
+[*] GTKWave Analyzer v3.3.100 (w)1999-2019 BSI
+[*] Mon Apr 28 01:45:46 2025
 [*]
-[dumpfile] "/home/swq/Desktop/Chisel-Chip/test_run_dir/soc_should_work/SoC.vcd"
-[dumpfile_mtime] "Sun Apr 27 02:40:30 2025"
-[dumpfile_size] 17612058
-[savefile] "/home/swq/Desktop/Chisel-Chip/test_run_dir/soc_should_work/loop-ctest.gtkw"
+[dumpfile] "D:\improve&work\work\大四上\毕设\CPU-code\Chisel-Chip\test_run_dir\soc_should_work\test_run_dir\soc_should_work\SoC.vcd"
+[savefile] "D:\improve&work\work\大四上\毕设\CPU-code\Chisel-Chip\test_run_dir\soc_should_work\loop-ctest.gtkw"
 [timestart] 0
-[size] 1846 814
-[pos] -51 -51
-*-12.000000 14681 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
+[size] 1920 991
+[pos] -74 -74
+*-10.000000 14681 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1 -1
 [treeopen] SoC.
 [treeopen] SoC.apb_periph.
 [treeopen] SoC.core.
 [sst_width] 272
 [signals_width] 360
 [sst_expanded] 1
-[sst_vpaned_height] 462
+[sst_vpaned_height] 587
 @22
 SoC.core.if_io_reg_nn.io_out_reg_pc[31:0]
 SoC.core.if_io_reg_nn.io_out_inst[31:0]
@@ -26,18 +24,6 @@ SoC.core.mmu.io_mem_io_wen
 SoC.core.mmu.io_mem_io_addr[31:0]
 SoC.core.mmu.io_mem_io_wdata[31:0]
 SoC.core.mmu.io_mem_io_rdata[31:0]
-@28
-SoC.core.memory.io_datamem_wen
-@22
-SoC.core.memory.io_datamem_addr[31:0]
-SoC.core.memory.io_datamem_wdata[31:0]
-@28
-SoC.core.mmu.io_mmu_io_apb_bus_wen
-@22
-SoC.core.mmu.io_mmu_io_apb_bus_out_addr[31:0]
-@23
-SoC.core.mmu.io_mmu_io_apb_bus_out_wdata[31:0]
-@22
 SoC.core.ex.io_out_alu_io_alu_out[31:0]
 SoC.core.id.reg_x_2[31:0]
 SoC.core.id.reg_x_8[31:0]
@@ -48,5 +34,13 @@ SoC.core.id.reg_x_12[31:0]
 SoC.core.id.reg_x_13[31:0]
 SoC.core.id.reg_x_14[31:0]
 SoC.core.id.reg_x_15[31:0]
+SoC.core.bp.io_out_pred_target[31:0]
+@28
+SoC.core.ex.io_out_alu_io_jump_flag
+SoC.core.ex.io_out_br_io_br_flag
+SoC.core.bp.io_out_pred_flag
+SoC.core.stall.io_out_pred_miss_flag
+SoC.core.stall.io_out_stall_flag
+SoC.core.io_exit
 [pattern_trace] 1
 [pattern_trace] 0

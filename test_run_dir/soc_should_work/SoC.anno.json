@@ -1,7 +1,7 @@
 [
   {
     "class":"firrtl.stage.FirrtlFileAnnotation",
-    "file":"test_run_dir/soc_should_work/SoC.lo.fir"
+    "file":"test_run_dir\\soc_should_work\\SoC.lo.fir"
   },
   {
     "class":"firrtl.transforms.DedupedResult",
@@ -34,12 +34,12 @@
   {
     "class":"firrtl.annotations.LoadMemoryAnnotation",
     "target":"SoC.Memory.mem",
-    "fileName":"src/main/resources/ctest/loop/hex/test.hex",
+    "fileName":"src/main/resources/ctest/soc/hex/test.hex",
     "hexOrBinary":"h",
     "originalMemoryNameOpt":"mem"
   },
   {
     "class":"firrtl.transforms.BlackBoxTargetDirAnno",
-    "targetDir":"test_run_dir/soc_should_work"
+    "targetDir":"test_run_dir\\soc_should_work"
   }
 ]
