@@ -6594,7 +6594,7 @@ circuit Top :
     mem_io_reg.io.in.rd_data <= mem.io.out.rd_data @[Top.scala 77:29]
     mem_io_reg.io.in.rd_addr <= mem.io.out.rd_addr @[Top.scala 77:29]
     mem_io_reg.io.in.rd_wen <= mem.io.out.rd_wen @[Top.scala 77:29]
-    node _io_exit_T = eq(pc.io.out.inst, UInt<32>("h08067")) @[Top.scala 83:17]
+    node _io_exit_T = eq(pc.io.out.reg_pc, UInt<32>("h044")) @[Top.scala 84:17]
     node _io_exit_T_1 = mux(_io_exit_T, UInt<1>("h01"), UInt<1>("h00")) @[Mux.scala 98:16]
     io.exit <= _io_exit_T_1 @[Top.scala 81:13]
     io.gp <= id.io.gp @[Top.scala 86:11]

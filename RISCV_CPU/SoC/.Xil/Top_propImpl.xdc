@@ -1,0 +1,5 @@
+set_property SRC_FILE_INFO {cfile:C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/constrs_1/new/pin.xdc rfile:../RISCV_CPU.srcs/constrs_1/new/pin.xdc id:1} [current_design]
+set_property src_info {type:XDC file:1 line:5 export:INPUT save:INPUT read:READ} [current_design]
+set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets reset_IBUF]
+set_property src_info {type:XDC file:1 line:6 export:INPUT save:INPUT read:READ} [current_design]
+set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets rst_soc_IBUF]

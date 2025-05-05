@@ -1,7 +1,7 @@
 [
   {
     "class":"firrtl.stage.FirrtlFileAnnotation",
-    "file":"test_run_dir/pipeline_advance_riscv_tests_riscv_tests_should_work/Top.lo.fir"
+    "file":"test_run_dir\\pipeline_advance_riscv_tests_riscv_tests_should_work\\Top.lo.fir"
   },
   {
     "class":"firrtl.transforms.DedupedResult",
@@ -34,12 +34,12 @@
   {
     "class":"firrtl.annotations.LoadMemoryAnnotation",
     "target":"Top.Memory.mem",
-    "fileName":"src/main/resources/ctest/loop/hex/test.hex",
+    "fileName":"src/riscv-tests/hex/rv32mi-p-scall.hex",
     "hexOrBinary":"h",
     "originalMemoryNameOpt":"mem"
   },
   {
     "class":"firrtl.transforms.BlackBoxTargetDirAnno",
-    "targetDir":"test_run_dir/pipeline_advance_riscv_tests_riscv_tests_should_work"
+    "targetDir":"test_run_dir\\pipeline_advance_riscv_tests_riscv_tests_should_work"
   }
 ]

@@ -1,0 +1,113 @@
+Copyright 1986-2022 Xilinx, Inc. All Rights Reserved. Copyright 2022-2023 Advanced Micro Devices, Inc. All Rights Reserved.
+---------------------------------------------------------------------------------------------------------------------------------------------
+| Tool Version : Vivado v.2023.1 (win64) Build 3865809 Sun May  7 15:05:29 MDT 2023
+| Date         : Thu Mar  6 12:45:02 2025
+| Host         : SWQ2003 running 64-bit major release  (build 9200)
+| Command      : report_control_sets -verbose -file Top_control_sets_placed.rpt
+| Design       : Top
+| Device       : xc7k160t
+---------------------------------------------------------------------------------------------------------------------------------------------
+
+Control Set Information
+
+Table of Contents
+-----------------
+1. Summary
+2. Histogram
+3. Flip-Flop Distribution
+4. Detailed Control Set Information
+
+1. Summary
+----------
+
++----------------------------------------------------------+-------+
+|                          Status                          | Count |
++----------------------------------------------------------+-------+
+| Total control sets                                       |    35 |
+|    Minimum number of control sets                        |    35 |
+|    Addition due to synthesis replication                 |     0 |
+|    Addition due to physical synthesis replication        |     0 |
+| Unused register locations in slices containing registers |     1 |
++----------------------------------------------------------+-------+
+* Control sets can be merged at opt_design using control_set_merge or merge_equivalent_drivers
+** Run report_qor_suggestions for automated merging and remapping suggestions
+
+
+2. Histogram
+------------
+
++--------------------+-------+
+|       Fanout       | Count |
++--------------------+-------+
+| Total control sets |    35 |
+| >= 0 to < 4        |     0 |
+| >= 4 to < 6        |     0 |
+| >= 6 to < 8        |     0 |
+| >= 8 to < 10       |     0 |
+| >= 10 to < 12      |     0 |
+| >= 12 to < 14      |     0 |
+| >= 14 to < 16      |     0 |
+| >= 16              |    35 |
++--------------------+-------+
+* Control sets can be remapped at either synth_design or opt_design
+
+
+3. Flip-Flop Distribution
+-------------------------
+
++--------------+-----------------------+------------------------+-----------------+--------------+
+| Clock Enable | Synchronous Set/Reset | Asynchronous Set/Reset | Total Registers | Total Slices |
++--------------+-----------------------+------------------------+-----------------+--------------+
+| No           | No                    | No                     |            1032 |          747 |
+| No           | No                    | Yes                    |               0 |            0 |
+| No           | Yes                   | No                     |              39 |           10 |
+| Yes          | No                    | No                     |               0 |            0 |
+| Yes          | No                    | Yes                    |               0 |            0 |
+| Yes          | Yes                   | No                     |               0 |            0 |
++--------------+-----------------------+------------------------+-----------------+--------------+
+
+
+4. Detailed Control Set Information
+-----------------------------------
+
++----------------------------+--------------------------+------------------+------------------+----------------+--------------+
+|        Clock Signal        |       Enable Signal      | Set/Reset Signal | Slice Load Count | Bel Load Count | Bels / Slice |
++----------------------------+--------------------------+------------------+------------------+----------------+--------------+
+|  clk_pll_inst/inst/clk_out |                          | reset_IBUF       |               10 |             39 |         3.90 |
+|  clk_pll_inst/inst/clk_out | instmem/mem_reg[0][3]_5  |                  |               32 |            128 |         4.00 |
+|  clk_pll_inst/inst/clk_out | instmem/mem_reg[0][7]_5  |                  |               32 |            128 |         4.00 |
+|  clk_pll_inst/inst/clk_out | instmem/mem_reg[0][6]_6  |                  |               32 |            128 |         4.00 |
+|  clk_pll_inst/inst/clk_out | instmem/mem_reg[0][3]_3  |                  |               32 |            128 |         4.00 |
+|  clk_pll_inst/inst/clk_out | instmem/mem_reg[0][6]_4  |                  |               32 |            128 |         4.00 |
+|  clk_pll_inst/inst/clk_out | instmem/mem_reg[0][7]_16 |                  |               32 |            128 |         4.00 |
+|  clk_pll_inst/inst/clk_out | instmem/mem_reg[0][7]_19 |                  |               32 |            128 |         4.00 |
+|  clk_pll_inst/inst/clk_out | instmem/mem_reg[0][7]_2  |                  |               32 |            128 |         4.00 |
+|  clk_pll_inst/inst/clk_out | instmem/mem_reg[0][7]_18 |                  |               32 |            128 |         4.00 |
+|  clk_pll_inst/inst/clk_out | instmem/mem_reg[0][7]_4  |                  |               32 |            128 |         4.00 |
+|  clk_pll_inst/inst/clk_out | instmem/mem_reg[0][7]_8  |                  |               32 |            128 |         4.00 |
+|  clk_pll_inst/inst/clk_out | instmem/mem_reg[0][6]_1  |                  |               32 |            128 |         4.00 |
+|  clk_pll_inst/inst/clk_out | instmem/mem_reg[0][7]_10 |                  |               32 |            128 |         4.00 |
+|  clk_pll_inst/inst/clk_out | instmem/mem_reg[0][7]_17 |                  |               32 |            128 |         4.00 |
+|  clk_pll_inst/inst/clk_out | instmem/mem_reg[0][7]_1  |                  |               32 |            128 |         4.00 |
+|  clk_pll_inst/inst/clk_out | instmem/mem_reg[0][3]_4  |                  |               32 |            128 |         4.00 |
+|  clk_pll_inst/inst/clk_out | instmem/mem_reg[0][7]_13 |                  |               32 |            128 |         4.00 |
+|  clk_pll_inst/inst/clk_out | instmem/mem_reg[0][7]_15 |                  |               32 |            128 |         4.00 |
+|  clk_pll_inst/inst/clk_out | instmem/mem_reg[0][7]_3  |                  |               32 |            128 |         4.00 |
+|  clk_pll_inst/inst/clk_out | instmem/mem_reg[0][7]_6  |                  |               32 |            128 |         4.00 |
+|  clk_pll_inst/inst/clk_out | instmem/mem_reg[0][7]_7  |                  |               32 |            128 |         4.00 |
+|  clk_pll_inst/inst/clk_out | instmem/mem_reg[0][7]_12 |                  |               32 |            128 |         4.00 |
+|  clk_pll_inst/inst/clk_out | instmem/mem_reg[0][6]_0  |                  |               32 |            128 |         4.00 |
+|  clk_pll_inst/inst/clk_out | instmem/mem_reg[0][7]_9  |                  |               32 |            128 |         4.00 |
+|  clk_pll_inst/inst/clk_out | instmem/mem_reg[0][3]_2  |                  |               32 |            128 |         4.00 |
+|  clk_pll_inst/inst/clk_out | instmem/mem_reg[0][3]_0  |                  |               32 |            128 |         4.00 |
+|  clk_pll_inst/inst/clk_out | instmem/mem_reg[0][6]_3  |                  |               32 |            128 |         4.00 |
+|  clk_pll_inst/inst/clk_out | instmem/mem_reg[0][6]_5  |                  |               32 |            128 |         4.00 |
+|  clk_pll_inst/inst/clk_out | instmem/mem_reg[0][7]_11 |                  |               32 |            128 |         4.00 |
+|  clk_pll_inst/inst/clk_out | instmem/mem_reg[0][7]_14 |                  |               32 |            128 |         4.00 |
+|  clk_pll_inst/inst/clk_out | instmem/mem_reg[0][3]_1  |                  |               32 |            128 |         4.00 |
+|  clk_pll_inst/inst/clk_out | instmem/mem_reg[0][6]_2  |                  |               32 |            128 |         4.00 |
+|  clk_pll_inst/inst/clk_out | instmem/reg_x_MPORT_1_en |                  |               17 |            132 |         7.76 |
+|  clk_pll_inst/inst/clk_out |                          |                  |              747 |           1032 |         1.38 |
++----------------------------+--------------------------+------------------+------------------+----------------+--------------+
+
+

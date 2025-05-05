@@ -80,8 +80,8 @@ class Top extends Module{
     val reg_pc  = pc.io.out.reg_pc
     io.exit := MuxCase(false.asBool, Seq(
         //(inst   === UNIMP)      -> true.asBool,
-        (inst   === EXIT_INST)  -> true.asBool,
-        //(reg_pc === EXIT_PC)    -> true.asBool,
+        //(inst   === EXIT_INST)  -> true.asBool,
+        (reg_pc === EXIT_PC)    -> true.asBool,
     ))
     io.gp := id.io.gp
     io.jump_flag := pc.io.out.ex_io.alu_io.jump_flag 

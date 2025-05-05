@@ -14828,12 +14828,13 @@ circuit SoC :
     inst id_io_reg_n of ID_IO_REG @[SCore.scala 32:33]
     inst ex_io_reg of EX_IO_REG @[SCore.scala 33:33]
     inst mem_io_reg of WB_IO_REG @[SCore.scala 34:33]
-    node _io_exit_T = eq(if_io_reg_nn.io_out_inst, UInt<32>("h8067")) @[SCore.scala 84:17]
-    node _io_exit_T_1 = mux(_io_exit_T, UInt<1>("h1"), UInt<1>("h0")) @[Mux.scala 98:16]
+    node _io_exit_T = and(if_io_reg_nn.io_out_inst, UInt<32>("hffffffff")) @[SCore.scala 82:17]
+    node _io_exit_T_1 = eq(UInt<32>("hc0001073"), _io_exit_T) @[SCore.scala 82:17]
+    node _io_exit_T_2 = mux(_io_exit_T_1, UInt<1>("h1"), UInt<1>("h0")) @[Mux.scala 98:16]
     io_bus_apb_bus_wen <= mmu.io_mmu_io_apb_bus_wen @[SCore.scala 86:12]
     io_bus_apb_bus_out_addr <= mmu.io_mmu_io_apb_bus_out_addr @[SCore.scala 86:12]
     io_bus_apb_bus_out_wdata <= mmu.io_mmu_io_apb_bus_out_wdata @[SCore.scala 86:12]
-    io_exit <= _io_exit_T_1 @[SCore.scala 81:13]
+    io_exit <= _io_exit_T_2 @[SCore.scala 81:13]
     memory.clock <= clock
     memory.reset <= reset
     memory.io_instmem_addr <= pc.io_instmem_addr @[SCore.scala 40:25]

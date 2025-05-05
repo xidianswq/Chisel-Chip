@@ -35,4 +35,4 @@
 [SUMMARY] 2/2 	 mi 	 tests succeed
 
 [INFO] test finished
-[INFO] time cost: 1402s
+[INFO] time cost: 1340s

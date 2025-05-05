@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_Top_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="tb_Top" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0.000 ns"></ZoomStartTime>
+      <ZoomEndTime time="236.298 ns"></ZoomEndTime>
+      <Cursor1Time time="220.000 ns"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="139"></NameColumnWidth>
+      <ValueColumnWidth column_width="103"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="19" />
+   <wvobject fp_name="/tb_Top/clock" type="logic">
+      <obj_property name="ElementShortName">clock</obj_property>
+      <obj_property name="ObjectShortName">clock</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_Top/reset" type="logic">
+      <obj_property name="ElementShortName">reset</obj_property>
+      <obj_property name="ObjectShortName">reset</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_Top/Top_inst/core/reg_pc" type="array">
+      <obj_property name="ElementShortName">reg_pc[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg_pc[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_Top/Top_inst/core/io_instmem_inst" type="array">
+      <obj_property name="ElementShortName">io_instmem_inst[31:0]</obj_property>
+      <obj_property name="ObjectShortName">io_instmem_inst[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_Top/Top_inst/core/rs1_addr" type="array">
+      <obj_property name="ElementShortName">rs1_addr[4:0]</obj_property>
+      <obj_property name="ObjectShortName">rs1_addr[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_Top/Top_inst/core/rs1_data" type="array">
+      <obj_property name="ElementShortName">rs1_data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">rs1_data[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_Top/Top_inst/core/rs2_addr" type="array">
+      <obj_property name="ElementShortName">rs2_addr[4:0]</obj_property>
+      <obj_property name="ObjectShortName">rs2_addr[4:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_Top/Top_inst/core/rs2_data" type="array">
+      <obj_property name="ElementShortName">rs2_data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">rs2_data[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_Top/Top_inst/core/op1_data" type="array">
+      <obj_property name="ElementShortName">op1_data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">op1_data[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_Top/Top_inst/core/op2_data" type="array">
+      <obj_property name="ElementShortName">op2_data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">op2_data[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_Top/Top_inst/core/alu_out" type="array">
+      <obj_property name="ElementShortName">alu_out[31:0]</obj_property>
+      <obj_property name="ObjectShortName">alu_out[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_Top/Top_inst/core/jump_flag" type="logic">
+      <obj_property name="ElementShortName">jump_flag</obj_property>
+      <obj_property name="ObjectShortName">jump_flag</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_Top/Top_inst/core/br_target" type="array">
+      <obj_property name="ElementShortName">br_target[31:0]</obj_property>
+      <obj_property name="ObjectShortName">br_target[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_Top/Top_inst/core/br_flag" type="logic">
+      <obj_property name="ElementShortName">br_flag</obj_property>
+      <obj_property name="ObjectShortName">br_flag</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_Top/Top_inst/core/io_datamem_wen" type="logic">
+      <obj_property name="ElementShortName">io_datamem_wen</obj_property>
+      <obj_property name="ObjectShortName">io_datamem_wen</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_Top/Top_inst/core/io_datamem_addr" type="array">
+      <obj_property name="ElementShortName">io_datamem_addr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">io_datamem_addr[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_Top/Top_inst/core/io_datamem_wdata" type="array">
+      <obj_property name="ElementShortName">io_datamem_wdata[31:0]</obj_property>
+      <obj_property name="ObjectShortName">io_datamem_wdata[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_Top/Top_inst/core/reg_x" type="array">
+      <obj_property name="ElementShortName">reg_x[0:31][31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg_x[0:31][31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_Top/Top_inst/io_exit" type="logic">
+      <obj_property name="ElementShortName">io_exit</obj_property>
+      <obj_property name="ObjectShortName">io_exit</obj_property>
+   </wvobject>
+</wave_config>

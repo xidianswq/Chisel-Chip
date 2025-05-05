@@ -1,0 +1,28 @@
+#-----------------------------------------------------------
+# Vivado v2023.1 (64-bit)
+# SW Build 3865809 on Sun May  7 15:05:29 MDT 2023
+# IP Build 3864474 on Sun May  7 20:36:21 MDT 2023
+# SharedData Build 3865790 on Sun May 07 13:33:03 MDT 2023
+# Start of session at: Tue Apr 29 10:07:40 2025
+# Process ID: 9864
+# Current directory: C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance
+# Command line: vivado.exe C:\Users\SWQ2003\Desktop\RISCV_CPU\pipeline_advance\RISCV_CPU.xpr
+# Log file: C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/vivado.log
+# Journal file: C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance\vivado.jou
+# Running On: SWQ2003, OS: Windows, CPU Frequency: 1896 MHz, CPU Physical cores: 16, Host memory: 14864 MB
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.xpr
+update_compile_order -fileset sources_1
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top SCore [current_fileset]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+open_run synth_1 -name synth_1
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 10 -input_pins -routable_nets -name timing_1
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top Top [current_fileset]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]

@@ -1,0 +1,39 @@
+#-----------------------------------------------------------
+# Vivado v2023.1 (64-bit)
+# SW Build 3865809 on Sun May  7 15:05:29 MDT 2023
+# IP Build 3864474 on Sun May  7 20:36:21 MDT 2023
+# SharedData Build 3865790 on Sun May 07 13:33:03 MDT 2023
+# Start of session at: Wed Apr 30 09:00:39 2025
+# Process ID: 15756
+# Current directory: C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance
+# Command line: vivado.exe C:\Users\SWQ2003\Desktop\RISCV_CPU\pipeline_advance\RISCV_CPU.xpr
+# Log file: C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/vivado.log
+# Journal file: C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance\vivado.jou
+# Running On: SWQ2003, OS: Windows, CPU Frequency: 1896 MHz, CPU Physical cores: 16, Host memory: 14864 MB
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.xpr
+update_compile_order -fileset sources_1
+open_run synth_1 -name synth_1
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 10 -input_pins -routable_nets -name timing_1
+synth_design -rtl -rtl_skip_mlo -name rtl_1
+write_schematic -format pdf -orientation portrait C:/Users/SWQ2003/Desktop/Pipeline_advance_key_path_2.pdf
+close_design
+close_project
+open_project C:/Users/SWQ2003/Desktop/RISCV_CPU/cpu_pipeline/RISCV_CPU.xpr
+update_compile_order -fileset sources_1
+open_run synth_1 -name synth_1
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 10 -input_pins -routable_nets -name timing_1
+synth_design -rtl -rtl_skip_mlo -name rtl_1
+write_schematic -format pdf -orientation portrait C:/Users/SWQ2003/Desktop/CPU_pipeline_key_path2.pdf
+current_design synth_1
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 10 -input_pins -routable_nets -name timing_2
+report_clock_networks -name {network_1}
+report_clock_interaction -delay_type min_max -significant_digits 3 -name timing_2
+report_methodology -name ultrafast_methodology_1
+report_drc -name drc_1 -ruledecks {default}
+report_ssn -name ssn_1
+report_operating_conditions -grade -return_string
+report_power -name {power_1}
+open_run impl_1
+report_power -name {power_1}

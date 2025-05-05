@@ -1,0 +1,165 @@
+#-----------------------------------------------------------
+# Vivado v2023.1 (64-bit)
+# SW Build 3865809 on Sun May  7 15:05:29 MDT 2023
+# IP Build 3864474 on Sun May  7 20:36:21 MDT 2023
+# SharedData Build 3865790 on Sun May 07 13:33:03 MDT 2023
+# Start of session at: Tue Apr 29 10:15:56 2025
+# Process ID: 1908
+# Current directory: C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance
+# Command line: vivado.exe C:\Users\SWQ2003\Desktop\RISCV_CPU\pipeline_advance\RISCV_CPU.xpr
+# Log file: C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/vivado.log
+# Journal file: C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance\vivado.jou
+# Running On: SWQ2003, OS: Windows, CPU Frequency: 1896 MHz, CPU Physical cores: 16, Host memory: 14864 MB
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.xpr
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs synth_1 -jobs 16
+wait_on_run synth_1
+open_run synth_1 -name synth_1
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 10 -input_pins -routable_nets -name timing_1
+set_property -dict [list \
+  CONFIG.CLKOUT1_JITTER {203.457} \
+  CONFIG.CLKOUT1_PHASE_ERROR {155.540} \
+  CONFIG.CLKOUT1_REQUESTED_OUT_FREQ {50.000} \
+  CONFIG.MMCM_CLKFBOUT_MULT_F {17} \
+  CONFIG.MMCM_CLKOUT0_DIVIDE_F {17} \
+  CONFIG.MMCM_DIVCLK_DIVIDE {2} \
+] [get_ips clk_pll]
+generate_target all [get_files  C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/ip/clk_pll/clk_pll.xci]
+catch { config_ip_cache -export [get_ips -all clk_pll] }
+export_ip_user_files -of_objects [get_files C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/ip/clk_pll/clk_pll.xci] -no_script -sync -force -quiet
+reset_run clk_pll_synth_1
+launch_runs clk_pll_synth_1 -jobs 16
+wait_on_run clk_pll_synth_1
+export_simulation -of_objects [get_files C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/ip/clk_pll/clk_pll.xci] -directory C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.ip_user_files/sim_scripts -ip_user_files_dir C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.ip_user_files -ipstatic_source_dir C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.ip_user_files/ipstatic -lib_map_path [list {modelsim=C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.cache/compile_simlib/modelsim} {questa=C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.cache/compile_simlib/questa} {riviera=C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.cache/compile_simlib/riviera} {activehdl=C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
+refresh_design
+check_timing -verbose -name timing_1
+create_clock -period 10.000 -name clk_in -waveform {0.000 5.000}
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 10 -input_pins -routable_nets -name timing_2
+save_constraints
+reset_run synth_1
+launch_runs synth_1 -jobs 16
+wait_on_run synth_1
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 10 -input_pins -routable_nets -name timing_3
+refresh_design
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 10 -input_pins -routable_nets -name timing_1
+close_design
+synth_design -rtl -rtl_skip_mlo -name rtl_1
+open_run synth_1 -name synth_1
+refresh_design
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 10 -input_pins -routable_nets -name timing_1
+write_schematic -format pdf -orientation portrait C:/Users/SWQ2003/Desktop/Pipeline_advance_key_path.pdf
+write_schematic -format pdf -orientation portrait C:/Users/SWQ2003/Desktop/schematic.pdf
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 10 -input_pins -routable_nets -name timing_2
+close_design
+close_design
+close_project
+open_project C:/Users/SWQ2003/Desktop/RISCV_CPU/cpu_pipeline/RISCV_CPU.xpr
+update_compile_order -fileset sources_1
+export_ip_user_files -of_objects  [get_files C:/Users/SWQ2003/Desktop/RISCV_CPU/cpu_pipeline/RISCV_CPU.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0.xci] -no_script -reset -force -quiet
+remove_files  C:/Users/SWQ2003/Desktop/RISCV_CPU/cpu_pipeline/RISCV_CPU.srcs/sources_1/ip/blk_mem_gen_0/blk_mem_gen_0.xci
+file delete -force C:/Users/SWQ2003/Desktop/RISCV_CPU/cpu_pipeline/RISCV_CPU.srcs/sources_1/ip/blk_mem_gen_0
+file delete -force c:/Users/SWQ2003/Desktop/RISCV_CPU/cpu_pipeline/RISCV_CPU.gen/sources_1/ip/blk_mem_gen_0
+synth_design -top Top -part xc7k160tfbg676-2 -lint 
+synth_design -rtl -rtl_skip_mlo -name rtl_1
+launch_runs synth_1 -jobs 16
+wait_on_run synth_1
+open_run synth_1 -name synth_1
+refresh_design
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 10 -input_pins -routable_nets -name timing_1
+set_property -dict [list \
+  CONFIG.CLKOUT1_JITTER {203.457} \
+  CONFIG.CLKOUT1_PHASE_ERROR {155.540} \
+  CONFIG.CLKOUT1_REQUESTED_OUT_FREQ {50.000} \
+  CONFIG.MMCM_CLKFBOUT_MULT_F {17} \
+  CONFIG.MMCM_CLKOUT0_DIVIDE_F {17} \
+  CONFIG.MMCM_DIVCLK_DIVIDE {2} \
+] [get_ips clk_pll]
+generate_target all [get_files  C:/Users/SWQ2003/Desktop/RISCV_CPU/cpu_pipeline/RISCV_CPU.srcs/sources_1/ip/clk_pll/clk_pll.xci]
+catch { config_ip_cache -export [get_ips -all clk_pll] }
+export_ip_user_files -of_objects [get_files C:/Users/SWQ2003/Desktop/RISCV_CPU/cpu_pipeline/RISCV_CPU.srcs/sources_1/ip/clk_pll/clk_pll.xci] -no_script -sync -force -quiet
+reset_run clk_pll_synth_1
+launch_runs clk_pll_synth_1 -jobs 16
+wait_on_run clk_pll_synth_1
+export_simulation -of_objects [get_files C:/Users/SWQ2003/Desktop/RISCV_CPU/cpu_pipeline/RISCV_CPU.srcs/sources_1/ip/clk_pll/clk_pll.xci] -directory C:/Users/SWQ2003/Desktop/RISCV_CPU/cpu_pipeline/RISCV_CPU.ip_user_files/sim_scripts -ip_user_files_dir C:/Users/SWQ2003/Desktop/RISCV_CPU/cpu_pipeline/RISCV_CPU.ip_user_files -ipstatic_source_dir C:/Users/SWQ2003/Desktop/RISCV_CPU/cpu_pipeline/RISCV_CPU.ip_user_files/ipstatic -lib_map_path [list {modelsim=C:/Users/SWQ2003/Desktop/RISCV_CPU/cpu_pipeline/RISCV_CPU.cache/compile_simlib/modelsim} {questa=C:/Users/SWQ2003/Desktop/RISCV_CPU/cpu_pipeline/RISCV_CPU.cache/compile_simlib/questa} {riviera=C:/Users/SWQ2003/Desktop/RISCV_CPU/cpu_pipeline/RISCV_CPU.cache/compile_simlib/riviera} {activehdl=C:/Users/SWQ2003/Desktop/RISCV_CPU/cpu_pipeline/RISCV_CPU.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
+wait_on_run clk_pll_synth_1
+refresh_design
+set_property needs_refresh false [get_runs synth_1]
+set_property needs_refresh false [get_runs impl_1]
+set_property needs_refresh false [get_runs clk_pll_synth_1]
+set_property needs_refresh false [get_runs mem_synth_1]
+set_property needs_refresh false [get_runs synth_1]
+set_property needs_refresh false [get_runs impl_1]
+set_property needs_refresh false [get_runs clk_pll_synth_1]
+set_property needs_refresh false [get_runs mem_synth_1]
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 10 -input_pins -routable_nets -name timing_1
+open_project C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.xpr
+update_compile_order -fileset sources_1
+open_run synth_1 -name synth_1
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 10 -input_pins -routable_nets -name timing_1
+set_property -dict [list \
+  CONFIG.CLKOUT1_JITTER {137.681} \
+  CONFIG.CLKOUT1_PHASE_ERROR {105.461} \
+  CONFIG.CLKOUT1_REQUESTED_OUT_FREQ {100.000} \
+  CONFIG.MMCM_CLKFBOUT_MULT_F {9} \
+  CONFIG.MMCM_CLKOUT0_DIVIDE_F {9} \
+  CONFIG.MMCM_DIVCLK_DIVIDE {1} \
+] [get_ips clk_pll]
+generate_target all [get_files  C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/ip/clk_pll/clk_pll.xci]
+catch { config_ip_cache -export [get_ips -all clk_pll] }
+export_ip_user_files -of_objects [get_files C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/ip/clk_pll/clk_pll.xci] -no_script -sync -force -quiet
+reset_run clk_pll_synth_1
+launch_runs clk_pll_synth_1 -jobs 16
+wait_on_run clk_pll_synth_1
+export_simulation -of_objects [get_files C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/ip/clk_pll/clk_pll.xci] -directory C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.ip_user_files/sim_scripts -ip_user_files_dir C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.ip_user_files -ipstatic_source_dir C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.ip_user_files/ipstatic -lib_map_path [list {modelsim=C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.cache/compile_simlib/modelsim} {questa=C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.cache/compile_simlib/questa} {riviera=C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.cache/compile_simlib/riviera} {activehdl=C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
+wait_on_run clk_pll_synth_1
+refresh_design
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 10 -input_pins -routable_nets -name timing_1
+set_property -dict [list \
+  CONFIG.CLKOUT1_JITTER {203.457} \
+  CONFIG.CLKOUT1_PHASE_ERROR {155.540} \
+  CONFIG.CLKOUT1_REQUESTED_OUT_FREQ {50.000} \
+  CONFIG.MMCM_CLKFBOUT_MULT_F {17} \
+  CONFIG.MMCM_CLKOUT0_DIVIDE_F {17} \
+  CONFIG.MMCM_DIVCLK_DIVIDE {2} \
+] [get_ips clk_pll]
+generate_target all [get_files  C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/ip/clk_pll/clk_pll.xci]
+catch { config_ip_cache -export [get_ips -all clk_pll] }
+catch { [ delete_ip_run [get_ips -all clk_pll] ] }
+export_ip_user_files -of_objects [get_files C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/ip/clk_pll/clk_pll.xci] -no_script -sync -force -quiet
+create_ip_run [get_files -of_objects [get_fileset sources_1] C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/ip/clk_pll/clk_pll.xci]
+export_simulation -of_objects [get_files C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/ip/clk_pll/clk_pll.xci] -directory C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.ip_user_files/sim_scripts -ip_user_files_dir C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.ip_user_files -ipstatic_source_dir C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.ip_user_files/ipstatic -lib_map_path [list {modelsim=C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.cache/compile_simlib/modelsim} {questa=C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.cache/compile_simlib/questa} {riviera=C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.cache/compile_simlib/riviera} {activehdl=C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.cache/compile_simlib/activehdl}] -use_ip_compiled_libs -force -quiet
+update_compile_order -fileset sources_1
+close_design
+reset_run synth_1
+launch_runs synth_1 -jobs 16
+wait_on_run synth_1
+current_project RISCV_CPU
+current_project RISCV_CPU(2)
+open_run synth_1 -name synth_1
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 10 -input_pins -routable_nets -name timing_1
+current_project RISCV_CPU
+current_project RISCV_CPU(2)
+current_project RISCV_CPU
+write_schematic -format pdf -orientation portrait C:/Users/SWQ2003/Desktop/Pipeline_advance_key_path_2.pdf
+current_project RISCV_CPU(2)
+reset_run synth_1
+close_design
+launch_runs synth_1 -jobs 16
+wait_on_run synth_1
+write_schematic -format pdf -orientation portrait C:/Users/SWQ2003/Desktop/cpu_pipeline_key_path.pdf
+open_run synth_1 -name synth_1
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 10 -input_pins -routable_nets -name timing_1
+write_schematic -format pdf -orientation portrait C:/Users/SWQ2003/Desktop/key_path.pdf
+report_power -name {power_1}
+close_project
+write_schematic -format pdf -orientation portrait C:/Users/SWQ2003/Desktop/cpu_pipeline_key_path.pdf
+report_power -name {power_1}
+reset_run synth_1
+launch_runs impl_1 -jobs 16
+wait_on_run impl_1
+open_run impl_1
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 10 -input_pins -routable_nets -name timing_1
+report_power -name {power_1}

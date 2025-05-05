@@ -79,9 +79,9 @@ class SCore extends Module{
     val inst    = if_io_reg_nn.io.out.inst
     val reg_pc  = if_io_reg_nn.io.out.reg_pc
     io.exit := MuxCase(false.asBool, Seq(
-        //(inst   === UNIMP)      -> true.asBool,
+        (inst   === UNIMP)      -> true.asBool,
         //(reg_pc === EXIT_PC)    -> true.asBool,
-        (inst   === EXIT_INST)  -> true.asBool,
+        //(inst   === EXIT_INST)  -> true.asBool,
     ))
     io.bus <> mmu.io.mmu_io
 }

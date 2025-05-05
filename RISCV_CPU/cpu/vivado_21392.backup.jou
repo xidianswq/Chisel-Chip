@@ -1,0 +1,244 @@
+#-----------------------------------------------------------
+# Vivado v2023.1 (64-bit)
+# SW Build 3865809 on Sun May  7 15:05:29 MDT 2023
+# IP Build 3864474 on Sun May  7 20:36:21 MDT 2023
+# SharedData Build 3865790 on Sun May 07 13:33:03 MDT 2023
+# Start of session at: Wed Mar  5 18:29:42 2025
+# Process ID: 21392
+# Current directory: C:/Users/SWQ2003/Desktop/RISCV_CPU
+# Command line: vivado.exe C:\Users\SWQ2003\Desktop\RISCV_CPU\RISCV_CPU.xpr
+# Log file: C:/Users/SWQ2003/Desktop/RISCV_CPU/vivado.log
+# Journal file: C:/Users/SWQ2003/Desktop/RISCV_CPU\vivado.jou
+# Running On: SWQ2003, OS: Windows, CPU Frequency: 1896 MHz, CPU Physical cores: 16, Host memory: 14864 MB
+#-----------------------------------------------------------
+start_gui
+open_project C:/Users/SWQ2003/Desktop/RISCV_CPU/RISCV_CPU.xpr
+update_compile_order -fileset sources_1
+synth_design -rtl -rtl_skip_mlo -name rtl_1
+file mkdir C:/Users/SWQ2003/Desktop/RISCV_CPU/RISCV_CPU.srcs/sim_1/new
+set_property SOURCE_SET sources_1 [get_filesets sim_1]
+close [ open C:/Users/SWQ2003/Desktop/RISCV_CPU/RISCV_CPU.srcs/sim_1/new/TopTest.v w ]
+add_files -fileset sim_1 C:/Users/SWQ2003/Desktop/RISCV_CPU/RISCV_CPU.srcs/sim_1/new/TopTest.v
+update_compile_order -fileset sim_1
+update_compile_order -fileset sim_1
+update_compile_order -fileset sim_1
+update_compile_order -fileset sim_1
+launch_simulation
+launch_simulation
+source tb_Top.tcl
+current_wave_config {Untitled 1}
+add_wave {{/tb_Top/Top_inst/core/io_instmem_inst}} 
+close_sim
+launch_simulation
+source tb_Top.tcl
+current_wave_config {Untitled 2}
+add_wave {{/tb_Top/Top_inst/core/io_instmem_inst}} 
+restart
+run 15 us
+run 15 us
+current_wave_config {Untitled 2}
+add_wave {{/tb_Top/Top_inst/core/io_instmem_addr}} 
+restart
+run 15 us
+current_wave_config {Untitled 2}
+add_wave {{/tb_Top/Top_inst/instmem/mem_io_instmem_inst_hi_hi_addr}} 
+restart
+run 15 us
+add_files -norecurse C:/Users/SWQ2003/Desktop/CPU-code/Chisel-Chip/src/main/resources/test.hex
+close_sim
+launch_simulation
+source tb_Top.tcl
+current_wave_config {Untitled 3}
+add_wave {{/tb_Top/Top_inst/instmem/io_instmem_inst}} 
+run all
+restart
+run 15 us
+current_wave_config {Untitled 3}
+add_wave {{/tb_Top/Top_inst/instmem/mem}} 
+restart
+run 15 us
+save_wave_config {C:/Users/SWQ2003/Desktop/RISCV_CPU/RISCV_CPU.sim/sim_1/tb_Top_behav.wcfg}
+add_files -fileset sim_1 -norecurse C:/Users/SWQ2003/Desktop/RISCV_CPU/RISCV_CPU.sim/sim_1/tb_Top_behav.wcfg
+set_property xsim.view C:/Users/SWQ2003/Desktop/RISCV_CPU/RISCV_CPU.sim/sim_1/tb_Top_behav.wcfg [get_filesets sim_1]
+close_sim
+launch_simulation
+open_wave_config C:/Users/SWQ2003/Desktop/RISCV_CPU/RISCV_CPU.sim/sim_1/tb_Top_behav.wcfg
+source tb_Top.tcl
+restart
+run 15 us
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+close_sim
+launch_simulation
+open_wave_config C:/Users/SWQ2003/Desktop/RISCV_CPU/RISCV_CPU.sim/sim_1/tb_Top_behav.wcfg
+source tb_Top.tcl
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+import_files
+update_compile_order -fileset sources_1
+close_sim
+launch_simulation
+open_wave_config C:/Users/SWQ2003/Desktop/RISCV_CPU/RISCV_CPU.srcs/sim_1/imports/sim_1/tb_Top_behav.wcfg
+source tb_Top.tcl
+restart
+run 15 us
+restart
+run 15 us
+restart
+run 15 us
+run 15 us
+run 15 us
+current_wave_config {tb_Top_behav.wcfg}
+add_wave {{/tb_Top/Top_inst/instmem/mem}} 
+current_wave_config {tb_Top_behav.wcfg}
+add_wave {{/tb_Top/Top_inst/instmem/mem}} 
+restart
+run 15 us
+close_sim
+launch_simulation
+open_wave_config C:/Users/SWQ2003/Desktop/RISCV_CPU/RISCV_CPU.srcs/sim_1/imports/sim_1/tb_Top_behav.wcfg
+source tb_Top.tcl
+restart
+run 15 us
+add_bp {C:/Users/SWQ2003/Desktop/RISCV_CPU/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Mem.v} 129
+remove_bps -file {C:/Users/SWQ2003/Desktop/RISCV_CPU/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Mem.v} -line 129
+add_bp {C:/Users/SWQ2003/Desktop/RISCV_CPU/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Mem.v} 129
+close_sim
+launch_simulation
+open_wave_config C:/Users/SWQ2003/Desktop/RISCV_CPU/RISCV_CPU.srcs/sim_1/imports/sim_1/tb_Top_behav.wcfg
+source tb_Top.tcl
+step
+step
+step
+step
+step
+step
+step
+step
+step
+step
+step
+run 15 us
+step
+step
+step
+step
+step
+step
+step
+step
+export_ip_user_files -of_objects  [get_files C:/Users/SWQ2003/Desktop/RISCV_CPU/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/src/main/resources/test.hex] -no_script -reset -force -quiet
+remove_files  C:/Users/SWQ2003/Desktop/RISCV_CPU/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/src/main/resources/test.hex
+file mkdir C:/Users/SWQ2003/Desktop/RISCV_CPU/RISCV_CPU.srcs/sources_1/new
+close [ open C:/Users/SWQ2003/Desktop/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/test.mem w ]
+add_files C:/Users/SWQ2003/Desktop/RISCV_CPU/RISCV_CPU.srcs/sources_1/new/test.mem
+close_sim
+launch_simulation
+open_wave_config C:/Users/SWQ2003/Desktop/RISCV_CPU/RISCV_CPU.srcs/sim_1/imports/sim_1/tb_Top_behav.wcfg
+source tb_Top.tcl
+remove_bps -file {C:/Users/SWQ2003/Desktop/RISCV_CPU/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Mem.v} -line 129
+restart
+run 15 us
+restart
+run 15 us
+close_sim
+launch_simulation
+open_wave_config C:/Users/SWQ2003/Desktop/RISCV_CPU/RISCV_CPU.srcs/sim_1/imports/sim_1/tb_Top_behav.wcfg
+source tb_Top.tcl
+restart
+run 15 us
+add_bp {C:/Users/SWQ2003/Desktop/RISCV_CPU/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Mem.v} 129
+restart
+run 15 us
+step
+step
+step
+step
+step
+close_sim
+launch_simulation
+open_wave_config C:/Users/SWQ2003/Desktop/RISCV_CPU/RISCV_CPU.srcs/sim_1/imports/sim_1/tb_Top_behav.wcfg
+source tb_Top.tcl
+step
+step
+run 15 us
+current_wave_config {tb_Top_behav.wcfg}
+add_wave {{/tb_Top/Top_inst/core/io_instmem_inst}} 
+current_wave_config {tb_Top_behav.wcfg}
+add_wave {{/tb_Top/Top_inst/core/io_instmem_addr}} 
+restart
+run 15 us
+remove_bps -file {C:/Users/SWQ2003/Desktop/RISCV_CPU/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Mem.v} -line 129
+restart
+run 15 us
+save_wave_config {C:/Users/SWQ2003/Desktop/RISCV_CPU/RISCV_CPU.srcs/sim_1/imports/sim_1/tb_Top_behav.wcfg}
+current_wave_config {tb_Top_behav.wcfg}
+add_wave {{/tb_Top/Top_inst/core/reg_x}} 
+current_wave_config {tb_Top_behav.wcfg}
+add_wave {{/tb_Top/Top_inst/core/reg_pc}} 
+current_wave_config {tb_Top_behav.wcfg}
+add_wave {{/tb_Top/Top_inst/core/rs1_addr}} 
+current_wave_config {tb_Top_behav.wcfg}
+add_wave {{/tb_Top/Top_inst/core/rs1_data}} 
+current_wave_config {tb_Top_behav.wcfg}
+add_wave {{/tb_Top/Top_inst/core/_op1_data_T}} 
+current_wave_config {tb_Top_behav.wcfg}
+add_wave {{/tb_Top/Top_inst/core/alu_out}} 
+current_wave_config {tb_Top_behav.wcfg}
+add_wave {{/tb_Top/Top_inst/core/rd_data}} 
+current_wave_config {tb_Top_behav.wcfg}
+add_wave {{/tb_Top/Top_inst/core/br_flag}} 
+current_wave_config {tb_Top_behav.wcfg}
+add_wave {{/tb_Top/Top_inst/core/br_target}} 
+current_wave_config {tb_Top_behav.wcfg}
+add_wave {{/tb_Top/Top_inst/core/op2_data}} 
+current_wave_config {tb_Top_behav.wcfg}
+add_wave {{/tb_Top/Top_inst/core/rs2_addr}} 
+current_wave_config {tb_Top_behav.wcfg}
+add_wave {{/tb_Top/Top_inst/core/rs2_data}} 
+current_wave_config {tb_Top_behav.wcfg}
+add_wave {{/tb_Top/Top_inst/core/op1_data}} 
+current_wave_config {tb_Top_behav.wcfg}
+add_wave {{/tb_Top/Top_inst/core/jump_flag}} 
+restart
+run 5 us
+run 5 us
+restart
+run 1 us
+restart
+run 400 ns
+save_wave_config {C:/Users/SWQ2003/Desktop/RISCV_CPU/RISCV_CPU.srcs/sim_1/imports/sim_1/tb_Top_behav.wcfg}
+restart
+run 400 ns
+save_wave_config {C:/Users/SWQ2003/Desktop/RISCV_CPU/RISCV_CPU.srcs/sim_1/imports/sim_1/tb_Top_behav.wcfg}
+close_sim
+launch_simulation
+open_wave_config C:/Users/SWQ2003/Desktop/RISCV_CPU/RISCV_CPU.srcs/sim_1/imports/sim_1/tb_Top_behav.wcfg
+source tb_Top.tcl
+restart
+run 400 ns
+save_wave_config {C:/Users/SWQ2003/Desktop/RISCV_CPU/RISCV_CPU.srcs/sim_1/imports/sim_1/tb_Top_behav.wcfg}
+close_sim
+launch_simulation
+open_wave_config C:/Users/SWQ2003/Desktop/RISCV_CPU/RISCV_CPU.srcs/sim_1/imports/sim_1/tb_Top_behav.wcfg
+source tb_Top.tcl
+restart
+run 250 ns
+save_wave_config {C:/Users/SWQ2003/Desktop/RISCV_CPU/RISCV_CPU.srcs/sim_1/imports/sim_1/tb_Top_behav.wcfg}
+close_sim
+launch_simulation
+open_wave_config C:/Users/SWQ2003/Desktop/RISCV_CPU/RISCV_CPU.srcs/sim_1/imports/sim_1/tb_Top_behav.wcfg
+source tb_Top.tcl
+restart
+run 250 ns
+restart
+run 220 ns
+save_wave_config {C:/Users/SWQ2003/Desktop/RISCV_CPU/RISCV_CPU.srcs/sim_1/imports/sim_1/tb_Top_behav.wcfg}
+save_wave_config {C:/Users/SWQ2003/Desktop/RISCV_CPU/RISCV_CPU.srcs/sim_1/imports/sim_1/tb_Top_behav.wcfg}
+save_wave_config {C:/Users/SWQ2003/Desktop/RISCV_CPU/RISCV_CPU.srcs/sim_1/imports/sim_1/tb_Top_behav.wcfg}
+save_wave_config {C:/Users/SWQ2003/Desktop/RISCV_CPU/RISCV_CPU.srcs/sim_1/imports/sim_1/tb_Top_behav.wcfg}
+synth_design -top Top -part xc7k160tfbg676-2 -lint 
+close_sim
+refresh_design
+refresh_design

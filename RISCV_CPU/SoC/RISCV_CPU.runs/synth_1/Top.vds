@@ -1,0 +1,555 @@
+#-----------------------------------------------------------
+# Vivado v2023.1 (64-bit)
+# SW Build 3865809 on Sun May  7 15:05:29 MDT 2023
+# IP Build 3864474 on Sun May  7 20:36:21 MDT 2023
+# SharedData Build 3865790 on Sun May 07 13:33:03 MDT 2023
+# Start of session at: Wed Apr 23 23:41:53 2025
+# Process ID: 29128
+# Current directory: C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.runs/synth_1
+# Command line: vivado.exe -log Top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source Top.tcl
+# Log file: C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.runs/synth_1/Top.vds
+# Journal file: C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.runs/synth_1\vivado.jou
+# Running On: SWQ2003, OS: Windows, CPU Frequency: 1896 MHz, CPU Physical cores: 16, Host memory: 14864 MB
+#-----------------------------------------------------------
+source Top.tcl -notrace
+create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1910.469 ; gain = 162.867
+Command: read_checkpoint -auto_incremental -incremental C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/utils_1/imports/synth_1/Top.dcp
+INFO: [Vivado 12-5825] Read reference checkpoint from C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/utils_1/imports/synth_1/Top.dcp for incremental synthesis
+INFO: [Vivado 12-7989] Please ensure there are no constraint changes
+Command: synth_design -top Top -part xc7k160tfbg676-2
+Starting synth_design
+Attempting to get a license for feature 'Synthesis' and/or device 'xc7k160t'
+INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7k160t'
+INFO: [Device 21-403] Loading part xc7k160tfbg676-2
+INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
+INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
+INFO: [Synth 8-7075] Helper process launched with PID 17340
+---------------------------------------------------------------------------------
+Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 2772.801 ; gain = 415.949
+---------------------------------------------------------------------------------
+INFO: [Synth 8-6157] synthesizing module 'Top' [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:32440]
+INFO: [Synth 8-6157] synthesizing module 'clk_pll' [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.runs/synth_1/.Xil/Vivado-29128-SWQ2003/realtime/clk_pll_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'clk_pll' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.runs/synth_1/.Xil/Vivado-29128-SWQ2003/realtime/clk_pll_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'clk_div' [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:32206]
+	Parameter DIV_CLK bound to: 1000000 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'clk_div' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:32206]
+INFO: [Synth 8-6157] synthesizing module 'clk_div__parameterized0' [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:32206]
+	Parameter DIV_CLK bound to: 2000 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'clk_div__parameterized0' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:32206]
+INFO: [Synth 8-6157] synthesizing module 'SoC' [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:32238]
+INFO: [Synth 8-6157] synthesizing module 'SCore' [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:31306]
+INFO: [Synth 8-6157] synthesizing module 'Memory' [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:1]
+INFO: [Synth 8-6157] synthesizing module 'mem' [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.runs/synth_1/.Xil/Vivado-29128-SWQ2003/realtime/mem_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'mem' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.runs/synth_1/.Xil/Vivado-29128-SWQ2003/realtime/mem_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'Memory' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:1]
+INFO: [Synth 8-6157] synthesizing module 'PC' [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'PC' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:23]
+INFO: [Synth 8-6157] synthesizing module 'BP' [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:165]
+INFO: [Synth 8-6155] done synthesizing module 'BP' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:165]
+INFO: [Synth 8-6157] synthesizing module 'ID' [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:13055]
+INFO: [Synth 8-6155] done synthesizing module 'ID' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:13055]
+INFO: [Synth 8-6157] synthesizing module 'Stall' [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:13915]
+INFO: [Synth 8-6155] done synthesizing module 'Stall' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:13915]
+INFO: [Synth 8-6157] synthesizing module 'EX' [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:30572]
+INFO: [Synth 8-6157] synthesizing module 'ALU' [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:13938]
+INFO: [Synth 8-6155] done synthesizing module 'ALU' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:13938]
+INFO: [Synth 8-6157] synthesizing module 'CSR' [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:14024]
+INFO: [Synth 8-6155] done synthesizing module 'CSR' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:14024]
+INFO: [Synth 8-6157] synthesizing module 'BR' [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:30512]
+INFO: [Synth 8-6155] done synthesizing module 'BR' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:30512]
+INFO: [Synth 8-6155] done synthesizing module 'EX' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:30572]
+INFO: [Synth 8-6157] synthesizing module 'MEM' [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:30673]
+INFO: [Synth 8-6155] done synthesizing module 'MEM' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:30673]
+INFO: [Synth 8-6157] synthesizing module 'MMU' [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:30703]
+INFO: [Synth 8-6155] done synthesizing module 'MMU' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:30703]
+INFO: [Synth 8-6157] synthesizing module 'WB' [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:30729]
+INFO: [Synth 8-6155] done synthesizing module 'WB' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:30729]
+INFO: [Synth 8-6157] synthesizing module 'PC_BUBBLE_REG' [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:30790]
+INFO: [Synth 8-6155] done synthesizing module 'PC_BUBBLE_REG' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:30790]
+INFO: [Synth 8-6157] synthesizing module 'PC_IO_REG' [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:30882]
+INFO: [Synth 8-6155] done synthesizing module 'PC_IO_REG' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:30882]
+INFO: [Synth 8-6157] synthesizing module 'ID_IO_REG' [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:30958]
+INFO: [Synth 8-6155] done synthesizing module 'ID_IO_REG' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:30958]
+INFO: [Synth 8-6157] synthesizing module 'EX_IO_REG' [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:31142]
+INFO: [Synth 8-6155] done synthesizing module 'EX_IO_REG' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:31142]
+INFO: [Synth 8-6157] synthesizing module 'WB_IO_REG' [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:31218]
+INFO: [Synth 8-6155] done synthesizing module 'WB_IO_REG' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:31218]
+INFO: [Synth 8-6155] done synthesizing module 'SCore' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:31306]
+INFO: [Synth 8-6157] synthesizing module 'APB_Peripheral' [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:32128]
+INFO: [Synth 8-6157] synthesizing module 'LED' [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:31912]
+INFO: [Synth 8-6155] done synthesizing module 'LED' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:31912]
+INFO: [Synth 8-6157] synthesizing module 'KEY' [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:31979]
+INFO: [Synth 8-6155] done synthesizing module 'KEY' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:31979]
+INFO: [Synth 8-6157] synthesizing module 'SDT' [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:32043]
+INFO: [Synth 8-6155] done synthesizing module 'SDT' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:32043]
+INFO: [Synth 8-6155] done synthesizing module 'APB_Peripheral' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:32128]
+INFO: [Synth 8-6155] done synthesizing module 'SoC' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:32238]
+INFO: [Synth 8-6157] synthesizing module 'seg_dis' [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:32304]
+INFO: [Synth 8-226] default block is never used [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:32329]
+INFO: [Synth 8-226] default block is never used [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:32419]
+INFO: [Synth 8-6155] done synthesizing module 'seg_dis' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:32304]
+INFO: [Synth 8-6155] done synthesizing module 'Top' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:32440]
+WARNING: [Synth 8-7129] Port clock in module WB is either unconnected or has no load
+WARNING: [Synth 8-7129] Port reset in module WB is either unconnected or has no load
+WARNING: [Synth 8-7129] Port clock in module BR is either unconnected or has no load
+WARNING: [Synth 8-7129] Port reset in module BR is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_id_io_csr_addr_default[31] in module CSR is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_id_io_csr_addr_default[30] in module CSR is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_id_io_csr_addr_default[29] in module CSR is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_id_io_csr_addr_default[28] in module CSR is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_id_io_csr_addr_default[27] in module CSR is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_id_io_csr_addr_default[26] in module CSR is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_id_io_csr_addr_default[25] in module CSR is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_id_io_csr_addr_default[24] in module CSR is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_id_io_csr_addr_default[23] in module CSR is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_id_io_csr_addr_default[22] in module CSR is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_id_io_csr_addr_default[21] in module CSR is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_id_io_csr_addr_default[20] in module CSR is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_id_io_csr_addr_default[19] in module CSR is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_id_io_csr_addr_default[18] in module CSR is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_id_io_csr_addr_default[17] in module CSR is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_id_io_csr_addr_default[16] in module CSR is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_id_io_csr_addr_default[15] in module CSR is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_id_io_csr_addr_default[14] in module CSR is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_id_io_csr_addr_default[13] in module CSR is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_id_io_csr_addr_default[12] in module CSR is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_id_io_csr_addr_default[11] in module CSR is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_id_io_csr_addr_default[10] in module CSR is either unconnected or has no load
+WARNING: [Synth 8-7129] Port clock in module ALU is either unconnected or has no load
+WARNING: [Synth 8-7129] Port reset in module ALU is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_if_io_inst[31] in module Stall is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_if_io_inst[30] in module Stall is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_if_io_inst[29] in module Stall is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_if_io_inst[28] in module Stall is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_if_io_inst[27] in module Stall is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_if_io_inst[26] in module Stall is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_if_io_inst[25] in module Stall is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_if_io_inst[14] in module Stall is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_if_io_inst[13] in module Stall is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_if_io_inst[12] in module Stall is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_if_io_inst[11] in module Stall is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_if_io_inst[10] in module Stall is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_if_io_inst[9] in module Stall is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_if_io_inst[8] in module Stall is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_if_io_inst[7] in module Stall is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_if_io_inst[6] in module Stall is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_if_io_inst[5] in module Stall is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_if_io_inst[4] in module Stall is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_if_io_inst[3] in module Stall is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_if_io_inst[2] in module Stall is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_if_io_inst[1] in module Stall is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_if_io_inst[0] in module Stall is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_ex_pc_io_reg_pc[31] in module BP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_ex_pc_io_reg_pc[30] in module BP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_ex_pc_io_reg_pc[29] in module BP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_ex_pc_io_reg_pc[28] in module BP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_ex_pc_io_reg_pc[27] in module BP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_ex_pc_io_reg_pc[26] in module BP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_ex_pc_io_reg_pc[25] in module BP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_ex_pc_io_reg_pc[24] in module BP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_ex_pc_io_reg_pc[23] in module BP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_ex_pc_io_reg_pc[22] in module BP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_ex_pc_io_reg_pc[21] in module BP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_ex_pc_io_reg_pc[20] in module BP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_ex_pc_io_reg_pc[19] in module BP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_ex_pc_io_reg_pc[18] in module BP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_ex_pc_io_reg_pc[17] in module BP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_ex_pc_io_reg_pc[16] in module BP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_ex_pc_io_reg_pc[15] in module BP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_ex_pc_io_reg_pc[14] in module BP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_ex_pc_io_reg_pc[13] in module BP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_ex_pc_io_reg_pc[12] in module BP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_ex_pc_io_reg_pc[11] in module BP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_ex_pc_io_reg_pc[10] in module BP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_ex_pc_io_reg_pc[1] in module BP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_in_ex_pc_io_reg_pc[0] in module BP is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_instmem_addr[31] in module Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_instmem_addr[30] in module Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_instmem_addr[29] in module Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_instmem_addr[28] in module Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_instmem_addr[27] in module Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_instmem_addr[26] in module Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_instmem_addr[25] in module Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_instmem_addr[24] in module Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_instmem_addr[23] in module Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_instmem_addr[22] in module Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_instmem_addr[21] in module Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_instmem_addr[20] in module Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_instmem_addr[19] in module Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_instmem_addr[18] in module Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_instmem_addr[1] in module Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_instmem_addr[0] in module Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_datamem_addr[31] in module Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_datamem_addr[30] in module Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_datamem_addr[29] in module Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_datamem_addr[28] in module Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_datamem_addr[27] in module Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_datamem_addr[26] in module Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_datamem_addr[25] in module Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_datamem_addr[24] in module Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_datamem_addr[23] in module Memory is either unconnected or has no load
+WARNING: [Synth 8-7129] Port io_datamem_addr[22] in module Memory is either unconnected or has no load
+INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
+---------------------------------------------------------------------------------
+Finished RTL Elaboration : Time (s): cpu = 00:00:14 ; elapsed = 00:00:17 . Memory (MB): peak = 3147.000 ; gain = 790.148
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:15 ; elapsed = 00:00:17 . Memory (MB): peak = 3164.871 ; gain = 808.020
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:15 ; elapsed = 00:00:17 . Memory (MB): peak = 3164.871 ; gain = 808.020
+---------------------------------------------------------------------------------
+Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.682 . Memory (MB): peak = 3170.699 ; gain = 0.000
+INFO: [Project 1-570] Preparing netlist for logic optimization
+
+Processing XDC Constraints
+Initializing timing engine
+Parsing XDC File [c:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.gen/sources_1/ip/clk_pll/clk_pll/clk_pll_in_context.xdc] for cell 'clk_pll_inst'
+Finished Parsing XDC File [c:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.gen/sources_1/ip/clk_pll/clk_pll/clk_pll_in_context.xdc] for cell 'clk_pll_inst'
+Parsing XDC File [c:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.gen/sources_1/ip/mem/mem/mem_in_context.xdc] for cell 'soc_inst/core/memory/sram'
+Finished Parsing XDC File [c:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.gen/sources_1/ip/mem/mem/mem_in_context.xdc] for cell 'soc_inst/core/memory/sram'
+Parsing XDC File [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/constrs_1/new/pin.xdc]
+WARNING: [Vivado 12-507] No nets matched 'reset_IBUF'. [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/constrs_1/new/pin.xdc:5]
+WARNING: [Vivado 12-507] No nets matched 'rst_soc_IBUF'. [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/constrs_1/new/pin.xdc:6]
+Finished Parsing XDC File [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/constrs_1/new/pin.xdc]
+WARNING: [Project 1-498] One or more constraints failed evaluation while reading constraint file [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/constrs_1/new/pin.xdc] and the design contains unresolved black boxes. These constraints will be read post-synthesis (as long as their source constraint file is marked as used_in_implementation) and should be applied correctly then. You should review the constraints listed in the file [.Xil/Top_propImpl.xdc] and check the run log file to verify that these constraints were correctly applied.
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/constrs_1/new/pin.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/Top_propImpl.xdc].
+Resolution: To avoid this warning, move constraints listed in [.Xil/Top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
+Completed Processing XDC Constraints
+
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.013 . Memory (MB): peak = 3317.613 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.279 . Memory (MB): peak = 3317.613 ; gain = 0.000
+---------------------------------------------------------------------------------
+Finished Constraint Validation : Time (s): cpu = 00:00:31 ; elapsed = 00:00:34 . Memory (MB): peak = 3317.613 ; gain = 960.762
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Loading Part and Timing Information
+---------------------------------------------------------------------------------
+Loading part: xc7k160tfbg676-2
+---------------------------------------------------------------------------------
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:31 ; elapsed = 00:00:34 . Memory (MB): peak = 3317.613 ; gain = 960.762
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying 'set_property' XDC Constraints
+---------------------------------------------------------------------------------
+Applied set_property KEEP_HIERARCHY = SOFT for clk_pll_inst. (constraint file  auto generated constraint).
+Applied set_property KEEP_HIERARCHY = SOFT for soc_inst/core/memory/sram. (constraint file  auto generated constraint).
+---------------------------------------------------------------------------------
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:31 ; elapsed = 00:00:34 . Memory (MB): peak = 3317.613 ; gain = 960.762
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Preparing Guide Design
+---------------------------------------------------------------------------------
+WARNING: [Synth 8-6702] IncrSynth : Design change found in an area of the design that prevents previous synthesis information being used, Reverting to default synthesis
+---------------------------------------------------------------------------------
+Finished Doing Graph Differ : Time (s): cpu = 00:00:33 ; elapsed = 00:00:37 . Memory (MB): peak = 3317.613 ; gain = 960.762
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Preparing Guide Design : Time (s): cpu = 00:00:33 ; elapsed = 00:00:37 . Memory (MB): peak = 3317.613 ; gain = 960.762
+---------------------------------------------------------------------------------
+INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'seg_dis'
+---------------------------------------------------------------------------------------------------
+                   State |                     New Encoding |                Previous Encoding 
+---------------------------------------------------------------------------------------------------
+                      s0 |                             0000 |                             0000
+                      s1 |                             0001 |                             0001
+                      s2 |                             0010 |                             0010
+                      s3 |                             0011 |                             0011
+                      s4 |                             0100 |                             0100
+                      s5 |                             0101 |                             0101
+                      s6 |                             0110 |                             0110
+                      s7 |                             0111 |                             0111
+                      s8 |                             1000 |                             1000
+                      s9 |                             1001 |                             1001
+                     s10 |                             1010 |                             1010
+                     s11 |                             1011 |                             1011
+                     s12 |                             1100 |                             1100
+                     s13 |                             1101 |                             1101
+                     s14 |                             1110 |                             1110
+                     s15 |                             1111 |                             1111
+---------------------------------------------------------------------------------------------------
+INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'seg_dis'
+---------------------------------------------------------------------------------
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:49 ; elapsed = 00:00:57 . Memory (MB): peak = 3317.613 ; gain = 960.762
+---------------------------------------------------------------------------------
+
+
+Incremental Synthesis Report Summary:
+
+1. Incremental synthesis run: no
+
+   Reason for not running incremental synthesis : Design change found in an area of the design that prevents previous synthesis information being used
+
+
+INFO: [Synth 8-7130] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
+---------------------------------------------------------------------------------
+Start RTL Component Statistics 
+---------------------------------------------------------------------------------
+Detailed RTL Component Info : 
++---Adders : 
+	   2 Input   33 Bit       Adders := 2     
+	   2 Input   32 Bit       Adders := 6     
+	   3 Input   32 Bit       Adders := 1     
++---XORs : 
+	   2 Input     32 Bit         XORs := 1     
++---Registers : 
+	               33 Bit    Registers := 2     
+	               32 Bit    Registers := 1336  
+	                8 Bit    Registers := 256   
+	                5 Bit    Registers := 5     
+	                3 Bit    Registers := 4     
+	                2 Bit    Registers := 256   
+	                1 Bit    Registers := 7     
++---Muxes : 
+	   2 Input   33 Bit        Muxes := 2     
+	   5 Input   32 Bit        Muxes := 1     
+	   2 Input   32 Bit        Muxes := 19    
+	  13 Input   32 Bit        Muxes := 1     
+	   4 Input   32 Bit        Muxes := 2     
+	  16 Input   16 Bit        Muxes := 1     
+	   2 Input   10 Bit        Muxes := 1     
+	   2 Input    8 Bit        Muxes := 1     
+	   2 Input    5 Bit        Muxes := 1     
+	  38 Input    5 Bit        Muxes := 1     
+	  16 Input    4 Bit        Muxes := 2     
+	  39 Input    3 Bit        Muxes := 2     
+	   2 Input    2 Bit        Muxes := 1     
+	   3 Input    2 Bit        Muxes := 1     
+	  38 Input    2 Bit        Muxes := 2     
+	   2 Input    1 Bit        Muxes := 561   
+---------------------------------------------------------------------------------
+Finished RTL Component Statistics 
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Part Resource Summary
+---------------------------------------------------------------------------------
+Part Resources:
+DSPs: 600 (col length:100)
+BRAMs: 650 (col length: RAMB18 100 RAMB36 50)
+---------------------------------------------------------------------------------
+Finished Part Resource Summary
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Cross Boundary and Area Optimization
+---------------------------------------------------------------------------------
+INFO: [Synth 8-3886] merging instance 'id_io_reg/id_io_reg_rd_addr_reg[3]' (FDR) to 'id_io_reg/id_io_reg_imm_b_sext_reg[3]'
+INFO: [Synth 8-3886] merging instance 'id_io_reg/id_io_reg_rd_addr_reg[4]' (FDR) to 'id_io_reg/id_io_reg_imm_b_sext_reg[4]'
+INFO: [Synth 8-3886] merging instance 'id_io_reg/id_io_reg_rd_addr_reg[0]' (FDR) to 'id_io_reg/id_io_reg_imm_b_sext_reg[11]'
+INFO: [Synth 8-3886] merging instance 'id_io_reg/id_io_reg_rd_addr_reg[1]' (FDR) to 'id_io_reg/id_io_reg_imm_b_sext_reg[1]'
+INFO: [Synth 8-3886] merging instance 'id_io_reg/id_io_reg_rd_addr_reg[2]' (FDR) to 'id_io_reg/id_io_reg_imm_b_sext_reg[2]'
+INFO: [Synth 8-3886] merging instance 'id_io_reg/id_io_reg_imm_b_sext_reg[0]' (FDR) to 'id_io_reg/id_io_reg_csr_addr_default_reg[12]'
+INFO: [Synth 8-3886] merging instance 'id_io_reg/id_io_reg_imm_b_sext_reg[5]' (FDR) to 'id_io_reg/id_io_reg_csr_addr_default_reg[5]'
+INFO: [Synth 8-3886] merging instance 'id_io_reg/id_io_reg_imm_b_sext_reg[6]' (FDR) to 'id_io_reg/id_io_reg_csr_addr_default_reg[6]'
+INFO: [Synth 8-3886] merging instance 'id_io_reg/id_io_reg_imm_b_sext_reg[7]' (FDR) to 'id_io_reg/id_io_reg_csr_addr_default_reg[7]'
+INFO: [Synth 8-3886] merging instance 'id_io_reg/id_io_reg_imm_b_sext_reg[8]' (FDR) to 'id_io_reg/id_io_reg_csr_addr_default_reg[8]'
+INFO: [Synth 8-3886] merging instance 'id_io_reg/id_io_reg_imm_b_sext_reg[9]' (FDR) to 'id_io_reg/id_io_reg_csr_addr_default_reg[9]'
+INFO: [Synth 8-3886] merging instance 'id_io_reg/id_io_reg_imm_b_sext_reg[10]' (FDR) to 'id_io_reg/id_io_reg_csr_addr_default_reg[10]'
+INFO: [Synth 8-3886] merging instance 'id_io_reg/id_io_reg_imm_b_sext_reg[12]' (FDR) to 'id_io_reg/id_io_reg_imm_b_sext_reg[13]'
+INFO: [Synth 8-3886] merging instance 'id_io_reg/id_io_reg_imm_b_sext_reg[13]' (FDR) to 'id_io_reg/id_io_reg_imm_b_sext_reg[14]'
+INFO: [Synth 8-3886] merging instance 'id_io_reg/id_io_reg_imm_b_sext_reg[14]' (FDR) to 'id_io_reg/id_io_reg_imm_b_sext_reg[15]'
+INFO: [Synth 8-3886] merging instance 'id_io_reg/id_io_reg_imm_b_sext_reg[15]' (FDR) to 'id_io_reg/id_io_reg_imm_b_sext_reg[16]'
+INFO: [Synth 8-3886] merging instance 'id_io_reg/id_io_reg_imm_b_sext_reg[16]' (FDR) to 'id_io_reg/id_io_reg_imm_b_sext_reg[17]'
+INFO: [Synth 8-3886] merging instance 'id_io_reg/id_io_reg_imm_b_sext_reg[17]' (FDR) to 'id_io_reg/id_io_reg_imm_b_sext_reg[18]'
+INFO: [Synth 8-3886] merging instance 'id_io_reg/id_io_reg_imm_b_sext_reg[18]' (FDR) to 'id_io_reg/id_io_reg_imm_b_sext_reg[19]'
+INFO: [Synth 8-3886] merging instance 'id_io_reg/id_io_reg_imm_b_sext_reg[19]' (FDR) to 'id_io_reg/id_io_reg_imm_b_sext_reg[20]'
+INFO: [Synth 8-3886] merging instance 'id_io_reg/id_io_reg_imm_b_sext_reg[20]' (FDR) to 'id_io_reg/id_io_reg_imm_b_sext_reg[21]'
+INFO: [Synth 8-3886] merging instance 'id_io_reg/id_io_reg_imm_b_sext_reg[21]' (FDR) to 'id_io_reg/id_io_reg_imm_b_sext_reg[22]'
+INFO: [Synth 8-3886] merging instance 'id_io_reg/id_io_reg_imm_b_sext_reg[22]' (FDR) to 'id_io_reg/id_io_reg_imm_b_sext_reg[23]'
+INFO: [Synth 8-3886] merging instance 'id_io_reg/id_io_reg_imm_b_sext_reg[23]' (FDR) to 'id_io_reg/id_io_reg_imm_b_sext_reg[24]'
+INFO: [Synth 8-3886] merging instance 'id_io_reg/id_io_reg_imm_b_sext_reg[24]' (FDR) to 'id_io_reg/id_io_reg_imm_b_sext_reg[25]'
+INFO: [Synth 8-3886] merging instance 'id_io_reg/id_io_reg_imm_b_sext_reg[25]' (FDR) to 'id_io_reg/id_io_reg_imm_b_sext_reg[26]'
+INFO: [Synth 8-3886] merging instance 'id_io_reg/id_io_reg_imm_b_sext_reg[26]' (FDR) to 'id_io_reg/id_io_reg_imm_b_sext_reg[27]'
+INFO: [Synth 8-3886] merging instance 'id_io_reg/id_io_reg_imm_b_sext_reg[27]' (FDR) to 'id_io_reg/id_io_reg_imm_b_sext_reg[28]'
+INFO: [Synth 8-3886] merging instance 'id_io_reg/id_io_reg_imm_b_sext_reg[28]' (FDR) to 'id_io_reg/id_io_reg_imm_b_sext_reg[29]'
+INFO: [Synth 8-3886] merging instance 'id_io_reg/id_io_reg_imm_b_sext_reg[29]' (FDR) to 'id_io_reg/id_io_reg_imm_b_sext_reg[30]'
+INFO: [Synth 8-3886] merging instance 'id_io_reg/id_io_reg_imm_b_sext_reg[30]' (FDR) to 'id_io_reg/id_io_reg_imm_b_sext_reg[31]'
+INFO: [Synth 8-3886] merging instance 'id_io_reg/id_io_reg_imm_b_sext_reg[31]' (FDR) to 'id_io_reg/id_io_reg_csr_addr_default_reg[11]'
+INFO: [Synth 8-3886] merging instance 'id_io_reg/id_io_reg_rd_sel_reg[2]' (FDR) to 'id_io_reg/id_io_reg_csr_addr_default_reg[12]'
+INFO: [Synth 8-3886] merging instance 'id_io_reg/id_io_reg_csr_addr_default_reg[12]' (FDR) to 'id_io_reg/id_io_reg_csr_addr_default_reg[13]'
+INFO: [Synth 8-3886] merging instance 'id_io_reg/id_io_reg_csr_addr_default_reg[13]' (FDR) to 'id_io_reg/id_io_reg_csr_addr_default_reg[14]'
+INFO: [Synth 8-3886] merging instance 'id_io_reg/id_io_reg_csr_addr_default_reg[14]' (FDR) to 'id_io_reg/id_io_reg_csr_addr_default_reg[15]'
+INFO: [Synth 8-3886] merging instance 'id_io_reg/id_io_reg_csr_addr_default_reg[15]' (FDR) to 'id_io_reg/id_io_reg_csr_addr_default_reg[16]'
+INFO: [Synth 8-3886] merging instance 'id_io_reg/id_io_reg_csr_addr_default_reg[16]' (FDR) to 'id_io_reg/id_io_reg_csr_addr_default_reg[17]'
+INFO: [Synth 8-3886] merging instance 'id_io_reg/id_io_reg_csr_addr_default_reg[17]' (FDR) to 'id_io_reg/id_io_reg_csr_addr_default_reg[18]'
+INFO: [Synth 8-3886] merging instance 'id_io_reg/id_io_reg_csr_addr_default_reg[18]' (FDR) to 'id_io_reg/id_io_reg_csr_addr_default_reg[19]'
+INFO: [Synth 8-3886] merging instance 'id_io_reg/id_io_reg_csr_addr_default_reg[19]' (FDR) to 'id_io_reg/id_io_reg_csr_addr_default_reg[20]'
+INFO: [Synth 8-3886] merging instance 'id_io_reg/id_io_reg_csr_addr_default_reg[20]' (FDR) to 'id_io_reg/id_io_reg_csr_addr_default_reg[21]'
+INFO: [Synth 8-3886] merging instance 'id_io_reg/id_io_reg_csr_addr_default_reg[21]' (FDR) to 'id_io_reg/id_io_reg_csr_addr_default_reg[22]'
+INFO: [Synth 8-3886] merging instance 'id_io_reg/id_io_reg_csr_addr_default_reg[22]' (FDR) to 'id_io_reg/id_io_reg_csr_addr_default_reg[23]'
+INFO: [Synth 8-3886] merging instance 'id_io_reg/id_io_reg_csr_addr_default_reg[23]' (FDR) to 'id_io_reg/id_io_reg_csr_addr_default_reg[24]'
+INFO: [Synth 8-3886] merging instance 'id_io_reg/id_io_reg_csr_addr_default_reg[24]' (FDR) to 'id_io_reg/id_io_reg_csr_addr_default_reg[25]'
+INFO: [Synth 8-3886] merging instance 'id_io_reg/id_io_reg_csr_addr_default_reg[25]' (FDR) to 'id_io_reg/id_io_reg_csr_addr_default_reg[26]'
+INFO: [Synth 8-3886] merging instance 'id_io_reg/id_io_reg_csr_addr_default_reg[26]' (FDR) to 'id_io_reg/id_io_reg_csr_addr_default_reg[27]'
+INFO: [Synth 8-3886] merging instance 'id_io_reg/id_io_reg_csr_addr_default_reg[27]' (FDR) to 'id_io_reg/id_io_reg_csr_addr_default_reg[28]'
+INFO: [Synth 8-3886] merging instance 'id_io_reg/id_io_reg_csr_addr_default_reg[28]' (FDR) to 'id_io_reg/id_io_reg_csr_addr_default_reg[29]'
+INFO: [Synth 8-3886] merging instance 'id_io_reg/id_io_reg_csr_addr_default_reg[29]' (FDR) to 'id_io_reg/id_io_reg_csr_addr_default_reg[30]'
+INFO: [Synth 8-3886] merging instance 'id_io_reg/id_io_reg_csr_addr_default_reg[30]' (FDR) to 'id_io_reg/id_io_reg_csr_addr_default_reg[31]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\id_io_reg/id_io_reg_csr_addr_default_reg[31] )
+INFO: [Synth 8-3886] merging instance 'id_io_reg/id_io_reg_csr_addr_default_reg[31]' (FDR) to 'id_io_reg_n/id_io_reg_rd_sel_reg[2]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\id_io_reg_n/id_io_reg_rd_sel_reg[2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\id/reg_x_0_reg[0] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\id/reg_x_0_reg[1] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\id/reg_x_0_reg[2] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\id/reg_x_0_reg[3] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\id/reg_x_0_reg[4] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\id/reg_x_0_reg[5] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\id/reg_x_0_reg[6] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\id/reg_x_0_reg[7] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\id/reg_x_0_reg[8] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\id/reg_x_0_reg[9] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\id/reg_x_0_reg[10] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\id/reg_x_0_reg[11] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\id/reg_x_0_reg[12] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\id/reg_x_0_reg[13] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\id/reg_x_0_reg[14] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\id/reg_x_0_reg[15] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\id/reg_x_0_reg[16] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\id/reg_x_0_reg[17] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\id/reg_x_0_reg[18] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\id/reg_x_0_reg[19] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\id/reg_x_0_reg[20] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\id/reg_x_0_reg[21] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\id/reg_x_0_reg[22] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\id/reg_x_0_reg[23] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\id/reg_x_0_reg[24] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\id/reg_x_0_reg[25] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\id/reg_x_0_reg[26] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\id/reg_x_0_reg[27] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\id/reg_x_0_reg[28] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\id/reg_x_0_reg[29] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\id/reg_x_0_reg[30] )
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\id/reg_x_0_reg[31] )
+---------------------------------------------------------------------------------
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:26 ; elapsed = 00:01:57 . Memory (MB): peak = 3317.613 ; gain = 960.762
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Applying XDC Timing Constraints
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:32 ; elapsed = 00:02:04 . Memory (MB): peak = 3317.613 ; gain = 960.762
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Timing Optimization
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Timing Optimization : Time (s): cpu = 00:01:42 ; elapsed = 00:02:14 . Memory (MB): peak = 3317.613 ; gain = 960.762
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Technology Mapping
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Technology Mapping : Time (s): cpu = 00:01:54 ; elapsed = 00:02:37 . Memory (MB): peak = 3317.613 ; gain = 960.762
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Flattening Before IO Insertion
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Final Netlist Cleanup
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished IO Insertion : Time (s): cpu = 00:02:07 ; elapsed = 00:02:50 . Memory (MB): peak = 3317.613 ; gain = 960.762
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Instances
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Instances : Time (s): cpu = 00:02:07 ; elapsed = 00:02:50 . Memory (MB): peak = 3317.613 ; gain = 960.762
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Rebuilding User Hierarchy
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:02:14 ; elapsed = 00:02:58 . Memory (MB): peak = 3317.613 ; gain = 960.762
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Ports
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Ports : Time (s): cpu = 00:02:15 ; elapsed = 00:02:58 . Memory (MB): peak = 3317.613 ; gain = 960.762
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Handling Custom Attributes
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Handling Custom Attributes : Time (s): cpu = 00:02:15 ; elapsed = 00:02:59 . Memory (MB): peak = 3317.613 ; gain = 960.762
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Renaming Generated Nets
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Finished Renaming Generated Nets : Time (s): cpu = 00:02:16 ; elapsed = 00:02:59 . Memory (MB): peak = 3317.613 ; gain = 960.762
+---------------------------------------------------------------------------------
+---------------------------------------------------------------------------------
+Start Writing Synthesis Report
+---------------------------------------------------------------------------------
+
+Report BlackBoxes: 
++------+--------------+----------+
+|      |BlackBox name |Instances |
++------+--------------+----------+
+|1     |clk_pll       |         1|
+|2     |mem           |         1|
++------+--------------+----------+
+
+Report Cell Usage: 
++------+--------+------+
+|      |Cell    |Count |
++------+--------+------+
+|1     |clk_pll |     1|
+|2     |mem     |     1|
+|3     |BUFG    |     1|
+|4     |CARRY4  |    81|
+|5     |LUT1    |    11|
+|6     |LUT2    |   431|
+|7     |LUT3    |   627|
+|8     |LUT4    |   301|
+|9     |LUT5    |  1287|
+|10    |LUT6    | 14958|
+|11    |MUXF7   |  6348|
+|12    |MUXF8   |  3030|
+|13    |FDCE    |    72|
+|14    |FDRE    | 44917|
+|15    |FDSE    |   256|
+|16    |IBUF    |    35|
+|17    |OBUF    |    57|
++------+--------+------+
+---------------------------------------------------------------------------------
+Finished Writing Synthesis Report : Time (s): cpu = 00:02:16 ; elapsed = 00:02:59 . Memory (MB): peak = 3317.613 ; gain = 960.762
+---------------------------------------------------------------------------------
+Synthesis finished with 0 errors, 0 critical warnings and 25 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:01:51 ; elapsed = 00:02:56 . Memory (MB): peak = 3317.613 ; gain = 808.020
+Synthesis Optimization Complete : Time (s): cpu = 00:02:16 ; elapsed = 00:03:08 . Memory (MB): peak = 3317.613 ; gain = 960.762
+INFO: [Project 1-571] Translating synthesized netlist
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.771 . Memory (MB): peak = 3317.613 ; gain = 0.000
+INFO: [Netlist 29-17] Analyzing 9459 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 1 CPU seconds
+INFO: [Project 1-570] Preparing netlist for logic optimization
+INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.018 . Memory (MB): peak = 3317.613 ; gain = 0.000
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+Synth Design complete | Checksum: 876d2303
+INFO: [Common 17-83] Releasing license: Synthesis
+168 Infos, 104 Warnings, 0 Critical Warnings and 0 Errors encountered.
+synth_design completed successfully
+synth_design: Time (s): cpu = 00:02:31 ; elapsed = 00:03:27 . Memory (MB): peak = 3317.613 ; gain = 1369.320
+INFO: [Common 17-1381] The checkpoint 'C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.runs/synth_1/Top.dcp' has been generated.
+write_checkpoint: Time (s): cpu = 00:00:08 ; elapsed = 00:00:07 . Memory (MB): peak = 3317.613 ; gain = 0.000
+INFO: [runtcl-4] Executing : report_utilization -file Top_utilization_synth.rpt -pb Top_utilization_synth.pb
+INFO: [Common 17-206] Exiting Vivado at Wed Apr 23 23:45:43 2025...

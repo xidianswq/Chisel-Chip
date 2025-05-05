@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="tb_SoC_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="glbl" />
+            <top_module name="tb_SoC" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0.000000 us"></ZoomStartTime>
+      <ZoomEndTime time="784.000001 us"></ZoomEndTime>
+      <Cursor1Time time="2.000000 us"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="313"></NameColumnWidth>
+      <ValueColumnWidth column_width="116"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="27" />
+   <wvobject fp_name="/tb_SoC/top_inst/soc_inst/core/pc/clock" type="logic">
+      <obj_property name="ElementShortName">clock</obj_property>
+      <obj_property name="ObjectShortName">clock</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SoC/top_inst/soc_inst/core/pc/reset" type="logic">
+      <obj_property name="ElementShortName">reset</obj_property>
+      <obj_property name="ObjectShortName">reset</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SoC/top_inst/soc_inst/core/pc/io_in_bp_io_pred_flag" type="logic">
+      <obj_property name="ElementShortName">io_in_bp_io_pred_flag</obj_property>
+      <obj_property name="ObjectShortName">io_in_bp_io_pred_flag</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SoC/top_inst/soc_inst/core/pc/io_in_bp_io_pred_target" type="array">
+      <obj_property name="ElementShortName">io_in_bp_io_pred_target[31:0]</obj_property>
+      <obj_property name="ObjectShortName">io_in_bp_io_pred_target[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SoC/top_inst/soc_inst/core/pc/io_in_stall_io_stall_flag" type="logic">
+      <obj_property name="ElementShortName">io_in_stall_io_stall_flag</obj_property>
+      <obj_property name="ObjectShortName">io_in_stall_io_stall_flag</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SoC/top_inst/soc_inst/core/pc/io_in_stall_io_pred_miss_flag" type="logic">
+      <obj_property name="ElementShortName">io_in_stall_io_pred_miss_flag</obj_property>
+      <obj_property name="ObjectShortName">io_in_stall_io_pred_miss_flag</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SoC/top_inst/soc_inst/core/pc/io_in_ex_io_alu_io_alu_out" type="array">
+      <obj_property name="ElementShortName">io_in_ex_io_alu_io_alu_out[31:0]</obj_property>
+      <obj_property name="ObjectShortName">io_in_ex_io_alu_io_alu_out[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SoC/top_inst/soc_inst/core/pc/io_in_ex_io_alu_io_jump_flag" type="logic">
+      <obj_property name="ElementShortName">io_in_ex_io_alu_io_jump_flag</obj_property>
+      <obj_property name="ObjectShortName">io_in_ex_io_alu_io_jump_flag</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SoC/top_inst/soc_inst/core/pc/io_in_ex_io_csr_io_trap_vector" type="array">
+      <obj_property name="ElementShortName">io_in_ex_io_csr_io_trap_vector[31:0]</obj_property>
+      <obj_property name="ObjectShortName">io_in_ex_io_csr_io_trap_vector[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SoC/top_inst/soc_inst/core/pc/io_in_ex_io_br_io_br_flag" type="logic">
+      <obj_property name="ElementShortName">io_in_ex_io_br_io_br_flag</obj_property>
+      <obj_property name="ObjectShortName">io_in_ex_io_br_io_br_flag</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SoC/top_inst/soc_inst/core/pc/io_in_ex_io_br_io_br_target" type="array">
+      <obj_property name="ElementShortName">io_in_ex_io_br_io_br_target[31:0]</obj_property>
+      <obj_property name="ObjectShortName">io_in_ex_io_br_io_br_target[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SoC/top_inst/soc_inst/core/pc/io_out_reg_pc" type="array">
+      <obj_property name="ElementShortName">io_out_reg_pc[31:0]</obj_property>
+      <obj_property name="ObjectShortName">io_out_reg_pc[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SoC/top_inst/soc_inst/core/pc/io_out_inst" type="array">
+      <obj_property name="ElementShortName">io_out_inst[31:0]</obj_property>
+      <obj_property name="ObjectShortName">io_out_inst[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SoC/top_inst/soc_inst/core/pc/io_out_ex_io_alu_io_alu_out" type="array">
+      <obj_property name="ElementShortName">io_out_ex_io_alu_io_alu_out[31:0]</obj_property>
+      <obj_property name="ObjectShortName">io_out_ex_io_alu_io_alu_out[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SoC/top_inst/soc_inst/core/pc/io_out_ex_io_alu_io_jump_flag" type="logic">
+      <obj_property name="ElementShortName">io_out_ex_io_alu_io_jump_flag</obj_property>
+      <obj_property name="ObjectShortName">io_out_ex_io_alu_io_jump_flag</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SoC/top_inst/soc_inst/core/pc/io_out_ex_io_br_io_br_flag" type="logic">
+      <obj_property name="ElementShortName">io_out_ex_io_br_io_br_flag</obj_property>
+      <obj_property name="ObjectShortName">io_out_ex_io_br_io_br_flag</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SoC/top_inst/soc_inst/core/pc/io_out_ex_io_br_io_br_target" type="array">
+      <obj_property name="ElementShortName">io_out_ex_io_br_io_br_target[31:0]</obj_property>
+      <obj_property name="ObjectShortName">io_out_ex_io_br_io_br_target[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SoC/top_inst/soc_inst/core/pc/io_instmem_addr" type="array">
+      <obj_property name="ElementShortName">io_instmem_addr[31:0]</obj_property>
+      <obj_property name="ObjectShortName">io_instmem_addr[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SoC/top_inst/soc_inst/core/pc/io_instmem_inst" type="array">
+      <obj_property name="ElementShortName">io_instmem_inst[31:0]</obj_property>
+      <obj_property name="ObjectShortName">io_instmem_inst[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SoC/top_inst/soc_inst/core/pc/reg_pc" type="array">
+      <obj_property name="ElementShortName">reg_pc[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg_pc[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SoC/top_inst/soc_inst/core/pc/reg_pc_next_default" type="array">
+      <obj_property name="ElementShortName">reg_pc_next_default[31:0]</obj_property>
+      <obj_property name="ObjectShortName">reg_pc_next_default[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SoC/top_inst/soc_inst/core/pc/_reg_pc_next_T" type="logic">
+      <obj_property name="ElementShortName">_reg_pc_next_T</obj_property>
+      <obj_property name="ObjectShortName">_reg_pc_next_T</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SoC/top_inst/soc_inst/core/pc/_reg_pc_next_T_1" type="logic">
+      <obj_property name="ElementShortName">_reg_pc_next_T_1</obj_property>
+      <obj_property name="ObjectShortName">_reg_pc_next_T_1</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SoC/top_inst/soc_inst/core/pc/_reg_pc_next_T_3" type="logic">
+      <obj_property name="ElementShortName">_reg_pc_next_T_3</obj_property>
+      <obj_property name="ObjectShortName">_reg_pc_next_T_3</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SoC/top_inst/soc_inst/core/pc/_reg_pc_next_T_4" type="array">
+      <obj_property name="ElementShortName">_reg_pc_next_T_4[31:0]</obj_property>
+      <obj_property name="ObjectShortName">_reg_pc_next_T_4[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SoC/top_inst/soc_inst/core/pc/_reg_pc_next_T_5" type="array">
+      <obj_property name="ElementShortName">_reg_pc_next_T_5[31:0]</obj_property>
+      <obj_property name="ObjectShortName">_reg_pc_next_T_5[31:0]</obj_property>
+   </wvobject>
+   <wvobject fp_name="/tb_SoC/top_inst/soc_inst/core/pc/_T_1" type="logic">
+      <obj_property name="ElementShortName">_T_1</obj_property>
+      <obj_property name="ObjectShortName">_T_1</obj_property>
+   </wvobject>
+</wave_config>

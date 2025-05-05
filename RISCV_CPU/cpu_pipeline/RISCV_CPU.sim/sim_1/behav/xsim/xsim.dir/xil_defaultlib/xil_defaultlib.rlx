@@ -1,0 +1,10 @@
+0.7
+2020.2
+May  7 2023
+15:24:31
+C:/Users/SWQ2003/Desktop/RISCV_CPU/cpu_pipeline/RISCV_CPU.gen/sources_1/ip/clk_pll/clk_pll.v,1742913169,verilog,,C:/Users/SWQ2003/Desktop/RISCV_CPU/cpu_pipeline/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v,,clk_pll,,,../../../../RISCV_CPU.ip_user_files/ipstatic,,,,,
+C:/Users/SWQ2003/Desktop/RISCV_CPU/cpu_pipeline/RISCV_CPU.gen/sources_1/ip/clk_pll/clk_pll_clk_wiz.v,1742913169,verilog,,C:/Users/SWQ2003/Desktop/RISCV_CPU/cpu_pipeline/RISCV_CPU.gen/sources_1/ip/clk_pll/clk_pll.v,,clk_pll_clk_wiz,,,../../../../RISCV_CPU.ip_user_files/ipstatic,,,,,
+C:/Users/SWQ2003/Desktop/RISCV_CPU/cpu_pipeline/RISCV_CPU.gen/sources_1/ip/mem/sim/mem.v,1745115204,verilog,,C:/Users/SWQ2003/Desktop/RISCV_CPU/cpu_pipeline/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v,,mem,,,../../../../RISCV_CPU.ip_user_files/ipstatic,,,,,
+C:/Users/SWQ2003/Desktop/RISCV_CPU/cpu_pipeline/RISCV_CPU.sim/sim_1/behav/xsim/glbl.v,1683266558,verilog,,,,glbl,,,,,,,,
+C:/Users/SWQ2003/Desktop/RISCV_CPU/cpu_pipeline/RISCV_CPU.srcs/sim_1/new/TopTest.v,1741849189,verilog,,,,tb_Top,,,../../../../RISCV_CPU.ip_user_files/ipstatic,,,,,
+C:/Users/SWQ2003/Desktop/RISCV_CPU/cpu_pipeline/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v,1745116549,verilog,,C:/Users/SWQ2003/Desktop/RISCV_CPU/cpu_pipeline/RISCV_CPU.srcs/sim_1/new/TopTest.v,,ALU;ALU_IO_REG;BR;ID;ID_IO_REG;MEM;Memory;PC;PC_BUBBLE_REG;PC_IO_REG;Top;WB;WB_IO_REG,,,../../../../RISCV_CPU.ip_user_files/ipstatic,,,,,

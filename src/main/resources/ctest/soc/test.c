@@ -21,7 +21,6 @@ int main()
         SDT_Write(SDTA, c);
         SDT_Write(SDTB, d);
     }
-
     asm volatile("unimp");
     return 0;
 }

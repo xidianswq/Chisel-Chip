@@ -58,6 +58,7 @@ tree                           explanation
 │  ├─RISC-V_Pipeline_CPU_Design - ~.md pic
 │  └─visio                      - cpu structure
 ├─generated                     - generated .v file
+├─RISCV_CPU                     - Vivado project
 ├─src                           - source code
 │  ├─main
 │  │  ├─resources               - c & memory file
