@@ -3,18 +3,18 @@
 # SW Build 3865809 on Sun May  7 15:05:29 MDT 2023
 # IP Build 3864474 on Sun May  7 20:36:21 MDT 2023
 # SharedData Build 3865790 on Sun May 07 13:33:03 MDT 2023
-# Start of session at: Wed Apr 23 23:41:53 2025
-# Process ID: 29128
-# Current directory: C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.runs/synth_1
+# Start of session at: Tue May 20 13:00:26 2025
+# Process ID: 14656
+# Current directory: C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.runs/synth_1
 # Command line: vivado.exe -log Top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source Top.tcl
-# Log file: C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.runs/synth_1/Top.vds
-# Journal file: C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.runs/synth_1\vivado.jou
+# Log file: C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.runs/synth_1/Top.vds
+# Journal file: C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.runs/synth_1\vivado.jou
 # Running On: SWQ2003, OS: Windows, CPU Frequency: 1896 MHz, CPU Physical cores: 16, Host memory: 14864 MB
 #-----------------------------------------------------------
 source Top.tcl -notrace
-create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 1910.469 ; gain = 162.867
-Command: read_checkpoint -auto_incremental -incremental C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/utils_1/imports/synth_1/Top.dcp
-INFO: [Vivado 12-5825] Read reference checkpoint from C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/utils_1/imports/synth_1/Top.dcp for incremental synthesis
+create_project: Time (s): cpu = 00:00:05 ; elapsed = 00:00:05 . Memory (MB): peak = 1909.801 ; gain = 162.398
+Command: read_checkpoint -auto_incremental -incremental C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/utils_1/imports/synth_1/Top.dcp
+INFO: [Vivado 12-5825] Read reference checkpoint from C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/utils_1/imports/synth_1/Top.dcp for incremental synthesis
 INFO: [Vivado 12-7989] Please ensure there are no constraint changes
 Command: synth_design -top Top -part xc7k160tfbg676-2
 Starting synth_design
@@ -23,72 +23,72 @@ INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7k160
 INFO: [Device 21-403] Loading part xc7k160tfbg676-2
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 2 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 17340
+INFO: [Synth 8-7075] Helper process launched with PID 5076
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:05 ; elapsed = 00:00:06 . Memory (MB): peak = 2772.801 ; gain = 415.949
+Starting RTL Elaboration : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 2771.465 ; gain = 415.941
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-6157] synthesizing module 'Top' [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:32440]
-INFO: [Synth 8-6157] synthesizing module 'clk_pll' [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.runs/synth_1/.Xil/Vivado-29128-SWQ2003/realtime/clk_pll_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'clk_pll' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.runs/synth_1/.Xil/Vivado-29128-SWQ2003/realtime/clk_pll_stub.v:6]
-INFO: [Synth 8-6157] synthesizing module 'clk_div' [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:32206]
+INFO: [Synth 8-6157] synthesizing module 'Top' [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:32440]
+INFO: [Synth 8-6157] synthesizing module 'clk_pll' [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.runs/synth_1/.Xil/Vivado-14656-SWQ2003/realtime/clk_pll_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'clk_pll' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.runs/synth_1/.Xil/Vivado-14656-SWQ2003/realtime/clk_pll_stub.v:6]
+INFO: [Synth 8-6157] synthesizing module 'clk_div' [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:32206]
 	Parameter DIV_CLK bound to: 1000000 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'clk_div' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:32206]
-INFO: [Synth 8-6157] synthesizing module 'clk_div__parameterized0' [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:32206]
-	Parameter DIV_CLK bound to: 2000 - type: integer 
-INFO: [Synth 8-6155] done synthesizing module 'clk_div__parameterized0' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:32206]
-INFO: [Synth 8-6157] synthesizing module 'SoC' [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:32238]
-INFO: [Synth 8-6157] synthesizing module 'SCore' [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:31306]
-INFO: [Synth 8-6157] synthesizing module 'Memory' [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:1]
-INFO: [Synth 8-6157] synthesizing module 'mem' [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.runs/synth_1/.Xil/Vivado-29128-SWQ2003/realtime/mem_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'mem' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.runs/synth_1/.Xil/Vivado-29128-SWQ2003/realtime/mem_stub.v:6]
-INFO: [Synth 8-6155] done synthesizing module 'Memory' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:1]
-INFO: [Synth 8-6157] synthesizing module 'PC' [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:23]
-INFO: [Synth 8-6155] done synthesizing module 'PC' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:23]
-INFO: [Synth 8-6157] synthesizing module 'BP' [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:165]
-INFO: [Synth 8-6155] done synthesizing module 'BP' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:165]
-INFO: [Synth 8-6157] synthesizing module 'ID' [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:13055]
-INFO: [Synth 8-6155] done synthesizing module 'ID' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:13055]
-INFO: [Synth 8-6157] synthesizing module 'Stall' [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:13915]
-INFO: [Synth 8-6155] done synthesizing module 'Stall' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:13915]
-INFO: [Synth 8-6157] synthesizing module 'EX' [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:30572]
-INFO: [Synth 8-6157] synthesizing module 'ALU' [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:13938]
-INFO: [Synth 8-6155] done synthesizing module 'ALU' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:13938]
-INFO: [Synth 8-6157] synthesizing module 'CSR' [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:14024]
-INFO: [Synth 8-6155] done synthesizing module 'CSR' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:14024]
-INFO: [Synth 8-6157] synthesizing module 'BR' [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:30512]
-INFO: [Synth 8-6155] done synthesizing module 'BR' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:30512]
-INFO: [Synth 8-6155] done synthesizing module 'EX' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:30572]
-INFO: [Synth 8-6157] synthesizing module 'MEM' [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:30673]
-INFO: [Synth 8-6155] done synthesizing module 'MEM' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:30673]
-INFO: [Synth 8-6157] synthesizing module 'MMU' [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:30703]
-INFO: [Synth 8-6155] done synthesizing module 'MMU' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:30703]
-INFO: [Synth 8-6157] synthesizing module 'WB' [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:30729]
-INFO: [Synth 8-6155] done synthesizing module 'WB' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:30729]
-INFO: [Synth 8-6157] synthesizing module 'PC_BUBBLE_REG' [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:30790]
-INFO: [Synth 8-6155] done synthesizing module 'PC_BUBBLE_REG' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:30790]
-INFO: [Synth 8-6157] synthesizing module 'PC_IO_REG' [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:30882]
-INFO: [Synth 8-6155] done synthesizing module 'PC_IO_REG' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:30882]
-INFO: [Synth 8-6157] synthesizing module 'ID_IO_REG' [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:30958]
-INFO: [Synth 8-6155] done synthesizing module 'ID_IO_REG' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:30958]
-INFO: [Synth 8-6157] synthesizing module 'EX_IO_REG' [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:31142]
-INFO: [Synth 8-6155] done synthesizing module 'EX_IO_REG' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:31142]
-INFO: [Synth 8-6157] synthesizing module 'WB_IO_REG' [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:31218]
-INFO: [Synth 8-6155] done synthesizing module 'WB_IO_REG' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:31218]
-INFO: [Synth 8-6155] done synthesizing module 'SCore' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:31306]
-INFO: [Synth 8-6157] synthesizing module 'APB_Peripheral' [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:32128]
-INFO: [Synth 8-6157] synthesizing module 'LED' [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:31912]
-INFO: [Synth 8-6155] done synthesizing module 'LED' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:31912]
-INFO: [Synth 8-6157] synthesizing module 'KEY' [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:31979]
-INFO: [Synth 8-6155] done synthesizing module 'KEY' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:31979]
-INFO: [Synth 8-6157] synthesizing module 'SDT' [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:32043]
-INFO: [Synth 8-6155] done synthesizing module 'SDT' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:32043]
-INFO: [Synth 8-6155] done synthesizing module 'APB_Peripheral' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:32128]
-INFO: [Synth 8-6155] done synthesizing module 'SoC' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:32238]
-INFO: [Synth 8-6157] synthesizing module 'seg_dis' [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:32304]
-INFO: [Synth 8-226] default block is never used [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:32329]
-INFO: [Synth 8-226] default block is never used [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:32419]
-INFO: [Synth 8-6155] done synthesizing module 'seg_dis' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:32304]
-INFO: [Synth 8-6155] done synthesizing module 'Top' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:32440]
+INFO: [Synth 8-6155] done synthesizing module 'clk_div' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:32206]
+INFO: [Synth 8-6157] synthesizing module 'clk_div__parameterized0' [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:32206]
+	Parameter DIV_CLK bound to: 1000 - type: integer 
+INFO: [Synth 8-6155] done synthesizing module 'clk_div__parameterized0' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:32206]
+INFO: [Synth 8-6157] synthesizing module 'SoC' [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:32238]
+INFO: [Synth 8-6157] synthesizing module 'SCore' [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:31306]
+INFO: [Synth 8-6157] synthesizing module 'Memory' [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:1]
+INFO: [Synth 8-6157] synthesizing module 'mem' [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.runs/synth_1/.Xil/Vivado-14656-SWQ2003/realtime/mem_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'mem' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.runs/synth_1/.Xil/Vivado-14656-SWQ2003/realtime/mem_stub.v:6]
+INFO: [Synth 8-6155] done synthesizing module 'Memory' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:1]
+INFO: [Synth 8-6157] synthesizing module 'PC' [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:23]
+INFO: [Synth 8-6155] done synthesizing module 'PC' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:23]
+INFO: [Synth 8-6157] synthesizing module 'BP' [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:165]
+INFO: [Synth 8-6155] done synthesizing module 'BP' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:165]
+INFO: [Synth 8-6157] synthesizing module 'ID' [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:13055]
+INFO: [Synth 8-6155] done synthesizing module 'ID' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:13055]
+INFO: [Synth 8-6157] synthesizing module 'Stall' [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:13915]
+INFO: [Synth 8-6155] done synthesizing module 'Stall' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:13915]
+INFO: [Synth 8-6157] synthesizing module 'EX' [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:30572]
+INFO: [Synth 8-6157] synthesizing module 'ALU' [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:13938]
+INFO: [Synth 8-6155] done synthesizing module 'ALU' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:13938]
+INFO: [Synth 8-6157] synthesizing module 'CSR' [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:14024]
+INFO: [Synth 8-6155] done synthesizing module 'CSR' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:14024]
+INFO: [Synth 8-6157] synthesizing module 'BR' [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:30512]
+INFO: [Synth 8-6155] done synthesizing module 'BR' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:30512]
+INFO: [Synth 8-6155] done synthesizing module 'EX' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:30572]
+INFO: [Synth 8-6157] synthesizing module 'MEM' [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:30673]
+INFO: [Synth 8-6155] done synthesizing module 'MEM' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:30673]
+INFO: [Synth 8-6157] synthesizing module 'MMU' [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:30703]
+INFO: [Synth 8-6155] done synthesizing module 'MMU' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:30703]
+INFO: [Synth 8-6157] synthesizing module 'WB' [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:30729]
+INFO: [Synth 8-6155] done synthesizing module 'WB' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:30729]
+INFO: [Synth 8-6157] synthesizing module 'PC_BUBBLE_REG' [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:30790]
+INFO: [Synth 8-6155] done synthesizing module 'PC_BUBBLE_REG' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:30790]
+INFO: [Synth 8-6157] synthesizing module 'PC_IO_REG' [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:30882]
+INFO: [Synth 8-6155] done synthesizing module 'PC_IO_REG' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:30882]
+INFO: [Synth 8-6157] synthesizing module 'ID_IO_REG' [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:30958]
+INFO: [Synth 8-6155] done synthesizing module 'ID_IO_REG' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:30958]
+INFO: [Synth 8-6157] synthesizing module 'EX_IO_REG' [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:31142]
+INFO: [Synth 8-6155] done synthesizing module 'EX_IO_REG' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:31142]
+INFO: [Synth 8-6157] synthesizing module 'WB_IO_REG' [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:31218]
+INFO: [Synth 8-6155] done synthesizing module 'WB_IO_REG' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:31218]
+INFO: [Synth 8-6155] done synthesizing module 'SCore' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:31306]
+INFO: [Synth 8-6157] synthesizing module 'APB_Peripheral' [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:32128]
+INFO: [Synth 8-6157] synthesizing module 'LED' [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:31912]
+INFO: [Synth 8-6155] done synthesizing module 'LED' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:31912]
+INFO: [Synth 8-6157] synthesizing module 'KEY' [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:31979]
+INFO: [Synth 8-6155] done synthesizing module 'KEY' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:31979]
+INFO: [Synth 8-6157] synthesizing module 'SDT' [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:32043]
+INFO: [Synth 8-6155] done synthesizing module 'SDT' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:32043]
+INFO: [Synth 8-6155] done synthesizing module 'APB_Peripheral' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:32128]
+INFO: [Synth 8-6155] done synthesizing module 'SoC' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:32238]
+INFO: [Synth 8-6157] synthesizing module 'seg_dis' [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:32304]
+INFO: [Synth 8-226] default block is never used [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:32329]
+INFO: [Synth 8-226] default block is never used [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:32419]
+INFO: [Synth 8-6155] done synthesizing module 'seg_dis' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:32304]
+INFO: [Synth 8-6155] done synthesizing module 'Top' (0#1) [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/sources_1/imports/Chisel-Chip/generated/Top.v:32440]
 WARNING: [Synth 8-7129] Port clock in module WB is either unconnected or has no load
 WARNING: [Synth 8-7129] Port reset in module WB is either unconnected or has no load
 WARNING: [Synth 8-7129] Port clock in module BR is either unconnected or has no load
@@ -191,49 +191,49 @@ WARNING: [Synth 8-7129] Port io_datamem_addr[23] in module Memory is either unco
 WARNING: [Synth 8-7129] Port io_datamem_addr[22] in module Memory is either unconnected or has no load
 INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:14 ; elapsed = 00:00:17 . Memory (MB): peak = 3147.000 ; gain = 790.148
+Finished RTL Elaboration : Time (s): cpu = 00:00:13 ; elapsed = 00:00:15 . Memory (MB): peak = 3144.719 ; gain = 789.195
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:15 ; elapsed = 00:00:17 . Memory (MB): peak = 3164.871 ; gain = 808.020
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 3162.602 ; gain = 807.078
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:15 ; elapsed = 00:00:17 . Memory (MB): peak = 3164.871 ; gain = 808.020
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:14 ; elapsed = 00:00:15 . Memory (MB): peak = 3162.602 ; gain = 807.078
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.682 . Memory (MB): peak = 3170.699 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.657 . Memory (MB): peak = 3168.398 ; gain = 0.000
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
 Initializing timing engine
-Parsing XDC File [c:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.gen/sources_1/ip/clk_pll/clk_pll/clk_pll_in_context.xdc] for cell 'clk_pll_inst'
-Finished Parsing XDC File [c:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.gen/sources_1/ip/clk_pll/clk_pll/clk_pll_in_context.xdc] for cell 'clk_pll_inst'
-Parsing XDC File [c:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.gen/sources_1/ip/mem/mem/mem_in_context.xdc] for cell 'soc_inst/core/memory/sram'
-Finished Parsing XDC File [c:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.gen/sources_1/ip/mem/mem/mem_in_context.xdc] for cell 'soc_inst/core/memory/sram'
-Parsing XDC File [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/constrs_1/new/pin.xdc]
-WARNING: [Vivado 12-507] No nets matched 'reset_IBUF'. [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/constrs_1/new/pin.xdc:5]
-WARNING: [Vivado 12-507] No nets matched 'rst_soc_IBUF'. [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/constrs_1/new/pin.xdc:6]
-Finished Parsing XDC File [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/constrs_1/new/pin.xdc]
-WARNING: [Project 1-498] One or more constraints failed evaluation while reading constraint file [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/constrs_1/new/pin.xdc] and the design contains unresolved black boxes. These constraints will be read post-synthesis (as long as their source constraint file is marked as used_in_implementation) and should be applied correctly then. You should review the constraints listed in the file [.Xil/Top_propImpl.xdc] and check the run log file to verify that these constraints were correctly applied.
-INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.srcs/constrs_1/new/pin.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/Top_propImpl.xdc].
+Parsing XDC File [c:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.gen/sources_1/ip/clk_pll/clk_pll/clk_pll_in_context.xdc] for cell 'clk_pll_inst'
+Finished Parsing XDC File [c:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.gen/sources_1/ip/clk_pll/clk_pll/clk_pll_in_context.xdc] for cell 'clk_pll_inst'
+Parsing XDC File [c:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.gen/sources_1/ip/mem/mem/mem_in_context.xdc] for cell 'soc_inst/core/memory/sram'
+Finished Parsing XDC File [c:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.gen/sources_1/ip/mem/mem/mem_in_context.xdc] for cell 'soc_inst/core/memory/sram'
+Parsing XDC File [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/constrs_1/new/pin.xdc]
+WARNING: [Vivado 12-507] No nets matched 'reset_IBUF'. [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/constrs_1/new/pin.xdc:6]
+WARNING: [Vivado 12-507] No nets matched 'rst_soc_IBUF'. [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/constrs_1/new/pin.xdc:7]
+Finished Parsing XDC File [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/constrs_1/new/pin.xdc]
+WARNING: [Project 1-498] One or more constraints failed evaluation while reading constraint file [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/constrs_1/new/pin.xdc] and the design contains unresolved black boxes. These constraints will be read post-synthesis (as long as their source constraint file is marked as used_in_implementation) and should be applied correctly then. You should review the constraints listed in the file [.Xil/Top_propImpl.xdc] and check the run log file to verify that these constraints were correctly applied.
+INFO: [Project 1-236] Implementation specific constraints were found while reading constraint file [C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.srcs/constrs_1/new/pin.xdc]. These constraints will be ignored for synthesis but will be used in implementation. Impacted constraints are listed in the file [.Xil/Top_propImpl.xdc].
 Resolution: To avoid this warning, move constraints listed in [.Xil/Top_propImpl.xdc] to another XDC file and exclude this new file from synthesis with the used_in_synthesis property (File Properties dialog in GUI) and re-run elaboration/synthesis.
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.013 . Memory (MB): peak = 3317.613 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.011 . Memory (MB): peak = 3315.367 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.279 . Memory (MB): peak = 3317.613 ; gain = 0.000
+Constraint Validation Runtime : Time (s): cpu = 00:00:01 ; elapsed = 00:00:00.236 . Memory (MB): peak = 3315.367 ; gain = 0.000
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:31 ; elapsed = 00:00:34 . Memory (MB): peak = 3317.613 ; gain = 960.762
+Finished Constraint Validation : Time (s): cpu = 00:00:29 ; elapsed = 00:00:30 . Memory (MB): peak = 3315.367 ; gain = 959.844
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7k160tfbg676-2
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:31 ; elapsed = 00:00:34 . Memory (MB): peak = 3317.613 ; gain = 960.762
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:29 ; elapsed = 00:00:30 . Memory (MB): peak = 3315.367 ; gain = 959.844
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -241,17 +241,17 @@ Start Applying 'set_property' XDC Constraints
 Applied set_property KEEP_HIERARCHY = SOFT for clk_pll_inst. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for soc_inst/core/memory/sram. (constraint file  auto generated constraint).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:31 ; elapsed = 00:00:34 . Memory (MB): peak = 3317.613 ; gain = 960.762
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:29 ; elapsed = 00:00:30 . Memory (MB): peak = 3315.367 ; gain = 959.844
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Preparing Guide Design
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-6702] IncrSynth : Design change found in an area of the design that prevents previous synthesis information being used, Reverting to default synthesis
 ---------------------------------------------------------------------------------
-Finished Doing Graph Differ : Time (s): cpu = 00:00:33 ; elapsed = 00:00:37 . Memory (MB): peak = 3317.613 ; gain = 960.762
+Finished Doing Graph Differ : Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 3315.367 ; gain = 959.844
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Preparing Guide Design : Time (s): cpu = 00:00:33 ; elapsed = 00:00:37 . Memory (MB): peak = 3317.613 ; gain = 960.762
+Finished Preparing Guide Design : Time (s): cpu = 00:00:31 ; elapsed = 00:00:32 . Memory (MB): peak = 3315.367 ; gain = 959.844
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'seg_dis'
 ---------------------------------------------------------------------------------------------------
@@ -276,7 +276,7 @@ INFO: [Synth 8-802] inferred FSM for state register 'state_reg' in module 'seg_d
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'state_reg' using encoding 'sequential' in module 'seg_dis'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:49 ; elapsed = 00:00:57 . Memory (MB): peak = 3317.613 ; gain = 960.762
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:48 ; elapsed = 00:00:50 . Memory (MB): peak = 3315.367 ; gain = 959.844
 ---------------------------------------------------------------------------------
 
 
@@ -426,25 +426,25 @@ INFO: [Synth 8-3333] propagating constant 0 across sequential element (\id/reg_x
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (\id/reg_x_0_reg[30] )
 INFO: [Synth 8-3333] propagating constant 0 across sequential element (\id/reg_x_0_reg[31] )
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:26 ; elapsed = 00:01:57 . Memory (MB): peak = 3317.613 ; gain = 960.762
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:01:21 ; elapsed = 00:01:31 . Memory (MB): peak = 3315.367 ; gain = 959.844
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:32 ; elapsed = 00:02:04 . Memory (MB): peak = 3317.613 ; gain = 960.762
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:01:27 ; elapsed = 00:01:37 . Memory (MB): peak = 3315.367 ; gain = 959.844
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:01:42 ; elapsed = 00:02:14 . Memory (MB): peak = 3317.613 ; gain = 960.762
+Finished Timing Optimization : Time (s): cpu = 00:01:37 ; elapsed = 00:01:47 . Memory (MB): peak = 3315.367 ; gain = 959.844
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:01:54 ; elapsed = 00:02:37 . Memory (MB): peak = 3317.613 ; gain = 960.762
+Finished Technology Mapping : Time (s): cpu = 00:01:48 ; elapsed = 00:02:08 . Memory (MB): peak = 3315.367 ; gain = 959.844
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -462,37 +462,37 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:02:07 ; elapsed = 00:02:50 . Memory (MB): peak = 3317.613 ; gain = 960.762
+Finished IO Insertion : Time (s): cpu = 00:01:59 ; elapsed = 00:02:20 . Memory (MB): peak = 3315.367 ; gain = 959.844
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:02:07 ; elapsed = 00:02:50 . Memory (MB): peak = 3317.613 ; gain = 960.762
+Finished Renaming Generated Instances : Time (s): cpu = 00:01:59 ; elapsed = 00:02:20 . Memory (MB): peak = 3315.367 ; gain = 959.844
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:02:14 ; elapsed = 00:02:58 . Memory (MB): peak = 3317.613 ; gain = 960.762
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:02:06 ; elapsed = 00:02:27 . Memory (MB): peak = 3315.367 ; gain = 959.844
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:02:15 ; elapsed = 00:02:58 . Memory (MB): peak = 3317.613 ; gain = 960.762
+Finished Renaming Generated Ports : Time (s): cpu = 00:02:06 ; elapsed = 00:02:27 . Memory (MB): peak = 3315.367 ; gain = 959.844
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:02:15 ; elapsed = 00:02:59 . Memory (MB): peak = 3317.613 ; gain = 960.762
+Finished Handling Custom Attributes : Time (s): cpu = 00:02:07 ; elapsed = 00:02:28 . Memory (MB): peak = 3315.367 ; gain = 959.844
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:02:16 ; elapsed = 00:02:59 . Memory (MB): peak = 3317.613 ; gain = 960.762
+Finished Renaming Generated Nets : Time (s): cpu = 00:02:07 ; elapsed = 00:02:28 . Memory (MB): peak = 3315.367 ; gain = 959.844
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -529,27 +529,27 @@ Report Cell Usage:
 |17    |OBUF    |    57|
 +------+--------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:02:16 ; elapsed = 00:02:59 . Memory (MB): peak = 3317.613 ; gain = 960.762
+Finished Writing Synthesis Report : Time (s): cpu = 00:02:07 ; elapsed = 00:02:28 . Memory (MB): peak = 3315.367 ; gain = 959.844
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 25 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:01:51 ; elapsed = 00:02:56 . Memory (MB): peak = 3317.613 ; gain = 808.020
-Synthesis Optimization Complete : Time (s): cpu = 00:02:16 ; elapsed = 00:03:08 . Memory (MB): peak = 3317.613 ; gain = 960.762
+Synthesis Optimization Runtime : Time (s): cpu = 00:01:43 ; elapsed = 00:02:27 . Memory (MB): peak = 3315.367 ; gain = 807.078
+Synthesis Optimization Complete : Time (s): cpu = 00:02:07 ; elapsed = 00:02:36 . Memory (MB): peak = 3315.367 ; gain = 959.844
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.771 . Memory (MB): peak = 3317.613 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.726 . Memory (MB): peak = 3315.367 ; gain = 0.000
 INFO: [Netlist 29-17] Analyzing 9459 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 1 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.018 . Memory (MB): peak = 3317.613 ; gain = 0.000
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.018 . Memory (MB): peak = 3315.367 ; gain = 0.000
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Synth Design complete | Checksum: 876d2303
+Synth Design complete | Checksum: d4a643cd
 INFO: [Common 17-83] Releasing license: Synthesis
 168 Infos, 104 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:02:31 ; elapsed = 00:03:27 . Memory (MB): peak = 3317.613 ; gain = 1369.320
-INFO: [Common 17-1381] The checkpoint 'C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.runs/synth_1/Top.dcp' has been generated.
-write_checkpoint: Time (s): cpu = 00:00:08 ; elapsed = 00:00:07 . Memory (MB): peak = 3317.613 ; gain = 0.000
+synth_design: Time (s): cpu = 00:02:21 ; elapsed = 00:02:52 . Memory (MB): peak = 3315.367 ; gain = 1367.754
+INFO: [Common 17-1381] The checkpoint 'C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.runs/synth_1/Top.dcp' has been generated.
+write_checkpoint: Time (s): cpu = 00:00:08 ; elapsed = 00:00:07 . Memory (MB): peak = 3315.367 ; gain = 0.000
 INFO: [runtcl-4] Executing : report_utilization -file Top_utilization_synth.rpt -pb Top_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Wed Apr 23 23:45:43 2025...
+INFO: [Common 17-206] Exiting Vivado at Tue May 20 13:03:42 2025...

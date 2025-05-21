@@ -32462,7 +32462,7 @@ module Top(
     .reset(reset),
     .clk_out(clock_line_1)
   );
-    clk_div #(.DIV_CLK(2000))clk_div_inst_2
+    clk_div #(.DIV_CLK(1000))clk_div_inst_2
   (
     .clk_in(clock_line),
     .reset(reset),
@@ -32470,10 +32470,12 @@ module Top(
   );
   wire [31:0]io_out_APB_Peripheral_io_sdt_io_sdta_line;
   wire [31:0]io_out_APB_Peripheral_io_sdt_io_sdtb_line;
+  wire core_exit;
+  assign io_exit = ~core_exit;
   SoC soc_inst(
     .clock(clock_line_1),
     .reset(rst_soc),
-    .io_exit(io_exit),
+    .io_exit(core_exit),
     .io_out_APB_Peripheral_io_led_io_led(led),
     .io_out_APB_Peripheral_io_key_io_key(key_in),
     .io_out_APB_Peripheral_io_sdt_io_sdta(io_out_APB_Peripheral_io_sdt_io_sdta_line),

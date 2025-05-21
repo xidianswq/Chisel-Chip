@@ -1,0 +1,14 @@
+===================================
+Configuration Memory information
+===================================
+File Format        MCS
+Interface          SPIX4
+Size               256M
+Start Address      0x00000000
+End Address        0x0FFFFFFF
+Checksum           0x8EDB6176
+Fill Value         0xFF
+
+Addr1         Addr2         Date                    File(s)                                                                 Checksum
+0x00000000    0x00661EDB    May 20 11:38:33 2025    C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.runs/impl_1/Top.bit    0x04941E9A
+File Checksum Total                                                                                                         0x04941E9A

@@ -2,6 +2,7 @@
 #-- Engineer: switch_swq
 #-- Create Date: 2024/04/18 13:02:24
 #----------------------------------------------------------------------------------
+
 set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets reset_IBUF]
 set_property CLOCK_DEDICATED_ROUTE FALSE [get_nets rst_soc_IBUF]
 #CLK_100M

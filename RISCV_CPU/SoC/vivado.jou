@@ -3,8 +3,8 @@
 # SW Build 3865809 on Sun May  7 15:05:29 MDT 2023
 # IP Build 3864474 on Sun May  7 20:36:21 MDT 2023
 # SharedData Build 3865790 on Sun May 07 13:33:03 MDT 2023
-# Start of session at: Wed Apr 30 15:06:19 2025
-# Process ID: 15512
+# Start of session at: Tue May 20 10:59:37 2025
+# Process ID: 19272
 # Current directory: C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC
 # Command line: vivado.exe C:\Users\SWQ2003\Desktop\RISCV_CPU\SoC\RISCV_CPU.xpr
 # Log file: C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/vivado.log
@@ -14,5 +14,156 @@
 start_gui
 open_project C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.xpr
 update_compile_order -fileset sources_1
-synth_design -rtl -rtl_skip_mlo -name rtl_1
-write_schematic -format pdf -orientation portrait C:/Users/SWQ2003/Desktop/SoC_schematic.pdf
+launch_runs impl_1 -jobs 16
+wait_on_run impl_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+wait_on_run impl_1
+write_cfgmem  -format mcs -size 256 -interface SPIx4 -loadbit {up 0x00000000 "C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.runs/impl_1/Top.bit" } -checksum -force -disablebitswap -file "C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.runs/impl_1/Top"
+open_hw_manager
+connect_hw_server -allow_non_jtag
+open_hw_target
+set_property PROGRAM.FILE {C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.runs/impl_1/Top.bit} [get_hw_devices xc7k160t_0]
+current_hw_device [get_hw_devices xc7k160t_0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7k160t_0] 0]
+create_hw_cfgmem -hw_device [get_hw_devices xc7k160t_0] -mem_dev [lindex [get_cfgmem_parts {mt25ql256-spi-x1_x2_x4}] 0]
+reset_run impl_1 -prev_step 
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+wait_on_run impl_1
+close_hw_manager
+open_hw_manager
+connect_hw_server -allow_non_jtag
+open_hw_target
+current_hw_device [get_hw_devices xc7k160t_0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7k160t_0] 0]
+create_hw_cfgmem -hw_device [get_hw_devices xc7k160t_0] -mem_dev [lindex [get_cfgmem_parts {mt25ql256-spi-x1_x2_x4}] 0]
+boot_hw_device  [lindex [get_hw_devices xc7k160t_0] 0]
+refresh_hw_device [lindex [get_hw_devices xc7k160t_0] 0]
+write_cfgmem  -format mcs -size 256 -interface SPIx4 -loadbit {up 0x00000000 "C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.runs/impl_1/Top.bit" } -checksum -force -disablebitswap -file "C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.runs/impl_1/Top.mcs"
+set_property PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property PROGRAM.FILE {C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.runs/impl_1/Top.bit} [get_hw_devices xc7k160t_0]
+program_hw_devices [get_hw_devices xc7k160t_0]
+refresh_hw_device [lindex [get_hw_devices xc7k160t_0] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property PROGRAM.FILE {C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.runs/impl_1/Top.bit} [get_hw_devices xc7k160t_0]
+program_hw_devices [get_hw_devices xc7k160t_0]
+refresh_hw_device [lindex [get_hw_devices xc7k160t_0] 0]
+boot_hw_device  [lindex [get_hw_devices xc7k160t_0] 0]
+refresh_hw_device [lindex [get_hw_devices xc7k160t_0] 0]
+close_hw_manager
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+wait_on_run impl_1
+open_hw_manager
+connect_hw_server -allow_non_jtag
+open_hw_target
+set_property PROGRAM.FILE {C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.runs/impl_1/Top.bit} [get_hw_devices xc7k160t_0]
+current_hw_device [get_hw_devices xc7k160t_0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7k160t_0] 0]
+create_hw_cfgmem -hw_device [get_hw_devices xc7k160t_0] -mem_dev [lindex [get_cfgmem_parts {mt25ql256-spi-x1_x2_x4}] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property PROGRAM.FILE {C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.runs/impl_1/Top.bit} [get_hw_devices xc7k160t_0]
+program_hw_devices [get_hw_devices xc7k160t_0]
+refresh_hw_device [lindex [get_hw_devices xc7k160t_0] 0]
+boot_hw_device  [lindex [get_hw_devices xc7k160t_0] 0]
+refresh_hw_device [lindex [get_hw_devices xc7k160t_0] 0]
+close_hw_manager
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+wait_on_run impl_1
+open_hw_manager
+connect_hw_server -allow_non_jtag
+open_hw_target
+set_property PROGRAM.FILE {C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.runs/impl_1/Top.bit} [get_hw_devices xc7k160t_0]
+current_hw_device [get_hw_devices xc7k160t_0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7k160t_0] 0]
+create_hw_cfgmem -hw_device [get_hw_devices xc7k160t_0] -mem_dev [lindex [get_cfgmem_parts {mt25ql256-spi-x1_x2_x4}] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property PROGRAM.FILE {C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.runs/impl_1/Top.bit} [get_hw_devices xc7k160t_0]
+program_hw_devices [get_hw_devices xc7k160t_0]
+refresh_hw_device [lindex [get_hw_devices xc7k160t_0] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property PROGRAM.FILE {C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.runs/impl_1/Top.bit} [get_hw_devices xc7k160t_0]
+program_hw_devices [get_hw_devices xc7k160t_0]
+refresh_hw_device [lindex [get_hw_devices xc7k160t_0] 0]
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+wait_on_run impl_1
+set_property PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property PROGRAM.FILE {C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.runs/impl_1/Top.bit} [get_hw_devices xc7k160t_0]
+program_hw_devices [get_hw_devices xc7k160t_0]
+refresh_hw_device [lindex [get_hw_devices xc7k160t_0] 0]
+close_hw_manager
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+wait_on_run impl_1
+open_hw_manager
+connect_hw_server -allow_non_jtag
+open_hw_target
+set_property PROGRAM.FILE {C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.runs/impl_1/Top.bit} [get_hw_devices xc7k160t_0]
+current_hw_device [get_hw_devices xc7k160t_0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7k160t_0] 0]
+create_hw_cfgmem -hw_device [get_hw_devices xc7k160t_0] -mem_dev [lindex [get_cfgmem_parts {mt25ql256-spi-x1_x2_x4}] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property PROGRAM.FILE {C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.runs/impl_1/Top.bit} [get_hw_devices xc7k160t_0]
+program_hw_devices [get_hw_devices xc7k160t_0]
+refresh_hw_device [lindex [get_hw_devices xc7k160t_0] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property PROGRAM.FILE {C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.runs/impl_1/Top.bit} [get_hw_devices xc7k160t_0]
+program_hw_devices [get_hw_devices xc7k160t_0]
+refresh_hw_device [lindex [get_hw_devices xc7k160t_0] 0]
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+wait_on_run impl_1
+open_run impl_1
+set_property PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property PROGRAM.FILE {C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.runs/impl_1/Top.bit} [get_hw_devices xc7k160t_0]
+program_hw_devices [get_hw_devices xc7k160t_0]
+refresh_hw_device [lindex [get_hw_devices xc7k160t_0] 0]
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+wait_on_run impl_1
+set_property PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property PROGRAM.FILE {C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.runs/impl_1/Top.bit} [get_hw_devices xc7k160t_0]
+program_hw_devices [get_hw_devices xc7k160t_0]
+refresh_hw_device [lindex [get_hw_devices xc7k160t_0] 0]
+reset_run synth_1
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+wait_on_run impl_1
+set_property PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property PROGRAM.FILE {C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.runs/impl_1/Top.bit} [get_hw_devices xc7k160t_0]
+program_hw_devices [get_hw_devices xc7k160t_0]
+refresh_hw_device [lindex [get_hw_devices xc7k160t_0] 0]
+close_hw_manager
+open_run synth_1 -name synth_1
+report_timing_summary -delay_type min_max -report_unconstrained -check_timing_verbose -max_paths 10 -input_pins -routable_nets -name timing_1
+reset_run impl_1 -prev_step 
+launch_runs impl_1 -to_step write_bitstream -jobs 16
+wait_on_run impl_1
+open_hw_manager
+connect_hw_server -allow_non_jtag
+open_hw_target
+set_property PROGRAM.FILE {C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.runs/impl_1/Top.bit} [get_hw_devices xc7k160t_0]
+current_hw_device [get_hw_devices xc7k160t_0]
+refresh_hw_device -update_hw_probes false [lindex [get_hw_devices xc7k160t_0] 0]
+create_hw_cfgmem -hw_device [get_hw_devices xc7k160t_0] -mem_dev [lindex [get_cfgmem_parts {mt25ql256-spi-x1_x2_x4}] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property PROGRAM.FILE {C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.runs/impl_1/Top.bit} [get_hw_devices xc7k160t_0]
+program_hw_devices [get_hw_devices xc7k160t_0]
+refresh_hw_device [lindex [get_hw_devices xc7k160t_0] 0]
+set_property PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property FULL_PROBES.FILE {} [get_hw_devices xc7k160t_0]
+set_property PROGRAM.FILE {C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.runs/impl_1/Top.bit} [get_hw_devices xc7k160t_0]
+program_hw_devices [get_hw_devices xc7k160t_0]
+refresh_hw_device [lindex [get_hw_devices xc7k160t_0] 0]

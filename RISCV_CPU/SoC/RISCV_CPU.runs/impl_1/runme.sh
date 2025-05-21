@@ -25,7 +25,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='C:/Users/SWQ2003/Desktop/RISCV_CPU/pipeline_advance/RISCV_CPU.runs/impl_1'
+HD_PWD='C:/Users/SWQ2003/Desktop/RISCV_CPU/SoC/RISCV_CPU.runs/impl_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log
